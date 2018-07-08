@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mpu@127.0.0.1" uuid="5bd5af46-9d42-4073-9887-cf382b27c0dd">
+    <database-info product="MySQL" version="5.6.15-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="mpu"/>
+    <table name="abbinamenti" schema="" catalog="mpu" type="TABLE">
+      <column name="abb_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="abb_cod" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="abb_fin_1" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_nome_1" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="abb_fin_2" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_nome_2" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J05VTEwn"/>
+      <column name="abb_fin_3" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_nome_3" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J05VTEwn"/>
+      <column name="abb_fin_4" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_nome_4" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J05VTEwn"/>
+      <column name="abb_nome_5" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J05VTEwn"/>
+      <column name="abb_fin_5" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_nome_6" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J05VTEwn"/>
+      <column name="abb_fin_6" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="abb_line" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="abb_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="abb_tab" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="abb_id"/>
+      <foreign-key name="abbinamenti_ibfk_10" columns="abb_fin_6" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_11" columns="abb_tab" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_2" columns="abb_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_3" columns="abb_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_5" columns="abb_fin_1" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_6" columns="abb_fin_2" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_7" columns="abb_fin_3" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_8" columns="abb_fin_4" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <foreign-key name="abbinamenti_ibfk_9" columns="abb_fin_5" ref-table="finiture" ref-schema="" ref-catalog="mpu" ref-columns="fin_id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <exported-key name="composizioni_prodotti_ibfk_13" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_cod"/>
+      <exported-key name="composti_prodotti_ibfk_7" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_cod"/>
+      <exported-key name="esposizioni_prodotti_ibfk_9" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_cod"/>
+      <exported-key name="promozioni_prodotti_ibfk_5" table="promozioni_prodotti" schema="" catalog="mpu" columns="prm_cod"/>
+      <index name="abb_cod" unique="false" columns="abb_cod"/>
+      <index name="abb_line" unique="false" columns="abb_mark"/>
+    </table>
+    <table name="carrello" schema="" catalog="mpu" type="TABLE">
+      <column name="cart_id" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cart_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="cart_user" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cart_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cart_prd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cart_cmp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cart_esp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cart_vtr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="cart_id"/>
+    </table>
+    <table name="categorie" schema="" catalog="mpu" type="TABLE">
+      <column name="cat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cat_nome" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cat_show" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="cat_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cat_visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="cat_id"/>
+      <exported-key name="marchi_ibfk_4" table="marchi" schema="" catalog="mpu" columns="mark_cat"/>
+      <exported-key name="marchi_ibfk_5" table="marchi" schema="" catalog="mpu" columns="mark_cat_2"/>
+      <exported-key name="marchi_ibfk_6" table="marchi" schema="" catalog="mpu" columns="mark_cat_3"/>
+      <exported-key name="settori_ibfk_1" table="settori" schema="" catalog="mpu" columns="set_cat"/>
+      <index name="cat_nome" unique="false" columns="cat_nome"/>
+    </table>
+    <table name="clienti" schema="" catalog="mpu" type="TABLE">
+      <column name="client_ord" sqlType="VARCHAR" precision="24" scale="0" nullable="false" jdbcType="12"/>
+      <column name="client_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="soc_soc" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_iva" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_email_fatt" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_ind" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_citta" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_prov" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_cap" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_nome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_cognome" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="soc_email" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="soc_tel_1" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="soc_tel_2" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="soc_fax" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prv_nome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_cognome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_fisc" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_email" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_ind" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_citta" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_prov" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_cap" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_tel_1" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prv_tel_2" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prv_fax" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sped_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sped_soc" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sped_cognome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_email" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sped_ind" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_citta" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_prov" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_cap" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_tel_1" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sped_tel_2" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sped_fax" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sped_note" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="mod_pag" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="client_ord"/>
+    </table>
+    <table name="composizioni" schema="" catalog="mpu" type="TABLE">
+      <column name="cmp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cmp_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_file" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_type" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="cmp_promo" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="cmp_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cmp_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmp_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="cmp_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmp_nome" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_cod" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_set_1" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_set_2" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_set_3" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_set_4" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_set_5" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_title" sqlType="VARCHAR" precision="550" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmp_note" sqlType="VARCHAR" precision="550" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="cmp_id"/>
+      <foreign-key name="composizioni_ibfk_1" columns="cmp_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_2" columns="cmp_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_3" columns="cmp_set_1" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_4" columns="cmp_set_2" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_5" columns="cmp_set_3" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_6" columns="cmp_set_4" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_ibfk_7" columns="cmp_set_5" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <exported-key name="composizioni_prodotti_ibfk_14" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_comp"/>
+      <index name="cmp_cod" unique="false" columns="cmp_cod"/>
+    </table>
+    <table name="composizioni_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="cmpr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cmpr_mark_cmp" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmpr_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmpr_line_cmp" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmpr_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cmpr_prd" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmpr_tab" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmpr_cod" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmpr_comp" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmpr_qnt" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="cmpr_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cmpr_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="cmpr_id"/>
+      <foreign-key name="composizioni_prodotti_ibfk_1" columns="cmpr_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_10" columns="cmpr_line_cmp" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_11" columns="cmpr_prd" ref-table="prodotti" ref-schema="" ref-catalog="mpu" ref-columns="prd_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_12" columns="cmpr_tab" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_13" columns="cmpr_cod" ref-table="abbinamenti" ref-schema="" ref-catalog="mpu" ref-columns="abb_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_14" columns="cmpr_comp" ref-table="composizioni" ref-schema="" ref-catalog="mpu" ref-columns="cmp_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_2" columns="cmpr_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composizioni_prodotti_ibfk_8" columns="cmpr_mark_cmp" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="composti" schema="" catalog="mpu" type="TABLE">
+      <column name="cst_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cst_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_cod" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_nome" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_fin" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_title" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cst_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="cst_promo" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="cst_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cst_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cst_file" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cst_view" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="cst_id"/>
+      <foreign-key name="composti_ibfk_1" columns="cst_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_ibfk_2" columns="cst_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="composti_prodotti_ibfk_8" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_cst"/>
+      <exported-key name="settori_composti_ibfk_9" table="settori_composti" schema="" catalog="mpu" columns="stcst_cst"/>
+    </table>
+    <table name="composti_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="cstpr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cstpr_mark_cst" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cstpr_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cstpr_line_cst" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cstpr_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cstpr_prd" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_tab" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_cod" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_cst" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_qnt" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cstpr_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="cstpr_id"/>
+      <foreign-key name="composti_prodotti_ibfk_1" columns="cstpr_mark_cst" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_2" columns="cstpr_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_3" columns="cstpr_line_cst" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_4" columns="cstpr_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_5" columns="cstpr_prd" ref-table="prodotti" ref-schema="" ref-catalog="mpu" ref-columns="prd_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_6" columns="cstpr_tab" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_7" columns="cstpr_cod" ref-table="abbinamenti" ref-schema="" ref-catalog="mpu" ref-columns="abb_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="composti_prodotti_ibfk_8" columns="cstpr_cst" ref-table="composti" ref-schema="" ref-catalog="mpu" ref-columns="cst_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="cstpr_esp" unique="false" columns="cstpr_cst"/>
+      <index name="cstpr_line_esp" unique="false" columns="cstpr_line_cst"/>
+      <index name="cstpr_mark_esp" unique="false" columns="cstpr_mark_cst"/>
+    </table>
+    <table name="confronta" schema="" catalog="mpu" type="TABLE">
+      <column name="comp_id" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="comp_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="comp_user" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="comp_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="comp_prd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="comp_cmp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="comp_esp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="comp_vtr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="comp_pos" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="comp_set" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="comp_id"/>
+    </table>
+    <table name="esposizioni" schema="" catalog="mpu" type="TABLE">
+      <column name="esp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="esp_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_tbpr" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="esp_cod" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_nome" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_fin" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_title" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_dim" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="esp_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="esp_promo" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="esp_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="esp_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="esp_file" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="esp_view" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="esp_id"/>
+      <foreign-key name="esposizioni_ibfk_1" columns="esp_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_ibfk_2" columns="esp_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_ibfk_3" columns="esp_tbpr" ref-table="tabelle_prodotti" ref-schema="" ref-catalog="mpu" ref-columns="tbpr_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <exported-key name="esposizioni_prodotti_ibfk_8" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_esp"/>
+      <exported-key name="settori_esposizioni_ibfk_4" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_esp"/>
+    </table>
+    <table name="esposizioni_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="espr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="espr_mark_esp" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="espr_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="espr_line_esp" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="espr_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="espr_prd" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_tab" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_cod" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_esp" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_qnt" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="espr_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="espr_id"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_1" columns="espr_mark_esp" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_2" columns="espr_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_3" columns="espr_line_esp" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_4" columns="espr_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_5" columns="espr_prd" ref-table="prodotti" ref-schema="" ref-catalog="mpu" ref-columns="prd_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_6" columns="espr_tab" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_8" columns="espr_esp" ref-table="esposizioni" ref-schema="" ref-catalog="mpu" ref-columns="esp_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="esposizioni_prodotti_ibfk_9" columns="espr_cod" ref-table="abbinamenti" ref-schema="" ref-catalog="mpu" ref-columns="abb_id" update-rule="0" delete-rule="2" deferrability="2"/>
+    </table>
+    <table name="finiture" schema="" catalog="mpu" type="TABLE">
+      <column name="fin_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="fin_cod" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fin_nome" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fin_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fin_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="fin_type" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" def="J0Zpbml0dXJhJw=="/>
+      <column name="fin_file" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fin_file_thumb" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fin_visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="fin_id"/>
+      <foreign-key name="finiture_ibfk_1" columns="fin_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="abbinamenti_ibfk_10" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_6"/>
+      <exported-key name="abbinamenti_ibfk_5" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_1"/>
+      <exported-key name="abbinamenti_ibfk_6" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_2"/>
+      <exported-key name="abbinamenti_ibfk_7" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_3"/>
+      <exported-key name="abbinamenti_ibfk_8" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_4"/>
+      <exported-key name="abbinamenti_ibfk_9" table="abbinamenti" schema="" catalog="mpu" columns="abb_fin_5"/>
+      <index name="fin_cod" unique="false" columns="fin_cod"/>
+      <index name="fin_nome" unique="false" columns="fin_nome"/>
+    </table>
+    <table name="immagini" schema="" catalog="mpu" type="TABLE">
+      <column name="img_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="img_prd" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_abb" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img_cod" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="img_id"/>
+    </table>
+    <table name="linee" schema="" catalog="mpu" type="TABLE">
+      <column name="line_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="line_nome" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="line_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="line_pdf_file" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="line_spec_file" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="line_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="line_promo" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="line_disc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="line_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="line_war" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="line_visible" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="line_id"/>
+      <foreign-key name="linee_ibfk_1" columns="line_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="abbinamenti_ibfk_2" table="abbinamenti" schema="" catalog="mpu" columns="abb_line"/>
+      <exported-key name="composizioni_ibfk_2" table="composizioni" schema="" catalog="mpu" columns="cmp_line"/>
+      <exported-key name="composizioni_prodotti_ibfk_10" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_line_cmp"/>
+      <exported-key name="composizioni_prodotti_ibfk_2" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_line"/>
+      <exported-key name="composti_ibfk_2" table="composti" schema="" catalog="mpu" columns="cst_line"/>
+      <exported-key name="composti_prodotti_ibfk_3" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_line_cst"/>
+      <exported-key name="composti_prodotti_ibfk_4" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_line"/>
+      <exported-key name="esposizioni_ibfk_2" table="esposizioni" schema="" catalog="mpu" columns="esp_line"/>
+      <exported-key name="esposizioni_prodotti_ibfk_3" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_line_esp"/>
+      <exported-key name="esposizioni_prodotti_ibfk_4" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_line"/>
+      <exported-key name="prodotti_ibfk_19" table="prodotti" schema="" catalog="mpu" columns="prd_lnfn"/>
+      <exported-key name="prodotti_ibfk_2" table="prodotti" schema="" catalog="mpu" columns="prd_line"/>
+      <exported-key name="promozioni_prodotti_ibfk_2" table="promozioni_prodotti" schema="" catalog="mpu" columns="prm_line"/>
+      <exported-key name="settori_composti_ibfk_2" table="settori_composti" schema="" catalog="mpu" columns="stcst_line"/>
+      <exported-key name="settori_composti_ibfk_3" table="settori_composti" schema="" catalog="mpu" columns="stcst_nwln"/>
+      <exported-key name="settori_esposizioni_ibfk_2" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_line"/>
+      <exported-key name="settori_esposizioni_ibfk_3" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_nwln"/>
+      <exported-key name="settori_linee_ibfk_1" table="settori_linee" schema="" catalog="mpu" columns="stln_line"/>
+      <exported-key name="settori_prodotti_ibfk_14" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_nwln"/>
+      <exported-key name="settori_prodotti_ibfk_3" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_line"/>
+      <exported-key name="tabelle_finiture_ibfk_2" table="tabelle_finiture" schema="" catalog="mpu" columns="tab_line"/>
+      <index name="line_nome" unique="false" columns="line_nome"/>
+    </table>
+    <table name="marchi" schema="" catalog="mpu" type="TABLE">
+      <column name="mark_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="mark_nome" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mark_cat" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mark_cat_2" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mark_cat_3" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mark_show" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="mark_disc" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="LTMw"/>
+      <column name="mark_list" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="mark_visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="mark_id"/>
+      <foreign-key name="marchi_ibfk_4" columns="mark_cat" ref-table="categorie" ref-schema="" ref-catalog="mpu" ref-columns="cat_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="marchi_ibfk_5" columns="mark_cat_2" ref-table="categorie" ref-schema="" ref-catalog="mpu" ref-columns="cat_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="marchi_ibfk_6" columns="mark_cat_3" ref-table="categorie" ref-schema="" ref-catalog="mpu" ref-columns="cat_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <exported-key name="abbinamenti_ibfk_3" table="abbinamenti" schema="" catalog="mpu" columns="abb_mark"/>
+      <exported-key name="composizioni_ibfk_1" table="composizioni" schema="" catalog="mpu" columns="cmp_mark"/>
+      <exported-key name="composizioni_prodotti_ibfk_1" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_mark"/>
+      <exported-key name="composizioni_prodotti_ibfk_8" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_mark_cmp"/>
+      <exported-key name="composti_ibfk_1" table="composti" schema="" catalog="mpu" columns="cst_mark"/>
+      <exported-key name="composti_prodotti_ibfk_1" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_mark_cst"/>
+      <exported-key name="composti_prodotti_ibfk_2" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_mark"/>
+      <exported-key name="esposizioni_ibfk_1" table="esposizioni" schema="" catalog="mpu" columns="esp_mark"/>
+      <exported-key name="esposizioni_prodotti_ibfk_1" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_mark_esp"/>
+      <exported-key name="esposizioni_prodotti_ibfk_2" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_mark"/>
+      <exported-key name="finiture_ibfk_1" table="finiture" schema="" catalog="mpu" columns="fin_mark"/>
+      <exported-key name="linee_ibfk_1" table="linee" schema="" catalog="mpu" columns="line_mark"/>
+      <exported-key name="prodotti_ibfk_21" table="prodotti" schema="" catalog="mpu" columns="prd_mark"/>
+      <exported-key name="promozioni_prodotti_ibfk_1" table="promozioni_prodotti" schema="" catalog="mpu" columns="prm_mark"/>
+      <exported-key name="settori_composti_ibfk_1" table="settori_composti" schema="" catalog="mpu" columns="stcst_mark"/>
+      <exported-key name="settori_esposizioni_ibfk_1" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_mark"/>
+      <exported-key name="settori_linee_ibfk_3" table="settori_linee" schema="" catalog="mpu" columns="stln_mark"/>
+      <exported-key name="settori_prodotti_ibfk_8" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_mark"/>
+      <exported-key name="tabelle_finiture_ibfk_1" table="tabelle_finiture" schema="" catalog="mpu" columns="tab_mark"/>
+      <exported-key name="tabelle_prodotti_ibfk_1" table="tabelle_prodotti" schema="" catalog="mpu" columns="tbpr_mark"/>
+      <index name="mark_disc" unique="false" columns="mark_disc"/>
+      <index name="mark_nome" unique="false" columns="mark_nome"/>
+    </table>
+    <table name="marchi_rivenditori" schema="" catalog="mpu" type="TABLE">
+      <column name="mark_riv_id" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" autoIncrement="true"/>
+      <column name="riv_id" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="mark_id" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="mark_disc" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="mark_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="mark_riv_id"/>
+    </table>
+    <table name="ordini" schema="" catalog="mpu" type="TABLE">
+      <column name="ord_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ord_num" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ord_date" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ord_code" sqlType="VARCHAR" precision="24" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ord_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="ord_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ord_tot" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ord_trasp" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ord_mont" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ord_pay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="access" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="banner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="riv" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ord_prd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ord_cmp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ord_esp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ord_vtr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ord_prv" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ord_agente" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ord_perc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="ord_id"/>
+    </table>
+    <table name="preferiti" schema="" catalog="mpu" type="TABLE">
+      <column name="fav_id" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fav_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="fav_user" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fav_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fav_prd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="fav_cmp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="fav_esp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="fav_vtr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="fav_set" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="fav_id"/>
+    </table>
+    <table name="preventivi" schema="" catalog="mpu" type="TABLE">
+      <column name="prev_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="prev_num" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="prev_date" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prev_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="prev_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="prev_tot" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="prev_trasp" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prev_mont" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="access" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="banner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="riv" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prev_prd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prev_cmp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prev_esp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prev_vtr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prev_prv" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prev_agente" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prev_perc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="prev_id"/>
+      <index name="prev_id" unique="true" columns="prev_id"/>
+    </table>
+    <table name="prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="prd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="prd_tbpr" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_title" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_cod" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_dim" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prd_price_1" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_price_2" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_price_3" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_price_4" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_price_5" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_price_6" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
+      <column name="prd_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_line" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prd_tab_1" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_tab_2" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_tab_3" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_tab_4" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_tab_5" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_tab_6" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_file" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_price_type" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="prd_lnfn" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_note" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prd_abb" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prd_fin" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="prd_id"/>
+      <foreign-key name="prodotti_ibfk_19" columns="prd_lnfn" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_2" columns="prd_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_21" columns="prd_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_22" columns="prd_tab_1" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_23" columns="prd_tab_2" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_24" columns="prd_tab_3" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_25" columns="prd_tab_4" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_26" columns="prd_tab_5" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_27" columns="prd_tab_6" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="prodotti_ibfk_28" columns="prd_tbpr" ref-table="tabelle_prodotti" ref-schema="" ref-catalog="mpu" ref-columns="tbpr_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <exported-key name="composizioni_prodotti_ibfk_11" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_prd"/>
+      <exported-key name="composti_prodotti_ibfk_5" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_prd"/>
+      <exported-key name="esposizioni_prodotti_ibfk_5" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_prd"/>
+      <exported-key name="promozioni_prodotti_ibfk_3" table="promozioni_prodotti" schema="" catalog="mpu" columns="prm_prd"/>
+      <exported-key name="settori_prodotti_ibfk_16" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_prd"/>
+      <index name="prd_cod" unique="false" columns="prd_cod"/>
+      <index name="prd_line_1" unique="false" columns="prd_line"/>
+    </table>
+    <table name="promozioni_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="prm_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="prm_mark" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prm_line" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prm_prd" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prm_tab" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prm_cod" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prm_disc" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="prm_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prm_show" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="prm_note" sqlType="VARCHAR" precision="550" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="prm_id"/>
+      <foreign-key name="promozioni_prodotti_ibfk_1" columns="prm_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="promozioni_prodotti_ibfk_2" columns="prm_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="promozioni_prodotti_ibfk_3" columns="prm_prd" ref-table="prodotti" ref-schema="" ref-catalog="mpu" ref-columns="prd_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="promozioni_prodotti_ibfk_4" columns="prm_tab" ref-table="tabelle_finiture" ref-schema="" ref-catalog="mpu" ref-columns="tab_id" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="promozioni_prodotti_ibfk_5" columns="prm_cod" ref-table="abbinamenti" ref-schema="" ref-catalog="mpu" ref-columns="abb_id" update-rule="0" delete-rule="2" deferrability="2"/>
+    </table>
+    <table name="province" schema="" catalog="mpu" type="TABLE">
+      <column name="provincia_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="regione" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="provincia" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sigla" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="trasporto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="trasporto_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="limite" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NTAw"/>
+      <column name="minimo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NTAw"/>
+      <column name="montaggio" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="montaggio_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="provincia_id"/>
+      <index name="provincia" unique="false" columns="provincia"/>
+      <index name="regione" unique="false" columns="regione"/>
+    </table>
+    <table name="recenti" schema="" catalog="mpu" type="TABLE">
+      <column name="saw_id" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="saw_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="saw_user" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="saw_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="saw_prd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="saw_cmp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="saw_esp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="saw_vtr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="saw_set" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="saw_id"/>
+    </table>
+    <table name="rivenditori" schema="" catalog="mpu" type="TABLE">
+      <column name="riv_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="riv_reg" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="riv_prov" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="riv_nome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="riv_rif" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_sede" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_mag" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_tel" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_cell" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_fax" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_email" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_minimo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="riv_limite" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="riv_psw" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="riv_web" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_file" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="riv_trasporto" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="riv_montaggio" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="riv_trasporto_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="riv_montaggio_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="riv_id"/>
+      <index name="riv_prov" unique="false" columns="riv_prov"/>
+      <index name="riv_reg" unique="false" columns="riv_reg"/>
+    </table>
+    <table name="settori" schema="" catalog="mpu" type="TABLE">
+      <column name="set_nome" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="set_cat" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="set_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="set_pos" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="set_show" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="set_visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="set_id"/>
+      <foreign-key name="settori_ibfk_1" columns="set_cat" ref-table="categorie" ref-schema="" ref-catalog="mpu" ref-columns="cat_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="composizioni_ibfk_3" table="composizioni" schema="" catalog="mpu" columns="cmp_set_1"/>
+      <exported-key name="composizioni_ibfk_4" table="composizioni" schema="" catalog="mpu" columns="cmp_set_2"/>
+      <exported-key name="composizioni_ibfk_5" table="composizioni" schema="" catalog="mpu" columns="cmp_set_3"/>
+      <exported-key name="composizioni_ibfk_6" table="composizioni" schema="" catalog="mpu" columns="cmp_set_4"/>
+      <exported-key name="composizioni_ibfk_7" table="composizioni" schema="" catalog="mpu" columns="cmp_set_5"/>
+      <exported-key name="settori_composti_ibfk_4" table="settori_composti" schema="" catalog="mpu" columns="stcst_set_1"/>
+      <exported-key name="settori_composti_ibfk_5" table="settori_composti" schema="" catalog="mpu" columns="stcst_set_2"/>
+      <exported-key name="settori_composti_ibfk_6" table="settori_composti" schema="" catalog="mpu" columns="stcst_set_3"/>
+      <exported-key name="settori_composti_ibfk_7" table="settori_composti" schema="" catalog="mpu" columns="stcst_set_4"/>
+      <exported-key name="settori_composti_ibfk_8" table="settori_composti" schema="" catalog="mpu" columns="stcst_set_5"/>
+      <exported-key name="settori_esposizioni_ibfk_5" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_set_1"/>
+      <exported-key name="settori_esposizioni_ibfk_6" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_set_2"/>
+      <exported-key name="settori_esposizioni_ibfk_7" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_set_3"/>
+      <exported-key name="settori_esposizioni_ibfk_8" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_set_4"/>
+      <exported-key name="settori_esposizioni_ibfk_9" table="settori_esposizioni" schema="" catalog="mpu" columns="stes_set_5"/>
+      <exported-key name="settori_linee_ibfk_4" table="settori_linee" schema="" catalog="mpu" columns="stln_set"/>
+      <exported-key name="settori_prodotti_ibfk_10" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_set_2"/>
+      <exported-key name="settori_prodotti_ibfk_11" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_set_3"/>
+      <exported-key name="settori_prodotti_ibfk_12" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_set_4"/>
+      <exported-key name="settori_prodotti_ibfk_13" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_set_5"/>
+      <exported-key name="settori_prodotti_ibfk_15" table="settori_prodotti" schema="" catalog="mpu" columns="stpr_set_1"/>
+      <index name="set_nome" unique="false" columns="set_nome"/>
+    </table>
+    <table name="settori_composti" schema="" catalog="mpu" type="TABLE">
+      <column name="stcst_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stcst_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_nwln" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_cst" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="stcst_set_1" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_set_2" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_set_3" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_set_4" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_set_5" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stcst_view" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="stcst_id"/>
+      <foreign-key name="settori_composti_ibfk_1" columns="stcst_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_2" columns="stcst_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_3" columns="stcst_nwln" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_4" columns="stcst_set_1" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_5" columns="stcst_set_2" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_6" columns="stcst_set_3" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_7" columns="stcst_set_4" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_8" columns="stcst_set_5" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_composti_ibfk_9" columns="stcst_cst" ref-table="composti" ref-schema="" ref-catalog="mpu" ref-columns="cst_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="stcst_esp" unique="false" columns="stcst_cst"/>
+    </table>
+    <table name="settori_esposizioni" schema="" catalog="mpu" type="TABLE">
+      <column name="stes_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stes_mark" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_line" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_nwln" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_esp" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="stes_set_1" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_set_2" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_set_3" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_set_4" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_set_5" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stes_view" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="stes_id"/>
+      <foreign-key name="settori_esposizioni_ibfk_1" columns="stes_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_2" columns="stes_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_3" columns="stes_nwln" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_4" columns="stes_esp" ref-table="esposizioni" ref-schema="" ref-catalog="mpu" ref-columns="esp_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_5" columns="stes_set_1" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_6" columns="stes_set_2" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_7" columns="stes_set_3" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_8" columns="stes_set_4" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="2" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_esposizioni_ibfk_9" columns="stes_set_5" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="2" delete-rule="2" deferrability="2"/>
+    </table>
+    <table name="settori_linee" schema="" catalog="mpu" type="TABLE">
+      <column name="stln_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stln_line" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="stln_set" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stln_show" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="stln_price" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="stln_file" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stln_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="stln_id"/>
+      <foreign-key name="settori_linee_ibfk_1" columns="stln_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_linee_ibfk_3" columns="stln_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_linee_ibfk_4" columns="stln_set" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+    </table>
+    <table name="settori_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="stpr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stpr_mark" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="stpr_line" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="stpr_prd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="stpr_nwln" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_set_1" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_set_2" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_set_3" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_set_4" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_set_5" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stpr_show_out" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="stpr_show_in" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="stpr_id"/>
+      <foreign-key name="settori_prodotti_ibfk_10" columns="stpr_set_2" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_11" columns="stpr_set_3" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_12" columns="stpr_set_4" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_13" columns="stpr_set_5" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_14" columns="stpr_nwln" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_15" columns="stpr_set_1" ref-table="settori" ref-schema="" ref-catalog="mpu" ref-columns="set_nome" update-rule="0" delete-rule="2" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_16" columns="stpr_prd" ref-table="prodotti" ref-schema="" ref-catalog="mpu" ref-columns="prd_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_3" columns="stpr_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="settori_prodotti_ibfk_8" columns="stpr_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="stampa" schema="" catalog="mpu" type="TABLE">
+      <column name="print_id" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="print_array" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="print_user" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="print_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="print_prd_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="print_cmp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="print_esp_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="print_vtr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="print_id"/>
+    </table>
+    <table name="tabelle_finiture" schema="" catalog="mpu" type="TABLE">
+      <column name="tab_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="tab_line" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tab_mark" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tab_nome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tab_visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="tab_id"/>
+      <foreign-key name="tabelle_finiture_ibfk_1" columns="tab_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="tabelle_finiture_ibfk_2" columns="tab_line" ref-table="linee" ref-schema="" ref-catalog="mpu" ref-columns="line_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="abbinamenti_ibfk_11" table="abbinamenti" schema="" catalog="mpu" columns="abb_tab"/>
+      <exported-key name="composizioni_prodotti_ibfk_12" table="composizioni_prodotti" schema="" catalog="mpu" columns="cmpr_tab"/>
+      <exported-key name="composti_prodotti_ibfk_6" table="composti_prodotti" schema="" catalog="mpu" columns="cstpr_tab"/>
+      <exported-key name="esposizioni_prodotti_ibfk_6" table="esposizioni_prodotti" schema="" catalog="mpu" columns="espr_tab"/>
+      <exported-key name="prodotti_ibfk_22" table="prodotti" schema="" catalog="mpu" columns="prd_tab_1"/>
+      <exported-key name="prodotti_ibfk_23" table="prodotti" schema="" catalog="mpu" columns="prd_tab_2"/>
+      <exported-key name="prodotti_ibfk_24" table="prodotti" schema="" catalog="mpu" columns="prd_tab_3"/>
+      <exported-key name="prodotti_ibfk_25" table="prodotti" schema="" catalog="mpu" columns="prd_tab_4"/>
+      <exported-key name="prodotti_ibfk_26" table="prodotti" schema="" catalog="mpu" columns="prd_tab_5"/>
+      <exported-key name="prodotti_ibfk_27" table="prodotti" schema="" catalog="mpu" columns="prd_tab_6"/>
+      <exported-key name="promozioni_prodotti_ibfk_4" table="promozioni_prodotti" schema="" catalog="mpu" columns="prm_tab"/>
+      <index name="tab_line" unique="false" columns="tab_mark"/>
+      <index name="tab_nome" unique="false" columns="tab_nome"/>
+    </table>
+    <table name="tabelle_prodotti" schema="" catalog="mpu" type="TABLE">
+      <column name="tbpr_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="tbpr_nome" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tbpr_mark" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tbpr_pos" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="tbpr_id"/>
+      <foreign-key name="tabelle_prodotti_ibfk_1" columns="tbpr_mark" ref-table="marchi" ref-schema="" ref-catalog="mpu" ref-columns="mark_nome" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="esposizioni_ibfk_3" table="esposizioni" schema="" catalog="mpu" columns="esp_tbpr"/>
+      <exported-key name="prodotti_ibfk_28" table="prodotti" schema="" catalog="mpu" columns="prd_tbpr"/>
+      <index name="tbpr_nome" unique="false" columns="tbpr_nome,tbpr_mark"/>
+    </table>
+  </data-source>
+</component>

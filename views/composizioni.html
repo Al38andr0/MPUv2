@@ -1,0 +1,11 @@
+<div id="D{{$index}}" class="rows settore SWD" ng-repeat=" i in current.composti | filterByCod : filtro.cmp | orderBy : 'y'">
+    <composizioni
+            fnz="fnz"
+            item="i"
+            type="cmp"
+            lista="dt.vetrineProdotti"
+            prodotti="dt.prodotti"
+            marchi="dt.marchi"
+            linee="dt.linee"
+            ></composizioni>
+</div>

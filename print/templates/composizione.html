@@ -1,0 +1,17 @@
+<div class="rows composizioni first">
+    <div class="imageContainer" ng-class="{selected : info}">
+        <img ng-src="{{item.path}}" class="cmpIMG" title="{{item.n}}">
+    </div>
+    <div class="info">
+        <h3>{{item.n}}</h3>
+        <p ng-if="item.o">({{item.o}})</p>
+        <div class="details cmp">
+            <p ng-if="item.type == 'vtr'" class="notranslate"><span>cod:</span> {{item.lineaPath}}_{{item.c}}</p>
+            <p ng-if="item.type == 'cmp'" class="notranslate"><span>cod:</span> {{item.lineaPath}}_{{item.c}}_{{item.f}}</p>
+            <p class="green"><span>prezzo:</span> {{fnz.convertPrice(prezzo)}} €</p>
+            <p><span>consegna:</span> {{item.consegna}} giorni</p>
+            <p><span>garanzia:</span> {{item.garanzia}} anni</p>
+            <h4>composta dai seguenti prodotti</h4>
+        </div>
+    </div>
+</div>

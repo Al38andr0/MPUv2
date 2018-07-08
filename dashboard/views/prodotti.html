@@ -1,0 +1,112 @@
+<!--<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>-->
+<div class="nuovo" ng-if="!prodotto.selected">
+    <h1>nuovo prodotto</h1>
+    <div class="rows">
+        <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="vm.nuovoProdotto.n">
+    </div>
+    <div class="rows">
+        <input class="form-control nome" type="text" placeholder="Cod" ng-model="vm.nuovoProdotto.c">
+        <input class="form-control abbinamento" type="text" placeholder="Dimensioni prodotto" ng-model="vm.nuovoProdotto.d">
+    </div>
+    <div class="rows">
+        <input class="form-control titolo" type="text" placeholder="Note" ng-model="vm.nuovoProdotto.o">
+    </div>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoProdotto.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select ng-disabled="!vm.nuovoProdotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoProdotto.m} : true | orderBy : 'n'" data-ng-model="vm.nuovoProdotto.l">
+            <option value="" selected>Linea</option>
+        </select>
+        <select ng-disabled="!vm.nuovoProdotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoProdotto.m} : true | orderBy : 'n'" data-ng-model="vm.nuovoProdotto.x">
+            <option value="" selected>Linea finitura</option>
+        </select>
+    </div>
+    <div class="rows">
+        <select ng-disabled="!vm.nuovoProdotto.l" class="form-control marchio" ng-options="t.i as t.n for t in vm.tbpr | filter : {m : vm.nuovoProdotto.m} : true | orderBy : 'n'" data-ng-model="vm.nuovoProdotto.t">
+            <option value="" selected>Tipologia</option>
+        </select>
+        <input class="form-control posPrd" type="number" placeholder="0" ng-model="vm.nuovoProdotto.y" popover="Posizione" popover-trigger="mouseenter">
+        <button ng-if="vm.nuovoProdotto.f == 0" class="btn btn-info multi" type="button" value="1" ng-click="vm.nuovoProdotto.f = 1" popover="Finiture multiple" popover-trigger="mouseenter">MULTIPLE</button>
+        <button ng-if="vm.nuovoProdotto.f == 1" class="btn btn-warning multi" type="button" value="0" ng-click="vm.nuovoProdotto.f = 0; vm.nuovoProdotto.a = false" popover="Finitura singola" popover-trigger="mouseenter">SINGOLA</button>
+        <select ng-disabled="vm.nuovoProdotto.f == 0 || !vm.nuovoProdotto.z[0].a" class="form-control marchio" ng-options="a.i as a.c for a in vm.abbinamenti | filter : {u : vm.nuovoProdotto.z[0].a} : true | orderBy : 'c'" data-ng-model="vm.nuovoProdotto.a">
+            <option value="" selected>Finitura singola</option>
+        </select>
+    </div>
+    <div class="rows">
+        <div class="abbinamentiLista" ng-repeat="n in vm.nuovoProdotto.z track by $index">
+            <input class="form-control shortCod" type="number" placeholder="Prezzo" ng-model="vm.nuovoProdotto.z[$index].z" popover="Prezzo" popover-trigger="mouseenter">
+            <select ng-disabled="!vm.nuovoProdotto.x" class="form-control tabFin" ng-options="ft.i as ft.n for ft in vm.finitureTabelle | filter : {l : vm.nuovoProdotto.x} : true | orderBy : 'n'" data-ng-model="vm.nuovoProdotto.z[$index].a">
+                <option value="" selected>Tabella finitura</option>
+            </select>
+            <i class="icons-minus" ng-click="removeProdotto($index)" ng-show="vm.nuovoProdotto.z.length > 1" ng-class="{addMargin : !$last}"></i>
+            <i class="icons-plus" ng-click="addProdotto()" ng-show="$last" ng-class="{addMargin : $first}"></i>
+        </div>
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : vm.nuovoProdotto.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovoProdotto.r">
+            <span ng-if="!vm.nuovoProdotto.r">DROP FILE HERE</span>
+            <div class="fileImage">
+                <img ng-if="vm.nuovoProdotto.r" ng-src="{{vm.nuovoProdotto.r}}">
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary reset" type="button" ng-click="newProdotto()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.prodotto">ERRORE - PRODOTTO ESISTENTE O VALORI PREZZI VUOTI</button>
+    </div>
+</div>
+<div class="modifica" ng-if="prodotto.selected">
+    <h1>modifica prodotto</h1>
+    <prodotti prodotto-original = "prodotto" vm = "vm"></prodotti>
+</div>
+
+<div class="gestione">
+    <h1>gestione prodotti</h1>
+    <div class="filtri">
+        <div class="rows">
+            <input class="form-control nome" type="text" placeholder="Filtro nome" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro nome">
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'"></div>
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+            <i class="icons-sort blu" popover="Ordina per codice" popover-trigger="mouseenter" ng-click="sorting('c')"></i>
+            <i class="icons-sort red" popover="Ordina per posizione" popover-trigger="mouseenter" ng-click="sorting('y')"></i>
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.prodotti
+        | orderBy : vm.sorting
+        | filterByLine : filtro.linea.i
+        | filter : {c : filtro.prodotto.c}
+        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectProdotto(s)">{{s.c}}<span>{{s.n}}</span></h4>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>{{convert(s.l, 'linee', 'n')}}</p>
+            <p>{{convert(s.x, 'linee', 'n')}}</p>
+            <p>{{convert(s.t, 'tbpr', 'n')}}</p>
+            <p ng-if="s.d">Dim: {{s.d}}</p>
+            <p>Pos: {{s.y}}</p><br>
+            <p ng-repeat="z in s.z">{{convertPrice(z.z)}} € - {{convert(z.a, 'finitureTabelle', 'n')}}</p>
+            <p ng-if="s.f == 1">{{convert(s.a, 'abbinamenti', 'c')}}</p><br>
+            <p ng-if="s.o">{{s.o}}</p>
+        </div>
+        <div ng-if="(vm.prodotti | filter : {c : filtro.prodotto.c}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.prodotti
+                    | filterByLine : filtro.linea.i
+                    | filter : {c : filtro.prodotto.c}).length
+                    "
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.prodotti | filter : {c : filtro.prodotto.c}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

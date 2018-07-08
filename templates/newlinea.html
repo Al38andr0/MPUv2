@@ -1,0 +1,29 @@
+<div id="{{::linea.i}}">
+    <div class="title">
+        <h6 class="notranslate">{{::linea.n}}</h6>
+    </div>
+    <div class="imageContainer" ng-class="{selected : info}">
+        <div class="four-by-three">
+            <div class="loader">
+                <img class="loadingGIF" src="{{fnz.findDomain()}}/img/lazy_loading.gif">
+            </div>
+        </div>
+        <img ng-src="{{::linea.r}}" alt="mobiliperufficio.com linea {{::linea.n}}" title="mobiliperufficio.com linea {{::linea.n}}">
+        <!--<img data-src="{{linea.r}}" class="lazyload" alt="mobiliperufficio.com linea {{linea.n}}" title="mobiliperufficio.com linea {{linea.n}}">-->
+        <div class="overlayer">
+            <!--<span class="enter" ng-click="fnz.creaLinea(linea)">ENTRA</span>-->
+<!--
+            <span class="enter" ng-class="{first : linea.c}" ng-click="fnz.creaLinea(linea)">ENTRA</span>
+            <hr ng-show="linea.c">
+            <a ng-show="linea.c" ng-href="{{linea.r}}" data-gallery="#blueimp-gallery-{{linea.i}}" class="enter second">GUARDA</a>
+-->
+            <a class="enter" ng-class="{first : linea.c}" ng-href="{{fnz.findDomain()}}/{{fnz.findLoc()}}/listino?l={{::linea.i}}" title="Esplora il listino prezzi della linea {{::linea.n}}">LISTINO</a>
+            <hr ng-show="linea.c">
+            <a ng-show="linea.c"  ng-href="{{fnz.findDomain()}}/{{fnz.findLoc()}}/vetrina?l={{::linea.i}}" class="enter second" title="Esplora la vetrina con tutte le composizione della linea {{::linea.n}}">VETRINA</a>
+        </div>
+    </div>
+    <a ng-repeat="i in imgList" ng-href="{{::path}}_{{::i}}.jpg" title="{{::linea.n}} gallery" data-gallery="#blueimp-gallery-{{::linea.i}}"></a>
+    <div class="info">
+        <p class="firstLetter">{{fnz.convert(linea.z, 'priceLinee', 'n')}} - consegna: {{::consegna}} giorni <a ng-show="linea.c" ng-href="{{::linea.r}}" data-gallery="#blueimp-gallery-{{::linea.i}}" class="enter second"> - Galleria immagini</a></p>
+    </div>
+</div>

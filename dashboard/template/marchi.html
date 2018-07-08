@@ -1,0 +1,25 @@
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Nome marchio" ng-model="mark.n" popover="Nome marchio" popover-trigger="mouseenter">
+    <input class="form-control numero" type="number" placeholder="0" ng-model="mark.b" popover="Variazione listino" popover-trigger="mouseenter"><span class="info perc">%</span>
+    <input class="form-control numero" type="number" placeholder="0" ng-model="mark.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
+    <button ng-if="mark.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="mark.v = 0">ON</button>
+    <button ng-if="mark.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="mark.v = 1">OFF</button>
+</div>
+<div class="checkboxContainer marchi">
+    <h3>categorie</h3>
+    <div class="checkbox" ng-repeat="c in vm.categorie">
+        <label>
+            <input class="categorieCheck" type="checkbox" value="{{c.i}}" ng-checked="selectedCat(c.i)" ng-click="toggleSet(c.i)">
+            {{c.n}}
+        </label>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="marchioOriginal.selected = false">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.marchio">ERRORE - MARCHIO ESISTENTE</button>
+</div>

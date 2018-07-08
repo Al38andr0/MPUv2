@@ -1,0 +1,385 @@
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
+@import "mpuIcons.css";
+@import "mixins";
+@import "variable";
+@import "menu";
+@import "menuMobile";
+@import "view";
+
+@font-face {
+  font-family: 'LeagueGothicRegular';
+  src: url('fonts/League_Gothic-webfont.eot');
+  src: url('fonts/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/League_Gothic-webfont.woff') format('woff'),
+  url('fonts/League_Gothic-webfont.ttf') format('truetype'),
+  url('fonts/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+html, body {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 12pt;
+  color: #000;
+  background: #eeeeee;
+}
+p {
+  margin: 0;
+}
+@media print {
+  body{
+    top: 0!important;
+  }
+  & .skiptranslate{
+    display: none;
+  }
+  & .break{
+    page-break-inside: avoid;
+    position: relative;
+    border-top: thin solid @borderColor;
+  }
+}
+& .manager{
+  width: 100%;
+  display: block;
+  background: rgba(255,255,255,.8);
+  .boxShadow(@color: @colorBg);
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  color: #ffffff;
+  text-align: center;
+  @media print {
+    display: none;
+  }
+  & a{
+    color: #ffffff;
+    &:hover, &:active, &:visited, &:focus{
+      text-decoration: none;
+    }
+  }
+  & .icon{
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 90px;
+    padding: 5px;
+    background: @purple;
+    .transition(@duration: 400ms);
+    &:hover{
+      background: darken(purple, 10%);
+    }
+    &:active{
+      .boxShadow(@color: @colorBg);
+      background: darken(purple, 5%);
+    }
+    i{
+      cursor: pointer;
+      font-size: 40px;
+      padding: 10px;
+      display: block;
+    }
+    p{
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  }
+}
+& .page{
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 5mm auto 25mm;
+  padding: 10mm;
+  background: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.2);
+  @media print {
+    padding: 0;
+    margin: 0;
+  }
+  & .translator{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    @media print {
+      display: none;
+    }
+    select{
+      width: 180px;
+      height: 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+  }
+  & .title{
+    text-align: center;
+    margin-bottom: 15px;
+    & h1{
+      font-family: 'LeagueGothicRegular';
+      letter-spacing: 2px;
+      font-size: 44px;
+      margin: 0;
+      padding: 10px 0 5px;
+      & sup{
+        top: -20px;
+        font-size: 17px;
+      }
+    }
+    & p{
+      font-size: 18px;
+      margin: 0;
+      &.link:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+  & .condizioni{
+    & h3{
+      font-size: 18px;
+      text-align: center;
+      margin: 0;
+    }
+    & h4{
+      font-size: 18px;
+      text-align: left;
+      margin: 15px;
+    }
+    & ol, ul{
+      text-align: justify;
+      font-size: 16px;
+      margin-bottom: 15px;
+      & li{
+        margin-bottom: 2px;
+        &.alpha{
+          list-style-type: lower-alpha;
+        }
+      }
+      & p{
+        font-size: 16px;
+      }
+    }
+  }
+  &.printContainer{
+    & p{
+      margin: 0;
+      font-size: 16px;
+    }
+    position: relative;
+    display: block;
+  }
+  & .lista{
+    position: relative;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    border-bottom: thin solid @borderColor;
+    border-right: thin solid @borderColor;
+    border-left: thin solid @borderColor;
+    &.header{
+      background: #f9f9f9;
+      border: thin solid @borderColor;
+      .borderRadius(5px 5px 0 0);
+    }
+  }
+  & .articolo.prv{
+    display: table-cell;
+    width: 200px;
+    vertical-align: top;
+    padding: 10px 0;
+    & img{
+      margin: 0;
+      max-width: 180px;
+      max-height: 180px;
+    }
+  }
+  & .info.prv{
+    display: table-cell;
+    border: thin solid @borderColor;
+    border-bottom: none;
+    border-top: none;
+    vertical-align: top;
+    padding: 10px;
+    position: relative;
+    & div{
+      padding: 5px 0;
+    }
+  }
+  & .q{
+    display: table-cell;
+    width: 60px;
+    border-right: thin solid @borderColor;
+    vertical-align: top;
+    padding: 10px 0;
+    & input{
+      width: 55px;
+      text-align: center;
+      margin: -8px 0 7px 0;
+      height: auto;
+      font-size: 20px;
+    }
+    & i{
+      display: block;
+      margin: 7px auto;
+      font-size: 40px;
+      color: #eeeeee;
+      cursor: pointer;
+      .noSelect;
+      .transition(@duration: 400ms);
+      &:hover{
+        .scale(1.2);
+        color: #000;
+      }
+      &:active{
+        .scale(1.1);
+      }
+      &.icons-trashOpen{
+        .scale(1.2);
+        color: @red;
+        &:hover{
+          color: @red;
+        }
+        &:active{
+          .scale(1.1);
+        }
+      }
+    }
+  }
+  & .prezzo{
+    text-align: center;
+    display: table-cell;
+    width: 100px;
+    padding: 10px 0;
+  }
+  & .conteggi{
+    position: relative;
+    display: block;
+    @media print {
+      border-top: thin solid @borderColor;
+      page-break-inside: avoid;
+    }
+    & .generalTxt{
+      display: inline-block;
+      padding: 5px 0;
+      text-align: right;
+      width: 200px;
+    }
+    & .valore{
+      display: inline-block;
+      text-align: right;
+      width: 100px;
+      padding: 5px 20px 5px 0;
+    }
+
+    & .totale{
+      position: relative;
+      text-align: right;
+      border-bottom: thin solid @borderColor;
+      border-right: thin solid @borderColor;
+      border-left: thin solid @borderColor;
+    }
+    & .calcoli{
+      border-right: thin solid @borderColor;
+      border-left: thin solid @borderColor;
+      position: relative;
+      display: block;
+      text-align: right;
+      &.totale{
+        border-top: thin solid @borderColor;
+        .borderRadius(0 0 5px 5px);
+      }
+    }
+  }
+  & .annotazioni {
+    position: relative;
+    display: block;
+    text-align: left;
+    padding: 10px;
+    @media print {
+      page-break-inside: avoid;
+    }
+    & ol, ul{
+      margin: 0;
+      padding: 0 0 0 16px;
+      font-size: 16px;
+    }
+  }
+}
+& .finiture{
+  & p{
+    margin: 5px 0;
+    font-size: 13px;
+  }
+  & .finitura{
+    display: inline-block;
+    vertical-align: top;
+    width: 83px;
+    position: relative;
+    & img{
+      border: thin solid @borderColor;
+      .borderRadius(50%);
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
+    }
+  }
+}
+& .composizioni{
+  position: relative;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+  border-bottom: thin solid @borderColor;
+  border-right: thin solid @borderColor;
+  border-left: thin solid @borderColor;
+  @media print {
+    page-break-inside: avoid;
+    border-top: thin solid @borderColor;
+  }
+  &.first{
+    border-top: thin solid @borderColor;
+  }
+  & .info{
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px;
+    width: 350px;
+    text-align: left;
+    & h3{
+      margin: 0;
+      font-size: 20px;
+    }
+  }
+  & .imageContainer{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 300px;
+    border-right: thin solid @borderColor;
+    & .cmpIMG{
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    & .prdIMG{
+      max-height: 247px;
+      max-width: 300px;
+      margin: 5px 0;
+    }
+  }
+  & span{
+    text-transform: lowercase;
+  }
+}

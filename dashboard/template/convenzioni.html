@@ -1,0 +1,8 @@
+<input class="form-control nome" type="text" placeholder="Nome convenzione" ng-model="cat.n" popover="Nome convenzione" popover-trigger="mouseenter">
+<input class="form-control dim" type="text" placeholder="Email convenzione" ng-model="cat.e" popover="Email convenzione" popover-trigger="mouseenter">
+<div class="commands">
+        <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+        <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+        <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    </div>
+</div>

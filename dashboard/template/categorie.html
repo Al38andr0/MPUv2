@@ -1,0 +1,26 @@
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Nome categoria" ng-model="cat.n" popover="Nome categoria" popover-trigger="mouseenter">
+    <input class="form-control pos" type="number" placeholder="0" ng-model="cat.y" popover="Posizione" popover-trigger="mouseenter">
+    <button ng-if="cat.v== 1" class="btn btn-success switch" type="button" value="1" ng-click="cat.v= 0">ON</button>
+    <button ng-if="cat.v== 0" class="btn btn-danger switch" type="button" value="0" ng-click="cat.v= 1">OFF</button>
+</div>
+<div class="rows">
+    <textarea class="form-control" placeholder="Descrizione" ng-model="cat.x"></textarea>
+</div>
+<div class="rows">
+    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : cat.r}">
+        <input type="file" class="dropArea" fileread="cat.r">
+        <span ng-if="!cat.r">DROP FILE HERE</span>
+        <div class="fileImage">
+            <img class="finiture" ng-if="cat.r" ng-src="{{cat.r}}">
+        </div>
+    </div>
+</div>
+
+<div class="commands">
+        <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+        <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+        <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+</div>

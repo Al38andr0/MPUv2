@@ -1,0 +1,74 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dashboard/js/controllers.min.js" />
+        <item url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
+        <item url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
+        <item url="file://$PROJECT_DIR$/js/configure.min.js" />
+        <item url="file://$PROJECT_DIR$/js/controllers.min.js" />
+        <item url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
+        <item url="file://$PROJECT_DIR$/js/directives.min.js" />
+        <item url="file://$PROJECT_DIR$/js/filters.min.js" />
+        <item url="file://$PROJECT_DIR$/js/modules.min.js" />
+        <item url="file://$PROJECT_DIR$/js/mpu.min.js" />
+        <item url="file://$PROJECT_DIR$/js/print.min.js" />
+        <item url="file://$PROJECT_DIR$/js/routes.min.js" />
+        <item url="file://$PROJECT_DIR$/lib/ftscroller.min.js" />
+        <item url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.min.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ftscroller.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-load-script.min.js" />
+      <root url="file://$PROJECT_DIR$/old/controllers.min.js" />
+      <root url="file://$PROJECT_DIR$/dashboard/js/controllers.min.js" />
+      <root url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
+      <root url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
+      <root url="file://$PROJECT_DIR$/js/configure.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
+      <root url="file://$PROJECT_DIR$/js/directives.min.js" />
+      <root url="file://$PROJECT_DIR$/js/directives/mpuFooter.min.js" />
+      <root url="file://$PROJECT_DIR$/js/filters.min.js" />
+      <root url="file://$PROJECT_DIR$/js/modules.min.js" />
+      <root url="file://$PROJECT_DIR$/js/mpu.min.js" />
+      <root url="file://$PROJECT_DIR$/js/print.min.js" />
+      <root url="file://$PROJECT_DIR$/js/routes.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ftscroller.min.js" />
+      <root url="file://$PROJECT_DIR$/lib/ng-ftscroller.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,183 @@
+@import "mixins";
+@import "variable";
+
+& .servizi{
+  width: 800px;
+  height: 530px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bae6ff+0,ffffff+71 */
+  background: rgb(186,230,255); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(186,230,255,1) 0%, rgba(255,255,255,1) 71%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(186,230,255,1)), color-stop(71%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(186,230,255,1) 0%,rgba(255,255,255,1) 71%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  rgba(186,230,255,1) 0%,rgba(255,255,255,1) 71%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(186,230,255,1) 0%,rgba(255,255,255,1) 71%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  rgba(186,230,255,1) 0%,rgba(255,255,255,1) 71%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bae6ff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  @media(max-width: 601px){
+    display: none;
+  }
+  & h6{
+    position: absolute;
+    text-transform: uppercase;
+    display: block;
+    margin: 0;
+    .borderRadius(50%);
+    color: white;
+    border: 2px solid rgba(255,255,255,1);
+    .boxShadow(@color: rgba(0,0,0,.5));
+  }
+  & h6:nth-of-type(1){
+    // consulenza
+    font-size: 25px;
+    padding: 50px 0;
+    width: 158px;
+    background: rgba(0, 0, 0, 0.6);
+    top: -20px;
+    left: 120px;
+  }
+  & h6:nth-of-type(2){
+    // analisi
+    font-size: 30px;
+    padding: 50px 0;
+    width: 170px;
+    background: rgba(17, 33, 70, 0.5);
+    top: 80px;
+    left: 0;
+    z-index: 1;
+  }
+  & h6:nth-of-type(3){
+    // gamma prodotti
+    font-size: 20px;
+    padding: 50px 0;
+    width: 148px;
+    background: rgba(162, 22, 55, 0.8);
+    top: 30px;
+    left: 260px;
+  }
+  & h6:nth-of-type(4){
+    // made in italy
+    font-size: 40px;
+    padding: 40px 0;
+    width: 172px;
+    background: rgba(68, 156, 68, 0.8);
+    top: 310px;
+    left: 80px;
+  }
+  & h6:nth-of-type(5){
+    // trasparenza
+    font-size: 40px;
+    padding: 55px 0;
+    width: 202px;
+    background: rgba(0, 40, 113, 0.52);
+    top: 125px;
+    left: 140px;
+    z-index: 2;
+  }
+  & h6:nth-of-type(6){
+    // qualità
+    font-size: 25px;
+    padding: 40px 0;
+    width: 138px;
+    background: rgba(0, 0, 0, 0.6);
+    top: 290px;
+    left: 235px;
+  }
+  & h6:nth-of-type(7){
+    // design e funzionalità
+    font-size: 25px;
+    padding: 40px 0;
+    width: 138px;
+    background: rgba(162, 22, 55, 0.8);
+    top: 220px;
+    left: 10px;
+  }
+  & h6:nth-of-type(8){
+    // norme
+    font-size: 20px;
+    padding: 44px 0;
+    width: 136px;
+    background: rgba(17, 33, 70, 0.5);
+    top: 400px;
+    left: 270px;
+  }
+  & h6:nth-of-type(9){
+    // progettazione
+    font-size: 30px;
+    padding: 50px 0;
+    width: 170px;
+    background: @colorBg;
+    top: 300px;
+    left: 360px;
+  }
+  & h6:nth-of-type(10){
+    // fai da te
+    font-size: 35px;
+    padding: 50px 0;
+    width: 180px;
+    background: rgba(68, 156, 68, 0.8);
+    top: 130px;
+    left: 330px;
+  }
+  & h6:nth-of-type(11){
+    // online
+    font-size: 25px;
+    padding: 46px 0;
+    width: 150px;
+    background: rgba(17, 33, 70, 0.5);
+    top: 180px;
+    left: 480px;
+    z-index: 0;
+  }
+  & h6:nth-of-type(12){
+    // garanzia
+    font-size: 25px;
+    padding: 53px 0;
+    width: 137px;
+    background: rgba(0, 30, 50, 0.9);
+    top: 20px;
+    left: 420px;
+  }
+  & h6:nth-of-type(13){
+    // prnta consegna
+    font-size: 25px;
+    padding: 45px 0;
+    width: 148px;
+    background: rgba(162, 22, 55, 0.8);
+    top: 400px;
+    left: 480px;
+    z-index: 1;
+  }
+  & h6:nth-of-type(14){
+    // trasporto diretto
+    font-size: 20px;
+    padding: 36px 0;
+    width: 120px;
+    background: rgba(0, 0, 0, 0.6);
+    top: 200px;
+    left: 640px;
+    z-index: 1;
+  }
+  & h6:nth-of-type(15){
+    // montaggio
+    font-size: 30px;
+    padding: 50px 0;
+    width: 170px;
+    background: rgba(68, 156, 68, 0.8);
+    top: 280px;
+    left: 550px
+  }
+  & h6:nth-of-type(16){
+    // post vendita
+    font-size: 35px;
+    padding: 50px 0;
+    width: 180px;
+    background: rgba(0, 40, 113, 0.52);
+    top: 30px;
+    left: 540px;
+  }
+}

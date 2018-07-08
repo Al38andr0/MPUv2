@@ -1,0 +1,16 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo form-group rows">
+    <h1>nuova convenzione</h1>
+    <input class="form-control nome" type="text" placeholder="Nome convenzione" ng-model="vm.nuovaConvenzione.n" popover="Nome convenzione" popover-trigger="mouseenter">
+    <input class="form-control dim" type="text" placeholder="Email convenzione" ng-model="vm.nuovaConvenzione.e" popover="Email convenzione" popover-trigger="mouseenter">
+    <div class="commands">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="reset">RESET</button>
+    </div>
+</div>
+
+<div class="gestione">
+    <h1>gestione convenzioni</h1>
+    <convenzioni ng-if="vm.convenzioni.length != 0" ng-repeat="c in vm.convenzioni track by $index" cat = "c" vm = "vm"></convenzioni>
+    <h1 ng-if="vm.convenzioni.length == 0">nessuna convenzione ancora inserita</h1>
+</div>

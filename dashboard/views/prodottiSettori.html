@@ -1,0 +1,84 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!prodottoSettore.selected">
+    <h1>nuova prodotto settore</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoProdottoSettore.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select ng-disabled="!vm.nuovoProdottoSettore.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoProdottoSettore.m} | orderBy : 'n'" data-ng-model="vm.nuovoProdottoSettore.l" popover="Linea di origine" popover-trigger="mouseenter">
+            <option value="" selected>Linea</option>
+        </select>
+        <select ng-disabled="!vm.nuovoProdottoSettore.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoProdottoSettore.m} | orderBy : 'n'" data-ng-model="vm.nuovoProdottoSettore.w" popover="Linea di destinazione" popover-trigger="mouseenter">
+            <option value="" selected>Linea</option>
+        </select>
+    </div>
+    <div ng-show="vm.nuovoProdottoSettore.w" class="checkboxContainer marchi">
+        <h3>settori</h3>
+        <div class="checkbox" ng-repeat="s in settoriAvailable">
+            <label>
+                <input class="categorieCheck" type="checkbox" value="{{s.h}}"  ng-click="toggleSet(s.h)">
+                {{s.n}}
+            </label>
+        </div>
+    </div>
+    <div class="rows">
+        <select ng-disabled="!vm.nuovoProdottoSettore.l || prodottiAvailable.length == 1" class="form-control marchio" ng-options="p.i as p.c for p in prodottiAvailable | orderBy : 'c'" data-ng-model="vm.nuovoProdottoSettore.c">
+            <option value="" selected>Prodotto</option>
+        </select>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newProdottoSettore()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.prodottoSettore">ERRORE - VALORI SETTORI VUOTI</button>
+    </div>
+</div>
+<div class="modifica" ng-if="prodottoSettore.selected">
+    <h1>modifica prodotto settore</h1>
+    <prodotti-settori prodotto-settore-original = "prodottoSettore" vm = "vm"></prodotti-settori>
+</div>
+
+<div class="gestione">
+    <h1>gestione prodotti settori</h1>
+    <div class="filtri">
+        <div class="rows">
+            <input class="form-control nome" type="text" placeholder="Filtro codice prodotto" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro codice">
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'" popover="Linea di origine" popover-trigger="mouseenter"></div>
+            <div class="inlineBlock" ng-include="'include/newLineeFilter.html'" popover="Linea di destinazione" popover-trigger="mouseenter"></div>
+        </div>
+        <div class="rows">
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+            <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.prodottiSettori
+        | orderBy       :   vm.sorting
+        | filterByLine  :   filtro.linea.i
+        | filterByNewLine  :   filtro.newLinea.i
+        | filter        :   {n : filtro.prodottoSettore.n}
+        | offset        :   ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectProdottoSettore(s)">{{s.n}}</h4>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>{{convert(s.l, 'linee', 'n')}}</p>
+            <p>{{convert(s.w, 'linee', 'n')}}</p>
+            <p ng-repeat="f in s.h">{{convert(f, 'settori', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.prodottiSettori | filter : {n: filtro.prodottoSettore.n}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.prodottiSettori
+                    | filterByLine  :   filtro.linea.i
+                    | filterByNewLine  :   filtro.newLinea.i
+                    | filter : {n : filtro.prodottoSettore.n}).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.prodottiSettori | filter : {n : filtro.prodottoSettore.n}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

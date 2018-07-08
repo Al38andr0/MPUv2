@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mobiliperu_db@localhost" uuid="fc0403b6-f6bf-452d-bc27-ef440074cabc">
+    <database-info product="MySQL" version="5.6.15-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="mobiliperu_db">
+        <visible>1</visible>
+      </schema>
+      <table id="2" parent="1" name="abbinamenti"/>
+      <table id="3" parent="1" name="agenti"/>
+      <table id="4" parent="1" name="carrello"/>
+      <table id="5" parent="1" name="categorie"/>
+      <table id="6" parent="1" name="composizioni"/>
+      <table id="7" parent="1" name="composizioni_prodotti"/>
+      <table id="8" parent="1" name="composti"/>
+      <table id="9" parent="1" name="composti_prodotti"/>
+      <table id="10" parent="1" name="convenzioni"/>
+      <table id="11" parent="1" name="esposizioni"/>
+      <table id="12" parent="1" name="esposizioni_prodotti"/>
+      <table id="13" parent="1" name="finiture"/>
+      <table id="14" parent="1" name="linee"/>
+      <table id="15" parent="1" name="marchi"/>
+      <table id="16" parent="1" name="nazioni"/>
+      <table id="17" parent="1" name="preventivi"/>
+      <table id="18" parent="1" name="prodotti"/>
+      <table id="19" parent="1" name="province"/>
+      <table id="20" parent="1" name="regioni"/>
+      <table id="21" parent="1" name="rivenditori"/>
+      <table id="22" parent="1" name="settori"/>
+      <table id="23" parent="1" name="settori_composti"/>
+      <table id="24" parent="1" name="settori_esposizioni"/>
+      <table id="25" parent="1" name="settori_linee"/>
+      <table id="26" parent="1" name="settori_prodotti"/>
+      <table id="27" parent="1" name="stampa"/>
+      <table id="28" parent="1" name="tabelle_finiture"/>
+      <table id="29" parent="1" name="tabelle_prodotti"/>
+      <column id="30" parent="2" name="abb_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="31" parent="2" name="abb_cod">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="32" parent="2" name="abb_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="33" parent="2" name="abb_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="34" parent="2" name="abb_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="35" parent="2" name="abb_tab">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <index id="36" parent="2" name="abb_cod">
+        <columns>abb_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="37" parent="2" name="abb_tab">
+        <columns>abb_tab</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="38" parent="2" name="PRIMARY">
+        <columns>abb_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="39" parent="2" name="abbinamenti_ibfk_1">
+        <columns>abb_tab</columns>
+        <ref-key>~.tabelle_finiture.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="40" parent="3" name="agenti_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="41" parent="3" name="agenti_riv">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="42" parent="3" name="agenti_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="43" parent="3" name="agenti_psw">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="44" parent="3" name="agenti_email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="45" parent="3" name="agenti_tel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="46" parent="4" name="cart_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="47" parent="4" name="cart_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="48" parent="4" name="cart_user">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="49" parent="4" name="cart_time">
+        <mandatory>1</mandatory>
+        <data-type>int(15)|0</data-type>
+      </column>
+      <column id="50" parent="4" name="cart_prd">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="51" parent="4" name="cart_cmp">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="52" parent="4" name="cart_esp">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="53" parent="4" name="cart_vtr">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="54" parent="4" name="PRIMARY">
+        <columns>cart_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="55" parent="5" name="cat_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="56" parent="5" name="cat_nome">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="57" parent="5" name="cat_show">
+        <data-type>tinyint(1)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="58" parent="5" name="cat_pos">
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="59" parent="5" name="cat_txt">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <index id="60" parent="5" name="cat_nome">
+        <columns>cat_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="61" parent="5" name="PRIMARY">
+        <columns>cat_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="62" parent="6" name="cmp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="63" parent="6" name="cmp_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="64" parent="6" name="cmp_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="65" parent="6" name="cmp_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="66" parent="6" name="cmp_pos">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="67" parent="6" name="cmp_nome">
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="68" parent="6" name="cmp_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="69" parent="6" name="cmp_title">
+        <data-type>varchar(550)|0</data-type>
+      </column>
+      <column id="70" parent="6" name="cmp_note">
+        <data-type>varchar(550)|0</data-type>
+      </column>
+      <key id="71" parent="6" name="PRIMARY">
+        <columns>cmp_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="72" parent="7" name="cmpr_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="73" parent="7" name="cmpr_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="74" parent="7" name="cmpr_mark_cmp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="75" parent="7" name="cmpr_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="76" parent="7" name="cmpr_line_cmp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="77" parent="7" name="cmpr_prd">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="78" parent="7" name="cmpr_tab">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="79" parent="7" name="cmpr_cod">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="80" parent="7" name="cmpr_comp">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="81" parent="7" name="cmpr_qnt">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="82" parent="7" name="cmpr_pos">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <index id="83" parent="7" name="cmpr_cod">
+        <columns>cmpr_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="84" parent="7" name="cmpr_comp">
+        <columns>cmpr_comp</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="85" parent="7" name="cmpr_prd">
+        <columns>cmpr_prd</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="86" parent="7" name="cmpr_tab">
+        <columns>cmpr_tab</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="87" parent="7" name="PRIMARY">
+        <columns>cmpr_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="88" parent="7" name="composizioni_prodotti_ibfk_1">
+        <columns>cmpr_comp</columns>
+        <ref-key>~.composizioni.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="89" parent="7" name="composizioni_prodotti_ibfk_2">
+        <columns>cmpr_prd</columns>
+        <ref-key>~.prodotti.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="90" parent="8" name="cst_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="91" parent="8" name="cst_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="92" parent="8" name="cst_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="93" parent="8" name="cst_cod">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="94" parent="8" name="cst_fin">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="95" parent="8" name="cst_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="96" parent="8" name="cst_pos">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <key id="97" parent="8" name="PRIMARY">
+        <columns>cst_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="98" parent="9" name="cstpr_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="99" parent="9" name="cstpr_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="100" parent="9" name="cstpr_mark_cst_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="101" parent="9" name="cstpr_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="102" parent="9" name="cstpr_line_cst_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="103" parent="9" name="cstpr_prd">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="104" parent="9" name="cstpr_tab">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="105" parent="9" name="cstpr_cod">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="106" parent="9" name="cstpr_cst">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="107" parent="9" name="cstpr_qnt">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="108" parent="9" name="cstpr_pos">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <index id="109" parent="9" name="cstpr_cod">
+        <columns>cstpr_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="110" parent="9" name="cstpr_esp">
+        <columns>cstpr_cst</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="111" parent="9" name="cstpr_prd">
+        <columns>cstpr_prd</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="112" parent="9" name="cstpr_tab">
+        <columns>cstpr_tab</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="113" parent="9" name="PRIMARY">
+        <columns>cstpr_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="114" parent="9" name="composti_prodotti_ibfk_1">
+        <columns>cstpr_cst</columns>
+        <ref-key>~.composti.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="115" parent="10" name="cnv_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="116" parent="10" name="cnv_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <key id="117" parent="10" name="PRIMARY">
+        <columns>cnv_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="118" parent="11" name="esp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="119" parent="11" name="esp_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="120" parent="11" name="esp_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="121" parent="11" name="esp_tbpr">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="122" parent="11" name="esp_cod">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="123" parent="11" name="esp_fin">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="124" parent="11" name="esp_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="125" parent="11" name="esp_dim">
+        <mandatory>1</mandatory>
+        <data-type>varchar(250)|0</data-type>
+      </column>
+      <column id="126" parent="11" name="esp_pos">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <index id="127" parent="11" name="esp_tbpr">
+        <columns>esp_tbpr</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="128" parent="11" name="PRIMARY">
+        <columns>esp_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="129" parent="12" name="espr_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="130" parent="12" name="espr_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="131" parent="12" name="espr_mark_esp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="132" parent="12" name="espr_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="133" parent="12" name="espr_line_esp_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="134" parent="12" name="espr_prd">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="135" parent="12" name="espr_tab">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="136" parent="12" name="espr_cod">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="137" parent="12" name="espr_esp">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="138" parent="12" name="espr_qnt">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="139" parent="12" name="espr_pos">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <index id="140" parent="12" name="espr_cod">
+        <columns>espr_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="141" parent="12" name="espr_esp">
+        <columns>espr_esp</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="142" parent="12" name="espr_prd">
+        <columns>espr_prd</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="143" parent="12" name="espr_tab">
+        <columns>espr_tab</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="144" parent="12" name="PRIMARY">
+        <columns>espr_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="145" parent="12" name="esposizioni_prodotti_ibfk_1">
+        <columns>espr_esp</columns>
+        <ref-key>~.esposizioni.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="146" parent="13" name="fin_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="147" parent="13" name="fin_cod">
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="148" parent="13" name="fin_nome">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="149" parent="13" name="fin_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="150" parent="13" name="fin_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="151" parent="13" name="fin_type_id">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="152" parent="13" name="fin_cod">
+        <columns>fin_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="153" parent="13" name="fin_nome">
+        <columns>fin_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="154" parent="13" name="PRIMARY">
+        <columns>fin_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="155" parent="14" name="line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="156" parent="14" name="line_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="157" parent="14" name="line_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="158" parent="14" name="line_pdf_file">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="159" parent="14" name="line_spec_file">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="160" parent="14" name="line_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="161" parent="14" name="line_vtr">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="162" parent="14" name="line_price">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+        <default-expression>&apos;3&apos;</default-expression>
+      </column>
+      <column id="163" parent="14" name="line_time">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="164" parent="14" name="line_disc">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="165" parent="14" name="line_war">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="166" parent="14" name="line_link">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="167" parent="14" name="line_cat">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="168" parent="14" name="line_set">
+        <data-type>text|0</data-type>
+      </column>
+      <index id="169" parent="14" name="line_nome">
+        <columns>line_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="170" parent="14" name="PRIMARY">
+        <columns>line_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="171" parent="15" name="mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="172" parent="15" name="mark_nome">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="173" parent="15" name="mark_cat_array">
+        <mandatory>1</mandatory>
+        <data-type>tinytext|0</data-type>
+      </column>
+      <column id="174" parent="15" name="mark_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="175" parent="15" name="mark_disc">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="176" parent="15" name="mark_list">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <index id="177" parent="15" name="mark_disc">
+        <columns>mark_disc</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="178" parent="15" name="mark_nome">
+        <columns>mark_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="179" parent="15" name="PRIMARY">
+        <columns>mark_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="180" parent="16" name="nazioni_id">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3)|0</data-type>
+      </column>
+      <column id="181" parent="16" name="nazioni_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="182" parent="16" name="nazioni_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="183" parent="16" name="nazioni_prefisso">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <key id="184" parent="16" name="PRIMARY">
+        <columns>nazioni_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="185" parent="17" name="prev_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="186" parent="17" name="ord_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="187" parent="17" name="prev_data">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="188" parent="17" name="ord_data">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="189" parent="17" name="prev_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="190" parent="17" name="prev_cod">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="191" parent="17" name="prev_cliente">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <index id="192" parent="17" name="prev_cod">
+        <columns>prev_cod</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="193" parent="17" name="prev_id">
+        <columns>prev_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="194" parent="17" name="prev_cod">
+        <columns>prev_cod</columns>
+        <underlying-index>prev_cod</underlying-index>
+      </key>
+      <key id="195" parent="17" name="prev_id">
+        <columns>prev_id</columns>
+        <underlying-index>prev_id</underlying-index>
+      </key>
+      <key id="196" parent="17" name="PRIMARY">
+        <columns>prev_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="197" parent="18" name="prd_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="198" parent="18" name="prd_tbpr">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="199" parent="18" name="prd_title">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="200" parent="18" name="prd_cod">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="201" parent="18" name="prd_dim">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="202" parent="18" name="prd_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="203" parent="18" name="prd_price_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="204" parent="18" name="prd_pos">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="205" parent="18" name="prd_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="206" parent="18" name="prd_lnfn_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="207" parent="18" name="prd_note">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="208" parent="18" name="prd_abb">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="209" parent="18" name="prd_fin">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <index id="210" parent="18" name="prd_cod">
+        <columns>prd_cod</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="211" parent="18" name="prd_tbpr">
+        <columns>prd_tbpr</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="212" parent="18" name="PRIMARY">
+        <columns>prd_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="213" parent="19" name="provincia_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="214" parent="19" name="regione_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="215" parent="19" name="nazione_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="216" parent="19" name="provincia">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="217" parent="19" name="sigla">
+        <mandatory>1</mandatory>
+        <data-type>varchar(3)|0</data-type>
+      </column>
+      <column id="218" parent="19" name="trasporto">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="219" parent="19" name="trasporto_type">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="220" parent="19" name="limite">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="221" parent="19" name="minimo">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="222" parent="19" name="montaggio">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="223" parent="19" name="montaggio_type">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="224" parent="19" name="provincia">
+        <columns>provincia</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="225" parent="19" name="PRIMARY">
+        <columns>provincia_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="226" parent="20" name="regioni_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5)|0</data-type>
+      </column>
+      <column id="227" parent="20" name="regioni_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="228" parent="20" name="regioni_nazione">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <key id="229" parent="20" name="PRIMARY">
+        <columns>regioni_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="230" parent="21" name="riv_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="231" parent="21" name="riv_naz">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="232" parent="21" name="riv_reg">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="233" parent="21" name="riv_prov">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="234" parent="21" name="riv_conv">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="235" parent="21" name="riv_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="236" parent="21" name="riv_rif">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="237" parent="21" name="riv_sede">
+        <data-type>varchar(300)|0</data-type>
+      </column>
+      <column id="238" parent="21" name="riv_tel">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="239" parent="21" name="riv_cell">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="240" parent="21" name="riv_fax">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="241" parent="21" name="riv_email">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="242" parent="21" name="riv_minimo">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="243" parent="21" name="riv_limite">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="244" parent="21" name="riv_psw">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="245" parent="21" name="riv_web">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="246" parent="21" name="riv_trasporto">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="247" parent="21" name="riv_montaggio">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="248" parent="21" name="riv_trasporto_type">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="249" parent="21" name="riv_montaggio_type">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="250" parent="21" name="riv_mark">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="251" parent="21" name="riv_coords">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <index id="252" parent="21" name="riv_prov">
+        <columns>riv_prov</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="253" parent="21" name="riv_reg">
+        <columns>riv_reg</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="254" parent="21" name="PRIMARY">
+        <columns>riv_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="255" parent="22" name="set_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="256" parent="22" name="set_cat_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="257" parent="22" name="set_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="258" parent="22" name="set_pos">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="259" parent="22" name="set_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="260" parent="22" name="set_txt">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="261" parent="22" name="set_home">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="262" parent="22" name="set_nome">
+        <columns>set_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="263" parent="22" name="PRIMARY">
+        <columns>set_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="264" parent="23" name="stcst_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="265" parent="23" name="stcst_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="266" parent="23" name="stcst_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="267" parent="23" name="stcst_nwln_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="268" parent="23" name="stcst_cst">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="269" parent="23" name="stcst_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="270" parent="23" name="stcst_view">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="271" parent="23" name="stcst_esp">
+        <columns>stcst_cst</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="272" parent="23" name="PRIMARY">
+        <columns>stcst_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="273" parent="23" name="settori_composti_ibfk_1">
+        <columns>stcst_cst</columns>
+        <ref-key>~.composti.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="274" parent="24" name="stes_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="275" parent="24" name="stes_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="276" parent="24" name="stes_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="277" parent="24" name="stes_nwln_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="278" parent="24" name="stes_esp">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="279" parent="24" name="stes_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="280" parent="24" name="stes_view">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="281" parent="24" name="stes_esp">
+        <columns>stes_esp</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="282" parent="24" name="PRIMARY">
+        <columns>stes_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="283" parent="24" name="settori_esposizioni_ibfk_1">
+        <columns>stes_esp</columns>
+        <ref-key>~.esposizioni.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="284" parent="25" name="stln_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="285" parent="25" name="stln_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="286" parent="25" name="stln_set_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="287" parent="25" name="stln_show">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="288" parent="25" name="stln_price">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="289" parent="25" name="stln_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="290" parent="25" name="stln_manager">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <key id="291" parent="25" name="PRIMARY">
+        <columns>stln_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="292" parent="26" name="stpr_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="293" parent="26" name="stpr_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="294" parent="26" name="stpr_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="295" parent="26" name="stpr_prd">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="296" parent="26" name="stpr_nwln_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="297" parent="26" name="stpr_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <index id="298" parent="26" name="stpr_prd">
+        <columns>stpr_prd</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="299" parent="26" name="PRIMARY">
+        <columns>stpr_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="300" parent="26" name="settori_prodotti_ibfk_1">
+        <columns>stpr_prd</columns>
+        <ref-key>~.prodotti.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="301" parent="27" name="print_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="302" parent="27" name="print_array">
+        <mandatory>1</mandatory>
+        <data-type>text|0</data-type>
+      </column>
+      <column id="303" parent="27" name="print_user">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="304" parent="27" name="print_time">
+        <mandatory>1</mandatory>
+        <data-type>int(15)|0</data-type>
+      </column>
+      <column id="305" parent="27" name="print_prd_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="306" parent="27" name="print_cmp_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="307" parent="27" name="print_esp_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="308" parent="27" name="print_vtr_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="309" parent="27" name="PRIMARY">
+        <columns>print_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="310" parent="28" name="tab_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="311" parent="28" name="tab_line_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="312" parent="28" name="tab_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="313" parent="28" name="tab_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <index id="314" parent="28" name="tab_nome">
+        <columns>tab_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="315" parent="28" name="PRIMARY">
+        <columns>tab_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="316" parent="29" name="tbpr_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="317" parent="29" name="tbpr_nome">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="318" parent="29" name="tbpr_mark_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="319" parent="29" name="tbpr_pos">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="320" parent="29" name="tbpr_nome">
+        <columns>tbpr_nome</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="321" parent="29" name="PRIMARY">
+        <columns>tbpr_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

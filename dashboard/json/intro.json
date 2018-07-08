@@ -1,0 +1,105 @@
+{
+  "54": {
+    "1": {
+      "t": "sedute per ufficio",
+      "i": "url('img/sedia_ufficio.jpg') no-repeat right",
+      "x": "Fermentum téllus habitassé voluptà sapien à etiam vivérra rhoncus séd aenanm, nibh pellentesque voluptà bibendum ïpsum maecenas tùrpus lectus himenaeos, pellentesque vulputate mollis vitaé elit namé ultrices egestas per tempor, est èst éros per litoré."
+    },
+    "2": {
+      "t": "sedute operative",
+      "i": "url('img/sedute_operative.jpg') no-repeat right",
+      "x": "Nisi tellus tristiqué séd conubia condimentûm risius ùrci ipsum primis mattis conubié urna quisqué lobortïs, ipsum tristiqué condimentum eu vehicula ut diam sodales habitassé nec séd èst ut magna, ullamcorper séd curàé iaculis \"sélecrum\" vivamus ïd dolor tempès inceptos integer dolor éros, mattisé ligula à turpis consectetur dapibus accumsan"
+    },
+    "3": {
+      "t": "sedute direzionali",
+      "i": "url('img/sedute_direzionali.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    },
+    "4": {
+      "t": "sedute collettività",
+      "i": "url('img/sedute_collettive.jpg') no-repeat right",
+      "x": "Auguee ôdiot étiam ùrci venenatis euismod platéa nullä sapien des intègèr amèt vivamùs lorem, vivamùs ultrûcéas tristiqué phaséllœs pharétra luctus lobortïs péer cursus nequé litoré nîbh, neque ullamcorpér péer d'etiam aenean aptenté quisque ut."
+    },
+    "5": {
+      "t": "poltrone & divani",
+      "i": "url('img/divani.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    }
+  },
+  "28": {
+    "1": {
+      "t": "mobili per ufficio",
+      "i": "url('img/mobili_ufficio.jpg') no-repeat right",
+      "x": "Fermentum téllus habitassé voluptà sapien à etiam vivérra rhoncus séd aenanm, nibh pellentesque voluptà bibendum ïpsum maecenas tùrpus lectus himenaeos, pellentesque vulputate mollis vitaé elit namé ultrices egestas per tempor, est èst éros per litoré."
+    },
+    "2": {
+      "t": "arredi operativi",
+      "i": "url('img/mobili_operativi.jpg') no-repeat right",
+      "x": "Nisi tellus tristiqué séd conubia condimentûm risius ùrci ipsum primis mattis conubié urna quisqué lobortïs, ipsum tristiqué condimentum eu vehicula ut diam sodales habitassé nec séd èst ut magna, ullamcorper séd curàé iaculis \"sélecrum\" vivamus ïd dolor tempès inceptos integer dolor éros, mattisé ligula à turpis consectetur dapibus accumsan"
+    },
+    "3": {
+      "t": "arredi direzionali",
+      "i": "url('img/mobili_direzionali.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    },
+    "4": {
+      "t": "arredi reception",
+      "i": "url('img/reception.jpg') no-repeat right",
+      "x": "Auguee ôdiot étiam ùrci venenatis euismod platéa nullä sapien des intègèr amèt vivamùs lorem, vivamùs ultrûcéas tristiqué phaséllœs pharétra luctus lobortïs péer cursus nequé litoré nîbh, neque ullamcorpér péer d'etiam aenean aptenté quisque ut."
+    },
+    "5": {
+      "t": "arredi riunioni",
+      "i": "url('img/riunioni.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    }
+  },
+  "40": {
+    "1": {
+      "t": "accessori per ufficio",
+      "i": "url('img/accessori_ufficio.jpg') no-repeat right",
+      "x": "Fermentum téllus habitassé voluptà sapien à etiam vivérra rhoncus séd aenanm, nibh pellentesque voluptà bibendum ïpsum maecenas tùrpus lectus himenaeos, pellentesque vulputate mollis vitaé elit namé ultrices egestas per tempor, est èst éros per litoré."
+    },
+    "2": {
+      "t": "appendiabiti",
+      "i": "url('img/appendiabiti.jpg') no-repeat right",
+      "x": "Nisi tellus tristiqué séd conubia condimentûm risius ùrci ipsum primis mattis conubié urna quisqué lobortïs, ipsum tristiqué condimentum eu vehicula ut diam sodales habitassé nec séd èst ut magna, ullamcorper séd curàé iaculis \"sélecrum\" vivamus ïd dolor tempès inceptos integer dolor éros, mattisé ligula à turpis consectetur dapibus accumsan"
+    },
+    "3": {
+      "t": "lampade",
+      "i": "url('img/lampade.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    },
+    "4": {
+      "t": "cestini",
+      "i": "url('img/cestini.jpg') no-repeat right",
+      "x": "Auguee ôdiot étiam ùrci venenatis euismod platéa nullä sapien des intègèr amèt vivamùs lorem, vivamùs ultrûcéas tristiqué phaséllœs pharétra luctus lobortïs péer cursus nequé litoré nîbh, neque ullamcorpér péer d'etiam aenean aptenté quisque ut."
+    }
+  },
+  "52": {
+    "1": {
+      "t": "pareti mobili",
+      "i": "url('img/pareti.jpg') no-repeat right",
+      "x": "Fermentum téllus habitassé voluptà sapien à etiam vivérra rhoncus séd aenanm, nibh pellentesque voluptà bibendum ïpsum maecenas tùrpus lectus himenaeos, pellentesque vulputate mollis vitaé elit namé ultrices egestas per tempor, est èst éros per litoré."
+    },
+    "2": {
+      "t": "pareti divisorie",
+      "i": "url('img/divisorie.jpg') no-repeat right",
+      "x": "Nisi tellus tristiqué séd conubia condimentûm risius ùrci ipsum primis mattis conubié urna quisqué lobortïs, ipsum tristiqué condimentum eu vehicula ut diam sodales habitassé nec séd èst ut magna, ullamcorper séd curàé iaculis \"sélecrum\" vivamus ïd dolor tempès inceptos integer dolor éros, mattisé ligula à turpis consectetur dapibus accumsan"
+    },
+    "3": {
+      "t": "pareti attrezzate",
+      "i": "url('img/attrezzate.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    },
+    "4": {
+      "t": "pareti monolitiche",
+      "i": "url('img/monolitiche.jpg') no-repeat right",
+      "x": "Auguee ôdiot étiam ùrci venenatis euismod platéa nullä sapien des intègèr amèt vivamùs lorem, vivamùs ultrûcéas tristiqué phaséllœs pharétra luctus lobortïs péer cursus nequé litoré nîbh, neque ullamcorpér péer d'etiam aenean aptenté quisque ut."
+    },
+    "5": {
+      "t": "pareti mobili",
+      "i": "url('img/divisori_mobili.jpg') no-repeat right",
+      "x": "Nullam eleifend torétoré lilitoxic 3 102€ fames àc suspendisse vulputate ipsum quisque, cœeur lorém éuismod litora eros potenti himenaéos nullam dictumst à vehiculâ çurcus, per luctus lacinia nulla ultrûcéas pellentesque fuscé egestas dapibus famès vehicula, élémentum sollicitudin pulvîar des."
+    }
+  }
+}

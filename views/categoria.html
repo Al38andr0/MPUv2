@@ -1,0 +1,89 @@
+<div class="filters top87 noIphone">
+    <div class="labels">
+<!--
+        <p ng-click="fnz.toggleFilters('settori')" ng-class="{selected : filters.show == 'settori'}">Settori</p>
+        <p ng-click="fnz.toggleFilters('prezzo')" ng-class="{selected : filters.show == 'prezzo'}">Prezzo</p>
+-->
+        <div class="search inner-addon left-addon">
+            <i class="icons-search"></i>
+            <input class="form-control" type="text" clear-input-with-esc ng-model="filtro.nomeLinea" placeholder="Cerca linea per nome">
+        </div>
+        <i class="icons-wim-reset" ng-click="fnz.resetFilter()" title="Resetta tutti i filtri"></i>
+        <a class="informations" title="Maggiori informazioni su {{fnz.convert(current.cat, 'categorie', 'n')}}" ng-href="../pagine/categorie.php?c={{current.cat}}" target="_blank">?</a>
+    </div>
+    <div class="ckContainer">
+        <div class="checkbox" ng-if="filters.show == 'settori'">
+            <div ng-if="current.cat != 55">
+                <label>
+                    <input class="categorieCheck" type="checkbox" ng-click="fnz.changeValue(10)" ng-checked="filtro.consegna">
+                    pronta consegna
+                </label><br>
+                <label ng-repeat="p in dt.priceLinee">
+                    <input class="categorieCheck" type="checkbox" ng-click="fnz.toggleValue(p.i, 'priceList')" ng-checked="fnz.checkChecked(p.i, 'priceList')">
+                    {{p.n}}
+                </label><br><hr>
+            </div>
+            <label ng-repeat="s in dt.settori | filter : {g : current.cat, v : 1}">
+                <input class="categorieCheck" type="checkbox" ng-click="fnz.toggleValue(s.i, 'linee')" ng-checked="fnz.checkChecked(s.i, 'linee')">
+                {{s.n}}
+            </label>
+        </div>
+    </div>
+</div>
+<div class="filters top87 iphone">
+    <div ng-click="nm.categorie = !nm.categorie" class="filtersHeader">
+        <i class="icons-click"></i>
+        <h6>GESTISCI FILTRI</h6>
+    </div>
+    <div ng-show="nm.categorie" class="labels">
+        <div class="search inner-addon left-addon">
+            <i class="icons-search"></i>
+            <input class="form-control" type="text" clear-input-with-esc ng-model="filtro.nomeLinea" placeholder="Cerca linea per nome">
+        </div>
+<!--        <p ng-click="fnz.toggleFilters('settori')" ng-class="{selected : filters.show == 'settori'}">Settori</p>
+        <p ng-click="fnz.toggleFilters('prezzo')" ng-class="{selected : filters.show == 'prezzo'}">Prezzo</p>-->
+        <i class="icons-wim-reset" ng-click="fnz.resetFilter()" title="Resetta tutti i filtri"></i>
+        <a class="informations" title="Maggiori informazioni su {{fnz.convert(current.cat, 'categorie', 'n')}}" ng-href="{{fnz.findDomain()}}/pagine/categorie.php?c={{current.cat}}" target="_blank">?</a>
+    </div>
+    <div ng-show="nm.categorie" class="ckContainer">
+        <div class="checkbox" ng-if="filters.show == 'settori'">
+            <div  ng-if="current.cat != 55">
+                <label>
+                    <input class="categorieCheck" type="checkbox" ng-click="fnz.changeValue(10)" ng-checked="filtro.consegna">
+                    pronta consegna
+                </label><br>
+                <label ng-repeat="p in dt.priceLinee">
+                    <input class="categorieCheck" type="checkbox" ng-click="fnz.toggleValue(p.i, 'priceList')" ng-checked="fnz.checkChecked(p.i, 'priceList')">
+                    {{p.n}}
+                </label><br><hr>
+            </div>
+            <label ng-repeat="s in dt.settori | filter : {g : current.cat}">
+                <input class="categorieCheck" type="checkbox" ng-click="fnz.toggleValue(s.i, 'linee')" ng-checked="fnz.checkChecked(s.i, 'linee')">
+                {{s.n}}
+            </label>
+        </div>
+    </div>
+</div>
+<div infinite-scroll="fnz.loadMore()" infinite-scroll-distance="3">
+    <div id="D{{$index}}" class="rows settore" ng-repeat="
+                l in dt.linee |
+                filter : {g : current.cat} |
+                filter : {n : filtro.nomeLinea} |
+                filter : {v : 1} |
+                filterBySettori : filtro.linee |
+                filterByPrice : filtro.priceList |
+                filterByDelivery : filtro.consegna |
+                orderBy : ['y', 'n']  |
+                limitTo : vm.catLimit
+                ">
+        <newlinea linea="l" fnz="fnz" vetrine = "dt.vetrine" marchi = "dt.marchi"></newlinea>
+    </div>
+    <h5 class="noResult" ng-if="(dt.linee |
+                filter : {g : current.cat} |
+                filter : {n : filtro.nomeLinea} |
+                filter : {v : 1} |
+                filterBySettori : filtro.linee |
+                filterByPrice : filtro.priceList |
+                filterByDelivery : filtro.consegna
+                ).length == 0">Nessun risultato per questa ricerca</h5>
+</div>

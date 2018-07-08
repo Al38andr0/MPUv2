@@ -1,0 +1,39 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="esposizione.m">
+        <option value="" selected>Marchio</option>
+    </select>
+    <select ng-disabled="!esposizione.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : esposizione.m} : true | orderBy : 'n'" data-ng-model="esposizione.l">
+        <option value="" selected>Linea</option>
+    </select>
+    <select ng-disabled="!esposizione.l" class="form-control marchio" ng-options="t.i as t.n for t in vm.tbpr | filter : {m : esposizione.m} : true | orderBy : 'n'" data-ng-model="esposizione.t">
+        <option value="" selected>Tipologia</option>
+    </select>
+</div>
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Finitura" ng-model="esposizione.f">
+    <input class="form-control dim" type="text" placeholder="Dimensioni" ng-model="esposizione.d">
+    <input class="form-control vetrinaCod" type="text" placeholder="Cod" ng-model="esposizione.c">
+    <input class="form-control pos" type="number" placeholder="0" ng-model="esposizione.y" popover="Posizione" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <input list="titoloProdotto" class="form-control bigTitolo" type="text" placeholder="Titolo prodotto" ng-model="esposizione.n">
+</div>
+<div class="rows">
+    <div class="dropAreaFileImage" ng-class="{solidBorder : esposizione.r}">
+        <input type="file" class="dropArea" fileread="esposizione.r">
+        <span ng-if="!esposizione.r">DROP FILE HERE</span>
+        <div class="fileImage">
+            <img ng-if="esposizione.r" ng-src="{{esposizione.r}}">
+        </div>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.esposizione">ERRORE - ESPOSIZIONI ESISTENTE</button>
+</div>

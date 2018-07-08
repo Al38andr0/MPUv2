@@ -1,0 +1,63 @@
+<div class="rows">
+    <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="prodotto.n">
+</div>
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Cod" ng-model="prodotto.c">
+    <input class="form-control abbinamento" type="text" placeholder="Dimensioni prodotto" ng-model="prodotto.d">
+</div>
+<div class="rows">
+    <input class="form-control titolo" type="text" placeholder="Note" ng-model="prodotto.o">
+</div>
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="prodotto.m">
+        <option value="" selected>Marchio</option>
+    </select>
+    <select ng-disabled="!prodotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.l">
+        <option value="" selected>Linea</option>
+    </select>
+    <select ng-disabled="!prodotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.x">
+        <option value="" selected>Linea finitura</option>
+    </select>
+</div>
+<div class="rows">
+    <select ng-disabled="!prodotto.l" class="form-control marchio" ng-options="t.i as t.n for t in vm.tbpr | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.t">
+        <option value="" selected>Tipologia</option>
+    </select>
+    <input class="form-control posPrd" type="number" placeholder="0" ng-model="prodotto.y" popover="Posizione" popover-trigger="mouseenter">
+    <button ng-if="prodotto.f == 0" class="btn btn-info multi" type="button" value="1" ng-click="prodotto.f = 1" popover="Finiture multiple" popover-trigger="mouseenter">MULTIPLE</button>
+    <button ng-if="prodotto.f == 1" class="btn btn-warning multi" type="button" value="0" ng-click="prodotto.f = 0; prodotto.a = false" popover="Finitura singola" popover-trigger="mouseenter">SINGOLA</button>
+    <select ng-disabled="prodotto.f == 0 || !prodotto.z[0].a" class="form-control marchio" ng-options="a.i as a.c for a in vm.abbinamenti | filter : {u : prodotto.z[0].a} : true | orderBy : 'c'" data-ng-model="prodotto.a">
+        <option value="" selected>Finitura singola</option>
+    </select>
+</div>
+<div class="rows">
+    <div class="abbinamentiLista" ng-repeat="n in prodotto.z track by $index">
+        <input class="form-control shortCod" type="number" placeholder="Prezzo" ng-model="prodotto.z[$index].z" popover="Prezzo" popover-trigger="mouseenter">
+        <select ng-disabled="!prodotto.x" class="form-control tabFin" ng-options="ft.i as ft.n for ft in vm.finitureTabelle | filter : {l : prodotto.x} : true | orderBy : 'n'" data-ng-model="prodotto.z[$index].a">
+            <option value="" selected>Tabella finitura</option>
+        </select>
+        <i class="icons-minus" ng-click="removeProdotto($index)" ng-show="prodotto.z.length > 1" ng-class="{addMargin : !$last}"></i>
+        <i class="icons-plus" ng-click="addProdotto()" ng-show="$last" ng-class="{addMargin : $first}"></i>
+    </div>
+</div>
+<div class="rows">
+    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : prodotto.r}" ng-click="prodotto.r = false">
+        <input type="file" class="dropArea" fileread="prodotto.r">
+        <span ng-if="!prodotto.r">DROP FILE HERE</span>
+        <div class="fileImage">
+            <img ng-if="prodotto.r" ng-src="{{prodotto.r}}">
+        </div>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newProdotto()">NEW</button>
+    <button style="width: 100px" class="btn btn-warning" ng-if="!confirmAll" type="button" ng-click="askConfirm('All')" ng-disabled="deleteCheck()">DELETE ALL</button>
+    <button style="width: 100px" class="btn btn-danger" ng-if="confirmAll" type="button" ng-click="action('A')">CONFIRM</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.prodotto">ERRORE - PRODOTTO ESISTENTE O VALORI PREZZI VUOTI</button>
+</div>

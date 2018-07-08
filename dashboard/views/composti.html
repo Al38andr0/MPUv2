@@ -1,0 +1,84 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!composto.selected">
+    <h1>nuova composto</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoComposto.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select ng-disabled="!vm.nuovoComposto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoComposto.m} : true | orderBy : 'n'" data-ng-model="vm.nuovoComposto.l">
+            <option value="" selected>Linea</option>
+        </select>
+        <input class="form-control w68" type="text" placeholder="Cod" popover="Codice" popover-trigger="mouseenter" ng-model="vm.nuovoComposto.c">
+        <input class="form-control w88" type="text" placeholder="Finitura" popover="Finitura" popover-trigger="mouseenter" ng-model="vm.nuovoComposto.f">
+        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovoComposto.y" popover="Posizione" popover-trigger="mouseenter">
+    </div>
+    <div class="rows">
+        <input list="titoloProdotto" class="form-control bigTitolo" type="text" placeholder="Titolo prodotto" ng-model="vm.nuovoComposto.n">
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage" ng-class="{solidBorder : vm.nuovoComposto.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovoComposto.r">
+            <span ng-if="!vm.nuovoComposto.r">DROP FILE HERE</span>
+            <div class="fileImage">
+                <img ng-if="vm.nuovoComposto.r" ng-src="{{vm.nuovoComposto.r}}">
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary reset" type="button" ng-click="newItem()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.composto">ERRORE - COMPOSIZIONE ESISTENTE</button>
+    </div>
+</div>
+<div class="modifica" ng-if="composto.selected">
+    <h1>modifica composto</h1>
+    <composti composto-original = "composto" vm = "vm"></composti>
+</div>
+
+<div class="gestione">
+    <h1>gestione composti</h1>
+    <div class="filtri">
+        <div class="rows">
+            <input class="form-control nome" type="text" placeholder="Filtro codice" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro codice">
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'"></div>
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+            <i class="icons-sort blu" popover="Ordina per codice" popover-trigger="mouseenter" ng-click="sorting('c')"></i>
+            <i class="icons-sort red" popover="Ordina per posizione" popover-trigger="mouseenter" ng-click="sorting('y')"></i>
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.composti
+        | orderBy : vm.sorting
+        | filterByLine : filtro.linea.i
+        | filter : {c : filtro.composto.c}
+        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectItem(s)">{{convert(s.l, 'linee', 'n')}}_{{s.c}}_{{s.f}}<span>{{s.n}}</span></h4>
+            <p>Pos: {{s.y}}</p>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>{{convert(s.l, 'linee', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.composti
+            | filterByLine : filtro.linea.i
+            | filter : {c : filtro.composto.c}
+            ).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.composti
+                    | filterByLine : filtro.linea.i
+                    | filter : {c : filtro.composto.c}).length
+                    "
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.composti
+            | filterByLine : filtro.linea.i
+            | filter : {c : filtro.composto.c}
+            ).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

@@ -1,0 +1,246 @@
+<div ng-if="fnz.findLoc() == 'Zad_italy'" class="rows top180 zad">
+    <img src="/img/Zad/zad_logo.jpg" alt="Zad Italy Logo per mobiliperufficio.com" title="Zad Italy Logo per mobiliperufficio.com">
+    <h1>Oggetti protagonisti nei diversi momenti del giorno</h1>
+    <p>La passione per l'arredamento, per lo stile, per la ricerca attenta di oggetti capaci di essere protagonisti nei diversi momenti del giorno.</p>
+    <!--<img src="/img/Zad/Sonar_scrivanie_e_design.jpg" alt="Zad Italy Logo per mobiliperufficio.com" title="Zad Italy Logo per mobiliperufficio.com">-->
+    <div class="slideShow"></div>
+    <script>
+        let array = [   '/img/Zad/Sonar.jpg',
+                        '/img/Zad/Cuore.jpg',
+                        '/img/Zad/Kobra.jpg',
+                        '/img/Zad/Bomber.jpg',
+                        '/img/Zad/DNA.jpg',
+                        '/img/Zad/Gauche.jpg'
+                    ];
+        $(document).ready(function () {
+            $('.slideShow').backstretch(array, {duration: 6000, fade: 750});
+        });
+    </script>
+    <div class="numeroVerde">
+        <a href="tel:800629091" title="mobiliperufficio.com, chiama gratuitamente il nostro numero verde">
+            <span>numero verde gratuito</span>
+            <i class="icons-numeroVerde"></i>
+            <span>800.62.89.11</span>
+        </a>
+    </div>
+    <a href="http://mobiliperufficio.com/Zad_italy/categoria?c=55" title="Esplora la collezione di Zad Italy"><h1>VISITA LA COLLEZIONE ART & DESIGN</h1></a>
+    <h1>Costi non esosi, ma contemporaneità coraggiosa</h1>
+    <p>Impegnati nella progettazione di oggetti di design che mantengono funzionalità e qualità, il team collabora e supervisiona tutto il processo produttivo al fine di garantire un oggetto dai costi non esosi, ma caratterizzato da una contemporaneità coraggiosa.</p>
+</div>
+<div ng-if="!data.rivenditore" class="rows home top180">
+    <div class="intro">
+        <h1 class="notranslate">mobiliperufficio.com<sup>®</sup></h1>
+        <h2>mobiliperufficio.com<sup>®</sup> è un network specializzato nella progettazione degli ambienti lavorativi, nel contract di mobili per ufficio e nella vendita, diretta o online, di arredamenti, sedute e pareti, attraverso una rete nazionale di oltre 50 negozi e showroom.</h2>
+        <div class="customIntro">
+            <img ng-if="intro.index == 0" src="img/lazy_loading.gif" class="preSlide">
+            <div class="image A" ng-class="{show : intro.A}"></div>
+            <div class="image B" ng-class="{show : intro.B}"></div>
+            <div ng-if="intro.index >= 1" class="image C" ng-class="{show : intro.C}"></div>
+            <div ng-if="intro.index >= 2" class="image D" ng-class="{show : intro.D}"></div>
+            <div ng-if="intro.index >= 3" class="image E" ng-class="{show : intro.E}"></div>
+            <div ng-if="intro.index >= 4" class="image F" ng-class="{show : intro.F}"></div>
+            <div ng-if="intro.index >= 5" class="image G" ng-class="{show : intro.G}"></div>
+            <div ng-if="intro.index >= 6" class="image H" ng-class="{show : intro.H}"></div>
+            <div ng-if="intro.index >= 7" class="image I" ng-class="{show : intro.I}"></div>
+            <div ng-if="intro.index >= 8" class="image L" ng-class="{show : intro.L}"></div>
+            <div ng-if="intro.index >= 9" class="image M" ng-class="{show : intro.M}"></div>
+            <div ng-if="intro.index >= 10" class="image N" ng-class="{show : intro.N}"></div>
+            <div class="messaggio A" ng-class="{moveIn : (intro.A || intro.B) }">
+                <span>25</span><span>ANNI</span><span>D'ESPERIENZA</span>
+            </div>
+            <div class="messaggio B" ng-class="{moveIn : (intro.C || intro.D) }">
+                <span>50</span><span>PUNTI</span><span>VENDITA</span>
+            </div>
+            <div class="messaggio C" ng-class="{moveIn : (intro.E || intro.F) }">
+                <span>PROGETTO</span><span>3D</span><span>GRATUITO</span>
+            </div>
+            <div class="messaggio D" ng-class="{moveIn : (intro.G || intro.H) }">
+                <span>PREZZI</span><span>MAI</span><span>VISTI</span>
+            </div>
+            <div class="messaggio E" ng-class="{moveIn : (intro.I || intro.L) }">
+                <span>CREA IL</span><span>TUO</span><span>UFFICIO</span><span>ONLINE</span>
+            </div>
+            <div class="messaggio F" ng-class="{moveIn : (intro.M || intro.N) }">
+                <span>PREVENTIVO</span><span>ALL</span><span>INCLUSIVE</span>
+            </div>
+        </div>
+        <h5>Chiamaci, saremo noi a venire da te:</h5>
+        <div style="margin-bottom: 15px;">
+            <div class="numeroVerde">
+                <a href="tel:800629091" title="mobiliperufficio.com, chiama gratuitamente il nostro numero verde">
+                    <span>numero verde gratuito</span>
+                    <i class="icons-numeroVerde"></i>
+                    <span>800.62.90.91</span>
+                </a>
+            </div>
+<!--
+            <div class="skype">
+                <a href="skype:mobiliperufficio.com" title="mobiliperufficio.com, chiama gratuitamente con skype">
+                    <span>chiamata skype gratuita</span>
+                    <i class="icons-skype"></i>
+                    <span>CLICK & CALL</span>
+                </a>
+            </div>
+-->
+        </div>
+        <p>Arredare il proprio ufficio non è più un aspetto secondario nella propria professione. Nell'ambiente lavorativo viviamo una seconda vita, per cui, come per la casa, l'ufficio diventa un ambiente con delle esigenze di comfort, funzionalità e sicurezza.</p><p>Per tutto ciò, arredarlo, richiede un servizio mirato ed accurato.</p><p>Con i nostri 25 anni d'esperienza, con la costante collaborazione con architetti, designer e progettisti, ci proponiamo a migliorare la tua vita lavorativa offrendoti tutti questi servizi:</p>
+        <h3>
+            <span>Consulenza professionale</span>
+            <span>Analisi esigenze</span>
+            <span>Vasta gamma prodotti</span>
+            <span>Made in Italy</span>
+            <span>Trasparenza prezzi</span>
+            <span>Prodotti di qualità</span>
+            <span>Design e funzionalità</span>
+            <span>Rispetto delle norme</span>
+            <span>Progettazione gratuita</span>
+            <span>Preventivo "fai da te"</span>
+            <span>Vendita online</span>
+            <span>Pronta consegna</span>
+            <span>Garanzia</span>
+            <span>Trasporto diretto</span>
+            <span>Montaggio specializzato</span>
+            <span>Servizi Post vendita</span>
+        </h3>
+        <div  class="servizi">
+            <h6>Consulenza professionale</h6>
+            <h6>Analisi<br>esigenze</h6>
+            <h6>Vasta gamma di prodotti</h6>
+            <h6>Made in Italy</h6>
+            <h6>Trasparenza prezzi</h6>
+            <h6>Prodotti di qualità</h6>
+            <h6>Design e funzionalità</h6>
+            <h6>Rispetto<br>delle norme</h6>
+            <h6>Progettazione<br>gratuita</h6>
+            <h6>Preventivo<br>"fai da te"</h6>
+            <h6>Vendita<br>online</h6>
+            <h6>Garanzia</h6>
+            <h6>Pronta<br>consegna</h6>
+            <h6>Trasporto<br>diretto</h6>
+            <h6>Montaggio specializzato</h6>
+            <h6>Servizi Post vendita</h6>
+        </div>
+    </div>
+</div>
+<div ng-show="!data.rivenditore" class="rows home">
+    <div class="riv right" ng-show="!filtro.reg">
+        <h2>la nostra distribuzione</h2>
+        <div class="regioniSelect" ng-include="'include/regioni.html'"></div>
+        <p>mobiliperufficio.com<sup>®</sup> offre un servizio di consulenza, vendita, trasporto e montaggio in tutta italia grazie ad una rete di distributori, negozi e showroom, collocati sull'intero territorio nazionale, al fine di assicurare un servizio diretto e veloce con i propri clienti.</p>
+        <p class="showDesktop">Usa la cartina a destra per cercare il professionista dell'ufficio nella tua regione.</p>
+        <p class="showMobile">Cerca il professionista dell'ufficio più vicino a te.</p>
+    </div>
+    <div class="riv right" ng-show="filtro.reg">
+        <h2>{{fnz.convert(filtro.reg, 'regioni', 'n')}}</h2>
+        <div class="regioniSelect" ng-include="'include/regioni.html'"></div>
+        <div ng-include="'include/province.html'"></div>
+        <div class="rivList" ng-show="(dt.rivenditori
+                    | filterReg : filtro.reg : true
+                    | filterPrv : filtro.prv
+                    ).length != 0 && filtro.reg == 8 && !filtro.prv">
+            <div class="rivenditore">
+                <img ng-src="dashboard/archivio_dati/Rivenditori/{{dt.rivenditori[0].i}}.jpg">
+                <div class="rivInfo">
+                    <h3 class="green">{{fnz.convert(dt.rivenditori[0].p, 'province', 'n')}}</h3>
+                    <h3 class="notranslate">{{dt.rivenditori[0].n}}</h3>
+                    <p ng-show="dt.rivenditori[0].h">telefono: <span ng-show="vm.agente.dt.rivenditori[0] != 0">{{fnz.convert(dt.rivenditori[0].z, 'nazioni', 'x')}}</span> {{dt.rivenditori[0].h}}</p>
+                    <p ng-show="!dt.rivenditori[0].h && dt.rivenditori[0].c">telefono: {{dt.rivenditori[0].c}}</p>
+                    <p>email: <a ng-href="mailto:{{dt.rivenditori[0].e}}" title="scrivi una email a {{dt.rivenditori[0].e}}">{{dt.rivenditori[0].e}}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="rivList" ng-repeat="r in dt.rivenditori
+                | orderBy : 'prv'
+                | filterReg : filtro.reg : true
+                | filterPrv : filtro.prv
+                ">
+            <div class="rivenditore" ng-show="(dt.rivenditori
+                | filterReg : filtro.reg : true
+                | filterPrv : filtro.prv
+                ).length != 0 && (r.i != 1 || filtro.prv)">
+                <img ng-src="dashboard/archivio_dati/Rivenditori/{{r.i}}.jpg">
+                <div class="rivInfo">
+                    <h3 class="green" ng-show="!filtro.prv">{{fnz.convert(r.p, 'province', 'n')}}</h3>
+                    <h3 class="notranslate">{{r.n}}</h3>
+                    <p ng-show="r.h">telefono: <span ng-show="vm.agente.z != 0">{{fnz.convert(r.z, 'nazioni', 'x')}}</span> {{r.h}}</p>
+                    <p ng-show="!r.h && r.c">telefono: {{r.c}}</p>
+                    <p>email: <a ng-href="mailto:{{r.e}}" title="scrivi una email a {{r.e}}">{{r.e}}</a></p>
+                    <p ng-show="r.n != 'mobiliperufficio.com'">sito web: <a ng-href="http://{{r.q}}" target="_blank" title="visita il sito {{r.q}}">{{r.q}}</a></p>
+                    <p ng-show="r.n != 'mobiliperufficio.com'">uffici: <span class="notranslate">{{r.s}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="rivList">
+            <div class="rivenditore" ng-show="(dt.rivenditori
+                | filterReg : filtro.reg : true
+                | filterPrv : filtro.prv
+                ).length == 0">
+                <img ng-src="dashboard/archivio_dati/Rivenditori/{{dt.rivenditori[0].i}}.jpg">
+                <div class="rivInfo">
+                    <h3 class="notranslate">{{dt.rivenditori[0].n}}</h3>
+                    <p ng-show="dt.rivenditori[0].h">telefono: <span ng-show="vm.agente.dt.rivenditori[0] != 0">{{fnz.convert(dt.rivenditori[0].z, 'nazioni', 'x')}}</span> {{dt.rivenditori[0].h}}</p>
+                    <p ng-show="!dt.rivenditori[0].h && dt.rivenditori[0].c">telefono: {{dt.rivenditori[0].c}}</p>
+                    <p>email: <a ng-href="mailto:{{dt.rivenditori[0].e}}" title="scrivi una email a {{dt.rivenditori[0].e}}">{{dt.rivenditori[0].e}}</a></p>
+                </div>
+                <p ng-show="filtro.prv" class="spot">Al momento questa provincia non ha un distributore locale.<br>Se ti occupi di forniture per uffici in questa provincia, contattaci per avere la possibilità di entrare nel network di mobiliperufficio.com<sup>®</sup></p>
+                <p ng-show="!filtro.prv" class="spot">Al momento questa regione non ha distributori locali.<br>Se ti occupi di forniture per uffici contattaci per avere la possibilità di entrare nel network di mobiliperufficio.com<sup>®</sup></p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="imgBg nazione" ng-style="{'background' : 'url(\'img/italia.jpg\') no-repeat top right'}"></div>-->
+    <div class="map" ng-include="'include/map.html'"></div>
+</div>
+<div ng-if="data.rivenditore && fnz.findLoc() != 'Zad_italy'" class="top180" style="display: block;"></div>
+<div class="rows home" ng-repeat="c in vm.categorie | orderBy : 'y'">
+    <categoria categoria="c" fnz="fnz"></categoria>
+    <div class="overlayer">
+        <a ng-href="{{fnz.findDomain()}}/{{vm.loc}}/categoria?c={{c.i}}" title="{{c.n}}">
+            <span class="enter">ENTRA</span>
+        </a>
+    </div>
+</div>
+<div ng-if="fnz.checkZad()" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/adamantx.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>Adamantx<sup>®</sup>: il materiale innovativo</h2>
+        <p>Adamantx<sup>®</sup> è un <strong>materiale innovativo</strong> con il quale è possibile realizzare <strong>qualsiasi forma e qualsiasi colore</strong>, per creare oggetti e progetti dal <strong>Design unico</strong>.</p>
+        <p>Adamantx<sup>®</sup> è un materiale composito ottenuto dalla lavorazione di espansi rivestiti con <strong>resine speciali</strong>, che sta rivoluzionando il mondo del Design, un materiale che nasce da anni di studio, sperimentazioni e prove tecniche di laboratorio.</p>
+        <p>Adamantx<sup>®</sup> è un <strong>Solid Surface Made in Italy</strong>, materiale ideale per <strong>Architetti, Allestitori, Designer e Progettisti</strong> che possono finalmente veder realizzare idee che prima rimanevano soltanto tali in quanto irrealizzabili con i materiali fino ad oggi conosciuti.</p>
+    </div>
+</div>
+<div ng-if="fnz.checkZad()" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/designers.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>design</h2>
+        <p>Designers, Architetti e Progettisti capaci e intraprendenti sono il motore e l'anima.</p>
+        <p>I volti che vedete sono gli artisti che rendono questo sito unico, grazie a idee fantastiche dal design sempre più fantasioso.</p>
+    </div>
+</div>
+<div ng-if="fnz.findLoc() == 'Zad_italy'" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/serial.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>brand</h2>
+        <p>Ogni articolo di Zad Italy è unico, dimostrato anche dal numero seriale progressivo inciso su ognuno di essi. Un dettaglio fondamentale per distinguersi e rendere il tuo arredo un elemento inconfodibile</p>
+    </div>
+</div>
+<div ng-if="fnz.findLoc() == 'Zad_italy'" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/certificati.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>certificato</h2>
+        <p>Ogni articolo acquistato è provvisto di un certificato di appartenenza, autenticità, unicità e qualità. Inoltre provvediamo a fornirvi anche un catalogo particoareggiato e personaizzato in 20 pagine del vostro acquisto.</p>
+    </div>
+</div>
+<div ng-if="fnz.findLoc() == 'Zad_italy'" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/report.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>report</h2>
+        <p>Prima della consegna vi forniamo un report fotografico HD illustrandovi in ogni dettaglio il vostro acquisto</p>
+    </div>
+</div>
+<div ng-if="fnz.findLoc() == 'Zad_italy'" class="rows zad">
+    <div class="imgBg" style="background: url('/img/Zad/trasporti.jpg') no-repeat right"></div>
+    <div class="testo right">
+        <h2>trasporti</h2>
+        <p>Zad Italy consegna in tutto il mondo garantendo imballi indistruttibili.</p>
+    </div>
+</div>

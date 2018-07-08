@@ -1,0 +1,3 @@
+<select class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filterByNaz : filtro.nazione.i | orderBy : 'n'" data-ng-model="filtro.regione.i">
+    <option value="">Tutte le regioni</option>
+</select>

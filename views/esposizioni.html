@@ -1,0 +1,12 @@
+<p ng-if="filtro.esp != '' && (current.esposizioni | filter : {t : t.i} : true | filter : {c : filtro.prd}).length != 0" class="tbpr">RISULTATI RICERCA</p>
+<p ng-if="filtro.esp != '' && (current.esposizioni | filter : {t : t.i} : true | filter : {c : filtro.prd}).length == 0" class="tbpr">NESSUN RISULTATO TROVATO</p>
+<div ng-repeat="t in current.marchiTabelle | filterByTbpr : filtro.tbesp : true | orderBy : 'y'" style="display:inline-block;">
+    <p ng-if="filtro.esp == '' && vm.loaded" class="tbpr">{{t.n}}</p>
+    <esposizioni class="rows listino" ng-repeat="p in current.esposizioni | filter : {t : t.i} : true | filter : {c : filtro.esp} | orderBy : 'y'"
+            articolo = "p"
+            fnz="fnz"
+             marchi="vm.marchi"
+             linee="vm.linee"
+             prodotti="data.prodotti"
+            ></esposizioni>
+</div>

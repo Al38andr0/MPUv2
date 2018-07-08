@@ -1,0 +1,104 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo form-group" ng-if="!lineaSettore.selected">
+    <h1>nuova settore</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovaLineaSettore.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select ng-disabled="!vm.nuovaLineaSettore.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovaLineaSettore.m} | orderBy : 'n'" data-ng-model="vm.nuovaLineaSettore.l">
+            <option value="" selected>Linea</option>
+        </select>
+        <select class="form-control marchio" ng-options="l.i as l.n for l in vm.settori | orderBy : 'n'" data-ng-model="vm.nuovaLineaSettore.h">
+            <option value="" selected>Settore</option>
+        </select>
+
+        <button ng-if="vm.nuovaLineaSettore.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaLineaSettore.v = 0">ON</button>
+        <button ng-if="vm.nuovaLineaSettore.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaLineaSettore.v = 1">OFF</button>
+    </div>
+    <div class="checkboxContainer marchi">
+        <h3>gestione</h3>
+        <div class="checkbox" ng-repeat="lm in vm.lineeManager">
+            <label>
+                <input class="categorieCheck" type="checkbox" value="{{lm.i}}" ng-click="toggleSet(lm.i)" ng-checked="checkList(lm.i)">
+                {{lm.n}}
+            </label>
+        </div>
+    </div>
+    <div class="rows ratingPrice">
+        <rating
+                ng-model="vm.nuovaLineaSettore.z"
+                max="5"
+                readonly="isReadonly"
+                state-on="'icons-euro selected'"
+                state-off="'icons-euro'"
+                popover="Indice prezzo"
+                popover-trigger="mouseenter"
+                >
+        </rating>
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage big" ng-class="{solidBorder : vm.nuovaLineaSettore.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovaLineaSettore.r">
+            <span ng-if="!vm.nuovaLineaSettore.r">DROP FILE HERE</span>
+            <div class="fileImage">
+                <img ng-if="vm.nuovaLineaSettore.r" ng-src="{{vm.nuovaLineaSettore.r}}">
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newItem()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.lineaSettore">ERRORE - SETTORE ESISTENTE</button>
+    </div>
+</div>
+<div class="modifica" ng-if="lineaSettore.selected">
+    <h1>modifica settore</h1>
+    <linee-settori linea-settore-original = "lineaSettore" vm = "vm"></linee-settori>
+</div>
+
+<div class="gestione">
+    <h1>gestione settori</h1>
+    <div class="filtri">
+        <div class="rows">
+            <div class="inlineBlock" ng-include="'include/marchiFilter.html'"></div>
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'"></div>
+            <div class="inlineBlock" ng-include="'include/showFilter.html'"></div>
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+            <i class="icons-sort blu" popover="Ordina per linea" popover-trigger="mouseenter" ng-click="sorting('l')"></i>
+        </div>
+    </div>
+    <div class="list">
+        <div ng-init="vm.sorting = 'm'" ng-repeat="s in vm.lineeSettori
+        | orderBy : vm.sorting
+        | filterByMark : filtro.marchio.i
+        | filterByLine : filtro.linea.i
+        | filter : {v : filtro.show}
+        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectLineaSettore(s)">{{convert(s.l, 'linee', 'n')}} - {{convert(s.h, 'settori', 'n')}}</h4>
+            <p ng-if="s.v == 1">Online</p>
+            <p ng-if="s.v == 0">Offline</p>
+            <p>{{convertPriceType(s.z)}}</p>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p ng-repeat="q in s.q">{{convert(q, 'lineeManager', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.lineeSettori | filter : {v : filtro.show}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(
+                        vm.lineeSettori
+                        | filterByMark : filtro.marchio.i
+                        | filterByLine : filtro.linea.i
+                        | filter : {v : filtro.show}
+                        ).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.lineeSettori | filter : {v : filtro.show}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

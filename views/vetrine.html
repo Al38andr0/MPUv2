@@ -1,0 +1,23 @@
+<div class="filters top133">
+    <div class="labels">
+        <span>{{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+        <i class="icons-right"></i>
+        <span>{{current.lin.n}}</span>
+        <i class="icons-right" style="display: inline-block!important; visibility: visible!important;"></i>
+        <span>vetrina</span>
+    </div>
+</div>
+<div class="anotherLink" ng-click="fnz.setCurPage(2)">
+    <p>Vuoi vedere tutti gli articoli di questa linea? Clicca qui e visita il listino</p>
+</div>
+<div id="D{{$index}}" class="rows settore SWD" ng-repeat=" i in current.vetrine | orderBy : 'y'">
+    <composizioni
+            fnz="fnz"
+            item="i"
+            type="vtr"
+            lista="dt.vetrineProdotti"
+            prodotti="dt.prodotti"
+            marchi="dt.marchi"
+            linee="dt.linee"
+            ></composizioni>
+</div>

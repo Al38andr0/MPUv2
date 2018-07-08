@@ -1,0 +1,78 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!finitura.selected">
+    <h1>nuova finiture</h1>
+    <div class="rows">
+        <button ng-if="vm.nuovaFinitura.p == 0" class="btn btn-info switch" type="button" value="1" ng-click="vm.nuovaFinitura.p = 1">FIN</button>
+        <button ng-if="vm.nuovaFinitura.p == 1" class="btn btn-warning switch" type="button" value="0" ng-click="vm.nuovaFinitura.p = 0">RIV</button>
+        <input class="form-control nome" type="text" placeholder="Nome {{switchType()}}" ng-model="vm.nuovaFinitura.n" popover="Nome {{switchType()}}" popover-trigger="mouseenter">
+        <input class="form-control shortCod" type="text" placeholder="Cod" ng-model="vm.nuovaFinitura.c" popover="Codice finitura" popover-trigger="mouseenter">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovaFinitura.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <button ng-if="vm.nuovaFinitura.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaFinitura.v = 0">ON</button>
+        <button ng-if="vm.nuovaFinitura.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaFinitura.v = 1">OFF</button>
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage" ng-class="{solidBorder : vm.nuovaFinitura.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovaFinitura.r">
+            <span ng-if="!vm.nuovaFinitura.r">DROP FILE HERE</span>
+            <div class="fileImage">
+                <img class="finiture" ng-if="vm.nuovaFinitura.r" ng-src="{{vm.nuovaFinitura.r}}">
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newFinitura()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.finitura">ERRORE - FINITURA ESISTENTE</button>
+    </div>
+</div>
+<div class="modifica" ng-if="finitura.selected">
+    <h1>modifica finitura</h1>
+    <finiture finitura-original = "finitura" vm = "vm"></finiture>
+</div>
+
+<div class="gestione">
+    <h1>gestione finiture</h1>
+    <div class="filtri">
+        <div class="rows">
+            <input class="form-control nome" type="text" placeholder="Filtro nome" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro nome">
+            <input class="form-control shortCod" type="text" placeholder="Filtro codice" ng-model="inputCod" ng-keyup="eraseInput($event, 'cod')" title="Filtro codice">
+            <div class="inlineBlock" ng-include="'include/marchiFilter.html'"></div>
+            <div class="inlineBlock" ng-include="'include/showFilter.html'"></div>
+        </div>
+        <div class="rows">
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+            <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+            <i class="icons-sort red" popover="Ordina per codice" popover-trigger="mouseenter" ng-click="sorting('c')"></i>
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.finiture
+        | orderBy : vm.sorting
+        | filterByMark : filtro.marchio.i
+        | filter : {n : filtro.finitura.n, c : filtro.finitura.c, v : filtro.show}
+        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectFinitura(s)">{{s.n}}</h4>
+            <p>Codice: {{s.c}}</p>
+            <p ng-if="s.v == 1">Online</p>
+            <p ng-if="s.v == 0">Offline</p>
+            <p>{{convertFinType(s.p)}}</p>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.finiture | filter : {n : filtro.finitura.n, c : filtro.finitura.c, v : filtro.show}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.finiture | filterByMark : filtro.marchio.i | filter : {n : filtro.finitura.n, c : filtro.finitura.c, v : filtro.show}).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.finiture | filter : {n : filtro.finitura.n, c : filtro.finitura.c, v : filtro.show}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

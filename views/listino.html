@@ -1,0 +1,37 @@
+<div class="filters top133">
+    <div class="labels">
+        <span>{{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+        <i class="icons-right"></i>
+        <span>{{current.lin.n}}</span>
+        <i class="icons-right"></i>
+        <span>listino</span>
+        <i class="icons-right"></i>
+        <span ng-if="filtro.tbpr">{{fnz.convert(filtro.tbpr, 'marchiTabelle', 'n')}}</span>
+        <span ng-if="!filtro.tbpr">tutti gli articoli</span>
+        <div class="search listino">
+            <i class="icons-search"></i>
+            <input class="form-control articolo" type="text" clear-input-with-esc ng-model="filtro.prdValue"
+                   ng-keyup="fnz.checkInput($event, 'prd')" placeholder="Cerca per codice">
+        </div>
+    </div>
+</div>
+<div class="anotherLink" ng-if="current.lin.c" ng-click="fnz.setCurPage(1)">
+    <p>Vuoi vedere le composizioni fotografiche di questa linea? Clicca qui e visita la vetrina</p>
+</div>
+<p ng-if="filtro.prd != '' && (current.listino | filter : {t : t.i} : true | filter : {c : filtro.prd}).length != 0"
+   class="tbpr">risultati ricerca</p>
+<p ng-if="filtro.prd != '' && (current.listino | filter : {t : t.i} : true | filter : {c : filtro.prd}).length == 0"
+   class="tbpr">nessun risultato trovato</p>
+<!--<div infinite-scroll="fnz.moreTbpr()" infinite-scroll-distance="3">-->
+<div class="tbprGroup"
+     ng-repeat="t in current.marchiTabelle | filterByTbpr : filtro.tbpr : true | orderBy : 'y' | limitTo : vm.tbprLimit" ng-class="{SWD : vm.listinoLoaded}">
+    <p ng-if="filtro.prd == '' && vm.loaded" class="tbpr">{{t.n}}</p>
+    <listino class="rows listino"
+             ng-repeat="p in current.listino | filter : {t : t.i} : true | filter : {c : filtro.prd} | orderBy : 'y'"
+             articolo="p"
+             fnz="fnz"
+             marchi="dt.marchi"
+             linee="dt.linee"
+             loc="vm.loc"
+    ></listino>
+</div>

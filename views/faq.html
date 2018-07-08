@@ -1,0 +1,14 @@
+<div class="rows form testo top95">
+    <h3>DOMANDE MAGGIORMENTE RICHIESTE</h3>
+    <p>L'arredamento per ufficio non è un settore semplice da gestire e far comprendere. Con questa applicazione web abbiamo provato a renderlo il più semplice possibile dando agli utenti uno strumento per potersi arredare il proprio ufficio con pochi click. Tuttavia sappiamo che possono insorgere dubbi su come utlizzarlo, sulla sua efficacia e praticità.<br>Perciò abbiamo creato questa sezione di "domande maggiormente richieste", nella quale riportiamo le questioni posteci maggiormente nell'arco della nostra attività, su di noi e su come adoperare al meglio questo sito.</p>
+    <p>Se avete una domanda che non trova risposta in questa lista non esitate a contattare telefonicamente il distributore di zona o ad inviare la vostra richiesta tramite il nostro modulo di contatto.</p>
+    <div ng-repeat="f in vm.faq">
+        <h6 class="faq" ng-click="fnz.manageFaq($index)" ng-class="{selected : fnz.checkFaq($index)}" id="{{$index}}">{{$index + 1}} - {{f.t}}</h6>
+        <div ng-show="" class="answer">
+            <p ng-bind-html="f.q"></p>
+        </div>
+        <div ng-if="fnz.checkFaq($index)" class="answer">
+            <p ng-bind-html="f.q"></p>
+        </div>
+    </div>
+</div>

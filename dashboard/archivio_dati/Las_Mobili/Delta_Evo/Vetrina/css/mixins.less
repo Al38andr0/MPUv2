@@ -1,0 +1,196 @@
+.absolutePosition(@top: 0, @right: 0, @bottom: 0, @left: 0){
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+  position: absolute;
+}
+.scale(@value:1){
+  -moz-transform: scale(@value);
+  -webkit-transform: scale(@value);
+  -o-transform: scale(@value);
+  -ms-transform: scale(@value);
+  transform: scale(@value);
+}
+.transition(@property : all, @duration : 1s, @ease : ease-out){
+  -webkit-transition: @property @duration @ease;
+  -moz-transition: @property @duration @ease;
+  -ms-transition: @property @duration @ease;
+  -o-transition: @property @duration @ease;
+  transition: @property @duration @ease;
+}
+.translate(@x, @y){
+  -moz-transform: translateX(@x) translateY(@y);
+  -webkit-transform: translateX(@x) translateY(@y);
+  -o-transform: translateX(@x) translateY(@y);
+  -ms-transform: translateX(@x) translateY(@y);
+  transform: translateX(@x) translateY(@y);
+}
+.rotate(@deg: 0deg){
+  -moz-transform: rotate(@deg);
+  -webkit-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+.rotate3d(@x: 0, @y:0, @z: 0, @deg: 0deg){
+  -moz-transform: rotate3d(@x, @y, @z, @deg);
+  -webkit-transform: rotate3d(@x, @y, @z, @deg);
+  -o-transform: rotate3d(@x, @y, @z, @deg);
+  -ms-transform: rotate3d(@x, @y, @z, @deg);
+  transform: rotate3d(@x, @y, @z, @deg);
+}
+.rotateX(@deg: 90deg){
+  -moz-transform: rotateX(@deg);
+  -webkit-transform: rotateX(@deg);
+  -o-transform: rotateX(@deg);
+  -ms-transform: rotateX(@deg);
+  transform: rotateX(@deg);
+}
+.rotateY(@deg: 90deg){
+  -moz-transform: rotateY(@deg);
+  -webkit-transform: rotateY(@deg);
+  -o-transform: rotateY(@deg);
+  -ms-transform: rotateY(@deg);
+  transform: rotateY(@deg);
+}
+.rotateZ(@deg: 90deg){
+  -moz-transform: rotateZ(@deg);
+  -webkit-transform: rotateZ(@deg);
+  -o-transform: rotateZ(@deg);
+  -ms-transform: rotateZ(@deg);
+  transform: rotateZ(@deg);
+}
+@cubicBezierOut : cubic-bezier(0.175, 0.885, 0.320, 1.275);
+@cubicBezierIn : cubic-bezier(0.600, -0.280, 0.735, 0.045);
+.transitionSocial(@property : all, @duration : 1s, @ease : @cubicBezierOut, @delay : 0){
+  -webkit-transition: @property @duration @ease @delay;
+  -moz-transition: @property @duration @ease @delay;
+  -ms-transition: @property @duration @ease @delay;
+  -o-transition: @property @duration @ease @delay;
+  transition: @property @duration @ease @delay;
+
+  -webkit-transition-timing-function: @ease;
+  -moz-transition-timing-function: @ease;
+  -o-transition-timing-function: @ease;
+  transition-timing-function: @ease;
+}
+.translateRotate(@x:0, @y:0, @deg:0){
+  -moz-transform: translateX(@x) translateY(@y) rotate(@deg);
+  -webkit-transform: translateX(@x) translateY(@y) rotate(@deg);
+  -o-transform: translateX(@x) translateY(@y) rotate(@deg);
+  -ms-transform: translateX(@x) translateY(@y) rotate(@deg);
+  transform: translateX(@x) translateY(@y) rotate(@deg);
+}
+.verticalAlign(@bottom: -50%, @translate: -50%) {
+  position: relative;
+  bottom: @bottom;
+  -webkit-transform: translateY(@translate);
+  -ms-transform: translateY(@translate);
+  transform: translateY(@translate);
+}
+.horizontalAlign(@left: -50%, @translate: -50%) {
+  position: relative;
+  left: @left;
+  -webkit-transform: translateX(@translate);
+  -ms-transform: translateX(@translate);
+  transform: translateX(@translate);
+}
+.preserve3D(){
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.border(@thick: 1px, @type: solid, @color: black){
+  border: @thick @type @color;
+}
+.borderRadius(@radius : 10px){
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+.boxShadow(@x:0, @y:0, @distance:2px, @density:0, @color:#000){
+  box-shadow: @x @y @distance @density @color;
+}
+.noPadding{
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+.noPaddingRight{
+  padding-right: 0!important;
+  padding-left: 0!important;
+  @media(min-width: 992px){
+    padding-right: 15px!important;
+  }
+}
+.noPaddingLeft{
+  padding-right: 0!important;
+  padding-left: 0!important;
+  @media(min-width: 992px){
+    padding-left: 15px!important;
+  }
+}
+.noMargin{
+  margin: 0!important;
+}
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.backface(){
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.transformOrigin(@x: 50%, @y: 50%){
+  -ms-transform-origin: @arguments;
+  -webkit-transform-origin: @arguments;
+  transform-origin: @arguments;
+}
+
+.perspective(@value: 0; @x: 50%; @y: 50%){
+  -webkit-perspective: @value;
+  perspective: @value;
+  -webkit-perspective-origin: @x @y;
+  perspective-origin: @x @y;
+}
+.animation(@name, @duration: 1s, @mode: both){
+  -webkit-animation-name: @name;
+  animation-name: @name;
+  -webkit-animation-duration: @duration;
+  animation-duration: @duration;
+  -webkit-animation-fill-mode: @mode;
+  animation-fill-mode: @mode;
+}
+
+.coords(@top : 0, @right : 0, @bottom : 0, @left : 0){
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+.loaderAnimation(@duration : 1s){
+  -webkit-animation: loader @duration linear infinite;
+  -moz-animation:    loader @duration linear infinite;
+  -o-animation:      loader @duration linear infinite;
+  animation:         loader @duration linear infinite;
+}
+@-webkit-keyframes loader {
+  0%   { .rotate(0deg); }
+  100% { .rotate(360deg) }
+}
+@-moz-keyframes loader {
+  0%   { .rotate(0deg); }
+  100% { .rotate(360deg) }
+}
+@-o-keyframes loader {
+  0%   { .rotate(0deg); }
+  100% { .rotate(360deg) }
+}
+@keyframes loader {
+  0%   { .rotate(0deg); }
+  100% { .rotate(360deg) }
+}

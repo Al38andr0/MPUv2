@@ -1,0 +1,8 @@
+<div id="D{{$index}}" class="rows settore SWD" ng-repeat="
+        l in current.settore |
+        filterByPrice : filtro.price : true |
+        filterByDelivery : filtro.delivery : true |
+        orderBy : '[n, z, m]'
+      ">
+    <linea linea="l" fnz="fnz" vetrine = "dt.vetrine" marchi = "dt.marchi"></linea>
+</div>

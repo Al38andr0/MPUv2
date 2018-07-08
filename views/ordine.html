@@ -1,0 +1,18 @@
+<div class="rows form">
+    <h3>Richiesta d'ordine n° {{ordine.id}} del {{ordine.data | date : 'dd-MM-yyyy'}} inoltrata corretamente</h3>
+    <div class="ordine">
+        <p ng-if="cliente.t == 1">Spettabile {{cliente.s}},</p>
+        <p ng-if="cliente.t == 0">Gentile {{cliente.n}},</p>
+
+        <p class="moreTop">In <a ng-href="../print/{{vm.loc}}/ordine/{{dataPrv.ID}}" target="_blank" title="Visualizza richiesta conferma d'ordine">questa pagina</a> potrà visualizzare e stampare il resoconto della sua richiesta d'ordine.</p>
+        <p>Riceverà a breve una notifica all'indirizzo email indicatoci: {{cliente.e}}.</p>
+
+        <p class="moreTop">Entro 2 giorni lavorativi riceverà regolare conferma d'ordine d'acquisto, la quale dovrà essere sottoscritta, completata della contabile di acconto e rispedita all'email o al fax del distributore di riferimento che troverai sulla stessa conferma d'ordine.</p>
+
+        <p class="moreTop">La ringraziamo per la preferenza nei nostri confronti.</p>
+
+        <p class="moreTop">Cordiali saluti,</p>
+        <p ng-if="!data.rivenditore">mobiliperufficio.com</p>
+        <p ng-if="data.rivenditore">{{data.rivenditore.n}}</p>
+    </div>
+</div>

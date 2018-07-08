@@ -1,0 +1,65 @@
+<div class="rows form">
+    <form name="orderForm">
+        <h3>Dati di fatturazione <span ng-if="cliente.d == 1"> e spedizione</span></h3>
+        <select class="form-control" ng-options="c.i as c.n for c in tipologia | orderBy : 'i'" ng-model="cliente.t"></select>
+        <div ng-switch="cliente.t">
+            <div ng-switch-when="1">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.s" placeholder="* ragione sociale/company">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.n" placeholder="* titolo/title + nome/name" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.v" placeholder="* partita IVA" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.a" placeholder="* indirizzo/address" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.c" placeholder="* città/city" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.p" placeholder="* CAP/post code" >
+                <input clear-input-with-esc class="form-control" type="email" ng-model="cliente.e" placeholder="* email" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.t1" placeholder="* telefono/phone number (1)" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.t2" placeholder="telefono/phone number (2)">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.f" placeholder="fax">
+            </div>
+            <div ng-switch-when="2">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.n" placeholder="* titolo/title + nome/name" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.v" placeholder="* codice fiscale" >
+                <input clear-input-with-esc class="form-control" type="email" ng-model="cliente.e" placeholder="* email" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.a" placeholder="* indirizzo/address" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.p" placeholder="* CAP/post code" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.c" placeholder="* città/city" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.t1" placeholder="* telefono/phone number (1)" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.t2" placeholder="telefono/phone number (2)" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.f" placeholder="fax">
+            </div>
+            <span>I dati per la spedizione sono uguali a quelli di fatturazione?</span>
+            <select class="form-control w70" ng-model="cliente.d" ng-options="c.i as c.n for c in spedizione | orderBy : '-i'"></select>
+            <h3 ng-if="cliente.d == 0" class="borderTop">Dati di spedizione</h3>
+            <div ng-if="cliente.d == 0">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.dn" placeholder="* titolo/title + nome/name" >
+                <input clear-input-with-esc class="form-control" type="email" ng-model="cliente.de" placeholder="* email" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.da" placeholder="* indirizzo/address" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.dc" placeholder="* città/city" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.dp" placeholder="* CAP/post code" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.dt1" placeholder="* telefono/phone number (1)" >
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.dt2" placeholder="telefono/phone number (2)">
+                <input clear-input-with-esc class="form-control" type="text" ng-model="cliente.df" placeholder="fax">
+                <textarea clear-input-with-esc class="form-control" placeholder="annotazioni/notes (max 500 caratteri)" data-ng-model="cliente.dm"></textarea>
+            </div>
+            <div>
+                <h3 class="borderTop">Modalità di pagamento</h3>
+                <select class="form-control pagamento" ng-model="cliente.m" ng-options="c.i as c.n for c in pagamenti | orderBy : 'i'"></select>
+                <p ng-if="cliente.m == 3">* da concordare con il commerciale di riferimento</p>
+            </div>
+            <div>
+                <h3 class="borderTop">Condizioni di vendita e privacy</h3>
+            </div>
+            <div class="accettazione">
+                <label class="checkbox-inline">
+                    <input type="checkbox" ng-model="cliente.cv"> Confermo lettura e accettazione delle <a  ng-href="print/mpu/condizioni" target="_blank" title="Condizioni di vendita">condizioni di vendita</a>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" ng-model="cliente.py"> Confermo lettura e accettazione dell'<a  ng-href="print/mpu/privacy" target="_blank" title="Informative sulla privacy">informativa sulla privacy</a>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+<button style="margin-bottom: 20px;" ng-if="!vm.validated && !vm.orderFailed && !vm.sendingOrder" type="button" class="btn btn-success" disabled>INVIA RICHIESTA D'ORDINE</button>
+<button style="margin-bottom: 20px;" ng-if="vm.validated && !vm.orderFailed && !vm.sendingOrder" type="button" class="btn btn-success" ng-click="fnz.saveOrder(dataPrv.ID)"  hover-class>INVIA RICHIESTA D'ORDINE</button>
+<button style="margin-bottom: 20px;" ng-if="vm.sendingOrder" type="button" class="btn btn-info" hover-class>INVIO IN CORSO</button>
+<button style="margin-bottom: 20px;" ng-if=" vm.orderFailed" type="button" class="btn btn-danger" hover-class>ERRORE. CONTROLLARE I DATI INSERITI</button>

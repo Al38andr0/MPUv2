@@ -1,0 +1,99 @@
+<div ng-if="prv.list.length >= 1" class="rows preventivo top166">
+    <div class="lista header">
+        <div class="articolo prv">
+            <p>articolo</p>
+        </div>
+        <div class="info prv desktop">
+            <p>descrizione</p>
+        </div>
+        <div class="q">
+            <p>quantità</p>
+        </div>
+        <div class="prezzo">
+            <p>prezzo cad.</p>
+        </div>
+    </div>
+    <preventivo ng-repeat="p in prv.list"
+                articolo="p"
+                fnz="fnz"
+                prodotti="dt.prodotti"
+                prv="prv"
+                vm="dt">
+    </preventivo>
+    <div class="totale">
+        <p class="generalTxt">totale</p>
+        <p class="valore">{{dataPrv.totale}} €</p>
+    </div>
+    <div ng-if="!prv.pr && !data.rivenditore" class="calcoli totale">
+        <p class="valore w100">completa il preventivo con regione provincia e modalità di consegna</p>
+    </div>
+    <div class="selezioni">
+        <div ng-if="!data.rivenditore">
+            <select ng-if="!prv.nz" class="form-control" ng-options="n.i as n.n for n in dt.nazioni | filter : {v : 1} | orderBy : 'n'" ng-model="prv.nz">
+                <option value="">selezionare nazione</option>
+            </select>
+            <select class="form-control" ng-options="n.i as n.n for n in dt.regioni | filterNaz : prv.nz : true | orderBy : 'n'" ng-model="prv.rg" ng-disabled="!prv.nz" ng-change="fnz.resetPrv()">
+                <option value="">selezionare regione</option>
+            </select>
+
+            <select class="form-control" ng-options="p.i as p.n for p in dt.province | filterReg : prv.rg : true | orderBy : 'n'" ng-model="prv.pr" ng-disabled="!prv.rg" ng-change="fnz.scrollTop('calcoli')">
+                <option value="">selezionare provincia</option>
+            </select>
+        </div>
+        <select ng-disabled="!prv.pr && !data.rivenditore" class="form-control tm" ng-options="o.i as o.n for o in vm.tm" ng-model="prv.tm"></select>
+    </div>
+    <div ng-if="data.agente && !isNaN(prv.pr)" class="selezioni">
+        <span>gestione agente (%)</span>
+        <input class="form-control" type="number" ng-model="prv.a" ng-change="fnz.numberRange()">
+    </div>
+    <div ng-if="prv.pr || data.rivenditore" id="calcoli">
+        <div ng-if="dataPrv.minimo" class="calcoli">
+            <p class="generalTxt">gestione piccoli ordini*</p>
+            <p class="valore">{{dataPrv.minimo}} €</p>
+        </div>
+        <div class="calcoli">
+            <p class="generalTxt">trasporto</p>
+            <p class="valore">{{dataPrv.trasporto}}</p>
+        </div>
+        <div class="calcoli">
+            <p class="generalTxt">montaggio</p>
+            <p class="valore">{{dataPrv.montaggio}}</p>
+        </div>
+        <div ng-if="prv.a != 0 && data.agente" class="calcoli">
+            <p ng-if="prv.a < 0" class="generalTxt">ulteriore sconto del {{fnz.convertToPositive(prv.a)}}%</p>
+            <p ng-if="prv.a > 0" class="generalTxt">oneri extra per ordine</p>
+            <p class="valore">{{dataPrv.sas}} €</p>
+        </div>
+        <div class="calcoli">
+            <p class="generalTxt">IVA (22%)</p>
+            <p class="valore">{{dataPrv.iva}}</p>
+        </div>
+        <div class="calcoli totale">
+            <p class="generalTxt">totale</p>
+            <p class="valore">{{dataPrv.complessivo}} €</p>
+        </div>
+        <div class="annotazioni">
+            <p>note:</p>
+            <ol>
+                <li ng-if="data.agente">questo preventivo è preso in carico dall'agente {{dataPrv.agente.n}}, telefono: {{fnz.convert(prv.nz, 'nazioni', 'x')}} {{dataPrv.agente.t}}, email: {{dataPrv.agente.e}}</li>
+                <li ng-if="dataPrv.rivenditore && !data.rivenditore">la sua richiesta verrà presa in carico dal nostro distributore di {{dataPrv.prNome}}: <span>{{dataPrv.rivNome}}</span>, telefono {{fnz.convert(prv.nz, 'nazioni', 'x')}} {{dataPrv.rivTel}}.</li>
+                <li ng-if="!data.rivenditore">contributi per trasporto e montaggio validi per la provincia di {{dataPrv.prNome}}.</li>
+                <li ng-if="data.rivenditore && data.rivenditore.v == 0">contributi per trasporto e montaggio validi per la provincia di {{data.rivenditore.prv}}. Ci contatti per avere una quotazione per le altre province.
+                </li>
+                <li ng-if="data.rivenditore && data.rivenditore.v != 0">contributi per trasporto e montaggio validi per la nostra provincia o area di competenza.</li>
+                <li>la presente offerta ha una validità di 7 giorni.</li>
+                <li ng-if="dataPrv.minimo">* contributo di gestione per ordinativi inferiori a {{dataPrv.limite}} € per la provincia di {{dataPrv.prNome}}.</li>
+                <li ng-if="dataPrv.quantificare">** la quotazione online non è momentaneamente disponibile per le sue richieste. Ci contatti per la quantificazione dei costi per trasporto e del montaggio per la provincia selezionata.</li>
+                <li ng-if="prv.nz != 1 && !data.rivenditore">I tempi di consegna riportati sono applicabili solo per destinazioni in Italia. Si prega di contattarci per conoscere gli esatti tempi di consegna per il vostro paese.</li>
+            </ol>
+        </div>
+        <button type="button" class="btn btn-success calcoliButtons" ng-click="fnz.savePrv('o')">ORDINA</button>
+        <a  ng-href="print/{{vm.loc}}/preventivo/{{dataPrv.ID}}" target="_blank">
+            <button type="button" class="btn btn-primary calcoliButtons" ng-click="fnz.savePrv('p')">STAMPA</button>
+        </a>
+    </div>
+</div>
+<div ng-if="prv.list.length == 0" class="rows preventivo">
+    <p class="noItems">Preventivo cancellato</p>
+    <p class="noItems">A breve sarete automaticamente reindirizzati alla homepage</p>
+</div>

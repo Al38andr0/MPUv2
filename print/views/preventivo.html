@@ -1,0 +1,80 @@
+<div class="translator">
+    <div id="google_translate_element"></div>
+</div>
+<div class="title">
+    <h1 ng-if="!rivenditore.nome" class="noTranslate">mobiliperufficio.com<sup>®</sup></h1>
+
+    <h1 ng-if="rivenditore.nome" class="noTranslate">{{rivenditore.nome}}</h1>
+    <!--<p>office furniture made in Italy</p>-->
+    <p ng-if="!rivenditore.nome">telefono: ++39 800.62.90.91 - email: info@mobiliperufficio.com</p>
+
+    <p ng-if="rivenditore.nome">telefono: {{fnz.convert(prv.prv.nz, 'nazioni', 'x')}} {{rivenditore.tel}} - email: {{rivenditore.email}}</p>
+    <h4>preventivo n°{{prv.ID}} del {{date | date : 'dd-MM-yyyy'}} - codice di riferimento: {{fnz.findID()}}</h4>
+</div>
+<div class="lista header">
+    <div class="articolo prv">
+        <p>articolo</p>
+    </div>
+    <div class="info prv">
+        <p>descrizione</p>
+    </div>
+    <div class="q">
+        <p>quantità</p>
+    </div>
+    <div class="prezzo">
+        <p>prezzo cad.</p>
+    </div>
+</div>
+<preventivo ng-repeat="p in prv.prv.list"
+            index="$index"
+            articolo="p"
+            fnz="fnz"
+            prv="dataPrv"
+            vm="vm">
+</preventivo>
+<div class="conteggi">
+    <div class="totale">
+        <p class="generalTxt">totale</p>
+        <p class="valore">{{dataPrv.totale}} €</p>
+    </div>
+    <div ng-if="dataPrv.minimo" class="calcoli">
+        <p class="generalTxt">gestione piccoli ordini*</p>
+        <p class="valore">{{dataPrv.minimo}} €</p>
+    </div>
+    <div class="calcoli">
+        <p class="generalTxt">trasporto</p>
+        <p class="valore">{{dataPrv.trasporto}}</p>
+    </div>
+    <div class="calcoli">
+        <p class="generalTxt">montaggio</p>
+        <p class="valore">{{dataPrv.montaggio}}</p>
+    </div>
+    <div ng-if="prv.prv.a != 0" class="calcoli">
+        <p ng-if="prv.prv.a < 0" class="generalTxt">ulteriore sconto del {{fnz.convertToPositive(prv.prv.a)}}%</p>
+        <p ng-if="prv.prv.a > 0" class="generalTxt">oneri extra per ordine</p>
+        <p class="valore">{{dataPrv.sas}} €</p>
+    </div>
+    <div class="calcoli">
+        <p class="generalTxt">IVA (22%)</p>
+        <p class="valore">{{dataPrv.iva}}</p>
+    </div>
+    <div class="calcoli totale">
+        <p class="generalTxt">totale</p>
+        <p class="valore">{{dataPrv.complessivo}} €</p>
+    </div>
+</div>
+<div class="annotazioni">
+    <p>note:</p>
+    <ol>
+        <li ng-if="prv.prv.g != 0">questo preventivo è preso in carico dall'agente {{agente.nome}}, telefono: {{fnz.convert(prv.prv.nz, 'nazioni', 'x')}} {{agente.tel}}, email: {{agente.email}}</li>
+        <li ng-if="dataPrv.rivenditore && prv.prv.u == 0">la sua richiesta verrà presa in carico dal nostro distributore di {{dataPrv.prNome}}: <span>{{dataPrv.rivNome}}</span>, telefono {{fnz.convert(prv.prv.nz, 'nazioni', 'x')}} {{dataPrv.rivTel}}.</li>
+        <li ng-if="prv.prv.u != 0 && !rivenditore.conv">contributi per trasporto e montaggio validi per la provincia di {{dataPrv.prNome}}. Ci contatti per avere una quotazione per le altre province.
+        </li>
+        <li ng-if="prv.prv.u != 0 && rivenditore.conv">contributi per trasporto e montaggio validi per la nostra provincia o area di competenza.</li>
+        <li ng-if="prv.prv.u == 0">contributi per trasporto e montaggio validi per la provincia di {{dataPrv.prNome}}.</li>
+        <li>la presente offerta ha una validità di 7 giorni.</li>
+        <li ng-if="dataPrv.minimo">* contributo di gestione per ordinativi inferiori a {{dataPrv.limite}} € per la provincia di {{dataPrv.prNome}}.</li>
+        <li ng-if="dataPrv.quantificare">** la quotazione online non è momentaneamente disponibile per le sue richieste. Ci contatti per la quantificazione dei costi per trasporto e del montaggio per la provincia selezionata.</li>
+        <li ng-if="prv.prv.nz != 1 && prv.prv.u == 0">I tempi di consegna riportati sono applicabili solo per destinazioni in Italia. Si prega di contattarci per conoscere gli esatti tempi di consegna per il vostro paese.</li>
+    </ol>
+</div>

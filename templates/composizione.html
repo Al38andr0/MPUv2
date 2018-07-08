@@ -1,0 +1,19 @@
+<div class="rows composizioni" id="composizione">
+    <div class="info">
+        <h3>{{::item.n}}</h3>
+        <p ng-if="item.o">({{::item.o}})</p>
+        <div class="details cmp">
+            <p ng-if="item.type == 'vtr'" class="notranslate"><span>codice:</span> {{fnz.convert(item.l, 'linee', 'n')}}_{{::item.c}}</p>
+            <p ng-if="item.type == 'cmp'" class="notranslate"><span>codice:</span> {{fnz.convert(item.l, 'linee', 'n')}}_{{::item.c}}_{{::item.f}}</p>
+            <p class="green"><span>prezzo:</span> {{::item.price}} €</p>
+            <p><span>consegna:</span> {{::item.consegna}} giorni</p>
+            <p><span>garanzia:</span> {{::item.garanzia}} anni</p>
+            <button type="button" class="btn btn-success buttonDesktop"  ng-click="fnz.addCmpToPrv(item.p, item.i)">Aggiungi composizione al preventivo</button>
+        </div>
+    </div>
+    <div class="imageContainer" ng-class="{selected : info}">
+        <img class="loadingGIF" src="img/lazy_loading.gif">
+        <img ng-src="{{::item.path}}" class="cmpIMG" title="{{::item.n}}">
+    </div>
+    <button type="button" style="margin: 20px auto" class="btn btn-success buttonMobile"  ng-click="fnz.addCmpToPrv(item.p, item.i)">Aggiungi composizione al preventivo</button>
+</div>

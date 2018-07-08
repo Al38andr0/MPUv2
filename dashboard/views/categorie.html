@@ -1,0 +1,54 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!categorie.selected">
+    <h1>nuova categoria</h1>
+    <div class="rows">
+        <input class="form-control nome" type="text" placeholder="Nome categoria" ng-model="vm.nuovaCategoria.n" popover="Nome categoria" popover-trigger="mouseenter">
+        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovaCategoria.y" popover="Posizione" popover-trigger="mouseenter">
+        <button ng-if="vm.nuovaCategoria.v== 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaCategoria.v= 0">ON</button>
+        <button ng-if="vm.nuovaCategoria.v== 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaCategoria.v= 1">OFF</button>
+    </div>
+    <div class="rows">
+        <textarea class="form-control" placeholder="Descrizione" ng-model="vm.nuovaCategoria.x"></textarea>
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : vm.nuovaCategoria.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovaCategoria.r">
+            <span ng-if="!vm.nuovaCategoria.r">DROP FILE HERE</span>
+            <div class="fileImage">
+                <img class="finiture" ng-if="vm.nuovaCategoria.r" ng-src="{{vm.nuovaCategoria.r}}">
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="reset">RESET</button>
+    </div>
+</div>
+<div class="modifica" ng-if="categorie.selected">
+    <h1>modifica categoria</h1>
+    <categorie categoria-original = "categorie" vm = "vm"></categorie>
+</div>
+
+<div class="gestione">
+    <h1>gestione categorie</h1>
+    <div class="list">
+        <div ng-repeat="s in vm.categorie
+        | orderBy : 'y'
+        | offset: ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)">
+            <h4 ng-click="selectItem(s)">{{s.n}}</h4>
+            <p ng-if="s.v == 1">Online</p>
+            <p ng-if="s.v == 0">Offline</p>
+            <p>Posizione: {{s.y}}</p>
+        </div>
+        <div class="paginationContainer">
+            <pagination
+                    total-items="vm.categorie.length"
+                    ng-model="vm.currentPage"
+                    boundary-links="true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+    </div>
+</div>

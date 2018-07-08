@@ -1,0 +1,19 @@
+<div class="overlayer">
+    <!--<a ng-href="/{{loc}}/articolo?s={{settore}}&l={{linea}}&a={{articolo.i}}">-->
+    <a class="enter" ng-href="{{fnz.findDomain()}}/{{fnz.findLoc()}}/articolo?a={{::articolo.i}}" title="Esplora i dettagli di questo articolo">ENTRA</a>
+    <!--<a class="enter" ng-click="fnz.goToArticolo(articolo)">ENTRA</a>-->
+</div>
+<i class="icons-click"></i>
+<div class="testo">
+    <p class="title">{{::articolo.n}}</p>
+    <p ng-if="articolo.d != '' && articolo.d != '-'">dim: {{::articolo.d}}</p>
+    <p ng-if="articolo.o">{{::articolo.o}}</p>
+</div>
+<div class="imageContainer">
+    <div ng-if="!loaded" class="loader">
+        <img class="loadingGIF" src="img/lazy_loading.gif">
+    </div>
+    <img data-src="{{::path}}" class="lazyload prodottiIMG" imageonload loaded="loaded">
+</div>
+<p>{{::price}} €</p>
+<p class="title">cod: {{::articolo.c}}</p>

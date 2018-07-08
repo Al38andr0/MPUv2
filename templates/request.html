@@ -1,0 +1,26 @@
+<h3>Richiedi informazioni a {{request.u}}</h3>
+<span>* = campi obbligatori/mandatory fields</span>
+<form name="requestForm">
+    <input clear-input-with-esc class="form-control" type="text" ng-model="request.n"
+           placeholder="* titolo/title + nome/name" required>
+    <input clear-input-with-esc class="form-control" type="text" ng-model="request.s" placeholder="società/company">
+    <input clear-input-with-esc class="form-control" type="email" ng-model="request.e" placeholder="* email" required>
+    <input clear-input-with-esc class="form-control" type="text" ng-model="request.h"
+           placeholder="telefono/phone number">
+    <select ng-if="(!riv && request.u == 'mobiliperufficio.com') || fnz.findLoc() == 'mpu'" class="form-control" ng-options="p.i as p.n for p in prv | orderBy : 'n'" ng-model="request.p">
+        <option value="">selezionare provincia</option>
+    </select>
+    <input clear-input-with-esc class="form-control w572" type="text" ng-model="request.t"
+           placeholder="* oggetto/subject" required>
+    <textarea clear-input-with-esc class="form-control"
+              placeholder="* messaggio (max 500 caratteri)/message (max 500 characters)" data-ng-model="request.o"
+              required></textarea>
+    <button ng-if="request.sending" type="button" class="btn btn-success" disabled>Invio in corso</button>
+    <button ng-if="!request.success && !request.error && !request.sending" type="button" class="btn btn-success"
+            ng-disabled="!requestForm.$valid" ng-click="request.send()">INVIA RICHIESTA
+    </button>
+    <button ng-if="request.success" type="button" class="btn btn-success">email spedita</button>
+    <button ng-if="request.error" type="button" class="btn btn-danger">Errore. Riprovare prego</button>
+    <button type="button" class="btn btn-info" ng-click="request.u = false" ng-disabled="request.sending">ANNULLA
+    </button>
+</form>

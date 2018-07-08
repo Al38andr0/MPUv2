@@ -1,0 +1,39 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="compostoProdotto.k">
+        <option value="" selected>Marchio composizione</option>
+    </select>
+    <select ng-disabled="!compostoProdotto.k" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : compostoProdotto.k} : true| orderBy : 'n'" data-ng-model="compostoProdotto.j">
+        <option value="" selected>Linea composizione</option>
+    </select>
+    <select ng-disabled="!compostoProdotto.j" class="form-control marchio" ng-options="v.i as (v.c + '_' + v.f) for v in vm.composti | filter : {l : compostoProdotto.j} : true| orderBy : 'c'" data-ng-model="compostoProdotto.c">
+        <option value="" selected>Composizione</option>
+    </select>
+    <input class="form-control pos" type="number" placeholder="0" ng-model="compostoProdotto.y" popover="Posizione" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="compostoProdotto.m">
+        <option value="" selected>Marchio prodotto</option>
+    </select>
+    <select ng-disabled="!compostoProdotto.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : compostoProdotto.m} : true | orderBy : 'n'" data-ng-model="compostoProdotto.l">
+        <option value="" selected>Linea prodotto</option>
+    </select>
+    <select ng-disabled="!compostoProdotto.l" class="form-control marchio" ng-options="v.i as v.c for v in vm.prodotti | filter : {l : compostoProdotto.l} : true | orderBy : 'c'" data-ng-model="compostoProdotto.p">
+        <option value="" selected>Prodotto</option>
+    </select>
+    <input class="form-control pos" type="number" placeholder="0" ng-model="compostoProdotto.q" popover="Quantità" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <select ng-disabled="!compostoProdotto.p" class="form-control tabelleVetrina" ng-options="t.i as t.n for t in tabsAvailable | orderBy : 'n'" data-ng-model="compostoProdotto.u">
+        <option value="" selected>Tabelle finiture</option>
+    </select>
+    <select ng-disabled="!compostoProdotto.u" class="form-control marchio" ng-options="v.i as v.c for v in finsAvailable" data-ng-model="compostoProdotto.f">
+        <option value="" selected>Finitura</option>
+    </select>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="updateCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>

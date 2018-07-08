@@ -1,0 +1,15 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="regione.z">
+        <option value="" selected>Nazione</option>
+    </select>
+    <input ng-disabled="!regione.z" class="form-control nome" type="text" placeholder="Nome regione" ng-model="regione.n" popover="Nome regione" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.regione">ERRORE - REGIONE ESISTENTE</button>
+</div>

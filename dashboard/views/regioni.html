@@ -1,0 +1,53 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!regione.selected">
+    <h1>nuova regione</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="vm.nuovaRegione.z">
+            <option value="" selected>Nazione</option>
+        </select>
+        <input ng-disabled="!vm.nuovaRegione.z" class="form-control nome" type="text" placeholder="Nome regione" ng-model="vm.nuovaRegione.n" popover="Nome regione" popover-trigger="mouseenter">
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newItem()">RESET</button>
+    </div>
+    <button class="btn btn-danger errore" ng-if="errore.regione">ERRORE - REGIONE ESISTENTE</button>
+</div>
+<div class="modifica" ng-if="regione.selected">
+    <h1>modifica regione</h1>
+    <regioni regione-original = "regione" vm = "vm"></regioni>
+</div>
+
+<div class="gestione">
+    <h1>gestione regioni</h1>
+    <div class="filtri">
+        <input class="form-control nome" type="text" placeholder="Filtro regione" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro regione">
+        <div class="inlineBlock" ng-include="'include/nazioniFilter.html'"></div>
+        <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+        <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.regioni
+        | orderBy : vm.sorting
+        | filterByNaz : filtro.nazione.i
+        | filter : {n : filtro.regione.n}
+        | offset: ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)">
+            <h4 ng-click="selectRegione(s)">{{s.n}}</h4>
+            <p>{{convert(s.z, 'nazioni', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.regioni | filterByNaz : filtro.nazione.i | filter : {n : filtro.regione.n}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items="(vm.regioni
+                    | filterByNaz : filtro.nazione.i
+                    | filter : {n : filtro.regione.n}
+                    ).length"
+                    ng-model="vm.currentPage"
+                    boundary-links="true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.regioni | filterByNaz : filtro.nazione.i | filter : {n : filtro.regione.n}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

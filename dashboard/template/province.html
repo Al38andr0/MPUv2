@@ -1,0 +1,40 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="provincia.z">
+        <option value="" selected>Nazione</option>
+    </select>
+    <select ng-disabled="!provincia.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : provincia.z} : true | orderBy : 'n'" data-ng-model="provincia.r">
+        <option value="" selected>Regione</option>
+    </select>
+</div>
+<div class="rows">
+    <input ng-disabled="!provincia.r" class="form-control descrizione" type="text" placeholder="Nome provincia" ng-model="provincia.n" popover="Nome provincia" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <input ng-disabled="!provincia.r" class="form-control sigla" type="text" placeholder="Sigla" ng-model="provincia.c" popover="Sigla" popover-trigger="mouseenter">
+    <input class="form-control shortCod" type="number" ng-model="provincia.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
+    <input class="form-control shortCod" type="number" ng-model="provincia.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
+</div>
+<div class="rows">
+    <select class="form-control trasp" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="provincia.j">
+    </select>
+    <input class="form-control shortCod" type="number" ng-model="provincia.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
+    <span ng-if="provincia.j == 1 || provincia.j == 3 || provincia.j == 4" class="info perc">€</span>
+    <span ng-if="provincia.j == 2" class="info perc">%</span>
+</div>
+<div class="rows">
+    <select class="form-control trasp" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="provincia.k">
+    </select>
+    <input class="form-control shortCod" type="number" ng-model="provincia.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
+    <span ng-if="provincia.k == 1 || provincia.k == 3 || provincia.k == 4" class="info perc">€</span>
+    <span ng-if="provincia.k == 2" class="info perc">%</span>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.provincia">ERRORE - PROVINCIA ESISTENTE</button>
+</div>

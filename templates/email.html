@@ -1,0 +1,16 @@
+<form name="sendEmail">
+    <div ng-if="type == 'dwg'">
+        <input clear-input-with-esc class="form-control login" type="text" placeholder="Richiedente: titolo - nome - cognome" ng-model="email.nome" required>
+        <input clear-input-with-esc class="form-control login" type="text" placeholder="Numero di telefono" ng-model="email.tel" required>
+        <input clear-input-with-esc class="form-control login" type="email" placeholder="Email richiedente" ng-model="email.from" required>
+        <input type="checkbox" id="privacy" ng-model="email.privacy" required>
+        <label for="privacy">Accetto condizioni sulla privacy</label>
+    </div>
+    <div ng-if="type != 'dwg'">
+        <input clear-input-with-esc class="form-control login" type="text" placeholder="Nome mittente" ng-model="email.from" required>
+        <input clear-input-with-esc class="form-control login" type="email" placeholder="Email destinatario" ng-model="email.to" required>
+    </div>
+    <button ng-if="!email.success" type="submit" class="btn btn-success" ng-click="email.send()" ng-disabled="!sendEmail.$valid">Invia</button>
+    <span class="message success" ng-if="email.success">Email spedita</span>
+    <span class="message error" ng-if="email.error">Email non spedita. Riprovare prego</span>
+</form>

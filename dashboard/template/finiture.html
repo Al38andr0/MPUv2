@@ -1,0 +1,30 @@
+<div class="rows">
+    <button ng-if="finitura.p == 0" class="btn btn-info switch" type="button" value="1" ng-click="finitura.p = 1">FIN</button>
+    <button ng-if="finitura.p == 1" class="btn btn-warning switch" type="button" value="0" ng-click="finitura.p = 0">RIV</button>
+    <input class="form-control nome" type="text" placeholder="Nome {{switchType()}}" ng-model="finitura.n" popover="Nome {{switchType()}}" popover-trigger="mouseenter">
+    <input class="form-control shortCod" type="text" placeholder="Cod" ng-model="finitura.c" popover="Codice finitura" popover-trigger="mouseenter">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="finitura.m">
+        <option value="" selected>Marchio</option>
+    </select>
+    <button ng-if="finitura.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="finitura.v = 0">ON</button>
+    <button ng-if="finitura.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="finitura.v = 1">OFF</button>
+</div>
+<div class="rows">
+    <div class="dropAreaFileImage" ng-class="{solidBorder : finitura.r}">
+        <input type="file" class="dropArea" ng-class="{noBg : finitura.r}" fileread="finitura.r" title="{{finitura.n}}">
+        <span ng-if="!finitura.r">DROP FILE HERE</span>
+        <div class="fileImage">
+            <img class="finiture" ng-if="finitura.r" ng-src="{{finitura.r}}">
+        </div>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newFinitura()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.finitura">ERRORE - FINITURA ESISTENTE</button>
+</div>

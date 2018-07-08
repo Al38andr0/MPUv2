@@ -1,0 +1,13 @@
+<div class="translator">
+    <div id="google_translate_element"></div>
+</div>
+<div class="title">
+    <h1 ng-if="!vm.rivenditore" class="noTranslate">mobiliperufficio.com<sup>®</sup></h1>
+
+    <h1 ng-if="vm.rivenditore" class="noTranslate">{{vm.rivenditore.n}}</h1>
+    <p ng-if="!vm.rivenditore">telefono: ++39 800.62.90.91 - email: info@mobiliperufficio.com</p>
+
+    <p ng-if="vm.rivenditore">telefono: {{fnz.convert(vm.rivenditore.z, 'nazioni', 'x')}} {{vm.rivenditore.h}} - email: {{vm.rivenditore.e}}</p>
+</div>
+<composizione fnz="fnz" item="cmp.cmp" prezzo="cmp.prezzo"></composizione>
+<articolo fnz="fnz" item="i" vm="vm" ng-repeat=" i in cmp.prd | orderBy : 'pos'"></articolo>

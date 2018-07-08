@@ -1,0 +1,496 @@
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
+@import "mpuIcons.css";
+.noPadding {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+.noPaddingRight {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+@media (min-width: 992px) {
+  .noPaddingRight {
+    padding-right: 15px!important;
+  }
+}
+.noPaddingLeft {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+@media (min-width: 992px) {
+  .noPaddingLeft {
+    padding-left: 15px!important;
+  }
+}
+.noMargin {
+  margin: 0!important;
+}
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@-webkit-keyframes loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+#footer {
+  width: 320px;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  height: 37px;
+  overflow: hidden;
+  background: rgba(0, 30, 50, 0.9);
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+  border-top: thin solid #888888;
+  padding: 10px 0;
+}
+@media (max-width: 800px) {
+  #footer {
+    width: 100%;
+    position: relative;
+  }
+}
+@media (max-width: 800px) {
+  #footer {
+    background: rgba(0, 20, 40, 0.9);
+  }
+}
+#footer.open {
+  height: auto;
+}
+#footer p {
+  margin: 0 0 3px;
+  font-size: 15px;
+}
+#footer .mpu-up,
+#footer .mpu-down {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+#footer .mpu-up:hover,
+#footer .mpu-down:hover {
+  cursor: pointer;
+  text-shadow: 0 0 3px #fff;
+}
+#menu {
+  background: rgba(0, 30, 50, 0.9);
+  position: absolute;
+  width: 320px;
+  padding-bottom: 50px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+@media (max-width: 800px) {
+  #menu {
+    display: none;
+  }
+}
+#menu select {
+  margin: 0 auto 10px;
+  text-align: center;
+  font-size: 20px;
+  width: 280px;
+  height: 46px;
+}
+#menu .textButton {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+#menu .textButton:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#menu .title {
+  width: 320px;
+  padding: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+#menu .title h1 {
+  font-family: 'LeagueGothicRegular';
+  letter-spacing: 2px;
+  font-size: 44px;
+  margin: 0;
+  padding: 10px 0 0;
+}
+#menu .title h1 sup {
+  top: -20px;
+  font-size: 17px;
+}
+#menu .title p {
+  font-size: 18px;
+  margin: 0;
+}
+#menu .title p.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#menu .icons {
+  text-align: center;
+  border-top: thin solid #888888;
+  border-bottom: thin solid #888888;
+  margin: 10px 0 0;
+  padding: 10px 0 5px;
+}
+#menu .icons.prv {
+  border-top: none;
+  margin: 0;
+}
+#menu .icons.noBorder {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+#menu .icons .icon {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 23%;
+  cursor: pointer;
+  border: thin solid transparent;
+  margin-bottom: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -ms-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+#menu .icons .icon.selected,
+#menu .icons .icon.hover {
+  color: rgba(0, 20, 40, 0.9);
+  background: white;
+  border: thin solid rgba(255, 255, 255, 0.9);
+}
+#menu .icons .icon.newAdd {
+  background: #449c44;
+  box-shadow: 0 0 20px 0 #ffffff;
+  border: thin solid rgba(255, 255, 255, 0.9);
+}
+#menu .icons .icon.newAdd:hover {
+  color: #ffffff;
+}
+#menu .icons .icon.disabled {
+  color: #888888 !important;
+  background: none;
+  cursor: not-allowed;
+  border: thin solid transparent;
+}
+#menu .icons .icon i {
+  font-size: 35px;
+  padding: 7px 0 5px;
+  display: block;
+}
+#menu .icons .icon.order {
+  width: auto;
+}
+#menu .icons .icon.order i {
+  font-size: 62px;
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+#menu .icons .icon p {
+  font-size: 14px;
+  letter-spacing: .5px;
+  margin: 0 0 4px;
+}
+#menu .icons h6 {
+  font-size: 20px;
+  color: white;
+  margin-top: 5px;
+}
+#menu .icons.white {
+  background: #ffffff;
+}
+#menu .icons.white h6 {
+  color: rgba(0, 20, 40, 0.9);
+}
+#menu .icons.white .icon {
+  color: rgba(0, 30, 50, 0.9);
+}
+#menu .icons.white .icon.selected,
+#menu .icons.white .icon.hover {
+  background: #eeeeee;
+  border: thin solid #888888;
+}
+#menu .icons.white .icon.confirm {
+  background: #ac2925;
+  color: white;
+}
+#menu .icons.white .icon.disabled {
+  color: #888888 !important;
+  background: none;
+  cursor: not-allowed;
+  border: thin solid transparent;
+}
+#menu #google_translate_element {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  height: 106px;
+  border-bottom: thin solid white;
+}
+#menu #google_translate_element .goog-te-gadget {
+  color: #ffffff;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 16px;
+}
+#menu #google_translate_element select {
+  font-family: 'Pathway Gothic One', sans-serif;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  font-size: 20px;
+  height: 46px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  width: 280px;
+}
+#menu #google_translate_element img {
+  display: none;
+}
+#menu #google_translate_element a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+#menu #google_translate_element a::before {
+  content: 'Google ';
+}
+#menu .loginForm {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0 5px;
+  border-bottom: thin solid white;
+}
+#menu .loginForm input,
+#menu .loginForm button,
+#menu .loginForm .error,
+#menu .loginForm select,
+#menu .loginForm .success {
+  margin: 0 auto 10px;
+  text-align: center;
+  font-size: 20px;
+  width: 280px;
+  height: 46px;
+}
+#menu .loginForm .message {
+  color: #ffffff;
+  display: block;
+  padding: 6px 12px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+#menu .loginForm .message.success {
+  background: #449c44;
+}
+#menu .loginForm .message.error {
+  background: #ac2925;
+}
+#menu .loader {
+  display: block;
+  text-align: center;
+  color: white;
+}
+#menu .loader .mpu-loader {
+  -webkit-animation: loader 1s linear infinite;
+  -moz-animation: loader 1s linear infinite;
+  -o-animation: loader 1s linear infinite;
+  animation: loader 1s linear infinite;
+  font-size: 40px;
+  text-shadow: 0 0 10px #fff;
+  position: relative;
+  margin: 20px 0;
+  display: block;
+}
+#menu .menu {
+  text-align: left;
+  padding-bottom: 35px;
+}
+#menu .menu a {
+  font-size: 26px;
+  padding: 10px;
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+}
+#menu .menu a:hover,
+#menu .menu a.selected {
+  background: rgba(0, 30, 50, 0.9);
+}
+#menu .menu a.selected {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+}
+#menu .menu a.selected i {
+  color: rgba(255, 255, 255, 0.95);
+}
+#menu .menu a.selected:hover {
+  color: #ffffff;
+}
+#menu .menu a.selected:hover i {
+  color: #ffffff;
+}
+#menu .menu .mpu-tree,
+#menu .menu .mpu-tree-last {
+  position: absolute;
+  font-size: 57px;
+  left: -16px;
+  top: 2px;
+  color: rgba(255, 255, 255, 0.5);
+}
+#menu .menu .marginLeft {
+  margin-left: 21px;
+}
+#menu .menu .arrow {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  color: #ffffff;
+}
+#menu .menu .fasi {
+  text-align: center;
+  margin: 0;
+  width: 320px;
+  height: 94px;
+}
+#menu .menu .fasi .icon {
+  float: left;
+  text-align: center;
+  width: 33.3%;
+  padding: 5px 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+#menu .menu .fasi .icon.available {
+  cursor: pointer;
+  color: #ffffff;
+}
+#menu .menu .fasi .icon.available:hover,
+#menu .menu .fasi .icon.available.selected {
+  background: rgba(0, 30, 50, 0.9);
+}
+#menu .menu .fasi .icon.selected {
+  cursor: default;
+}
+#menu .menu .fasi .icon i {
+  font-size: 40px;
+  padding: 5px;
+  display: block;
+}
+#menu .menu .fasi .icon p {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+#menu .menu .lista {
+  float: left;
+  width: 100%;
+}
+#menu .menu .lista select {
+  font-size: 20px;
+  height: 46px;
+  width: 97%;
+  margin: 5px auto 0;
+}
+#menu .menu .lista input[type=text],
+#menu .menu .lista input[type=number] {
+  font-size: 20px;
+  width: 97%;
+  height: 46px;
+  display: block;
+  margin: 5px auto 0;
+}

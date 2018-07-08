@@ -1,0 +1,103 @@
+<div ng-if="data.rivenditore" class="rows contatti top95">
+    <h3>CONTATTI</h3>
+    <img class="rivImg" ng-src="dashboard/archivio_dati/Rivenditori/{{data.rivenditore.i}}.jpg">
+    <!--<h2 class="notranslate">{{data.rivenditore.n}}</h2>-->
+    <p ng-if="data.rivenditore.h">telefono: <span>{{fnz.convert(data.rivenditore.z, 'nazioni', 'x')}}</span> {{data.rivenditore.h}}</p>
+    <p ng-if="!data.rivenditore.h && data.rivenditore.c">telefono: {{data.rivenditore.c}}</p>
+    <p>email: <a ng-href="mailto:{{data.rivenditore.e}}" title="scrivi una email a {{data.rivenditore.e}}">{{data.rivenditore.e}}</a></p>
+    <p class="link">sito web: <a ng-href="http://{{data.rivenditore.q}}" target="_blank" title="visita il sito {{data.rivenditore.q}}">{{data.rivenditore.q}}</a></p>
+    <p ng-if="data.rivenditore.n != 'mobiliperufficio.com'">uffici: <span class="notranslate">{{data.rivenditore.s}}</span></p>
+    <button type="button" class="btn btn-primary" ng-click="request.u = data.rivenditore.n; request.r = data.rivenditore.e; fnz.scrollTop()">RICHIEDI INFORMAZIONI</button>
+</div>
+<div ng-if="!data.rivenditore" class="rows contatti top95">
+    <div ng-if="fnz.findPage() == 'contatti'">
+        <h3>DIREZIONE GENERALE</h3>
+        <h2 class="notranslate"><strong>{{dt.rivenditori[0].n}}</strong></h2>
+        <div class="numeroVerde">
+            <span>numero verde gratuito</span>
+            <i class="icons-numeroVerde"></i>
+            <span>800.62.90.91</span>
+        </div>
+<!--
+        <div class="skype">
+            <a href="skype:mobiliperufficio.com">
+                <span>chiamata skype gratuita</span>
+                <i class="icons-skype"></i>
+                <span>CLICK & CALL</span>
+            </a>
+        </div>
+-->
+    <p>email: <a ng-href="mailto:{{dt.rivenditori[0].e}}" title="scrivi una email a {{dt.rivenditori[0].e}}">{{dt.rivenditori[0].e}}</a></p>
+        <button type="button" class="btn btn-primary" ng-click="request.u = dt.rivenditori[0].n; request.r = dt.rivenditori[0].e;">RICHIEDI INFORMAZIONI </button>
+    </div>
+    <h3 ng-class="{borderTop : fnz.findPage() == 'contatti'}">CONTATTI DISTRIBUTORI</h3>
+    <div class="regioniSelect" ng-include="'include/regioni.html'"></div>
+    <div class="provSelect" ng-include="'include/province.html'"></div>
+
+    <!-- ************* LAZIO SELAZIONATO ************* -->
+
+    <div class="rivList" ng-if="(dt.rivenditori
+                    | filterReg : filtro.reg : true
+                    | filterPrv : filtro.prv
+                    ).length != 0 && filtro.reg == 8 && !filtro.prv">
+        <div class="rivenditore">
+            <img ng-src="dashboard/archivio_dati/Rivenditori/{{dt.rivenditori[0].i}}.jpg">
+            <div class="rivInfo">
+                <h4 class="green">Roma</h4>
+                <h4 class="notranslate">{{dt.rivenditori[0].n}}</h4>
+                <p ng-if="dt.rivenditori[0].h">telefono: <span ng-if="vm.agente.dt.rivenditori[0] != 0">{{fnz.convert(dt.rivenditori[0].z, 'nazioni', 'x')}}</span> {{dt.rivenditori[0].h}}</p>
+                <p ng-if="!dt.rivenditori[0].h && dt.rivenditori[0].c">telefono: {{dt.rivenditori[0].c}}</p>
+                <p>email: <a ng-href="mailto:{{dt.rivenditori[0].e}}" title="scrivi una email a {{dt.rivenditori[0].e}}">{{dt.rivenditori[0].e}}</a></p>
+                <p class="link">sito web: <a ng-href="http://{{dt.rivenditori[0].q}}" target="_blank" title="visita il sito {{dt.rivenditori[0].q}}">{{dt.rivenditori[0].q}}</a></p>
+                <button type="button" class="btn btn-primary" ng-click="request.u = dt.rivenditori[0].n; request.r = dt.rivenditori[0].e;">RICHIEDI INFORMAZIONI</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ************* STATO NORMALE ************* -->
+
+    <div class="rivList" ng-repeat="r in dt.rivenditori
+            | orderBy : 'prv'
+            | filter : {v : 0}
+            | filterReg : filtro.reg : true
+            | filterPrv : filtro.prv
+            " ng-if="filtro.reg || filtro.prv">
+        <div ng-if="(dt.rivenditori
+            | filterReg : filtro.reg : true
+            | filterPrv : filtro.prv
+            | filter : {v : 0}
+            ).length != 0">
+            <img ng-src="dashboard/archivio_dati/Rivenditori/{{r.i}}.jpg">
+            <div class="rivInfo">
+                <h4 class="green" ng-if="!filtro.prv">{{fnz.convert(r.p, 'province', 'n')}}</h4>
+                <h4 class="notranslate">{{r.n}}</h4>
+                <p ng-if="r.h">telefono: <span ng-if="vm.agente.z != 0">{{fnz.convert(r.z, 'nazioni', 'x')}}</span> {{r.h}}</p>
+                <p ng-if="!r.h && r.c">telefono: {{r.c}}</p>
+                <p>email: <a ng-href="mailto:{{r.e}}" title="scrivi una email a {{r.e}}">{{r.e}}</a></p>
+                <p class="link">sito web: <a ng-href="http://{{r.q}}" target="_blank" title="visita il sito {{r.q}}">{{r.q}}</a></p>
+                <p ng-if="r.n != 'mobiliperufficio.com'">uffici: <span class="notranslate">{{r.s}}</span></p>
+                <button type="button" class="btn btn-primary" ng-click="request.u = r.n; request.r = r.e;">RICHIEDI INFORMAZIONI</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ************* LA PROVINCIA NON HA IL DISTRIBUTIORE ************* -->
+
+    <div class="rivList" ng-if="(dt.rivenditori
+            | filterReg : filtro.reg : true
+            | filterPrv : filtro.prv
+            | filter : {v : 0}
+            ).length == 0">
+            <img ng-src="dashboard/archivio_dati/Rivenditori/{{dt.rivenditori[0].i}}.jpg">
+            <div class="rivInfo">
+                <h4 class="notranslate">{{dt.rivenditori[0].n}}</h4>
+                <p ng-if="dt.rivenditori[0].h">telefono: <span ng-if="vm.agente.dt.rivenditori[0] != 0">{{fnz.convert(dt.rivenditori[0].z, 'nazioni', 'x')}}</span> {{dt.rivenditori[0].h}}</p>
+                <p ng-if="!dt.rivenditori[0].h && dt.rivenditori[0].c">telefono: {{dt.rivenditori[0].c}}</p>
+                <p>email: <a ng-href="mailto:{{dt.rivenditori[0].e}}" title="scrivi una email a {{dt.rivenditori[0].e}}">{{dt.rivenditori[0].e}}</a></p>
+                <p class="link">sito web: <a ng-href="http://{{dt.rivenditori[0].q}}" target="_blank" title="visita il sito {{dt.rivenditori[0].q}}">{{dt.rivenditori[0].q}}</a></p>
+                <button type="button" class="btn btn-primary" ng-click="request.u = dt.rivenditori[0].n; request.r = dt.rivenditori[0].e;">RICHIEDI INFORMAZIONI</button>
+            </div>
+            <p ng-if="filtro.prv" class="spot">Al momento questa provincia non ha un distributore locale.<br>Se ti occupi di forniture per uffici in questa provincia, contattaci per avere la possibilità di entrare nel network di mobiliperufficio.com<sup>®</sup></p>
+            <p ng-if="!filtro.prv" class="spot">Al momento questa regione non ha rivenditori locali.<br>Se ti occupi di forniture per uffici e sei interessato alla gestione e vendite in questa regione, contattaci per avere la possibilità di entrare nel network di mobiliperufficio.com<sup>®</sup></p>
+    </div>
+</div>

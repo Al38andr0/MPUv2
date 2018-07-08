@@ -1,0 +1,47 @@
+<div id="{{::linea.i}}">
+    <div class="title">
+        <h6 class="notranslate">{{::linea.n}}</h6>
+    </div>
+    <div class="imageContainer" ng-class="{selected : info}">
+        <div class="four-by-three">
+            <div class="loader">
+                <img class="loadingGIF" src="img/lazy_loading.gif">
+            </div>
+        </div>
+        <img data-src="{{::linea.r}}" class="lazyload">
+        <div class="overlayer">
+            <div class="lineaInfo">
+                <p>fascia prezzo: <span class="notranslate">{{fnz.convert(linea.z, 'priceName', 'n')}}</span></p>
+                <p>consegna: {{::consegna}} giorni - garanzia: {{::linea.w}} anni</p>
+            </div>
+            <span class="enter" ng-click="fnz.creaLinea(linea.i)">ENTRA</span>
+        </div>
+    </div>
+    <div ng-if="imgList.length != 0" class="gallery">
+        <a ng-repeat="i in imgList" ng-href="{{::path}}_{{::i}}.jpg" title="{{::linea.n}} gallery" data-gallery="#blueimp-gallery-{{::linea.i}}">
+            <img class="lazyload" ng-src="{{::path}}_{{::i}}.jpg" title="Ingrandisci immagine">
+        </a>
+    </div>
+    <div class="info">
+        <div class="icons">
+            <div class="icon">
+                <i class="icons-info" ng-class="{selected : info}" hover-class ng-click="info = !info"  title="Informazioni generali"></i>
+            </div>
+            <div ng-if="linea.k == 1" class="icon">
+                <a ng-href="{{::pdfPath}}_catalogo.pdf" target="_blank" title="Catalogo fotografico">
+                    <i class="icons-catalogo" hover-class></i>
+                </a>
+            </div>
+            <div ng-if="linea.j == 1" class="icon" ng-click="">
+                <a ng-href="{{::pdfPath}}_specifiche.pdf" target="_blank" title="Specifiche tecniche">
+                    <i class="icons-specifiche" ng-class="{selected : vm.translate}" hover-class></i>
+                </a>
+            </div>
+            <div ng-if="imgList.length != 0" class="icon">
+                <a ng-href="{{::linea.r}}" data-gallery="#blueimp-gallery-{{::linea.i}}">
+                    <i class="icons-gallery" hover-class title="Galleria fotografica"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

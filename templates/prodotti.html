@@ -1,0 +1,29 @@
+<div class="rows composizioni">
+    <div class="info prodotto">
+        <h3>{{item.n}}</h3>
+        <p ng-if="item.d != ' ' && item.d != '-'">dim: {{item.d}}</p>
+        <p>{{fnz.convert(item.selectedFin.u, 'finitureTabelle', 'n')}}</p>
+        <p ng-if="item.o">({{item.o}})</p>
+        <div class="details">
+            <p class="notranslate"><span>codice:</span> <a ng-click="fnz.goToArticolo(item, current.cmp)" popover-trigger="mouseenter" popover="vai all'articolo nel listino">{{item.cod}}</a> {{item.selectedFin.c}}</p>
+            <p class="green"><span>prezzo:</span> {{item.price}} €</p>
+            <p><span>consegna:</span> {{item.consegna}} giorni</p>
+            <p><span>garanzia:</span> {{item.garanzia}} anni</p>
+            <p><span>quantità:</span> {{item.q}}</p>
+            <p><span>linea:</span> <a ng-click="fnz.goToLinea(item.l)" popover-trigger="mouseenter" popover="vai alla linea">{{fnz.convert(item.l, 'linee', 'n')}}</a></p>
+            <p class="noCapital" ng-repeat="f in item.selectedFin.f"><span>colore ({{$index + 1}}):</span> {{fnz.convert(f.i, 'finiture', 'n')}} per {{f.n}}</p>
+            <button ng-if="item.selectedFin || item.f == 1" type="button" class="btn btn-success buttonDesktop"  ng-click="fnz.addToPrv(item)">Aggiungi articolo al preventivo</button>
+        </div>
+    </div>
+    <div class="imageContainer prodotti" ng-class="{selected : info}">
+        <!--<img class="loadingGIF" src="img/lazy_loading.gif">-->
+        <img ng-src="{{item.path}}" class="cmpIMG" title="{{item.n}}">
+        <div class="finiture prodotto">
+            <div class="finitura" ng-repeat="f in item.selectedFin.f">
+                <img ng-src="dashboard/archivio_dati/{{item.marchio}}/Finiture/{{fnz.replaceAll(fnz.convert(f.i, 'finiture', 'n'), ' ', '_')}}_{{fnz.convert(f.i, 'finiture', 'c')}}.jpg" popover-trigger="mouseenter" popover="colore ({{$index + 1}}): {{fnz.convert(f.i, 'finiture', 'n')}} per {{f.n}}">
+                <span class="index">{{$index + 1}}</span>
+            </div>
+        </div>
+    </div>
+    <button ng-if="item.selectedFin || item.f == 1" style="margin: 15px auto" type="button" class="btn btn-success buttonMobile"  ng-click="fnz.addToPrv(item)">Aggiungi articolo al preventivo</button>
+</div>

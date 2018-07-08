@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - mpu@127.0.0.1" uuid="5bd5af46-9d42-4073-9887-cf382b27c0dd">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>mpu.*</schema-pattern>
+      <default-schemas>mpu.*</default-schemas>
+    </data-source>
+  </component>
+</project>

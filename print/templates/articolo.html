@@ -1,0 +1,43 @@
+<div class="rows composizioni" ng-class="{first : obj}">
+    <div class="imageContainer">
+        <img ng-src="{{item.path}}{{item.c}}.jpg" class="prdIMG" title="{{item.n}}">
+    </div>
+    <div class="info">
+        <div ng-if="!obj">
+            <h3>{{item.n}}</h3>
+            <p ng-if="item.o">({{item.o}})</p>
+            <p class="notranslate">cod: {{item.c}} {{fnz.convert(item.fin, 'abbinamenti', 'c')}}</p>
+            <p ng-if="item.d != ' ' && item.d != '-'">dim: {{item.d}}</p>
+            <p>prezzo: {{fnz.convertPrice(item.prezzo)}} €</p>
+            <p>quantità: {{item.qnt}}</p>
+            <p ng-repeat="a in fnz.convert(item.fin, 'abbinamenti', 'f')"><span>{{fnz.convert(a.i, 'finiture', 'n')}}</span> per {{a.n}}</p>
+            <p>linea: {{item.linea}}</p>
+            <p>consegna: {{item.consegna}} giorni</p>
+            <p>garanzia: {{item.garanzia}} anni</p>
+        </div>
+        <div ng-if="obj && item.f != 0">
+            <h3>{{item.n}}</h3>
+            <p ng-if="item.o">({{item.o}})</p>
+            <p class="notranslate">cod: {{item.c}} {{item.abb.c}}</p>
+            <p ng-if="item.d != ' ' && item.d != '-'">dim: {{item.d}}</p>
+            <p>prezzo: {{item.prezzo}} €</p>
+            <p><span>{{item.fin}}</span> per {{item.abb.f[0].n}}</p>
+            <p>linea: {{item.linea}}</p>
+            <p>consegna:{{item.consegna}} giorni</p>
+            <p>garanzia: {{item.garanzia}} anni</p>
+        </div>
+        <div ng-if="obj && item.f == 0">
+            <h3>{{item.n}}</h3>
+            <p ng-if="item.o">({{item.o}})</p>
+            <p class="notranslate">cod: {{item.c}}</p>
+            <p ng-if="item.d != ' ' && item.d != '-'">dim: {{item.d}}</p>
+            <p>prezzo a partire da: {{item.prezzo}} €</p>
+            <p>lista prezzi:</p>
+            <p ng-repeat="z in item.z">{{z.tab}}: {{z.prezzo}} €</p>
+            <p>linea: {{item.linea}}</p>
+            <p>consegna:{{item.consegna}} giorni</p>
+            <p>garanzia: {{item.garanzia}} anni</p>
+            <h4>consultare online tutti gli abbinamenti colori</h4>
+        </div>
+    </div>
+</div>

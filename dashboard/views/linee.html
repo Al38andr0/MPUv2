@@ -1,0 +1,134 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-show="!linea.selected">
+    <h1>nuova linea</h1>
+    <div class="rows">
+        <input class="form-control nome" type="text" placeholder="Nome linea" ng-model="vm.nuovaLinea.n" popover="Nome linea" popover-trigger="mouseenter">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovaLinea.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.categorie | orderBy : 'n'" data-ng-model="vm.nuovaLinea.g">
+            <option value="" selected>Categoria</option>
+        </select>
+    </div>
+    <div class="rows">
+        <span class="info sigla">consegna</span><input class="form-control numero" type="number" ng-model="vm.nuovaLinea.e"><span class="info text">giorni</span>
+        <span class="info sigla">garanzia</span><input class="form-control numero" type="number" ng-model="vm.nuovaLinea.w"><span class="info text">anni</span>
+        <input class="form-control numero" type="number" ng-model="vm.nuovaLinea.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
+    </div>
+    <div class="rows">
+        <button ng-if="vm.nuovaLinea.v == 1" class="btn btn-success large" type="button" value="1" ng-click="vm.nuovaLinea.v = 0">VISIBILE</button>
+        <button ng-if="vm.nuovaLinea.v == 0" class="btn btn-danger large" type="button" value="0" ng-click="vm.nuovaLinea.v = 1">NON VISIBILE</button>
+        <button ng-if="vm.nuovaLinea.c == 1" class="btn btn-primary large" type="button" value="1" ng-click="vm.nuovaLinea.c = 0" popover="Vetrina visibile" popover-trigger="mouseenter">CON VETRINA</button>
+        <button ng-if="vm.nuovaLinea.c == 0" class="btn btn-info large" type="button" value="0" ng-click="vm.nuovaLinea.c = 1" popover="Vetrina non visibile" popover-trigger="mouseenter">SENZA VETRINA</button>
+        <select class="form-control marchio" ng-options="p.i as p.n for p in priceName | orderBy : 'i'" data-ng-model="vm.nuovaLinea.z"></select>
+<!--
+        <div class="ratingPrice linee">
+            <rating
+                    ng-model="vm.nuovaLinea.zz"
+                    max="3"
+                    readonly="isReadonly"
+                    state-on="'icons-euro selected'"
+                    state-off="'icons-euro'"
+                    popover="Indice prezzo"
+                    popover-trigger="mouseenter"
+            >
+            </rating>
+        </div>
+-->
+        <span class="info sigla">posizione</span><input class="form-control posPrd" type="number" placeholder="100" ng-model="vm.nuovaLinea.y" popover="Posizione" popover-trigger="mouseenter">
+    </div>
+    <div class="rows">
+        <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : vm.nuovaLinea.r}">
+            <input type="file" class="dropArea" fileread="vm.nuovaLinea.r">
+            <span ng-if="!vm.nuovaLinea.r">IMMAGINE</span>
+            <div class="fileImage">
+                <img ng-if="vm.nuovaLinea.r" ng-src="{{vm.nuovaLinea.r}}">
+            </div>
+        </div>
+        <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : vm.nuovaLinea.k}" popover="Catalogo" popover-trigger="mouseenter">
+            <input type="file" class="dropArea" fileread="vm.nuovaLinea.k">
+            <span ng-if="!vm.nuovaLinea.k">CATALOGO</span>
+            <div class="fileImage">
+                <i class="icons-available" ng-if="vm.nuovaLinea.k"></i>
+            </div>
+            <i class="icons-available-not" ng-if="vm.nuovaLinea.k" ng-click="vm.nuovaLinea.k = false" title="Elinima file"></i>
+        </div>
+        <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : vm.nuovaLinea.j}" popover="Specifiche tecniche" popover-trigger="mouseenter">
+            <input type="file" class="dropArea" fileread="vm.nuovaLinea.j">
+            <span ng-if="!vm.nuovaLinea.j">SPECIFICHE</span>
+            <div class="fileImage">
+                <i class="icons-available" ng-if="vm.nuovaLinea.j"></i>
+            </div>
+            <i class="icons-available-not" ng-if="vm.nuovaLinea.j" ng-click="vm.nuovaLinea.j = false" title="Elinima file"></i>
+        </div>
+    </div>
+    <div class="checkboxContainer marchi linee">
+        <h3>SETTORI</h3>
+        <div class="checkbox" ng-show="vm.nuovaLinea.g" ng-repeat="s in vm.settori | filter : {g : vm.nuovaLinea.g}">
+            <label>
+                <input class="categorieCheck" type="checkbox" value="{{s.i}}" ng-click="toggleSet(s.i)">
+                {{s.n}}
+            </label>
+        </div>
+    </div>
+    <div class="rows">
+        <div class="abbinamentiLista" ng-repeat="n in vm.nuovaLinea.a track by $index">
+            <input class="form-control dim" type="text" placeholder="Titolo" ng-model="vm.nuovaLinea.a[$index].t">
+            <select class="form-control dim" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovaLinea.m} | orderBy : 'n'" data-ng-model="vm.nuovaLinea.a[$index].i">
+                <option value="" selected>Link alla linea</option>
+            </select>
+            <i class="icons-minus" ng-click="removeLink($index)" ng-show="vm.nuovaLinea.a.length > 1 || vm.nuovaLinea.a[0]" ng-class="{addMargin : !$last}"></i>
+            <i class="icons-plus" ng-click="addLink()" ng-show="$last" ng-class="{addMargin : $first}"></i>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newLinea()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.linea">ERRORE - LINEA ESISTENTE</button>
+    </div>
+</div>
+<div class="modifica" ng-if="linea.selected">
+    <h1>modifica linea</h1>
+    <linee linea-original = "linea" vm = "vm"></linee>
+</div>
+
+<div class="gestione">
+    <h1>gestione linee</h1>
+    <div class="filtri">
+        <input class="form-control nome" type="text" placeholder="Filtro linea" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro linea">
+        <div class="inlineBlock" ng-include="'include/marchiFilter.html'"></div>
+        <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+        <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+        <i class="icons-sort green" popover="Ordina per posizione" popover-trigger="mouseenter" ng-click="sorting('y')"></i>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.linee
+        | orderBy : vm.sorting
+        | filterByMark : filtro.marchio.i
+        | filter : {n : filtro.linea.n}
+        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectLinea(s)">{{s.n}}</h4>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>Consegna: {{s.e}} giorni</p>
+            <p>Garanzia: {{s.w}} mesi</p>
+            <p>Sconto: {{s.s}}%</p>
+            <p>Posizione: {{s.y}}</p>
+            <p ng-show="s.k == 1">Catalogo</p>
+            <p ng-show="s.j == 1">Specifiche</p>
+        </div>
+        <div ng-if="(vm.linee | filter : {n : filtro.linea.n}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.linee | filterByMark : filtro.marchio.i | filter : {n : filtro.linea.n}).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.linee | filter : {n : filtro.linea.n}).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

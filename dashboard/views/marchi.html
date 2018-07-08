@@ -1,0 +1,65 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!marchi.selected">
+    <h1>nuovo marchio</h1>
+    <div class="rows">
+        <input class="form-control nome" type="text" placeholder="Nome marchio" ng-model="vm.nuovoMarchio.n" popover="Nome marchio" popover-trigger="mouseenter">
+        <input class="form-control numero" type="number" ng-model="vm.nuovoMarchio.b" popover="Variazione listino" popover-trigger="mouseenter"><span class="info perc">%</span>
+        <input class="form-control numero" type="number" ng-model="vm.nuovoMarchio.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
+        <button ng-if="vm.nuovoMarchio.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovoMarchio.v = 0">ON</button>
+        <button ng-if="vm.nuovoMarchio.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovoMarchio.v = 1">OFF</button>
+    </div>
+    <div class="checkboxContainer marchi">
+        <h3>categorie</h3>
+        <div class="checkbox" ng-repeat="c in vm.categorie">
+            <label>
+                <input class="categorieCheck" type="checkbox" value="{{c.i}}"  ng-click="toggleSet(c.i)">
+                {{c.n}}
+            </label>
+        </div>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="reset">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.marchio">ERRORE - MARCHIO ESISTENTE</button>
+    </div>
+</div>
+<div class="modifica" ng-if="marchi.selected">
+    <h1>modifica marchio</h1>
+    <marchi marchio-original = "marchi" vm = "vm"></marchi>
+</div>
+<div class="gestione">
+    <h1>gestione marchi</h1>
+    <div class="filtri">
+        <input class="form-control nome" type="text" placeholder="Filtro marchi" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro marchi">
+        <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+        <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+    </div>
+    <div class="list">
+        <div ng-repeat="m in vm.marchi
+        | orderBy : vm.sorting
+        | filter : {n : filtro.marchi}
+        | offset: ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)">
+            <h4 ng-click="selectMarchio(m)">{{m.n}}</h4>
+            <div style="display: inline-block">
+                <p ng-if="m.v == 1">Online</p>
+                <p ng-if="m.v == 0">Offline</p>
+                <p>Listino: {{m.b}}%</p>
+                <p>Sconto: {{m.s}}%</p>
+                <p><span ng-repeat="s in convert(m.g, 'categorie', 'n')">{{s}} </span></p>
+            </div>
+        </div>
+        <div ng-if="(vm.marchi | filter : {n : filtro.marchi}).length != 0" class="paginationContainer">
+            <pagination
+                    total-items="(vm.marchi | filter : {n : filtro.marchi}).length"
+                    ng-model="vm.currentPage"
+                    boundary-links="true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.marchi | filter : {n : filtro.marchi}).length == 0">Nessun risultato per "{{inputMarchi}}"</h5>
+    </div>
+</div>

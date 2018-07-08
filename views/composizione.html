@@ -1,0 +1,14 @@
+<div class="filters top133">
+    <div class="labels">
+        <span>{{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+        <i class="icons-right"></i>
+        <span>{{current.lin.n}}</span>
+        <i class="icons-right"></i>
+        <span>vetrina</span>
+        <i class="icons-right"></i>
+        <span>{{current.cmp.nome}}</span>
+    </div>
+</div>
+<composizione fnz="fnz" item="current.cmp" dt="dt"></composizione>
+<p class="tbpr cmp">dettaglio articoli in composizione</p>
+<prodotti fnz="fnz" item="i" abb="dt.abbinamenti" current="current" ng-repeat=" i in current.cmp.p | orderBy : 'y'"></prodotti>

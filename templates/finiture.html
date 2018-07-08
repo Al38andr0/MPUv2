@@ -1,0 +1,42 @@
+<div class="rows composizioni finiture">
+    <h1>{{z.price}} €</h1>
+    <p>modello con {{fnz.convert(z.a, 'finitureTabelle', 'n')}}</p>
+    <button ng-if="!dir.showTab" type="button" class="btn btn-success" ng-click="dir.showTab = true">scegli tra questi colori</button>
+    <button ng-if="dir.showTab" type="button" class="btn btn-info" ng-click="dir.showTab = false">chiudi questa finestra</button>
+    <div ng-if="dir.showTab && item.finElements.length > 1 && (abb|
+        filter : {u : z.a} : true).length > 1">
+    <!--<div ng-if="dir.showTab && item.finElements.length > 1 && (abb | filter : {u : z.a} : true).length > 6">-->
+        <select ng-repeat="tab in item.finElements" class="form-control" ng-options="fin as (fnz.convert(fin, 'finiture', 'n')) for fin in uniqFin(z.a, $index)" data-ng-model="filtroFiniture[$index]">
+            <option value="">Filtro per {{tab}}</option>
+        </select>
+    </div>
+    <p ng-if="dir.showTab">seleziona l'abbinamento dei colori preferito</p>
+    <div ng-if="dir.showTab" class="finiture articolo"
+         ng-repeat="a in abb |
+         filter : {u : z.a} : true |
+         filterByFin0 : filtroFiniture[0] |
+         filterByFin1 : filtroFiniture[1] |
+         filterByFin2 : filtroFiniture[2] |
+         filterByFin3 : filtroFiniture[3] |
+         filterByFin4 : filtroFiniture[4] |
+         filterByFin5 : filtroFiniture[5] |
+         filterByFin6 : filtroFiniture[6]
+         "
+         ng-click="item.selectedFin = a; item.selectedTab = z; fnz.scrollTop('articolo')" ng-class="{selected : item.selectedFin.i == a.i}">
+        <p class="notranslate">{{a.c}}</p>
+        <div class="finitura" ng-repeat="f in a.f">
+            <img ng-src="dashboard/archivio_dati/{{item.marchio}}/Finiture/{{fnz.replaceAll(fnz.convert(f.i, 'finiture', 'n'), ' ', '_')}}_{{fnz.convert(f.i, 'finiture', 'c')}}.jpg">
+            <span ng-if="item.finElements.length > 1" class="index" popover-trigger="mouseenter" popover="colore per {{f.n}}">{{$index + 1}}</span>
+            <p class="finNome noCapital">{{fnz.convert(f.i, 'finiture', 'n')}}</p>
+        </div>
+    </div>
+    <h2 ng-if="dir.showTab && (abb |
+         filter : {u : z.a} : true |
+         filterByFin0 : filtroFiniture[0] |
+         filterByFin1 : filtroFiniture[1] |
+         filterByFin2 : filtroFiniture[2] |
+         filterByFin3 : filtroFiniture[3] |
+         filterByFin4 : filtroFiniture[4] |
+         filterByFin5 : filtroFiniture[5] |
+         filterByFin6 : filtroFiniture[6]).length == 0">nessun abbinamento corrispondente</h2>
+</div>

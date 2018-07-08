@@ -1,0 +1,54 @@
+<div class="rows composizioni">
+    <div class="info prodotto">
+        <h3 itemprop='name'>{{::item.n}}</h3>
+        <p ng-if="item.d != '' && item.d != '-'">dim: {{::item.d}}</p>
+        <p ng-if="item.selectedFin">{{fnz.convert(item.selectedTab.a, 'finitureTabelle', 'n')}}</p>
+        <p ng-if="item.o">({{::item.o}})</p>
+        <div class="details" ng-class="{morePadding : item.f == 1}">
+            <p ng-if="!item.selectedFin && item.f == 0" class="notranslate"><span  itemprop="identifier">codice:</span>{{item.c}} {{item.abb.c}}</p>
+            <p ng-if="item.f == 1" class="notranslate"><span>codice:</span>{{item.c}} {{item.fin[0] .c}}</p>
+            <p ng-if="item.selectedFin" class="notranslate"><span>codice:</span>{{item.c}} {{item.abb.c}} {{item.selectedFin.c}}</p>
+            <p class="green" ng-if="!item.selectedFin"><span>prezzo:</span>{{item.price}} €</p>
+            <p class="green" ng-if="item.selectedFin"><span>prezzo:</span>{{item.selectedTab.price}} €</p>
+            <p><span>consegna:</span> {{::item.consegna}} giorni</p>
+            <p><span>garanzia:</span> {{::item.garanzia}} anni</p>
+            <div ng-if="!item.selectedFin && item.f == 0">
+                <p ng-if="item.finElements.length > 1" class="noCapital" ng-repeat="f in item.finElements"><span>colore ({{::$index + 1}}):</span> da scegliere per {{::f}}</p>
+                <p ng-if="item.finElements.length == 1" class="noCapital"><span>colore:</span> da scegliere per {{::item.finElements[0]}}</p>
+            </div>
+            <div ng-if="item.f == 1">
+                <p class="noCapital"><span>colore:</span> {{fnz.convert(item.fin[0].f[0].i, 'finiture', 'n')}} per {{::item.fin[0].f[0].n}}</p>
+            </div>
+            <div ng-if="item.selectedFin">
+                <p ng-if="item.selectedFin.f.length > 1" class="noCapital" ng-repeat="f in item.selectedFin.f"><span>colore ({{::$index + 1}}):</span> {{fnz.convert(f.i, 'finiture', 'n')}} per {{::f.n}}</p>
+                <p ng-if="item.selectedFin.f.length == 1" class="noCapital"><span>colore:</span> {{fnz.convert(item.selectedFin.f[0].i, 'finiture', 'n')}} per {{::item.selectedFin.f[0].n}}</p>
+            </div>
+            <p ng-if="item.marchio === 'Zad' && !item.selectedFin"><strong>Realizzabile in misure e colori personalizzati.</strong><br>Per colori diversi da quelli esposti il prezzo è di {{fnz.convertPrice(item.raw + (item.raw * 15) / 100)}} €, per le dimensioni è necessario richiedere una quotazione.<br>Contattateci per avere il vostro articolo su misura.</p>
+            <p ng-if="item.selectedFin|| item.f == 1">
+                <span class="middle">quantità: </span>
+                <input class="form-control" type="number" ng-model="item.q" min="1">
+            </p>
+            <button ng-if="item.selectedFin" type="button" class="btn btn-info buttonDesktop" ng-click="resetFin()">Annulla questa scelta</button>
+            <!--<button ng-if="!item.selectedFin && item.f == 0" type="button" class="btn btn-success" disabled popover-trigger="mouseenter" popover="definire colore">Scegliere abbinamento colori</button>-->
+            <button ng-if="item.selectedFin || item.f == 1" type="button" class="btn btn-success buttonDesktop"  id="articolo" ng-click="fnz.addToPrv(item)">Aggiungi articolo al preventivo</button>
+        </div>
+    </div>
+    <div class="imageContainer prodotti">
+        <img itemprop="image" ng-src="{{::item.path}}" class="cmpIMG" title="{{::item.n}}">
+        <div ng-if="item.f == 1" class="finiture prodotto">
+            <a ng-if="item.selectedFin" ng-click="resetFin()">annulla questa scelta</a>
+            <div class="finitura">
+                <img ng-src="dashboard/archivio_dati/{{::item.marchio}}/Finiture/{{fnz.replaceAll(fnz.convert(item.fin[0].f[0].i, 'finiture', 'n'), ' ', '_')}}_{{fnz.convert(item.fin[0].f[0].i, 'finiture', 'c')}}.jpg">
+            </div>
+        </div>
+        <div ng-if="item.selectedFin" class="finiture prodotto">
+            <div class="finitura" ng-repeat="f in item.selectedFin.f">
+                <img ng-src="dashboard/archivio_dati/{{::item.marchio}}/Finiture/{{fnz.replaceAll(fnz.convert(f.i, 'finiture', 'n'), ' ', '_')}}_{{fnz.convert(f.i, 'finiture', 'c')}}.jpg">
+                <span ng-if="item.finElements.length > 1" class="index">{{::$index + 1}}</span>
+            </div>
+        </div>
+    </div>
+    <button style="margin: 5px auto; width: 238px;" ng-if="item.selectedFin" type="button" class="btn btn-info buttonMobile" ng-click="resetFin()">Annulla questa scelta</button>
+    <button style="margin: 5px auto 15px;" ng-if="item.selectedFin || item.f == 1" type="button" class="btn btn-success buttonMobile" ng-click="fnz.addToPrv(item)">Aggiungi articolo al preventivo</button>
+</div>
+<finiture ng-if="item.f == 0" item="item" fnz="fnz" z="z" abb="abb" ng-repeat="z in item.z"></finiture>

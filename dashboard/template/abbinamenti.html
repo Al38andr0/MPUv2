@@ -1,0 +1,34 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="abbinamento.m">
+        <option value="" selected>Marchio</option>
+    </select>
+    <select ng-disabled="!abbinamento.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : abbinamento.m} | orderBy : 'n'" data-ng-model="abbinamento.l">
+        <option value="" selected>Linea</option>
+    </select>
+</div>
+<div class="rows">
+    <select ng-disabled="!abbinamento.l" class="form-control tabelle" ng-options="t.i as t.n for t in vm.finitureTabelle | filter : {l : abbinamento.l} | orderBy : 'n'" data-ng-model="abbinamento.u">
+        <option value="" selected>Tabelle finiture</option>
+    </select>
+    <input class="form-control nome" type="text" placeholder="Codice" ng-model="abbinamento.c" popover="Codice abbinamento" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <div class="abbinamentiLista" ng-repeat="n in abbinamento.f track by $index">
+        <select ng-disabled="!abbinamento.u" class="form-control finitura" ng-options="f.i as (f.c + ' - ' + f.n) for f in vm.finiture | filter : {m : abbinamento.m} | orderBy : 'c'" data-ng-model="abbinamento.f[$index].i">
+            <option value="" selected>Finiture</option>
+        </select>
+        <input class="form-control abbinamento" type="text" placeholder="Abbinamento" ng-model="abbinamento.f[$index].n" popover="Abbinamento" popover-trigger="mouseenter">
+        <i class="icons-minus" ng-click="removeAbbinamento($index)" ng-show="abbinamento.f.length > 1" ng-class="{addMargin : !$last}"></i>
+        <i class="icons-plus" ng-click="addAbbinamento()" ng-show="$last" ng-class="{addMargin : $first}"></i>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newAbbinamento()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.abbinamento">ERRORE - ABBINAMENTO ESISTENTE O VALORI ABBINAMENTI VUOTI</button>
+</div>

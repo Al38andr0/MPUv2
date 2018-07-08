@@ -1,0 +1,91 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!vetrinaProdotto.selected">
+    <h1>nuovo prodotto per vetrina</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoVetrinaProdotto.k">
+            <option value="" selected>Marchio vetrina</option>
+        </select>
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.k" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoVetrinaProdotto.k} : true| orderBy : 'n'" data-ng-model="vm.nuovoVetrinaProdotto.j">
+            <option value="" selected>Linea vetrina</option>
+        </select>
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.j" class="form-control marchio" ng-options="v.i as v.c for v in vm.vetrine | filter : {l : vm.nuovoVetrinaProdotto.j} : true| orderBy : 'c'" data-ng-model="vm.nuovoVetrinaProdotto.c">
+            <option value="" selected>Vetrina</option>
+        </select>
+        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovoVetrinaProdotto.y" popover="Posizione" popover-trigger="mouseenter">
+    </div>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoVetrinaProdotto.m">
+            <option value="" selected>Marchio prodotto</option>
+        </select>
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoVetrinaProdotto.m} : true | orderBy : 'n'" data-ng-model="vm.nuovoVetrinaProdotto.l">
+            <option value="" selected>Linea prodotto</option>
+        </select>
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.l" class="form-control marchio" ng-options="v.i as v.c for v in vm.prodotti | filter : {l : vm.nuovoVetrinaProdotto.l} : true | orderBy : 'c'" data-ng-model="vm.nuovoVetrinaProdotto.p">
+            <option value="" selected>Prodotto</option>
+        </select>
+        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovoVetrinaProdotto.q" popover="Quantità" popover-trigger="mouseenter">
+    </div>
+    <div class="rows">
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.p" class="form-control tabelleVetrina" ng-options="t.i as t.n for t in tabsAvailable | orderBy : 'n'" data-ng-model="vm.nuovoVetrinaProdotto.u">
+            <option value="" selected>Tabelle finiture</option>
+        </select>
+        <select ng-disabled="!vm.nuovoVetrinaProdotto.u" class="form-control marchio" ng-options="v.i as v.c for v in finsAvailable" data-ng-model="vm.nuovoVetrinaProdotto.f">
+            <option value="" selected>Finitura</option>
+        </select>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newVetrinaProdotto()">RESET</button>
+    </div>
+</div>
+<div class="modifica" ng-if="vetrinaProdotto.selected">
+    <h1>modifica prodotto in vetrina</h1>
+    <vetrine-prodotti vetrina-prodotto-original = "vetrinaProdotto" vm = "vm"></vetrine-prodotti>
+</div>
+
+<div class="gestione">
+    <h1>gestione prodotto in vetrina</h1>
+    <div class="filtri">
+        <div class="rows">
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'"></div>
+            <input class="form-control shortCod" type="text" placeholder="Filtro Vetrina" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro vetrina">
+            <input class="form-control nome" type="text" placeholder="Filtro prodotto" ng-model="inputCod" ng-keyup="eraseInput($event, 1)" title="Filtro Prodotto">
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.vetrineProdotti
+        | orderBy           :   vm.sorting
+        | filterByLineVtr   :   filtro.linea.i
+        | filterByPrd       :   filtro.vetrinaProdotto.p
+        | filterByCmp       :   filtro.vetrinaProdotto.c
+        | offset            :   ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectVetrinaProdotto(s)">{{convert(s.p, 'prodotti', 'c')}} {{convert(s.f, 'abbinamenti', 'c')}} <span>{{convert(s.u, 'finitureTabelle', 'n')}}</span></h4>
+            <p class="listTitle">Vetrina:</p>
+            <p>{{convert(s.k, 'marchi', 'n')}}</p>
+            <p>{{convert(s.j, 'linee', 'n')}}</p>
+            <p>Cod: {{convert(s.c, 'vetrine', 'c')}}</p><br>
+            <p class="noBorder listTitle">Prodotto: </p>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>{{convert(s.l, 'linee', 'n')}}</p>
+            <p>Pos: {{s.y}}</p>
+            <p>Qnt: {{s.q}}</p>
+        </div>
+        <div ng-if="(vm.vetrineProdotti | filterByLineVtr : filtro.linea.i | filterByPrd : filtro.vetrinaProdotto.p | filterByCmp : filtro.vetrinaProdotto.c).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.vetrineProdotti
+                    | filterByLineVtr  :   filtro.linea.i
+                    | filterByPrd   :   filtro.vetrinaProdotto.p
+                    | filterByCmp   :   filtro.vetrinaProdotto.c
+                    ).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.vetrineProdotti | filterByLineVtr : filtro.linea.i | filterByPrd : filtro.vetrinaProdotto.p | filterByCmp : filtro.vetrinaProdotto.c).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

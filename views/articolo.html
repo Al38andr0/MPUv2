@@ -1,0 +1,23 @@
+<div class="filters top133">
+    <div class="labels">
+        <span>{{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+        <i class="icons-right"></i>
+        <span>{{current.lin.n}}</span>
+        <i class="icons-right"></i>
+        <span>listino</span>
+        <i class="icons-right"></i>
+        <span ng-if="filtro.tbpr">{{fnz.convert(filtro.tbpr, 'marchiTabelle', 'n')}}</span>
+        <span ng-if="!filtro.tbpr">tutti gli articoli</span>
+        <i class="icons-right"></i>
+        <span>{{current.art.c}}</span>
+    </div>
+</div>
+<articolo id="articolo"
+          fnz="fnz"
+          prodotti="dt.prodotti"
+          abb="dt.abbinamenti"
+          sett="current.sett"
+          tbpr="filtro.tbpr"
+          prv="prv"
+          vm="dt">
+</articolo>

@@ -1,0 +1,80 @@
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Nome società" ng-model="rivenditore.n" popover="Società" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="Referente" ng-model="rivenditore.x" popover="Referente" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="Sede" ng-model="rivenditore.s" popover="Sede" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Telefono" ng-model="rivenditore.h" popover="Telefono" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="Mobile" ng-model="rivenditore.c" popover="Mobile" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="Fax" ng-model="rivenditore.f" popover="Fax" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <input class="form-control nome" type="text" placeholder="Sito internet" ng-model="rivenditore.q" popover="Sito internet" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="Email" ng-model="rivenditore.e" popover="Email" popover-trigger="mouseenter">
+    <input class="form-control nome" type="text" placeholder="password" ng-model="rivenditore.w" popover="Password" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <select class="form-control nome" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="rivenditore.j">
+    </select>
+    <input class="form-control w75" type="number" ng-model="rivenditore.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
+    <span ng-if="rivenditore.j == 1 || rivenditore.j == 3" class="info perc">€</span>
+    <span ng-if="rivenditore.j == 2" class="info perc">%</span>
+    <select class="form-control nome" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="rivenditore.k">
+    </select>
+    <input class="form-control w75" type="number" ng-model="rivenditore.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
+    <span ng-if="rivenditore.k == 1 || rivenditore.k == 3" class="info perc">€</span>
+    <span ng-if="rivenditore.k == 2" class="info perc">%</span>
+</div>
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.convenzioni | orderBy : 'n'" data-ng-model="rivenditore.v">
+        <option value="" selected>No convenzione</option>
+    </select>
+    <input class="form-control riv" type="number" ng-model="rivenditore.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
+    <input class="form-control riv" type="number" ng-model="rivenditore.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
+</div>
+<div ng-if="!rivenditore.v" class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="rivenditore.z">
+        <option value="" selected>Nazione</option>
+    </select>
+    <select ng-disabled="!rivenditore.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : rivenditore.z} : true | orderBy : 'n'" data-ng-model="rivenditore.r">
+        <option value="" selected>Regione</option>
+    </select>
+    <select ng-disabled="!rivenditore.r" class="form-control marchio" ng-options="c.i as c.n for c in vm.province | filter : {r : rivenditore.r} : true | orderBy : 'n'" data-ng-model="rivenditore.p">
+        <option value="" selected>Provincia</option>
+    </select>
+</div>
+<div class="rows">
+    <textarea class="form-control marchio" ng-model="rivenditore.a" title="Note per rivenditori"></textarea>
+</div>
+<div class="rows">
+    <!--<input class="form-control nome coords" type="text" placeholder="Coordinate" ng-model="rivenditore.o" popover="Coordinate località" popover-trigger="mouseenter">-->
+</div>
+<button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="!vm.mv">APRI GESTIONE MARCHI</button>
+<button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="vm.mv">CHIUDI GESTIONE MARCHI</button>
+<div class="rows" ng-if="vm.mv" ng-repeat="m in rivenditore.y">
+    <span class="pseudoInput nome">{{convert(m.i, 'marchi', 'n')}}</span>
+    <input class="form-control numero" type="number" ng-model="m.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
+    <input class="form-control numero" type="number" ng-model="m.d" popover="Consegna" popover-trigger="mouseenter">
+    <span class="pseudoInput w88">giorni</span>
+    <button ng-if="m.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="m.v = 0">ON</button>
+    <button ng-if="m.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="m.v = 1">OFF</button>
+</div>
+<div class="rows">
+    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : rivenditore.g}">
+        <input type="file" class="dropArea" fileread="rivenditore.g">
+        <span ng-if="!rivenditore.g">DROP FILE HERE</span>
+        <div class="fileImage">
+            <img class="rivenditori" ng-if="rivenditore.g" ng-src="{{rivenditore.g}}">
+        </div>
+    </div>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.rivenditore">ERRORE - PROVINCIA OCCUPATA</button>
+</div>

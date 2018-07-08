@@ -1,0 +1,39 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vetrinaProdotto.k">
+        <option value="" selected>Marchio vetrina</option>
+    </select>
+    <select ng-disabled="!vetrinaProdotto.k" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vetrinaProdotto.k} : true| orderBy : 'n'" data-ng-model="vetrinaProdotto.j">
+        <option value="" selected>Linea vetrina</option>
+    </select>
+    <select ng-disabled="!vetrinaProdotto.j" class="form-control marchio" ng-options="v.i as v.c for v in vm.vetrine | filter : {l : vetrinaProdotto.j} : true| orderBy : 'c'" data-ng-model="vetrinaProdotto.c">
+        <option value="" selected>Vetrina</option>
+    </select>
+    <input class="form-control pos" type="number" placeholder="0" ng-model="vetrinaProdotto.y" popover="Posizione" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vetrinaProdotto.m">
+        <option value="" selected>Marchio prodotto</option>
+    </select>
+    <select ng-disabled="!vetrinaProdotto.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vetrinaProdotto.m} : true | orderBy : 'n'" data-ng-model="vetrinaProdotto.l">
+        <option value="" selected>Linea prodotto</option>
+    </select>
+    <select ng-disabled="!vetrinaProdotto.l" class="form-control marchio" ng-options="v.i as v.c for v in vm.prodotti | filter : {l : vetrinaProdotto.l} : true | orderBy : 'c'" data-ng-model="vetrinaProdotto.p">
+        <option value="" selected>Prodotto</option>
+    </select>
+    <input class="form-control pos" type="number" placeholder="0" ng-model="vetrinaProdotto.q" popover="Quantità" popover-trigger="mouseenter">
+</div>
+<div class="rows">
+    <select ng-disabled="!vetrinaProdotto.p" class="form-control tabelleVetrina" ng-options="t.i as t.n for t in tabsAvailable | orderBy : 'n'" data-ng-model="vetrinaProdotto.u">
+        <option value="" selected>Tabelle finiture</option>
+    </select>
+    <select ng-disabled="!vetrinaProdotto.u" class="form-control marchio" ng-options="v.i as v.c for v in finsAvailable" data-ng-model="vetrinaProdotto.f">
+        <option value="" selected>Finitura</option>
+    </select>
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="updateCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newVetrinaProdotto()">NEW</button>
+</div>

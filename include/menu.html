@@ -1,0 +1,527 @@
+<div class="title">
+    <a class="notranslate" ng-href="{{fnz.findDomain()}}/{{vm.loc}}/home" title="Homepage">
+        <h1 ng-click="fnz.cleanAll(); fnz.goHome()" ng-if="!data.rivenditore">mobiliperufficio.com<sup>®</sup></h1>
+        <h1 ng-click="fnz.cleanAll(); fnz.goHome()" ng-if="data.rivenditore">{{data.rivenditore.n}}</h1>
+    </a>
+    <p ng-if="!data.rivenditore">office furniture and seating made in Italy</p>
+    <div ng-show="!data.rivenditore" class="numeroVerde" >
+        <a href="tel:800629091" title="mobiliperufficio.com, chiama gratuitamente il nostro numero verde">
+            <span>numero verde gratuito</span>
+            <i class="icons-numeroVerde"></i>
+            <span>800.62.90.91</span>
+        </a>
+    </div>
+    <div ng-if="!data.agente">
+        <p ng-if="data.rivenditore && data.rivenditore.q" class="link" ng-click="fnz.visitWebSite(data.rivenditore.q)">{{data.rivenditore.q}}</p>
+    </div>
+    <div ng-if="data.agente">
+        <p>agente: {{data.nomeAgente}}</p>
+    </div>
+</div>
+<!-- ****************************** MAIN ****************************** -->
+<div class="icons">
+    <div ng-if="prv.list.length == 0" class="icon disabled">
+            <i class="icons-cart" title="Preventivo vuoto"></i>
+            <p>Preventivo</p>
+    </div>
+    <a ng-if="prv.list.length != 0 && fnz.findPage() == 'preventivo'" href="javascript:history.back()">
+        <div class="icon preventivo selected" hover-class>
+            <i class="icons-cart enabled"></i>
+            <p>Preventivo</p>
+        </div>
+    </a>
+    <a ng-if="prv.list.length != 0 && fnz.findPage() != 'preventivo'" ng-href="/{{vm.loc}}/preventivo">
+        <div class="icon preventivo" hover-class>
+            <i class="icons-cart enabled"></i>
+            <p>Preventivo</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && fnz.findPage() != 'contatti'" ng-href="{{fnz.findDomain()}}/{{vm.loc}}/contatti">
+        <div class="icon" hover-class>
+            <i class="icons-contact"></i>
+            <p>Contatti</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && fnz.findPage() == 'contatti'" href="javascript:history.back()">
+        <div class="icon selected" hover-class>
+            <i class="icons-contact"></i>
+            <p>Contatti</p>
+        </div>
+    </a>
+    <div class="icon" ng-class="{selected : vm.translate}" ng-click="fnz.deselectMenu('translate')" hover-class>
+        <i class="icons-world"></i>
+        <p>Translate</p>
+    </div>
+    <div ng-if="!data.agente" class="icon" ng-class="{selected : vm.menu}" ng-click="fnz.deselectMenu('menu')" hover-class>
+        <i class="icons-menu"></i>
+        <p>Menu</p>
+    </div>
+    <div ng-if="data.agente" class="icon" ng-click="fnz.deselectMenu('prvSearch')" ng-class="{selected : vm.prvSearch}" hover-class>
+        <i class="icons-searchList"></i>
+        <p>Trova offerta</p>
+    </div>
+    <div ng-if="data.agente" class="icon" ng-click= "login.exit()">
+        <i class="icons-logout"></i>
+        <p>Log out</p>
+    </div>
+</div>
+
+<!-- ****************************** MENU ****************************** -->
+
+<div class="icons prv" ng-if="vm.menu">
+    <a ng-if="fnz.findPage() != 'condizioni'" ng-href="/{{vm.loc}}/condizioni">
+        <div class="icon" hover-class>
+            <i class="icons-conditions"></i>
+            <p>Condizioni</p>
+        </div>
+    </a>
+    <a ng-if="fnz.findPage() == 'condizioni'" href="javascript:history.back()">
+        <div class="icon selected" hover-class>
+            <i class="icons-conditions"></i>
+            <p>Condizioni</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() != 'progettazione'" ng-href="/{{vm.loc}}/progettazione">
+        <div class="icon" hover-class>
+            <i class="icons-progetto"></i>
+            <p>Progettazione</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() == 'progettazione'" href="javascript:history.back()">
+        <div class="icon selected" hover-class>
+            <i class="icons-progetto"></i>
+            <p>Progettazione</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() != 'distributori'" ng-href="/{{vm.loc}}/distributori">
+        <div class="icon" hover-class>
+            <i class="icons-map"></i>
+            <p>Distributori</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() == 'distributori'" href="javascript:history.back()">
+        <div class="icon selected" hover-class>
+            <i class="icons-map"></i>
+            <p>Distributori</p>
+        </div>
+    </a>
+    <div ng-if="!data.agente" class="icon" ng-click="fnz.deselectMenu('prvSearch')" ng-class="{selected : vm.prvSearch}" hover-class>
+        <i class="icons-searchList"></i>
+        <p>Trova offerta</p>
+    </div>
+    <div ng-if="!data.agente && !data.rivenditore" class="icon" ng-click="fnz.deselectMenu('share')" ng-class="{selected : vm.menuShare}" hover-class>
+        <i class="icons-share"></i>
+        <p>Condividi</p>
+    </div>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() != 'faq'" ng-href="/{{vm.loc}}/faq">
+        <div class="icon" hover-class>
+            <i class="icons-faq"></i>
+            <p>F.A.Q.</p>
+        </div>
+    </a>
+    <a ng-if="!data.agente && !data.rivenditore && fnz.findPage() == 'faq'" href="javascript:history.back()">
+        <div class="icon selected" hover-class>
+            <i class="icons-faq"></i>
+            <p>F.A.Q.</p>
+        </div>
+    </a>
+    <div ng-if="!data.agente" class="icon" ng-click="fnz.requestInfo()" ng-class="{selected : request.u}" hover-class>
+        <i class="icons-request"></i>
+        <p>Informazioni</p>
+    </div>
+    <div ng-if="!data.agente" class="icon" ng-click="fnz.deselectMenu('login')" ng-class="{selected : vm.login || (vm.hover && !vm.login)}" hover-class>
+        <i class="icons-login"></i>
+        <p>Sign in</p>
+    </div>
+</div>
+
+<!-- ****************************** MENU SHARE ****************************** -->
+
+<div class="icons prv" ng-if="vm.menuShare">
+    <h6>CONDIVIDI IL NOSTRO SITO</h6>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://mobiliperufficio.com" target="_blank" title="Condividi mobiliperufficio.com su Facebook">
+        <div class="icon" hover-class>
+            <i class="icons-facebook"></i>
+            <p>Facebook</p>
+        </div>
+    </a>
+    <a href=https://plus.google.com/share?url=http://mobiliperufficio.com" target="_blank" title="Condividi mobiliperufficio.com su Google Plus">
+        <div class="icon" hover-class>
+            <i class="icons-googlePlus"></i>
+            <p>Google +</p>
+        </div>
+    </a>
+    <a href="https://twitter.com/share?url=http://mobiliperufficio.com" target="_blank" title="Condividi mobiliperufficio.com su Twitter">
+        <div class="icon" hover-class>
+            <i class="icons-twitter"></i>
+            <p>Twitter</p>
+        </div>
+    </a>
+    <div class="icon" ng-click="vm.menuEmail = !vm.menuEmail" ng-class="{selected : vm.menuEmail}" hover-class>
+        <i class="icons-sendEmail"></i>
+        <p>Email</p>
+    </div>
+</div>
+
+<!-- ****************************** MENU EMAIL ****************************** -->
+
+<div class="loginForm" ng-if="vm.menuEmail">
+    <email type="menu" change="vm.menuEmail" vm="vm"></email>
+</div>
+
+<!-- ****************************** PREVENTIVO SEARCH ****************************** -->
+
+<div class="loginForm" ng-if="vm.prvSearch">
+    <form name="searchPrv">
+        <input clear-input-with-esc class="form-control login" type="text" placeholder="Codice di riferimento" ng-model="vm.prvSearchID" required>
+        <button type="submit" class="btn btn-success" ng-click="fnz.searchPrv(vm.prvSearchID)" ng-disabled="!searchPrv.$valid">Cerca</button>
+        <span ng-if="vm.prvSearchError" class="message error">Preventivo non trovato o scaduto</span>
+    </form></div>
+
+<!-- ****************************** TRANSLATE ****************************** -->
+
+<div ng-if="vm.translate">
+    <div id="google_translate_element"></div>
+</div>
+
+<!-- ****************************** LOGIN ****************************** -->
+
+<div class="loginForm" ng-if="vm.login">
+    <form name="loginForm">
+        <input clear-input-with-esc class="form-control login" type="text" placeholder="Username" ng-model="login.user" required>
+        <input clear-input-with-esc class="form-control login" type="password" placeholder="Password" ng-model="login.psw" required>
+        <button type="submit" class="btn btn-success" ng-click="login.access()" ng-disabled="!loginForm.$valid">Accedi</button>
+        <span class="message error" ng-if="login.error">Dati incorretti</span>
+    </form>
+</div>
+
+<!-- ****************************** CONDIZIONI ****************************** -->
+
+<div class="icons prv white" ng-if="fnz.findPage() == 'condizioni'">
+    <h6>CONDIZIONI GENERALI DI VENDITA</h6>
+    <a ng-href="print/{{vm.loc}}/condizioni" target="_blank" title="Stampa le condizioni di vendita">
+        <div class="icon" hover-class>
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+    </a>
+</div>
+
+<!-- ****************************** PRIVACY ****************************** -->
+
+<div class="icons prv white" ng-if="fnz.findPage() == 'privacy'">
+    <h6>NORMATIVA SULLA PRIVACY</h6>
+    <a ng-href="print/{{vm.loc}}/privacy" target="_blank" title="Stampa le normative sulla privacy">
+        <div class="icon" hover-class>
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+    </a>
+</div>
+
+<!-- ****************************** PREVENTIVO ****************************** -->
+
+<div class="icons prv white" ng-if="fnz.findPage() == 'preventivo'">
+    <h6>GESTIONE PREVENTIVO</h6>
+    <div class="inline" ng-if="prv.list.length == 0 || (!prv.pr && !data.rivenditore)">
+        <div class="icon disabled">
+            <i class="icons-approvedCart"></i>
+            <p>Ordina</p>
+        </div>
+        <div class="icon disabled">
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+        <div class="icon disabled">
+            <i class="icons-share"></i>
+            <p>Condividi</p>
+        </div>
+    </div>
+    <div class="inline" ng-if="prv.list.length != 0 && (prv.pr || data.rivenditore)">
+        <div class="icon" ng-click="fnz.savePrv('o')" hover-class>
+            <i class="icons-approvedCart"></i>
+            <p>Ordina</p>
+        </div>
+        <a ng-href="print/{{vm.loc}}/preventivo/{{dataPrv.ID}}" target="_blank" title="Stampa il preventivo">
+            <div class="icon" ng-click="fnz.savePrv('p')" hover-class>
+                <i class="icons-print"></i>
+                <p>Stampa</p>
+            </div>
+        </a>
+        <div class="icon" ng-class="{selected : vm.prvShare}" ng-click="fnz.savePrv('s'); fnz.deselectMenu('prvShare')" hover-class>
+            <i class="icons-share"></i>
+            <p>Condividi</p>
+        </div>
+    </div>
+    <div ng-if="!vm.cleanPrv" class="icon" ng-class="{disabled : prv.list.length == 0}" ng-click="fnz.confirmCleanPrv()" hover-class>
+        <i class="icons-trashCloseBig"></i>
+        <p>Elimina</p>
+    </div>
+    <div ng-if="vm.cleanPrv" class="icon" ng-class="{confirm : vm.cleanPrv}" ng-click="fnz.cleanPrv()" hover-class>
+        <i class="icons-trashOpenBig"></i>
+        <p>Conferma</p>
+    </div>
+</div>
+
+<!-- ****************************** PREVENTIVO SHARE ****************************** -->
+
+<div class="icons prv" ng-if="vm.prvShare && fnz.findPage() == 'preventivo'">
+    <h6>CONDIVIDI QUESTO PREVENTIVO</h6>
+    <div class="icon">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{vm.prvShareUrl}}" target="_blank" title="Condividi questo preventivo su Facebook">
+            <i class="icons-facebook"></i>
+            <p>Facebook</p>
+        </a>
+    </div>
+    <div class="icon">
+        <a ng-href=https://plus.google.com/share?url={{vm.prvShareUrl}}" target="_blank" title="Condividi questo preventivo su Google Plus">
+            <i class="icons-googlePlus"></i>
+            <p>Google +</p>
+        </a>
+    </div>
+    <div class="icon">
+        <a ng-href="https://twitter.com/share?url={{vm.prvShareUrl}}" target="_blank" title="Condividi questo preventivo su Twitter">
+            <i class="icons-twitter"></i>
+            <p>Twitter</p>
+        </a>
+    </div>
+    <div class="icon" ng-click="vm.prvEmail = !vm.prvEmail" ng-class="{selected : vm.prvEmail}" hover-class>
+        <i class="icons-sendEmail"></i>
+        <p>Email</p>
+    </div>
+</div>
+
+<!-- ****************************** PREVENTIVO EMAIL ****************************** -->
+
+<div class="loginForm" ng-if="vm.prvEmail && fnz.findPage() == 'preventivo'">
+    <email type="preventivo" change="vm.prvEmail" cod="dataPrv.ID" vm="vm"></email>
+</div>
+
+<!-- ****************************** LINEA ****************************** -->
+
+<div class="icons prv white" ng-if="(fnz.findPage() == 'vetrina' || fnz.findPage() == 'listino')">
+    <h6>GESTIONE LINEA {{current.lin.n}}</h6>
+    <a ng-if="current.lin.k == 1" ng-href="{{fnz.pdfPath('c')}}" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-catalogo"></i>
+            <p>PDF catalogo</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-catalogo"></i>
+        <p>PDF catalogo</p>
+    </div>
+    <a ng-if="current.lin.j == 1" ng-href="{{fnz.pdfPath('s')}}" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-specifiche"></i>
+            <p>PDF tecnico</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-specifiche"></i>
+        <p>PDF tecnico</p>
+    </div>
+    <div ng-if="!data.rivenditore" class="icon" ng-class="{selected : vm.dwgEmail}" ng-click="vm.dwgEmail = !vm.dwgEmail" hover-class>
+        <i class="icons-3D"></i>
+        <p>Modelli DWG</p>
+    </div>
+    <div class="icon" ng-click="fnz.requestInfo('linea')" ng-class="{selected : request.u}" hover-class>
+        <i class="icons-request"></i>
+        <p>Informazioni</p>
+    </div>
+</div>
+
+<!-- ****************************** ARTICOLO ****************************** -->
+
+<div class="icons prv white" ng-if="fnz.findPage() == 'articolo'">
+    <h6>GESTIONE ARTICOLO</h6>
+    <a ng-if="current.lin.k == 1" ng-href="{{fnz.pdfPath('c')}}" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-catalogo"></i>
+            <p>PDF catalogo</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-catalogo"></i>
+        <p>PDF catalogo</p>
+    </div>
+    <a ng-if="current.lin.j == 1" ng-href="{{fnz.pdfPath('s')}}" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-specifiche"></i>
+            <p>PDF tecnico</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-specifiche"></i>
+        <p>PDF tecnico</p>
+    </div>
+    <a ng-href="print/{{vm.loc}}/articolo/{{current.art.i}}" target="_blank" title="Stampa la scheda di questo articolo">
+        <div class="icon" hover-class>
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+    </a>
+    <!--
+        <div class="icon" ng-class="{selected : vm.prdShare}" ng-click="fnz.deselectMenu(prdShare)" hover-class>
+            <i class="icons-share"></i>
+            <p>Condividi</p>
+        </div>
+    -->
+    <div class="icon" ng-click="fnz.requestInfo('articolo')" ng-class="{selected : request.u}" hover-class>
+        <i class="icons-request"></i>
+        <p>Informazioni</p>
+    </div>
+</div>
+
+<!-- ****************************** COMPOSIZIONE ****************************** -->
+
+<div class="icons prv white" ng-if="fnz.findPage() == 'composizione'">
+    <h6>GESTIONE COMPOSIZIONE</h6>
+    <a ng-if="current.lin.k == 1" ng-href="{{current.cmp.pdfPath}}_catalogo.pdf" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-catalogo"></i>
+            <p>PDF catalogo</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-catalogo"></i>
+        <p>PDF catalogo</p>
+    </div>
+    <a ng-if="current.lin.j == 1" ng-href="{{current.cmp.pdfPath}}_specifiche.pdf" target="_blank">
+        <div class="icon" hover-class>
+            <i class="icons-specifiche"></i>
+            <p>PDF tecnico</p>
+        </div>
+    </a>
+    <div ng-if="current.lin.k == 0" class="icon disabled" hover-class>
+        <i class="icons-specifiche"></i>
+        <p>PDF tecnico</p>
+    </div>
+    <a ng-href="print/{{vm.loc}}/composizione/{{current.cmp.i}}" target="_blank" title="Stampa la scheda di questa composizione">
+        <div class="icon" hover-class>
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+    </a>
+    <a ng-if="fnz.findPage() == 'vetrina'" ng-href="print/{{vm.loc}}/vetrina/{{current.cmp.i}}" target="_blank" title="Stampa la scheda di questa composizione">
+        <div class="icon" hover-class>
+            <i class="icons-print"></i>
+            <p>Stampa</p>
+        </div>
+    </a>
+    <div class="icon" ng-click="fnz.requestInfo('composizione')" ng-class="{selected : request.u}" hover-class>
+        <i class="icons-request"></i>
+        <p>Informazioni</p>
+    </div>
+</div>
+
+<!-- ****************************** MODELLI DWG EMAIL ****************************** -->
+
+<div class="loginForm" ng-if="(fnz.findPage() == 'vetrina' || fnz.findPage() == 'listino') && vm.dwgEmail">
+    <h6>RICHIESTA MODELLI DWG</h6>
+    <email type="dwg" vm="vm" linea="{{current.lin.n}}"></email>
+</div>
+
+<!-- ****************************** FASI ****************************** -->
+
+<div class="menu">
+        <div ng-if="current.lin.c && (fnz.findPage() == 'listino' || fnz.findPage() == 'articolo' || fnz.findPage() == 'vetrina' || fnz.findPage() == 'composizione')" class="fasi">
+            <div class="icon fasi" ng-class="{'selected' : current.page == m.i}" ng-repeat="m in vm.lineeManager | orderBy : 'y'" ng-click="fnz.setCurPage(m.i)">
+                <p>{{m.n}}</p>
+            </div>
+        </div>
+
+    <!-- ****************************** CATEGORIE  ****************************** -->
+        <div ng-if="fnz.findPage() == 'categoria' || fnz.findPage() == 'home' || fnz.findPage() == '' || fnz.findPage() == 'contatti' || fnz.findPage() == 'distributori' || fnz.findPage() == 'ordine'" ng-repeat="c in vm.categorie | filter : {v : 1} : true | orderBy : 'y'">
+            <!--fnz.setCurCat(c.i); fnz.goToCategoria(c.i); fnz.resetFilter()-->
+            <a ng-href="{{fnz.findDomain()}}/{{vm.loc}}/categoria?c={{c.i}}" ng-class="{selected : current.cat == c.i}" title="{{c.n}}">
+                <span>{{c.n}}</span>
+                <i class="arrow icons-right"></i>
+            </a>
+        </div>
+
+    <!-- ****************************** LINEE ****************************** -->
+
+    <div ng-if="fnz.findPage() == 'vetrina'" class="lista">
+        <div class="linkedLinee">
+            <a ng-href="/{{vm.loc}}/categoria?c={{current.lin.g}}">
+                <span>Torna in {{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="fnz.findPage() == 'composizione'" class="lista">
+        <select ng-change="fnz.changeCmp(current.cmp)" class="form-control" ng-options="v as (fnz.convert(v.l, 'linee', 'n') + '_' + v.c) for v in  current.vetrine | orderBy : 'y'" data-ng-model="current.cmp">
+        </select>
+        <div class="linkedLinee">
+            <a ng-click="fnz.goToVetrina()">
+                <span>Torna alla vetrina</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+
+        <div class="linkedLinee">
+            <a ng-click="fnz.goToCategoria()">
+                <span>Torna in {{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="fnz.findPage() == 'articolo'" class="lista">
+        <select ng-if="current.marchiTabelle.length > 1" ng-change="fnz.changePrd()" class="form-control" ng-options="t.i as t.n for t in current.marchiTabelle | orderBy : 'y'" data-ng-model="filtro.tbpr">
+            <option value="" selected>TUTTI GLI ARTICOLI</option>
+        </select>
+        <div ng-if="vm.prevCmp" class="linkedLinee">
+            <a ng-click="fnz.goToCmp(vm.prevCmp)">
+                <span>Torna alla composizione</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+        <div class="linkedLinee">
+            <a ng-click="fnz.goToLinea(current.lin.i)">
+                <span>Torna al listino {{current.lin.n}}</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+        <div class="linkedLinee">
+            <a ng-click="fnz.goToCategoria()">
+                <span>Torna in {{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+                <i class="arrow icons-right visible"></i>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="fnz.findPage() == 'listino'">
+        <div class="lista">
+            <select ng-if="current.marchiTabelle.length > 1" class="form-control" ng-options="t.i as t.n for t in current.marchiTabelle | orderBy : 'y'"
+                    data-ng-model="filtro.tbpr" ng-change="fnz.scrollTop()">
+                <option value="" selected>TUTTI GLI ARTICOLI</option>
+            </select>
+            <div ng-if="current.lin.a[0] != false" class="linkedLinee">
+                <!--<p>Linee abbinate:</p>-->
+                <div ng-repeat="a in current.lin.a">
+                    <a ng-click="fnz.goToLinea(a.i, current.lin.i)">
+                        <span>{{a.t}}</span>
+                        <i class="arrow icons-right visible"></i>
+                    </a>
+                </div>
+            </div>
+            <div ng-if="vm.prevLinea" class="linkedLinee">
+                <div ng-repeat="a in current.lin.a">
+                    <a ng-click="fnz.goToLinea(vm.prevLinea)">
+                        <span>Torna alla linea {{fnz.convert(vm.prevLinea, 'linee', 'n')}}</span>
+                        <i class="arrow icons-right visible"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="linkedLinee">
+                <a ng-href="/{{vm.loc}}/categoria?c={{current.lin.g}}">
+                    <span>Torna in {{fnz.convert(current.lin.g, 'categorie', 'n')}}</span>
+                    <i class="arrow icons-right visible"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

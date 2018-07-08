@@ -1,0 +1,94 @@
+<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
+<div class="nuovo" ng-if="!compostoSettore.selected">
+    <h1>nuovo composizione settore</h1>
+    <div class="rows">
+        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovoCompostoSettore.m">
+            <option value="" selected>Marchio</option>
+        </select>
+        <select ng-disabled="!vm.nuovoCompostoSettore.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoCompostoSettore.m} | orderBy : 'n'" data-ng-model="vm.nuovoCompostoSettore.l" popover="Linea di origine" popover-trigger="mouseenter">
+            <option value="" selected>Linea</option>
+        </select>
+        <select ng-disabled="!vm.nuovoCompostoSettore.m" class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovoCompostoSettore.m} | orderBy : 'n'" data-ng-model="vm.nuovoCompostoSettore.w" popover="Linea di destinazione" popover-trigger="mouseenter">
+            <option value="" selected>Linea</option>
+        </select>
+    </div>
+    <div ng-show="vm.nuovoCompostoSettore.w" class="checkboxContainer marchi">
+        <h3>settori</h3>
+        <div class="checkbox" ng-repeat="s in settoriAvailable">
+            <label>
+                <input class="categorieCheck" type="checkbox" value="{{s.h}}"  ng-click="toggleSet(s.h)">
+                {{s.n}}
+            </label>
+        </div>
+    </div>
+    <div class="rows">
+        <select ng-disabled="!vm.nuovoCompostoSettore.l || compostoAvailable.length == 1" class="form-control marchio" ng-options="p.i as (p.c + ' ' + p.f) for p in compostoAvailable | orderBy : 'c'" data-ng-model="vm.nuovoCompostoSettore.c">
+            <option value="" selected>Esposizioni</option>
+        </select>
+        <button ng-if="vm.nuovoCompostoSettore.v == 1" class="btn btn-success posPrd" type="button" value="1" ng-click="vm.nuovoCompostoSettore.v = 0">PRIMARIO</button>
+        <button ng-if="vm.nuovoCompostoSettore.v == 0" class="btn btn-warning posPrd" type="button" value="0" ng-click="vm.nuovoCompostoSettore.v = 1">SECONDARIO</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
+        <button class="btn btn-primary" type="button" ng-click="newItem()">RESET</button>
+    </div>
+    <div class="rows">
+        <button class="btn btn-danger errore" ng-if="errore.compostoSettore">ERRORE - VALORI SETTORI VUOTI</button>
+    </div>
+</div>
+<div class="modifica" ng-if="compostoSettore.selected">
+    <h1>modifica composizione settore</h1>
+    <composti-settori composto-settore-original = "compostoSettore" vm = "vm"></composti-settori>
+</div>
+
+<div class="gestione">
+    <h1>gestione composizione settori</h1>
+    <div class="filtri">
+        <div class="rows">
+            <input class="form-control shortCod" type="text" placeholder="Filtro codice" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro codice">
+            <div class="inlineBlock" ng-include="'include/lineeFilter.html'" popover="Linea di origine" popover-trigger="mouseenter"></div>
+            <div class="inlineBlock" ng-include="'include/newLineeFilter.html'" popover="Linea di destinazione" popover-trigger="mouseenter"></div>
+            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
+        </div>
+    </div>
+    <div class="list">
+        <div ng-repeat="s in vm.compostiSettori
+        | orderBy       :   vm.sorting
+        | filterByLine  :   filtro.linea.i
+        | filterByNewLine  :   filtro.newLinea.i
+        | filterByCmp   :   filtro.compostoSettore.c
+        | offset        :   ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
+        ">
+            <h4 ng-click="selectItem(s)">{{convert(s.l, 'linee', 'n')}}_{{convert(s.c, 'composti', 'c')}}_{{convert(s.c, 'composti', 'f')}}</h4>
+            <p>{{convert(s.m, 'marchi', 'n')}}</p>
+            <p>{{convert(s.l, 'linee', 'n')}}</p>
+            <p>{{convert(s.w, 'linee', 'n')}}</p>
+            <p ng-if="s.v == 1">Primario</p>
+            <p ng-if="s.v == 0">Secondario</p>
+            <p ng-repeat="f in s.h">{{convert(f, 'settori', 'n')}}</p>
+        </div>
+        <div ng-if="(vm.compostiSettori
+                | filterByLine  :   filtro.linea.i
+                | filterByNewLine  :   filtro.newLinea.i
+                | filterByCmp   :   filtro.compostoSettore.c
+                ).length != 0" class="paginationContainer">
+            <pagination
+                    total-items = "(vm.compostiSettori
+                    | filterByLine  :   filtro.linea.i
+                    | filterByNewLine  :   filtro.newLinea.i
+                    | filterByCmp   :   filtro.compostoSettore.c
+                    ).length"
+                    ng-model = "vm.currentPage"
+                    boundary-links = "true"
+                    max-size = "vm.maxSize"
+                    items-per-page = "vm.itemsPerPage"
+                    rotate = "false">
+            </pagination>
+        </div>
+        <h5 ng-if="(vm.compostiSettori
+                | filterByLine  :   filtro.linea.i
+                | filterByNewLine  :   filtro.newLinea.i
+                | filterByCmp   :   filtro.compostoSettore.c
+                ).length == 0">Nessun risultato disponibile</h5>
+    </div>
+</div>

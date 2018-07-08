@@ -1,0 +1,37 @@
+<div class="rows">
+    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="esposizioneSettore.m" disabled>
+        <option value="" selected>Marchio</option>
+    </select>
+    <select class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : esposizioneSettore.m} | orderBy : 'n'" data-ng-model="esposizioneSettore.l" popover="Linea di origine" popover-trigger="mouseenter" disabled>
+        <option value="" selected>Linea</option>
+    </select>
+    <select class="form-control marchio" ng-options="l.i as l.n for l in vm.linee | filter : {m : esposizioneSettore.m} | orderBy : 'n'" data-ng-model="esposizioneSettore.w" popover="Linea di destinazione" popover-trigger="mouseenter" disabled>
+        <option value="" selected>Linea</option>
+    </select>
+</div>
+<div ng-show="esposizioneSettore.w" class="checkboxContainer marchi">
+    <h3>settori</h3>
+    <div class="checkbox" ng-repeat="s in settoriAvailable">
+        <label>
+            <input ng-checked="selectedCat(s.h)" class="categorieCheck" type="checkbox" value="{{s.h}}"  ng-click="toggleSet(s.h)">
+            {{s.n}}
+        </label>
+    </div>
+</div>
+<div class="rows">
+    <select ng-disabled="!esposizioneSettore.l || esposizioniAvailable.length == 1" class="form-control marchio" ng-options="p.i as (p.c + ' ' + p.f) for p in esposizioniAvailable | orderBy : 'c'" data-ng-model="esposizioneSettore.c">
+    </select>
+    <button ng-if="esposizioneSettore.v == 1" class="btn btn-success posPrd" type="button" value="1" ng-click="esposizioneSettore.v = 0">PRIMARIO</button>
+    <button ng-if="esposizioneSettore.v == 0" class="btn btn-warning posPrd" type="button" value="0" ng-click="esposizioneSettore.v = 1">SECONDARIO</button>
+</div>
+
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="!enableUpdate || updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
+<div class="rows">
+    <button class="btn btn-danger errore" ng-if="errore.esposizioneSettore">ERRORE - VALORI SETTORI VUOTI</button>
+</div>

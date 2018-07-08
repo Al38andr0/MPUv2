@@ -1,0 +1,21 @@
+<div class="rows">
+    <select class="form-control dim"
+            ng-options="c.i as (c.n + ' (' + convert(c.p, 'province', 'n') + ')') for c in vm.rivenditori | orderBy : 'n'"
+            data-ng-model="agente.r">
+        <option value="" selected>Rivenditore / Convenzione</option>
+    </select>
+    <input class="form-control dim" type="text" placeholder="Nome" ng-model="agente.n">
+</div>
+<div class="rows">
+    <input class="form-control dim" type="text" placeholder="Email" ng-model="agente.e">
+    <input class="form-control dim" type="text" placeholder="Password" ng-model="agente.p">
+</div>
+<div class="rows">
+    <input class="form-control dim" type="text" placeholder="Email" ng-model="agente.t">
+</div>
+<div class="rows">
+    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
+    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
+    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
+    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
+</div>
