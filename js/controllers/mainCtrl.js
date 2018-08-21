@@ -4,21 +4,44 @@
     angular.module('mpu')
         .controller('mainCtrl', mainCtrl);
 
-    mainCtrl.$inject = ['$cookies', '$stateParams'];
+    mainCtrl.$inject = ['$stateParams', '$state', '$transitions', '$rootScope', 'rivenditoriSrv', 'ngMeta'];
 
-    function mainCtrl($cookies, $stateParams) {
+    function mainCtrl($stateParams, $state, $transitions, $rootScope, rivenditoriSrv, ngMeta) {
         let vm = this;
-        vm.cookies = false;
-        vm.loc = $stateParams
 
-        vm.fnz = {
-            findDomain: function () {
-                return location.protocol + '//' + location.host;
+        vm.rivenditori = {
+            list : false,
+            getAll : function (callback) {
+                let success = function(data) {
+                    vm.rivenditori.list = data;
+                    if(callback)
+                        callback()
+                };
+                rivenditoriSrv.getAll(success);
             },
-            acceptCookies: function () {
-                vm.cookies = true;
-                $cookies.put('MPU-K', 1);
+            getByProv : function (callback) {
+                let success = function(data) {
+                    vm.rivenditori.list = data;
+                    if(callback)
+                        callback()
+                };
+                rivenditoriSrv.getByProv(success);
             }
         };
+
+        $transitions.onStart({}, function () {
+            if(!vm.rivenditori.list) {
+                let callback = function() {
+                    $rootScope.loading = false;
+                };
+                vm.rivenditori.getAll(callback);
+            }
+        });
+
+        $transitions.onSuccess({}, function () {
+            let loc = $stateParams['loc'];
+            if(loc)
+                ngMeta.setTitle(` | ${loc}`);
+        });
     }
 })();

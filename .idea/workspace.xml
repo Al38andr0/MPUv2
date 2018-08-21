@@ -2,102 +2,282 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/include/loader.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/privacy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/views/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/views/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/services/rivenditori.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/angular-ui-router.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/angular-ui-router.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/League_Gothic-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/League_Gothic-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/League_Gothic-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/League_Gothic-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/mpu.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/mpu.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/mpu.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fonts/mpu.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/intro.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/intro.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/intro.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menu.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menuMobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menuMobile.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/menuMobile.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mixins.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mixins.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mpu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mpu.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mpu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mpuIcons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mpuIcons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/newMenuMobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/newMenuMobile.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/newMenuMobile.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pages.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pages.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pages.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/print.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/print.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/servizi.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/servizi.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/servizi.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/variable.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/variable.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/variable.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/api/rivenditori.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/view.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/view.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/view.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/filtri.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/gallery.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/loader.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/menu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/menuMobile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/newMenuMobile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/privacy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/province.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/regioni.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/configure.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/configure.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/mainCtrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/directives.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/directives.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/filters.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/filters.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/modules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/modules.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/mpu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/mpu.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/print.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/print.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/routes.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ui-bootstrap-tpls-0.11.2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ui-bootstrap-tpls-0.13.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/underscore-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/underscore-min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagine/categorie.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagine/contatti.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/print/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/print/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/articolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categoria.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/composizione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/composizioni.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/email.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/esposizioni.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/finiture.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/linea.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/listino.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/newlinea.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/preventivo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prodotti.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/request.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/settori.html" beforeDir="false" />
     </list>
     <ignored path="mpu.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" executionDataType="PHAR" phpInterpreterId="12d3a2db-07f9-402f-9a01-49e5e56562c1" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/PHPMailer/composer.json</pharConfigPath>
+    <pharPath>$PROJECT_DIR$/composer.phar</pharPath>
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - mobiliperu_db@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - mobiliperu_db@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="mobiliperu_db: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="283235535">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="1" />
+          <entry key="htaccess" value="4" />
+          <entry key="html" value="4" />
+          <entry key="js" value="20" />
+          <entry key="json" value="6" />
+          <entry key="less" value="1" />
+          <entry key="php" value="13" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="1" />
+          <entry key="HTML" value="4" />
+          <entry key="JSON" value="2" />
+          <entry key="JavaScript" value="20" />
+          <entry key="Less" value="1" />
+          <entry key="PHP" value="13" />
+          <entry key="composer.json" value="4" />
+          <entry key="htaccess" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="24" />
+          <entry key="htaccess" value="9" />
+          <entry key="html" value="28" />
+          <entry key="js" value="1763" />
+          <entry key="json" value="28" />
+          <entry key="php" value="940" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="28" />
+          <entry key="JavaScript" value="1763" />
+          <entry key="PHP" value="931" />
+          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="SQL" value="9" />
+          <entry key="composer.json" value="28" />
+          <entry key="htaccess" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.php.rename.constructor" />
+      <usages-collector id="statistics.php.new.test" />
+      <usages-collector id="statistics.php.composer.actions">
+        <counts>
+          <entry key="addDependencyDialog_from_ComposerEditorNotificationPanel.ExtraActions" value="1" />
+          <entry key="diagnose_from_ComposerEditorNotificationPanel.ExtraActions" value="1" />
+          <entry key="install_from_ComposerEditorNotificationPanel" value="3" />
+          <entry key="updateAll_from_ComposerEditorNotificationPanel" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.php.composer.command.options" />
+      <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.php.new.class" />
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="mpu" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="815">
-                  <caret line="207" column="45" selection-start-line="207" selection-start-column="45" selection-end-line="207" selection-end-column="45" />
-                  <folding>
-                    <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
+                <state relative-caret-position="289">
+                  <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mpu.less" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/css/mpu.less">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html/views/test.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="900">
-                  <caret line="419" column="9" selection-start-line="419" selection-start-column="9" selection-end-line="419" selection-end-column="9" />
+                <state>
+                  <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/footer.html">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html/views/home.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+                <state>
+                  <caret column="8" selection-start-column="8" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mainCtrl.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/services/rivenditori.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+                <state relative-caret-position="731">
+                  <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/js/routes.js">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dashboard/api/rivenditori.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="configure.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/configure.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="714">
-                  <caret line="42" column="27" selection-end-line="234" selection-end-column="4" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/controllers.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="1638" column="9" selection-start-line="1638" selection-start-column="9" selection-end-line="1638" selection-end-column="9" />
+                <state relative-caret-position="295">
+                  <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -105,12 +285,30 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="privacy.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/privacy.html">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+                <state relative-caret-position="323">
+                  <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="680">
+                  <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="663">
+                  <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -151,10 +349,14 @@
       <find>footer</find>
       <find>foote</find>
       <find>vm.loc</find>
+      <find>ui-</find>
+      <find>$_POST</find>
+      <find>. '!'</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
       <replace>vm.fnz.</replace>
+      <replace>$_GET</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -163,21 +365,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/articolo.html" />
-        <option value="$PROJECT_DIR$/templates/categoria.html" />
-        <option value="$PROJECT_DIR$/templates/composizione.html" />
-        <option value="$PROJECT_DIR$/templates/composizioni.html" />
-        <option value="$PROJECT_DIR$/templates/linea.html" />
-        <option value="$PROJECT_DIR$/templates/newlinea.html" />
-        <option value="$PROJECT_DIR$/templates/listino.html" />
-        <option value="$PROJECT_DIR$/templates/settori.html" />
         <option value="$PROJECT_DIR$/templates/prodotti.html" />
         <option value="$PROJECT_DIR$/templates/email.html" />
         <option value="$PROJECT_DIR$/css/menuMobile.less" />
         <option value="$PROJECT_DIR$/css/newMenuMobile.less" />
-        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/404.html" />
-        <option value="$PROJECT_DIR$/include/menu.html" />
         <option value="$PROJECT_DIR$/include/newMenuMobile.html" />
         <option value="$PROJECT_DIR$/views/ordine.html" />
         <option value="$PROJECT_DIR$/dashboard/views/convenzioni.html" />
@@ -203,17 +395,27 @@
         <option value="$PROJECT_DIR$/dashboard/js/directives.js" />
         <option value="$PROJECT_DIR$/dashboard/js/controllers.js" />
         <option value="$PROJECT_DIR$/dashboard/php/vetrineProdotti.php" />
-        <option value="$PROJECT_DIR$/js/modules.js" />
         <option value="$PROJECT_DIR$/js/directives/mpuFooter.js" />
         <option value="$PROJECT_DIR$/templates/mpuFooter.html" />
         <option value="$PROJECT_DIR$/include/loader.html" />
         <option value="$PROJECT_DIR$/include/footer.html" />
         <option value="$PROJECT_DIR$/views/home.html" />
         <option value="$PROJECT_DIR$/css/mpu.less" />
+        <option value="$PROJECT_DIR$/include/menu.html" />
         <option value="$PROJECT_DIR$/include/privacy.html" />
-        <option value="$PROJECT_DIR$/js/controllers/mainCtrl.js" />
+        <option value="$PROJECT_DIR$/js/modules.js" />
+        <option value="$PROJECT_DIR$/_index.php" />
+        <option value="$PROJECT_DIR$/js/ruotes.js" />
+        <option value="$PROJECT_DIR$/html/pages/home.html" />
+        <option value="$PROJECT_DIR$/html/pages/test.html" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/dashboard/api/rivenditori.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/routes.js" />
+        <option value="$PROJECT_DIR$/js/services/rivenditori.js" />
+        <option value="$PROJECT_DIR$/js/module.js" />
+        <option value="$PROJECT_DIR$/js/controllers/mainCtrl.js" />
       </list>
     </option>
   </component>
@@ -238,9 +440,6 @@
       <scope name="Minified" />
     </order>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="PhpServers">
     <servers />
   </component>
@@ -250,6 +449,26 @@
     <option name="y" value="-422" />
     <option name="width" value="1096" />
     <option name="height" value="1936" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>ComposerPHP</id>
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PhpComposerExtensionStubsInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -274,7 +493,23 @@
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
               <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
@@ -290,12 +525,8 @@
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
               <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -311,32 +542,33 @@
     <property name="LayoutCode.rearrangeEntriesJavaScript 1.5" value="false" />
     <property name="LayoutCode.rearrangeEntriesLESS" value="false" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dictionary/it.dic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mpu" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="options.lastSelected" value="lessc" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\js\services" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\css" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\lib" />
+      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\lib" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\htaccess" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\html\pages" />
       <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu" />
       <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\lib" />
       <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\dashboard" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\print" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\print\views" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\lib" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\css\fonts" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\templates" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -362,6 +594,7 @@
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="1" Folder0="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\dictionary" CustomDictionaries="1" CustomDictionary0="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\dictionary\it.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
@@ -486,66 +719,49 @@
       <workItem from="1501020224170" duration="17000" />
       <workItem from="1501020340526" duration="68000" />
       <workItem from="1501020422378" duration="24000" />
-      <workItem from="1531045757316" duration="9714000" />
+      <workItem from="1531045757316" duration="17804000" />
+      <workItem from="1531345321780" duration="639000" />
+      <workItem from="1531422345480" duration="935000" />
+      <workItem from="1531652575021" duration="644000" />
+      <workItem from="1534707965507" duration="4050000" />
+      <workItem from="1534782563894" duration="6560000" />
+      <workItem from="1534869821922" duration="5328000" />
+      <workItem from="1534876826785" duration="10936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158027000" />
+    <option name="totallyTimeSpent" value="195209000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-422" width="1096" height="1936" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50094515" side_tool="true" weight="0.32647386" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49905482" weight="0.3231368" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49621928" weight="0.3294509" />
-      <window_info active="true" content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.1436673" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info id="Database" order="3" weight="0.3289225" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49621928" weight="0.70327234" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.0921875" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Database" order="3" weight="0.32876712" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Find" order="3" sideWeight="0.49621928" weight="0.70223576" />
+      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49905482" weight="0.32224533" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Changes" order="8" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50094515" side_tool="true" weight="0.32640332" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Application Servers" order="12" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.32963988" />
+      <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.49621928" weight="0.32848233" />
+      <window_info anchor="bottom" id="Assets" order="15" weight="0.32963988" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Changes" order="7" />
-      <window_info anchor="bottom" id="Application Servers" order="10" />
-      <window_info anchor="bottom" id="Assets" order="13" weight="0.32963988" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="11" weight="0.32963988" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" x="92" y="92" width="1736" height="856" id="Documentation" order="3" type="FLOATING" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.1085353" />
-      <window_info id="Structure" order="2" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32334998" />
-      <window_info anchor="bottom" id="Changes" order="7" />
-      <window_info anchor="bottom" id="Assets" order="13" weight="0.32963988" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="11" weight="0.32963988" />
-      <window_info anchor="right" x="92" y="92" width="1736" height="856" id="Documentation" order="3" type="FLOATING" />
-      <window_info id="Database" order="3" weight="0.3289225" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49621928" weight="0.3294509" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5037807" side_tool="true" weight="0.32667777" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49621928" weight="0.70327234" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Application Servers" order="10" />
-      <window_info id="Favorites" order="0" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -570,179 +786,13 @@
           <option name="timeStamp" value="144" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="147" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess" />
-    <entry file="file://$PROJECT_DIR$/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/menuMobile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="2" column="110" selection-start-line="2" selection-start-column="110" selection-end-line="2" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/newMenuMobile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/cookies.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="43" column="264" selection-start-line="43" selection-start-column="264" selection-end-line="43" selection-end-column="264" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ordine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/privacy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="17" column="305" selection-start-line="17" selection-start-column="305" selection-end-line="17" selection-end-column="305" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="83" column="20" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/convenzioni.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="37" column="117" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/convenzioni.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="1" column="108" selection-start-line="1" selection-start-column="108" selection-end-line="1" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/convenzioni.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/email.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3434">
-          <caret line="202" column="129" selection-start-line="202" selection-start-column="129" selection-end-line="202" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/print.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/print/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/contatti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/menu.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1032">
-          <caret line="429" selection-start-line="429" selection-end-line="429" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/composizione.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/composizioni.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret column="125" selection-start-column="125" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/esposizioni.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/view.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="1819" selection-start-line="1819" selection-end-line="1819" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/vetrine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="9" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/listino.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/connessione.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/rivenditori.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="203" column="33" lean-forward="true" selection-start-line="203" selection-start-column="33" selection-end-line="203" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -757,13 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9350">
-          <caret line="550" column="14" selection-start-line="550" selection-start-column="14" selection-end-line="550" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -806,64 +849,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <marker date="1500813092225" expanded="true" signature="395:430" ph="SELECT * FRO... composizioni_prodotti" />
-            <marker date="1500813092225" expanded="true" signature="1486:1883" ph="INSERT INTO composizioni_prodotti... " />
-            <marker date="1500813092225" expanded="true" signature="2010:2069" ph="DELETE FROM " />
-            <marker date="1500813092225" expanded="true" signature="2196:2695" ph="UPDATE compo... " />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mpu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="32" column="14" selection-end-line="38" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/configure.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="27" selection-end-line="234" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/directives/mpuFooter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/mpuFooter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/loader.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js[OLD]/mpu.js" />
+    <entry file="file://$PROJECT_DIR$/js/directives/mpuFooter.js" />
+    <entry file="file://$PROJECT_DIR$/templates/mpuFooter.html" />
+    <entry file="file://$PROJECT_DIR$/include/loader.html" />
     <entry file="file://$PROJECT_DIR$/views/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
@@ -871,58 +863,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/gallery.html">
+    <entry file="file://$PROJECT_DIR$/include/gallery.html" />
+    <entry file="file://$PROJECT_DIR$/css[OLD]/pages.less" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/configure.js" />
+    <entry file="file://$PROJECT_DIR$/include/footer.html" />
+    <entry file="file://$PROJECT_DIR$/include/privacy.html" />
+    <entry file="file://$PROJECT_DIR$/include/menu.html" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/directives.js" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/controllers.js" />
+    <entry file="file://$PROJECT_DIR$/css[OLD]/mpu.less" />
+    <entry file="file://$PROJECT_DIR$/lista.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/pages.less">
+    <entry file="file://$PROJECT_DIR$/js[OLD]/underscore-min.js" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/print.js" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/modules.js" />
+    <entry file="file://$PROJECT_DIR$/js[OLD]/controllers/mainCtrl.js" />
+    <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js[OLD]/routes.js" />
+    <entry file="file://$PROJECT_DIR$/htaccess/.htaccess" />
+    <entry file="file://$PROJECT_DIR$/lib/angular-ui-router.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index[OLD].php" />
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/connessione.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/views/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/mpu.less">
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/agenti.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="419" column="9" selection-start-line="419" selection-start-column="9" selection-end-line="419" selection-end-column="9" />
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/dashboard/php/linee.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="1638" column="9" selection-start-line="1638" selection-start-column="9" selection-end-line="1638" selection-end-column="9" />
-        </state>
+        <state relative-caret-position="-1700" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/privacy.html">
+    <entry file="file://$PROJECT_DIR$/dashboard/php/rivenditori.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="815">
-          <caret line="207" column="45" selection-start-line="207" selection-start-column="45" selection-end-line="207" selection-end-column="45" />
+        <state relative-caret-position="731">
+          <caret line="62" selection-start-line="48" selection-end-line="62" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2971#5027#0#PHP" />
+            <element signature="e#6089#7736#0#PHP" />
+            <element signature="e#7951#9339#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/mpu.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/views/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        <state relative-caret-position="680">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/api/rivenditori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/rivenditori.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
         </state>
       </provider>
     </entry>

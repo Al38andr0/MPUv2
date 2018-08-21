@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
-@import "../../css/mpuIcons.css";
+@import "../../css[OLD]/mpuIcons.css";
 .noPadding {
   padding-right: 0!important;
   padding-left: 0!important;
