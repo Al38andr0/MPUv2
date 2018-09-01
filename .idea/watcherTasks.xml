@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="--no-color $FileName$" />
+      <option name="arguments" value="--no-color $FileName$ --math=parens" />
       <option name="checkSyntaxErrors" value="true" />
-      <option name="description" value="Compiles .less files into .css files" />
+      <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="less" />
       <option name="immediateSync" value="false" />
@@ -13,14 +13,14 @@
       <option name="outputFilters">
         <array>
           <FilterInfo>
-            <option name="description" value="lessc error format" />
-            <option name="name" value="lessc" />
+            <option name="description" value="" />
+            <option name="name" value="" />
             <option name="regExp" value="$MESSAGE$$FILE_PATH$?:$LINE$:$COLUMN$" />
           </FilterInfo>
         </array>
       </option>
       <option name="outputFromStdout" value="true" />
-      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/lessc.cmd" />
+      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/lessc" />
       <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />

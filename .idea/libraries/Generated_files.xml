@@ -6,9 +6,12 @@
         <item url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
         <item url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
         <item url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
+        <item url="file://$PROJECT_DIR$/js/directives/carousel.min.js" />
+        <item url="file://$PROJECT_DIR$/js/directives/loader.min.js" />
         <item url="file://$PROJECT_DIR$/js/module.min.js" />
         <item url="file://$PROJECT_DIR$/js/routes.min.js" />
         <item url="file://$PROJECT_DIR$/js/services/rivenditori.min.js" />
+        <item url="file://$PROJECT_DIR$/js/services/settori.min.js" />
         <item url="file://$PROJECT_DIR$/lib/angular-ui-router.min.js" />
         <item url="file://$PROJECT_DIR$/lib/angular.min.js" />
         <item url="file://$PROJECT_DIR$/lib/ftscroller.min.js" />
@@ -64,9 +67,12 @@
       <root url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
       <root url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
       <root url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
+      <root url="file://$PROJECT_DIR$/js/directives/carousel.min.js" />
+      <root url="file://$PROJECT_DIR$/js/directives/loader.min.js" />
       <root url="file://$PROJECT_DIR$/js/module.min.js" />
       <root url="file://$PROJECT_DIR$/js/routes.min.js" />
       <root url="file://$PROJECT_DIR$/js/services/rivenditori.min.js" />
+      <root url="file://$PROJECT_DIR$/js/services/settori.min.js" />
       <root url="file://$PROJECT_DIR$/lib/angular-ui-router.min.js" />
       <root url="file://$PROJECT_DIR$/lib/angular.min.js" />
       <root url="file://$PROJECT_DIR$/lib/ftscroller.min.js" />

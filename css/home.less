@@ -1,0 +1,47 @@
+@import "variables";
+
+carousel {
+  width: 98vw;
+  height: 30vw;
+  margin: 1vw;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  &.right > div {
+    transform: translateX(-100%);
+  }
+  &.left > div {
+    transform: translateX(100%);
+  }
+  &.up > div {
+    transform: translateY(-100%);
+  }
+  &.up > div {
+    transform: translateY(100%);
+  }
+  & > div {
+    background-size: cover!important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    &.init, &.visible {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+    &.visible {
+      transition: 500ms all ease-out;
+    }
+  }
+  &.direzionali {
+    background: url("/img/home/particolare_direzionali.jpg") no-repeat center;
+  }
+  &.operativi {
+    background: url("/img/home/postazione_lavoro.jpg") no-repeat center;
+  }
+  &.riunioni {
+    background: url("/img/home/ambiente_reception_bianco.jpg") no-repeat center;
+  }
+}

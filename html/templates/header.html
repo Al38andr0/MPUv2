@@ -1,0 +1,65 @@
+<div class="row m-0">
+    <div class="logoContainer">
+        <h1>mobiliperufficio.com<sup>®</sup></h1>
+        <h6>office furniture and seating made in Italy</h6>
+    </div>
+    <div class="numberContainer">
+        <div class="numeroVerde">
+            <span class="icon-phone"></span>
+            <span>NUMERO VERDE GRATUITO</span>
+            <span>800.62.90.91</span>
+        </div>
+    </div>
+</div>
+<div class="row m-0">
+    <ul>
+        <li>
+            <a ui-sref="">Info & Servizi</a>
+            <ul>
+                <li ng-repeat="s in vm.categorie.info">
+                    <a ui-sref="">{{s.nome}}<sup ng-if="s.nome === 'Adamantx'">®</sup></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="">Arredi per ufficio</a>
+            <ul>
+                <li ng-repeat="s in vm.settori.extractSettori('mobili per ufficio')">
+                    <a ui-sref="">{{s.nome}}</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="">Sedute per ufficio</a>
+            <ul>
+                <li ng-repeat="s in vm.settori.extractSettori('sedute per ufficio')">
+                    <a ui-sref="">{{s.nome}}</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="">Pareti divisorie</a>
+            <ul>
+                <li ng-repeat="s in vm.settori.extractSettori('pareti divisorie')">
+                    <a ui-sref="">{{s.nome}}</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="">Accessori per ufficio</a>
+            <ul>
+                <li ng-repeat="s in vm.settori.extractSettori('accessori per ufficio')">
+                    <a ui-sref="">{{s.nome}}</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="">Art & Design</a>
+            <ul>
+                <li ng-repeat="s in vm.settori.extractSettori('art & design')">
+                    <a ui-sref="">{{s.nome}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

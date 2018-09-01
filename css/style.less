@@ -1,0 +1,51 @@
+@import "variables";
+@import "loader";
+@import "header";
+@import "footer";
+@import "home";
+
+* {
+  .OS();
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  .OS();
+  padding: 0 0 0.5vw;
+  margin-bottom: @footerHeight;
+  overflow-x: hidden;
+}
+
+.pageLoader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -32px;
+  margin-left: -32px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: @blue;
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+  border: thin solid lighten(@blue, 10%)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -1,0 +1,57 @@
+<div class="row m-0">
+    <div class="col-2 col-xs-12">
+        <h5>mobiliperufficio.com<sup>®</sup></h5>
+        <ul>
+            <li ng-repeat="s in vm.categorie.info">
+                <a ui-sref="">{{s.nome}}<sup ng-if="s.nome === 'Adamantx'">®</sup></a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-2 col-xs-12">
+        <h5>Mobili per ufficio</h5>
+        <ul>
+            <li ng-repeat="s in vm.settori.extractSettori('mobili per ufficio')">
+                <a ui-sref="">{{s.nome}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-2 col-xs-12">
+        <h5>Sedute per ufficio</h5>
+        <ul>
+            <li ng-repeat="s in vm.settori.extractSettori('sedute per ufficio')">
+                <a ui-sref="">{{s.nome}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-2 col-xs-12">
+        <h5>Pareti divisorie</h5>
+        <ul>
+            <li ng-repeat="s in vm.settori.extractSettori('pareti divisorie')">
+                <a ui-sref="">{{s.nome}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-2 col-xs-12">
+        <h5>Accessori per ufficio</h5>
+        <ul>
+            <li ng-repeat="s in vm.settori.extractSettori('accessori per ufficio')">
+                <a ui-sref="">{{s.nome}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-2 col-xs-12">
+        <h5>Art & Design</h5>
+        <ul>
+            <li ng-repeat="s in vm.settori.extractSettori('art & design')">
+                <a ui-sref="">{{s.nome}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-12">
+        <p>mobiliperufficio.com<sup>®</sup> - copyright 2015. Tutti i diritti riservati Geom. Fabrizio Dolfini p.iva 07726891000</p>
+        <p>
+            Credits:
+            <a href="http://alessandroiacovacci.com/" target="_blank" title="Visit my website" rel="author">website's author: Alessandro Iacovacci</a> | <a href="http://www.flaticon.com/" target="_blank" title="Visit FlatIcon website" rel="author">Icons made or inspired by Freepik from www.flaticon.com is licensed by CC BY 3.0</a>
+        </p>
+    </div>
+</div>

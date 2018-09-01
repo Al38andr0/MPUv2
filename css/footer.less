@@ -1,0 +1,57 @@
+@import "variables";
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: @footerHeight;
+  background: @blue;
+  display: flex;
+  color: white;
+  padding: 20px 50px;
+  & > .row {
+    min-width: 100%;
+    justify-content: space-evenly;
+    & > div {
+      & > h5 {
+        font-size: 1.4rem;
+        text-align: left;
+        .PGO();
+        & > sup {
+          font-size: .6rem;
+          position: relative;
+          top: -13px;
+        }
+      }
+      & > ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        & > li {
+          & > a {
+            font-size: 0.9rem;
+            color: @grey;
+            padding: 0.3rem 0;
+            display: block;
+            &:first-letter {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+      &:last-of-type {
+        text-align: center;
+        padding: 20px 0 0;
+        margin-top: 20px;
+        border-top: thin solid @grey;
+        & > p {
+          font-size: 0.8rem;
+          color: @grey;
+          margin: 0 0 0.5rem;
+          & > a {
+            color: @grey;
+          }
+        }
+      }
+    }
+  }
+}
