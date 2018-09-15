@@ -1,3 +1,13 @@
-<carousel class="right" categoria="mobili" delay="0"></carousel>
-<carousel class="left" categoria="mobili" delay="250"></carousel>
-<carousel class="right" categoria="mobili" delay="500"></carousel>
+<carousel list="settori.list[settori.current]" delay="0"></carousel>
+<div class="container p-5">
+    <div class="row subNav">
+        <div class="col">
+            <ul>
+                <li ng-repeat="s in settori.indices"
+                    ng-click="settori.current = $index"
+                    ng-class="{active : settori.current === $index}">{{s}}</li>
+            </ul>
+        </div>
+    </div>
+    <home-settori ng-repeat="s in settori.list[settori.current]" settore="s"></home-settori>
+</div>

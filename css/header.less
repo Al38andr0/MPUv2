@@ -3,16 +3,25 @@
 
 #header {
   background: @blue;
-  padding: 5px 5px 0;
+  padding: 0;
   color: white;
   width: 100%;
   position: relative;
-  z-index: 3;
+  z-index: 50;
   & > .row {
-    justify-content: space-between;
+    &:first-of-type {
+      justify-content: space-between;
+      padding: 0.5vw;
+    }
+    &:last-of-type {
+      justify-content: center;
+      background: lighten(@blue, 3%);
+      border-top: thin solid darken(@blue, 5%);
+      border-bottom: thin solid darken(@blue, 5%);
+    }
     & > div {
       text-align: center;
-      width: 270px;
+      padding: 0 1vw;
     }
     & .logoContainer {
         & > h1, & h6 {
@@ -20,57 +29,58 @@
           text-align: center;
         }
         & > h1 {
-          font-size: 2.3rem;
+          font-size: 2vw;
           position: relative;
           .PGO();
           & > sup {
             position: absolute;
-            top: 10px;
-            right: 7px;
-            font-size: 0.7rem;
+            top: 0.5vw;
+            right: 50%;
+            margin-right: -7vw;
+            font-size: 0.7vw;
           }
         }
         & > h6 {
-          font-size: 0.8rem;
+          font-size: 0.7vw;
           .OSL();
         }
     }
     & .numberContainer {
-      width: 200px;
+      padding-top: 0.5vw;
       & > div.numeroVerde {
         position: relative;
-        top: 5px;
         & > span {
           .PGO();
-          color: @green;
+          color: white;
           &:first-of-type {
             position: absolute;
-            left: -14px;
-            top: 2px;
+            left: 50%;
+            top: -0.5vw;
             padding: 0;
-            color: @green;
-            background: @blue;
-            font-size: 50px;
+            color: #28a745;
+            background: #173244;
+            font-size: 3vw;
             z-index: 1;
+            margin-left: -6.8vw;
           }
           &:nth-of-type(2) {
-            font-size: 16px;
+            font-size: 1vw;
             text-transform: uppercase;
-            color: @green;
-            background: @blue;
+            color: white;
+            background: #173244;
             position: absolute;
-            top: -3px;
-            left: 31px;
-            padding: 0 5px;
+            top: -0.8vw;
+            left: 50%;
             z-index: 2;
+            margin-left: -3.8vw;
           }
           &:last-of-type {
             position: relative;
-            top: 10px;
-            font-size: 2rem;
-            border: 3px solid #449c44;
-            padding: 0 15px;
-            border-radius: 10px 10px 10px 10px;
+            top: 0;
+            font-size: 1.9vw;
+            border: 0.2vw solid #449c44;
+            padding: 0 1vw;
+            border-radius: 0.5vw;
           }
         }
       }
@@ -78,18 +88,21 @@
     & > ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
+      margin: 0;
       font-size: 0;
       display: flex;
-      width: 80%;
+      width: 50%;
       justify-content: space-evenly;
       & > li {
         display: inline-block;
         transition: all 150ms ease-out;
-        padding: 10px 10px 4px;
+        padding: .4vw 4vw .2vw .5vw;
         cursor: pointer;
         position: relative;
-        width: (100%/6);
+        text-align: left;
+        &:last-of-type {
+          padding-right: 0;
+        }
         &:hover, &.active {
           & > a {
             color: white;
@@ -99,8 +112,9 @@
           }
         }
         & > a {
-          font-size: 0.9rem;
+          font-size: 1.2rem;
           color: @grey;
+          .PGO();
           &:hover {
             text-decoration: none;
           }
@@ -108,14 +122,16 @@
         & > ul {
           position: absolute;
           top: 100%;
-          left: 0;
-          width: 99%;
+          left: -1vw;
+          width: auto;
           margin: 0 0.5%;
-          padding: 0;
+          padding: 0 1vw;
           list-style: none;
-          background: fade(@blue, 95%);
+          background: fade(@blue, @fadePercentage);
+          border: thin solid @blue;
           display: none;
           & > li {
+            white-space: nowrap;
             display: block;
             padding: 10px;
             &:hover, &.active {

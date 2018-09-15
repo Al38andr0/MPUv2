@@ -14,9 +14,12 @@
         angular.module("mpu", ['ui.router', 'underscore', 'ngMeta'])
         .constant('api', api)
         .constant('url', url)
-        .run(['ngMeta', '$rootScope', function (ngMeta, $rootScope) {
+        .run(['ngMeta', '$rootScope', '$transitions', function (ngMeta, $rootScope, $transitions) {
             ngMeta.init();
             $rootScope.debugConsole = true;
             $rootScope.loading = true;
+            $transitions.onStart({}, function (event) {
+                console.log(event._treeChanges.entering[0].paramValues.loc);
+            });
         }]);
 })();

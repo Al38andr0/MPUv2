@@ -15,11 +15,17 @@ html {
 
 body {
   .OS();
-  padding: 0 0 0.5vw;
+  padding: 0;
   margin-bottom: @footerHeight;
   overflow-x: hidden;
 }
 
+ui-view {
+  position: relative;
+  z-index: 1;
+  display: block;
+  min-height: 88vh;
+}
 .pageLoader {
   position: absolute;
   top: 50%;

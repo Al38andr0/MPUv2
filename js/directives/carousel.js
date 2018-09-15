@@ -11,37 +11,17 @@
             restrict: 'E',
             templateUrl: '/html/templates/carousel.html',
             scope: {
-                categoria: '@',
+                list: '<',
                 delay: "<"
             },
             link: function (scope, elem, attrs) {
-                scope.list = [];
                 let index = 0,
-                    timing = 5000;
+                    timing = 10000;
                 scope.current = {};
                 scope.next = {};
-                switch (scope.categoria) {
-                    case 'mobili':
-                        scope.list = [
-                            {
-                                bg: '/img/home/particolare_direzionali.jpg',
-                                title: 'Ambienti direzionali',
-                                message: 'Monss experimentum, tanquam domesticus lixa.',
-                                link: ''
-                            },
-                            {
-                                bg: '/img/home/postazione_lavoro.jpg',
-                                title: 'Ambienti operativi',
-                                message: 'Everyone just loves the saltyness of popcorn smoothie jumbled with radish sprouts.',
-                                link: ''
-                            },
-                            {
-                                bg: '/img/home/ambiente_reception_bianco.jpg',
-                                title: 'Ambienti reception',
-                                message: 'Lead me gull, ye evil reef!',
-                                link: ''
-                            }
-                        ]
+
+                function getRandomInt(max) {
+                    return Math.floor(Math.random() * Math.floor(max));
                 }
 
                 let applyBg = function (index, className) {
@@ -53,19 +33,36 @@
                     scope.current = scope.list[current];
                     scope.next = scope.list[next];
 
-                    angular.element(elem[0].children[div]).addClass(className).css({
-                        'background': 'url("' + scope.current.bg + '") no-repeat center',
+                    let currentDiv = angular.element(elem[0].children[div]),
+                        siblingDiv = angular.element(elem[0].children[sibling]);
+
+                    currentDiv.addClass(className).css({
                         'z-index': index
                     });
+                    currentDiv.find('div').eq(0).css({
+                        background: 'url("' + scope.current.bg + '") no-repeat center',
+                        'transform-origin': getRandomInt(100) + '%' + getRandomInt(100) + '%'
+                }).addClass('animated');
+                    currentDiv.find('h3').html(scope.current.title);
+                    currentDiv.find('h6').html(scope.current.subtitle);
+                    currentDiv.find('p').html(scope.current.message);
                     $timeout(function () {
-                        angular.element(elem[0].children[sibling]).removeClass('visible init').css({
-                            'background': 'url("' + scope.next.bg + '") no-repeat center',
+                        siblingDiv.removeClass('visible init').css({
                             'z-index': index + 1
                         });
-                    }, timing/2);
+                        siblingDiv.find('div').eq(0).css({
+                            background: 'url("' + scope.next.bg + '") no-repeat center',
+                            'transform-origin': getRandomInt(100) + '%' + getRandomInt(100) + '%'
+                        }).removeClass('animated');
+                        siblingDiv.find('h3').html(scope.next.title);
+                        siblingDiv.find('h6').html(scope.next.subtitle);
+                        siblingDiv.find('p').html(scope.next.message);
+                    }, timing / 2);
                 };
 
-                applyBg(index, 'init');
+                $timeout(function () {
+                    applyBg(index, 'init');
+                },10);
 
                 $timeout(function () {
                     $interval(function () {

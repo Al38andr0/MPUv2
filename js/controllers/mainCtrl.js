@@ -4,9 +4,9 @@
     angular.module('mpu')
         .controller('mainCtrl', mainCtrl);
 
-    mainCtrl.$inject = ['$stateParams', '$state', '$transitions', '$rootScope', 'rivenditoriSrv', 'ngMeta', 'settoriSrv', '$interval'];
+    mainCtrl.$inject = ['$stateParams', '$state', '$transitions', '$rootScope', 'rivenditoriSrv', 'ngMeta', 'settoriSrv'];
 
-    function mainCtrl($stateParams, $state, $transitions, $rootScope, rivenditoriSrv, ngMeta, settoriSrv, $interval) {
+    function mainCtrl($stateParams, $state, $transitions, $rootScope, rivenditoriSrv, ngMeta, settoriSrv) {
         let vm = this;
 
         vm.rivenditori = {
@@ -63,12 +63,16 @@
                 };
                 vm.rivenditori.getAll(callback);
             }
+            console.log('START');
         });
 
+
         $transitions.onSuccess({}, function () {
-            let loc = $stateParams['loc'];
-            if(loc)
-                ngMeta.setTitle('| ' + loc);
+            console.log('SUCCESS');
+        });
+
+        $transitions.onEnter({}, function () {
+            console.log('ENTER');
         });
     }
 })();

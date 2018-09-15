@@ -1,47 +1,124 @@
 @import "variables";
 
 carousel {
-  width: 98vw;
-  height: 30vw;
-  margin: 1vw;
+  width: 100vw;
+  height: 88vh;
   position: relative;
   display: block;
   overflow: hidden;
   &.right > div {
     transform: translateX(-100%);
+    justify-content: flex-end;
   }
   &.left > div {
     transform: translateX(100%);
+    justify-content: flex-start;
   }
   &.up > div {
     transform: translateY(-100%);
+    justify-content: flex-end;
   }
   &.up > div {
     transform: translateY(100%);
+    justify-content: flex-start;
   }
   & > div {
-    background-size: cover!important;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     opacity: 0;
+    border: thin solid @grey;
+    display: flex;
+    align-items: flex-end;
     &.init, &.visible {
-      transform: translateX(0) translateY(0);
+      transform: translate(0, 0);
       opacity: 1;
     }
     &.visible {
       transition: 500ms all ease-out;
     }
+    & > div.background {
+      background-size: cover!important;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      &.animated {
+        animation: zoomEffect 15s ease-out infinite;
+      }
+    }
+    @keyframes zoomEffect {
+      0% { transform: scale(1.1) }
+      100% { transform: scale(1) }
+    }
+    & > div.messageContainer {
+      background: fade(@blue, @fadePercentage);
+      border: thin solid @blue;
+      width: 35%;
+      padding: 1vw;
+      height: auto;
+      color: @grey;
+      z-index: 2;
+      & > h3, & > h6 {
+        .PGO();
+        color: white;
+      }
+      & > h6 {
+        font-size: 1.2rem;
+      }
+    }
   }
-  &.direzionali {
-    background: url("/img/home/particolare_direzionali.jpg") no-repeat center;
-  }
-  &.operativi {
-    background: url("/img/home/postazione_lavoro.jpg") no-repeat center;
-  }
-  &.riunioni {
-    background: url("/img/home/ambiente_reception_bianco.jpg") no-repeat center;
+}
+
+.container {
+  & .row {
+    border-top: thin solid @grey;
+    &.subNav {
+      border-top: none;
+      & > div {
+        margin: 0;
+        & > ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          font-size: 0;
+          & > li {
+            display: inline-block;
+            font-size: 1.4rem;
+            padding-right: 2vw;
+            .PGO();
+            color: @grey;
+            cursor: pointer;
+            transition: 150ms all ease-out;
+            &:hover, &.active {
+              color: @blue;
+            }
+          }
+        }
+      }
+    }
+    & > div {
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      text-align: justify;
+      &.background {
+        background-size: cover!important;
+        border: thin solid @grey;
+      }
+    }
+    & img {
+      width: 100%;
+    }
+    & h3, & h6 {
+      .PGO();
+      color: @blue;
+    }
+    & h6 {
+      font-size: 1.4rem;
+    }
   }
 }
