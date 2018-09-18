@@ -163,7 +163,5 @@
                 ]
             ]
         };
-
-        console.log('HOME', loc);
     }
 })();

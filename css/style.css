@@ -92,6 +92,7 @@
 }
 #header > .row:first-of-type {
   justify-content: space-between;
+  align-items: center;
   padding: 0.5vw;
 }
 #header > .row:last-of-type {
@@ -125,6 +126,14 @@
   font-size: 0.7vw;
   font-family: "Open Sans Light", sans-serif;
 }
+#header > .row .logoContainer > a {
+  font-size: 1vw;
+  color: #ddd;
+}
+#header > .row .logoContainer > a:hover,
+#header > .row .logoContainer > a:active {
+  color: white;
+}
 #header > .row .numberContainer {
   padding-top: 0.5vw;
 }
@@ -156,6 +165,7 @@
   left: 50%;
   z-index: 2;
   margin-left: -3.8vw;
+  padding: 0 0.5vw 0 0.1vw;
 }
 #header > .row .numberContainer > div.numeroVerde > span:last-of-type {
   position: relative;

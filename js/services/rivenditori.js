@@ -4,11 +4,28 @@
     angular.module('mpu')
         .service('rivenditoriSrv', rivenditoriSrv);
 
-    rivenditoriSrv.$inject = ['$http', '$rootScope', 'api'];
+    rivenditoriSrv.$inject = ['$http', '$rootScope', 'API'];
 
-    function rivenditoriSrv($http, $rootScope, api) {
+    function rivenditoriSrv($http, $rootScope, API) {
         let reference = 'rivenditori',
-            url = api + reference + '.php';
+            url = API + reference + '.php';
+
+        let mapCurrent = function(data) {
+            return {
+                rivenditore: data['riv_nome'],
+                note: data['riv_note'],
+                telefono: data['riv_tel'],
+                email: data['riv_email'],
+                webSite: data['riv_web'],
+                marchi: data['riv_mark'],
+                limite: data['riv_limite'],
+                minimo: data['riv_minimo'],
+                montaggio: data['riv_montaggio'],
+                tipoMontaggio: data['riv_montaggio_type'],
+                trasporto: data['riv_trasporto'],
+                tipoTrasporto: data['riv_trasporto_type']
+            };
+        };
 
         let getAll = function (success, fail) {
             $http.get(url, {params : {action : 'getAll'}, cache : true})
@@ -47,7 +64,8 @@
         };
         return {
             getAll: getAll,
-            getByProv: getByProv
+            getByProv: getByProv,
+            mapCurrent: mapCurrent
         }
     }
 })();

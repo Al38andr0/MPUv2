@@ -12,14 +12,33 @@
         url = protocol + '/' + host;
 
         angular.module("mpu", ['ui.router', 'underscore', 'ngMeta'])
-        .constant('api', api)
-        .constant('url', url)
-        .run(['ngMeta', '$rootScope', '$transitions', function (ngMeta, $rootScope, $transitions) {
+        .constant('API', api)
+        .constant('URL', url)
+        .run(['ngMeta', '$rootScope', '$transitions', 'rivenditoriSrv', 'marchiSrv', 'settoriSrv', function (ngMeta, $rootScope, $transitions, rivenditoriSrv, marchiSrv, settoriSrv) {
             ngMeta.init();
             $rootScope.debugConsole = true;
             $rootScope.loading = true;
             $transitions.onStart({}, function (event) {
-                console.log(event._treeChanges.entering[0].paramValues.loc);
+                if($rootScope.loading) {
+                    let loc = event._treeChanges.entering[0].paramValues['loc'] || 'Roma';
+                    if(loc !== 'mpu') {
+                        let success =  function(data) {
+                            $rootScope.current = rivenditoriSrv.mapCurrent(data);
+                            $rootScope.currentRiv = data;
+                            $rootScope.loading = false;
+
+                            let success = function(data) {
+                                $rootScope.marchi = data;
+                                $rootScope.current.marchi = marchiSrv.mapCurrent($rootScope.marchi, $rootScope.current.marchi);
+                                let categorie = marchiSrv.extractCategorie($rootScope.current.marchi);
+                                let success = function(data) {};
+                                settoriSrv.getAll(success);
+                            };
+                            marchiSrv.getAll(success);
+                        };
+                        rivenditoriSrv.getByProv(loc, success);
+                    }
+                }
             });
         }]);
 })();

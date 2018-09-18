@@ -4,11 +4,11 @@
     angular.module('mpu')
         .service('settoriSrv', settoriSrv);
 
-    settoriSrv.$inject = ['$http', '$rootScope', 'api', '_'];
+    settoriSrv.$inject = ['$http', '$rootScope', 'API', '_'];
 
-    function settoriSrv($http, $rootScope, api, _) {
+    function settoriSrv($http, $rootScope, API, _) {
         let reference = 'settori',
-            url = api + reference + '.php';
+            url = API + reference + '.php';
 
         let info = function () {
             return [
@@ -51,6 +51,16 @@
             ];
         };
 
+        let mapCurrent = function(data, current) {
+
+        };
+
+        let extractSettori = function (list, nome) {
+            return _.find(list, function (num) {
+                return num.nome === nome;
+            }).settori;
+        };
+
         let getAll = function (success, fail) {
             $http.get(url, {params: {action: 'getAll'}, cache: true})
                 .then(
@@ -59,19 +69,20 @@
                             console.log('GET ALL ' + reference + ': SUCCESS', data);
                         if (success) {
                             let categorie = {
-                                indices: [],
-                                list: []
-                            };
+                                    list: []
+                                },
+                                indices = [];
+
                             _.each(data.data, function (v) {
-                                if (!_.contains(categorie.indices, v['cat_nome'])) {
-                                    categorie.indices.push(v['cat_nome']);
+                                if (!_.contains(indices, v['cat_id'])) {
+                                    indices.push(v['cat_id']);
                                     categorie.list.push({
                                         nome: v['cat_nome'],
                                         id: v['cat_id'],
                                         settori: []
                                     })
                                 }
-                                let index = categorie.indices.indexOf(v['cat_nome']);
+                                let index = indices.indexOf(v['cat_id']);
                                 categorie.list[index].settori.push({
                                     nome: v['set_nome'],
                                     id: v['set_id']
@@ -91,7 +102,8 @@
 
         return {
             getAll: getAll,
-            info: info
+            info: info,
+            extractSettori: extractSettori
         }
     }
 })();
