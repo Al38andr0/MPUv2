@@ -3,7 +3,7 @@
 <head lang="it">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css%5BOLD%5D/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/mpuDashboard.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="../img/favicon.ico" title="mobiliperufficio.com" />
@@ -149,13 +149,14 @@ function siteMapRivGoogle($con) {
 <?php mysqli_close($con); ?>
 </body>
 
-<script type="text/javascript" src="../js%5BOLD%7D/underscore-min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script type="text/javascript" src="/lib/underscore-min.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
-<script type="text/javascript" src="../js%5BOLD%7D/ui-bootstrap-tpls-0.13.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 <script type='text/javascript' src='http://rawgithub.com/ftlabs/ftscroller/master/lib/ftscroller.js'></script>
 <script type="text/javascript" src="../lib/ng-ftscroller.js"></script>
 <script type="text/javascript" src="js/mpuDashboard.js"></script>

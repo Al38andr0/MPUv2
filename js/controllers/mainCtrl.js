@@ -54,11 +54,13 @@
 
 
         $transitions.onSuccess({}, function () {
-            console.log('SUCCESS');
+            // console.log('SUCCESS');
         });
 
         $transitions.onEnter({}, function () {
-            console.log('ENTER');
+            // console.log('ENTER');
         });
+
+        console.log('MAINCTRL');
     }
 })();

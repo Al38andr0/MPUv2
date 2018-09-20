@@ -12,6 +12,7 @@
         <item url="file://$PROJECT_DIR$/js/directives/loader.min.js" />
         <item url="file://$PROJECT_DIR$/js/module.min.js" />
         <item url="file://$PROJECT_DIR$/js/routes.min.js" />
+        <item url="file://$PROJECT_DIR$/js/services/linee.min.js" />
         <item url="file://$PROJECT_DIR$/js/services/marchi.min.js" />
         <item url="file://$PROJECT_DIR$/js/services/rivenditori.min.js" />
         <item url="file://$PROJECT_DIR$/js/services/settori.min.js" />
@@ -77,6 +78,7 @@
       <root url="file://$PROJECT_DIR$/js/main.min.js" />
       <root url="file://$PROJECT_DIR$/js/module.min.js" />
       <root url="file://$PROJECT_DIR$/js/routes.min.js" />
+      <root url="file://$PROJECT_DIR$/js/services/linee.min.js" />
       <root url="file://$PROJECT_DIR$/js/services/marchi.min.js" />
       <root url="file://$PROJECT_DIR$/js/services/rivenditori.min.js" />
       <root url="file://$PROJECT_DIR$/js/services/settori.min.js" />

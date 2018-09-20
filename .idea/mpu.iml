@@ -18,5 +18,6 @@
     <orderEntry type="library" name="skype-uri" level="application" />
     <orderEntry type="library" name="conversion" level="application" />
     <orderEntry type="library" name="angular-ui-router" level="application" />
+    <orderEntry type="library" name="ui-bootstrap-tpls" level="application" />
   </component>
 </module>

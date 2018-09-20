@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{angular, angular-animate, angular-cookies, angular-route, angular-sanitize, angular-touch, angular-ui-bootstrap-DefinitelyTyped, angular-ui-router, angularjs-DefinitelyTyped, conversion, ftscroller, jquery, jquery.blueimp-gallery, skype-uri}" />
+    <file url="PROJECT" libraries="{angular, angular-animate, angular-cookies, angular-route, angular-sanitize, angular-touch, angular-ui-bootstrap-DefinitelyTyped, angular-ui-router, angularjs-DefinitelyTyped, conversion, ftscroller, jquery, jquery.blueimp-gallery, skype-uri, ui-bootstrap-tpls}" />
   </component>
 </project>

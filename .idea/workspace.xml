@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="router">
-      <change afterPath="$PROJECT_DIR$/dashboard/api/marchi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/services/marchi.js" afterDir="false" />
+    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Created current">
+      <change afterPath="$PROJECT_DIR$/dashboard/api/linee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/services/linee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mpu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mpu.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/json/linee.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/json/linee.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/json/linee_settori.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/json/linee_settori.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/json/riv.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/json/riv.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/json/rivenditori.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/json/rivenditori.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/controllers/homeCtrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/homeCtrl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/mainCtrl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/mainCtrl.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/module.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/module.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/services/rivenditori.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/rivenditori.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/services/rivenditori.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/rivenditori.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/services/settori.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/settori.js" afterDir="false" />
     </list>
     <ignored path="mpu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,7 +63,7 @@
     <session id="283235535">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="20" />
+          <entry key="project.closed" value="21" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
@@ -72,29 +71,29 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="7" />
-          <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="10" />
           <entry key="htaccess" value="5" />
-          <entry key="html" value="27" />
-          <entry key="js" value="67" />
+          <entry key="html" value="29" />
+          <entry key="js" value="74" />
           <entry key="json" value="7" />
           <entry key="less" value="22" />
-          <entry key="php" value="24" />
+          <entry key="php" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="10" />
-          <entry key="HTML" value="27" />
+          <entry key="HTML" value="29" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="67" />
+          <entry key="JavaScript" value="74" />
           <entry key="Less" value="22" />
-          <entry key="PHP" value="24" />
+          <entry key="PHP" value="29" />
           <entry key="composer.json" value="4" />
           <entry key="htaccess" value="5" />
         </counts>
@@ -104,22 +103,22 @@
           <entry key="css" value="7" />
           <entry key="dummy" value="24" />
           <entry key="htaccess" value="13" />
-          <entry key="html" value="3119" />
-          <entry key="js" value="9836" />
+          <entry key="html" value="3125" />
+          <entry key="js" value="10690" />
           <entry key="json" value="28" />
           <entry key="less" value="5220" />
-          <entry key="php" value="1291" />
-          <entry key="txt" value="81" />
+          <entry key="php" value="1464" />
+          <entry key="txt" value="109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="7" />
-          <entry key="HTML" value="3122" />
-          <entry key="JavaScript" value="9833" />
+          <entry key="HTML" value="3128" />
+          <entry key="JavaScript" value="10687" />
           <entry key="Less" value="5220" />
-          <entry key="PHP" value="1282" />
-          <entry key="PLAIN_TEXT" value="105" />
+          <entry key="PHP" value="1455" />
+          <entry key="PLAIN_TEXT" value="133" />
           <entry key="SQL" value="9" />
           <entry key="composer.json" value="28" />
           <entry key="htaccess" value="13" />
@@ -150,7 +149,7 @@
     <favorites_list name="mpu" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.50057274">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -180,38 +179,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="595">
-                  <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+                <state relative-caret-position="697">
+                  <caret line="40" selection-start-line="34" selection-end-line="41" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/services/settori.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/services/linee.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="341">
-                  <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/services/marchi.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="443">
-                  <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/html/templates/header.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                <state relative-caret-position="629">
+                  <caret line="62" column="86" selection-start-line="62" selection-start-column="86" selection-end-line="62" selection-end-column="86" />
                 </state>
               </provider>
             </entry>
@@ -232,8 +213,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="986">
-                  <caret line="57" selection-start-line="57" selection-end-line="57" />
+                <state relative-caret-position="800">
+                  <caret line="63" selection-start-line="63" selection-end-line="64" />
                 </state>
               </provider>
             </entry>
@@ -241,7 +222,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/controllers/homeCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1242">
+                <state relative-caret-position="2805">
                   <caret line="165" selection-start-line="165" selection-end-line="165" />
                 </state>
               </provider>
@@ -279,8 +260,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Como</find>
-      <find>vm.ti</find>
       <find>preven</find>
       <find>checkQnt</find>
       <find>vetrine</find>
@@ -309,6 +288,8 @@
       <find>5 offset-sm-1</find>
       <find>settoriSrv</find>
       <find>api</find>
+      <find>mana</find>
+      <find>marchiSrv</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -320,6 +301,7 @@
       <replace>6</replace>
       <replace>marchiSrv</replace>
       <replace>API</replace>
+      <replace>lineeSrv</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -346,9 +328,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dashboard/php/prodotti.php" />
-        <option value="$PROJECT_DIR$/dashboard/template/prodotti.html" />
-        <option value="$PROJECT_DIR$/dashboard/js/directives.js" />
         <option value="$PROJECT_DIR$/dashboard/js/controllers.js" />
         <option value="$PROJECT_DIR$/dashboard/php/vetrineProdotti.php" />
         <option value="$PROJECT_DIR$/js/directives/mpuFooter.js" />
@@ -387,16 +366,19 @@
         <option value="$PROJECT_DIR$/css/home.less" />
         <option value="$PROJECT_DIR$/js/routes.js" />
         <option value="$PROJECT_DIR$/dashboard/api/settori.php" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/dashboard/api/marchi.php" />
-        <option value="$PROJECT_DIR$/js/controllers/mainCtrl.js" />
         <option value="$PROJECT_DIR$/js/controllers/homeCtrl.js" />
         <option value="$PROJECT_DIR$/js/services/rivenditori.js" />
         <option value="$PROJECT_DIR$/html/templates/header.html" />
         <option value="$PROJECT_DIR$/css/header.less" />
         <option value="$PROJECT_DIR$/js/services/settori.js" />
         <option value="$PROJECT_DIR$/js/services/marchi.js" />
+        <option value="$PROJECT_DIR$/dashboard/index.php" />
+        <option value="$PROJECT_DIR$/js/controllers/mainCtrl.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/dashboard/api/linee.php" />
         <option value="$PROJECT_DIR$/js/module.js" />
+        <option value="$PROJECT_DIR$/js/services/linee.js" />
       </list>
     </option>
   </component>
@@ -469,6 +451,22 @@
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
               <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -487,6 +485,11 @@
               <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
@@ -522,19 +525,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2" />
-      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\views" />
-      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\htaccess" />
-      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\html\pages" />
-      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\js\services" />
       <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\dashboard\api" />
       <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\js\controllers" />
       <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\js\directives" />
       <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\fonts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\views" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\htaccess" />
+      <recent name="C:\EasyPHP-Devserver-16.1\eds-www\mpuV2\html\pages" />
+      <recent name="C:\EasyPHP-DevServer-14.1VC11\data\localweb\mpu" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -709,7 +712,8 @@
       <workItem from="1537017957449" duration="5718000" />
       <workItem from="1537129018416" duration="5565000" />
       <workItem from="1537302366212" duration="11000" />
-      <workItem from="1537302394675" duration="6070000" />
+      <workItem from="1537302394675" duration="6164000" />
+      <workItem from="1537473148838" duration="6638000" />
     </task>
     <task id="LOCAL-00001" summary="Home page carousel + header">
       <created>1535839387384</created>
@@ -725,11 +729,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537025635809</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created current">
+      <created>1537308554977</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537308554977</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307506000" />
+    <option name="totallyTimeSpent" value="314238000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -806,7 +817,8 @@
     <MESSAGE value="Sviluppata struttura principale API" />
     <MESSAGE value="Home page carousel + header" />
     <MESSAGE value="router" />
-    <option name="LAST_COMMIT_MESSAGE" value="router" />
+    <MESSAGE value="Created current" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created current" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -820,27 +832,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js[OLD]/controllers/mainCtrl.js" />
-    <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js[OLD]/routes.js" />
-    <entry file="file://$PROJECT_DIR$/htaccess/.htaccess" />
-    <entry file="file://$PROJECT_DIR$/index[OLD].php" />
-    <entry file="file://$PROJECT_DIR$/dashboard/php/connessione.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHPMailer/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json" />
     <entry file="file://$PROJECT_DIR$/dashboard/php/agenti.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -897,13 +888,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/header.min.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/api/rivenditori.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/json/categorie.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -995,13 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/api/marchi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1009,10 +986,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/rivenditori.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/home.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/header.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/homeCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2805">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
         </state>
       </provider>
     </entry>
@@ -1030,80 +1056,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/homeCtrl.js">
+    <entry file="file://$PROJECT_DIR$/lib/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/home.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/lib/angular.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.less">
+    <entry file="file://$PROJECT_DIR$/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        <state relative-caret-position="85">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="800">
+          <caret line="63" selection-start-line="63" selection-end-line="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/dashboard/php/lineeSettori.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        <state relative-caret-position="-1190" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/api/rivenditori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="29" column="170" selection-start-line="29" selection-start-column="170" selection-end-line="29" selection-end-column="170" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/templates/header.html">
+    <entry file="file://$PROJECT_DIR$/dashboard/template/lineeSettori.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="375">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/header.less">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/rivenditori.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        <state relative-caret-position="391">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/services/settori.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="-84">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/api/linee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/services/marchi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+        <state relative-caret-position="867">
+          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+        <state relative-caret-position="697">
+          <caret line="40" selection-start-line="34" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/linee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="62" column="86" selection-start-line="62" selection-start-column="86" selection-end-line="62" selection-end-column="86" />
         </state>
       </provider>
     </entry>
