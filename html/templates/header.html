@@ -29,47 +29,15 @@
             <a ui-sref="">Info & Servizi</a>
             <ul>
                 <li ng-repeat="s in vm.categorie.info">
-                    <a ui-sref="">{{s.nome}}<sup ng-if="s.nome === 'Adamantx'">®</sup></a>
+                    <a ui-sref="{{s.url}}({ loc : $root.current.location })" target="{{s.target}}">{{s.nome}}<sup ng-if="s.nome === 'Adamantx'">®</sup></a>
                 </li>
             </ul>
         </li>
-        <li>
-            <a ui-sref="">Arredi</a>
+        <li ng-repeat="c in $root.current.categorie">
+            <a ui-sref="">{{c.titolo}}</a>
             <ul>
-                <li ng-repeat="s in vm.settori.extractSettori('mobili per ufficio')">
-                    <a ui-sref="">{{s.nome}}</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="">Sedute</a>
-            <ul>
-                <li ng-repeat="s in vm.settori.extractSettori('sedute per ufficio')">
-                    <a ui-sref="">{{s.nome}}</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="">Pareti</a>
-            <ul>
-                <li ng-repeat="s in vm.settori.extractSettori('pareti divisorie')">
-                    <a ui-sref="">{{s.nome}}</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="">Accessori</a>
-            <ul>
-                <li ng-repeat="s in vm.settori.extractSettori('accessori per ufficio')">
-                    <a ui-sref="">{{s.nome}}</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="">Art & Design</a>
-            <ul>
-                <li ng-repeat="s in vm.settori.extractSettori('art & design')">
-                    <a ui-sref="">{{s.nome}}</a>
+                <li ng-repeat="s in c.settori">
+                    <a ui-sref="settore({ loc : $root.current.location, categoria: c.url, settore: s.url})">{{s.title}}</a>
                 </li>
             </ul>
         </li>

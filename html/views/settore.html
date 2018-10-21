@@ -1,0 +1,9 @@
+<div class="container p-5">
+    <div class="row breadcrumbs">
+        <div class="col">
+            <h4><span>{{current.categoria.nome}}</span> <span class="chevron">&#10095;</span> <span>{{current.settore.title}}</span> <span class="link notes" ng-click="current.intro = !current.intro">(descrizione)</span></h4>
+            <div class="descrizione" ng-show="current.intro" ng-bind-html="current.descrizione"></div>
+        </div>
+    </div>
+    <linea ng-repeat="l in current.linee" linea="l" settore="current.settore.nome" categoria="current.categoria.nome"></linea>
+</div>

@@ -3,6 +3,8 @@
 @import "header";
 @import "footer";
 @import "home";
+@import "settore";
+@import "vetrina";
 
 * {
   .OS();
@@ -32,6 +34,20 @@ ui-view {
   left: 50%;
   margin-top: -32px;
   margin-left: -32px;
+}
+
+.link {
+  color: lighten(@blue, 20%)!important;;
+  cursor: pointer;
+  &:hover {
+    color: lighten(@blue, 30%)!important;;
+    text-decoration: underline;
+  }
+}
+
+.notes {
+  .OS()!important;;
+  font-size: .8rem!important;
 }
 
 ::-webkit-scrollbar {

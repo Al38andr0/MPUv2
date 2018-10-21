@@ -4,9 +4,9 @@
     angular.module('mpu')
         .controller('homeCtrl', homeCtrl);
 
-    homeCtrl.$inject = ['$scope', '$rootScope', 'loc'];
+    homeCtrl.$inject = ['$scope'];
 
-    function homeCtrl($scope, $rootScope, loc) {
+    function homeCtrl($scope) {
         $scope.settori = {
             current : 0,
             indices: ['Arredi', 'Sedute', 'Pareti', 'Accessori', 'Art & Design'],

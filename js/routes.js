@@ -28,7 +28,7 @@
                     controller: 'homeCtrl',
                     resolve: {
                         loc: ['$transition$', function ($transition$) {
-                            return $transition$.params().loc;
+                            return $transition$.params()['loc'];
                         }]
                     }
                 })
@@ -41,20 +41,46 @@
                             description: 'Vendita diretta e online di mobili per ufficio, sedie, poltrone, pareti divisorie, arredo ufficio moderno, classico e design, offerte a prezzi scontati'
                         }
                     },
-                    controller: 'homeCtrl',
-                    resolve: {
-                        loc: ['$transition$', function ($transition$) {
-                            return $transition$.params().loc;
-                        }]
-                    }
+                    controller: 'homeCtrl'
                 })
-                .state('categoria', {
-                    url: '/:loc/categoria/:categoria',
-                    templateUrl: '/html/views/categoria.html',
+                .state('settore', {
+                    url: '/:loc/settore/:categoria/:settore',
+                    templateUrl: '/html/views/settore.html',
+                    controller: 'settoreCtrl',
+                    resolve: {
+                        params: ['$transition$', function ($transition$) {
+                            return {
+                                loc: $transition$.params()['loc'],
+                                categoria: $transition$.params()['categoria'],
+                                settore: $transition$.params()['settore']
+                            }
+                        }]
+                    },
                     data: {
                         meta: {
-                            title: 'Test page',
-                            description: 'Test the site'
+                            title: 'Categoria',
+                            description: 'Categoria'
+                        }
+                    }
+                })
+                .state('vetrina', {
+                    url: '/:loc/vetrina/:categoria/:settore/:linea',
+                    templateUrl: '/html/views/vetrina.html',
+                    controller: 'vetrinaCtrl',
+                    resolve: {
+                        params: ['$transition$', function ($transition$) {
+                            return {
+                                loc: $transition$.params()['loc'],
+                                categoria: $transition$.params()['categoria'],
+                                settore: $transition$.params()['settore'],
+                                linea: $transition$.params()['linea']
+                            }
+                        }]
+                    },
+                    data: {
+                        meta: {
+                            title: 'Linea',
+                            description: 'Linea'
                         }
                     }
                 })

@@ -1,0 +1,70 @@
+@import "variables";
+
+.container {
+  & linea {
+    & .row {
+      border-top: thin solid @grey;
+    }
+    &:last-of-type {
+      & .row {
+        border-bottom: thin solid @grey;
+      }
+    }
+  }
+  & .row {
+    &.breadcrumbs {
+      border-top: none;
+      & > div {
+        margin: 0 0 1vh;
+        & > h4 {
+          margin: 0;
+          & > span {
+            display: inline-block;
+            font-size: 1.4rem;
+            .PGO();
+            color: @blue;
+            &:not(:last-of-type):first-letter {
+              text-transform: uppercase;
+            }
+            &.chevron {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+    & .descrizione {
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    & > div {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      & img {
+        border: thin solid @grey;
+      }
+    }
+    & img {
+      width: 100%;
+    }
+    & h3 {
+      .PGO();
+      margin-bottom: 1.5rem;
+      color: @blue;
+    }
+    & p {
+      margin-bottom: .5rem;
+    }
+    & ul {
+      padding-left: 18px;
+      & > li {
+        & > p {
+          &:first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,30 +11,23 @@
             url = API + reference + '.php';
 
         let mapCurrent = function(data, current) {
-            let array = [];
-            _.each(data, function (v) {
-                let m = _.find(JSON.parse(current), function (num) {
-                    return num.i === parseInt(v['mark_id']);
-                });
-
-                if(m.v === 1)
-                    array.push({
-                        id : parseInt(v['mark_id']),
-                        nome : v['mark_nome'],
-                        categorie : JSON.parse(v['mark_cat_array']),
-                        sconto : m.s,
-                        consegna : m.d
-                    })
+            let marchi = [];
+            _.each(JSON.parse(current), function (v) {
+                if (v.v === 1) {
+                    let marchio = _.find(data, function (num) {
+                        return num.id === v.i;
+                    });
+                    if(v.s)
+                        marchio.sconto = v.s;
+                    if(v.d) {
+                        _.each(marchio.linee, function (l) {
+                            l.consegna = v.d;
+                        });
+                    }
+                    marchi.push(marchio);
+                }
             });
-            return array;
-        };
-
-        let extractCategorie = function(data) {
-            let array = [];
-            _.each(data, function (v) {
-                array.push(v.categorie);
-            });
-            return _.uniq(_.flatten(array));
+            return marchi;
         };
 
         let getAll = function (success, fail) {
@@ -56,10 +49,16 @@
                 )
         };
 
+        let getMarchioIdFromName = function (list, name) {
+            return _.find(list, function (num) {
+                return num.nome = name;
+            }).id;
+        };
+
         return {
             getAll: getAll,
             mapCurrent: mapCurrent,
-            extractCategorie: extractCategorie
+            getMarchioIdFromName: getMarchioIdFromName
         }
     }
 })();

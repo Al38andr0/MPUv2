@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pathway Gothic One';
+  src: url('../fonts/PathwayGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 500px;
+  background: #173244;
+  display: flex;
+  color: white;
+  padding: 20px 50px;
+}
+#footer > .row {
+  min-width: 100%;
+  justify-content: space-evenly;
+}
+#footer > .row > div > h5 {
+  font-size: 1.4rem;
+  text-align: left;
+  font-family: "Pathway Gothic One", sans-serif;
+}
+#footer > .row > div > h5 > sup {
+  font-size: 0.6rem;
+  position: relative;
+  top: -13px;
+}
+#footer > .row > div > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#footer > .row > div > ul > li > a {
+  font-size: 0.9rem;
+  color: #ddd;
+  padding: 0.3rem 0;
+  display: block;
+}
+#footer > .row > div > ul > li > a:first-letter {
+  text-transform: uppercase;
+}
+#footer > .row > div:last-of-type {
+  text-align: center;
+  padding: 20px 0 0;
+  margin-top: 20px;
+  border-top: thin solid #ddd;
+}
+#footer > .row > div:last-of-type > p {
+  font-size: 0.8rem;
+  color: #ddd;
+  margin: 0 0 0.5rem;
+}
+#footer > .row > div:last-of-type > p > a {
+  color: #ddd;
+}

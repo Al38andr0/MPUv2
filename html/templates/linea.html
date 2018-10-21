@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-5 col-xs-12">
+        <h3>Linea {{linea.nome}}</h3>
+        <p>Fascia di prezzo: {{linea.priceRange}} <span class="notes">(relativo al settore)</span></p>
+        <p>Consegna: {{linea.consegna}} giorni</p>
+        <p class="link">Galleria immagini</p>
+        <p ng-if="linea.catalogo" class="link">Catalogo illustrativo</p>
+        <p ng-if="linea.specifiche" class="link">Specifiche tecniche</p>
+        <p class="link">Modelli 3D <span class="notes">(DWG/3DS)</span> </p>
+        <p>Linea ideale per:</p>
+        <ul>
+            <li ng-repeat="s in linea.settori">
+                <p>{{s}}</p>
+            </li>
+        </ul>
+        <button ng-if="linea.vetrina" class="btn btn-success text-uppercase" ui-sref="vetrina({ loc : $root.current.location, categoria: urls.categoria, settore: urls.settore, linea: urls.linea})">Visita la linea {{linea.nome}}</button>
+        <button ng-if="!linea.vetrina" class="btn btn-success text-uppercase" ui-sref="linea({ loc : $root.current.location, categoria: urls.categoria, settore: urls.settore, linea: urls.linea})">Visita la linea {{linea.nome}}</button>
+    </div>
+    <div class="col-sm-6 offset-sm-1 col-xs-12">
+        <img ng-src="{{linea.image}}" title="{{settore}}: linea {{linea.nome}}">
+    </div>
+</div>

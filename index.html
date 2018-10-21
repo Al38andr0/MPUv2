@@ -14,27 +14,33 @@
     <script src="/lib/angular.js"></script>
     <!--<script src="/lib/angular.min.js"></script>-->
     <script src="/lib/underscore-min.js"></script>
+    <script src="/lib/angular-sanitize.min.js"></script>
     <script src="/lib/angular-ui-router.min.js"></script>
     <script src="/lib/ngMeta.min.js"></script>
+    <script type="text/javascript" src="/js/mixin.js"></script>
     <script type="text/javascript" src="/js/module.js"></script>
     <script type="text/javascript" src="/js/routes.js"></script>
-    <script type="text/javascript" src="/js/services/rivenditori.js"></script>
-    <script type="text/javascript" src="/js/services/settori.js"></script>
-    <script type="text/javascript" src="/js/services/marchi.js"></script>
-    <script type="text/javascript" src="/js/services/linee.js"></script>
+    <script type="text/javascript" src="/js/filters.js"></script>
+    <script type="text/javascript" src="/js/services/rivenditoriSrv.js"></script>
+    <script type="text/javascript" src="/js/services/settoriSrv.js"></script>
+    <script type="text/javascript" src="/js/services/marchiSrv.js"></script>
+    <script type="text/javascript" src="/js/services/lineeSrv.js"></script>
+    <script type="text/javascript" src="/js/services/vetrineSrv.js"></script>
+    <script type="text/javascript" src="/js/services/prodottiSrv.js"></script>
+    <script type="text/javascript" src="/js/services/prodottiPerVetrineSrv.js"></script>
     <!--<script type="text/javascript" src="/js/filters.js"></script>-->
     <!--<script type="text/javascript" src="/js/controllers/mainCtrl.js"></script>-->
     <script type="text/javascript" src="/js/controllers/mainCtrl.min.js"></script>
     <script type="text/javascript" src="/js/controllers/homeCtrl.min.js"></script>
+    <script type="text/javascript" src="/js/controllers/settoreCtrl.min.js"></script>
+    <script type="text/javascript" src="/js/controllers/vetrinaCtrl.min.js"></script>
     <script type="text/javascript" src="/js/directives/loader.min.js"></script>
     <script type="text/javascript" src="/js/directives/carousel.js"></script>
     <script type="text/javascript" src="/js/directives/homeSettori.js"></script>
+    <script type="text/javascript" src="/js/directives/linea.js"></script>
+    <script type="text/javascript" src="/js/directives/vetrina.js"></script>
 </head>
 <body class="grid-container">
-<!--
-<a ui-sref="test({loc: 'mpu'})">TEST</a>
-<a ui-sref="home">HOME</a>
--->
 <loader class="pageLoader" ng-if="$root.loading"></loader>
 <header id="header" class="container-fluid" ng-include="'/html/templates/header.html'" ng-if="!$root.loading"></header>
 <ng-include ng-if="!$root.loading" src="'/html/templates/nav.html'"></ng-include>

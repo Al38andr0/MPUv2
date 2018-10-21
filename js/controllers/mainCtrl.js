@@ -60,7 +60,5 @@
         $transitions.onEnter({}, function () {
             // console.log('ENTER');
         });
-
-        console.log('MAINCTRL');
     }
 })();

@@ -8,13 +8,15 @@
 
     let host = location.host,
         protocol = location.protocol,
+        assets = '/dashboard/archivio_dati/',
         api = '/dashboard/api/',
-        url = protocol + '/' + host;
+        url = protocol + '//' + host;
 
-    angular.module("mpu", ['ui.router', 'underscore', 'ngMeta'])
+    angular.module("mpu", ['ui.router', 'underscore', 'ngMeta', 'ngSanitize'])
         .constant('API', api)
         .constant('URL', url)
-        .run(['ngMeta', '$rootScope', '$transitions', 'rivenditoriSrv', 'lineeSrv', 'settoriSrv', function (ngMeta, $rootScope, $transitions, rivenditoriSrv, lineeSrv, settoriSrv) {
+        .constant('ASSETS', assets)
+        .run(['ngMeta', '$rootScope', '$transitions', 'rivenditoriSrv', 'lineeSrv', 'settoriSrv', 'marchiSrv', function (ngMeta, $rootScope, $transitions, rivenditoriSrv, lineeSrv, settoriSrv, marchiSrv) {
             ngMeta.init();
             $rootScope.debugConsole = true;
             $rootScope.loading = true;
@@ -23,22 +25,17 @@
                     let loc = event._treeChanges.entering[0].paramValues['loc'] || 'Roma';
                     let success = function (data) {
                         $rootScope.current = rivenditoriSrv.mapCurrent(data);
+                        $rootScope.current.location = loc;
                         $rootScope.currentRiv = data;
-                        $rootScope.loading = false;
-
                         let success = function (data) {
                             $rootScope.marchi = data;
-                            // $rootScope.current.marchi = marchiSrv.mapCurrent($rootScope.marchi, $rootScope.current.marchi);
-                            // let categorie = marchiSrv.extractCategorie($rootScope.current.marchi);
-                            console.log(data);
+                            $rootScope.current.marchi = marchiSrv.mapCurrent($rootScope.marchi, $rootScope.current.marchi);
                             let success = function (data) {
-/*
-                                $rootScope.categorie = [];
-                                _.each(data.list, function (v) {
-                                    if(_.contains(categorie, parseInt(v.id)))
-                                        $rootScope.categorie.push(v);
-                                });
-*/
+                                $rootScope.current.categorie = settoriSrv.extractCategorie(data.list, $rootScope.current.marchi);
+                                $rootScope.current.settori = settoriSrv.extractSettori($rootScope.current.categorie);
+                                settoriSrv.addLinee($rootScope.current.settori, $rootScope.current.marchi);
+
+                                $rootScope.loading = false;
                             };
                             settoriSrv.getAll(success);
                         };

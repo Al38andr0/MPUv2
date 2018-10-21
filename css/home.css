@@ -1,0 +1,151 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pathway Gothic One';
+  src: url('../fonts/PathwayGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+carousel {
+  width: 100vw;
+  height: 88vh;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+carousel.right > div {
+  transform: translateX(-100%);
+  justify-content: flex-end;
+}
+carousel.left > div {
+  transform: translateX(100%);
+  justify-content: flex-start;
+}
+carousel.up > div {
+  transform: translateY(-100%);
+  justify-content: flex-end;
+}
+carousel.up > div {
+  transform: translateY(100%);
+  justify-content: flex-start;
+}
+carousel > div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  border: thin solid #ddd;
+  display: flex;
+  align-items: flex-end;
+}
+carousel > div.init,
+carousel > div.visible {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+carousel > div.visible {
+  transition: 500ms all ease-out;
+}
+carousel > div > div.background {
+  background-size: cover!important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+carousel > div > div.background.animated {
+  animation: zoomEffect 15s ease-out infinite;
+}
+@keyframes zoomEffect {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+carousel > div > div.messageContainer {
+  background: rgba(23, 50, 68, 0.9);
+  border: thin solid #173244;
+  width: 35%;
+  padding: 1vw;
+  height: auto;
+  color: #ddd;
+  z-index: 2;
+}
+carousel > div > div.messageContainer > h3,
+carousel > div > div.messageContainer > h6 {
+  font-family: "Pathway Gothic One", sans-serif;
+  color: white;
+}
+carousel > div > div.messageContainer > h6 {
+  font-size: 1.2rem;
+}
+.container .row {
+  border-top: thin solid #ddd;
+}
+.container .row.subNav {
+  border-top: none;
+}
+.container .row.subNav > div {
+  margin: 0;
+}
+.container .row.subNav > div > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0;
+}
+.container .row.subNav > div > ul > li {
+  display: inline-block;
+  font-size: 1.4rem;
+  padding-right: 2vw;
+  font-family: "Pathway Gothic One", sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  transition: 150ms all ease-out;
+}
+.container .row.subNav > div > ul > li:hover,
+.container .row.subNav > div > ul > li.active {
+  color: #173244;
+}
+.container .row > div {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  text-align: justify;
+}
+.container .row > div.background {
+  background-size: cover!important;
+  border: thin solid #ddd;
+}
+.container .row img {
+  width: 100%;
+}
+.container .row h3,
+.container .row h6 {
+  font-family: "Pathway Gothic One", sans-serif;
+  color: #173244;
+}
+.container .row h6 {
+  font-size: 1.4rem;
+}
