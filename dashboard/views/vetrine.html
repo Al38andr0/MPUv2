@@ -13,8 +13,17 @@
         <button ng-if="vm.nuovaVetrina.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaVetrina.v = 0">ON</button>
         <button ng-if="vm.nuovaVetrina.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaVetrina.v = 1">OFF</button>
     </div>
+    <div class="checkboxContainer titolo">
+        <h3>SETTORI</h3>
+        <div class="checkbox" ng-if="vm.nuovaVetrina.l" ng-repeat="s in settoriInLinea">
+            <fieldset>
+                <input id="settoreInLinea_{{s.n}}" class="categorieCheck" type="checkbox" value="{{s.i}}" ng-click="toggleSet(s.i)">
+                <label for="settoreInLinea_{{s.n}}">{{s.n}}</label>
+            </fieldset>
+        </div>
+    </div>
     <div class="rows">
-        <input list="titoloProdotto" class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="vm.nuovaVetrina.n">
+        <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="vm.nuovaVetrina.n">
     </div>
     <div class="rows">
         <input class="form-control titolo" type="text" placeholder="Note" ng-model="vm.nuovaVetrina.o">
@@ -76,6 +85,7 @@
             <p>Pos: {{s.y}}</p>
             <p>{{convert(s.m, 'marchi', 'n')}}</p>
             <p>{{convert(s.l, 'linee', 'n')}}</p>
+            <p>{{convert(s.s, 'settori', 'n')}}</p>
             <p ng-if="s.o">{{s.o}}</p>
         </div>
         <div ng-if="(vm.vetrine | filter : {c : filtro.vetrina.c}).length != 0" class="paginationContainer">

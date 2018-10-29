@@ -1,5 +1,34 @@
-@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
-@import "../../css[OLD]/mpuIcons.css";
+@import "../../css/icons.css";
+@font-face {
+  font-family: 'Pathway Gothic One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pathway Gothic One Regular'), local('PathwayGothicOne-Regular'), url(http://fonts.gstatic.com/s/pathwaygothicone/v6/MwQrbgD32-KAvjkYGNUUxAtW7pEBwx-tS1Za.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pathway Gothic One';
+  src: url('../fonts/PathwayGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .noPadding {
   padding-right: 0!important;
   padding-left: 0!important;
@@ -120,7 +149,7 @@ body a:link {
   left: 0;
   background: url("../../img/dashBg.jpg") no-repeat center;
   background-size: cover!important;
-  opacity: .3;
+  opacity: 0.3;
 }
 .notification {
   position: fixed;
@@ -157,7 +186,7 @@ body a:link {
   text-transform: uppercase;
 }
 #menu {
-  background: rgba(0, 30, 50, 0.9);
+  background: #173244;
   position: fixed;
   top: 0;
   right: 0;
@@ -174,14 +203,14 @@ body a:link {
 }
 #menu .title .link:hover,
 #menu .title .link.selected {
-  background: rgba(0, 30, 50, 0.9);
+  background: #173244;
 }
 #menu .title .link.selected {
   cursor: default;
 }
 #menu .title .link.sub.selected,
 #menu .title .link.sub:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: #000000;
 }
 #menu .title h1 {
   font-size: 26px;
@@ -204,7 +233,6 @@ body a:link {
   font-size: 57px;
   left: -16px;
   top: 2px;
-  color: rgba(255, 255, 255, 0.5);
 }
 #view {
   text-align: center;
@@ -293,7 +321,7 @@ body a:link {
   text-align: left;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
   margin-right: 4px;
 }
 #view .errore {
@@ -313,7 +341,7 @@ body a:link {
   margin-right: 5px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
   line-height: 45px;
 }
 #view span.info.perc {
@@ -346,10 +374,10 @@ body a:link {
   user-select: none;
 }
 #view .abbinamentiLista i.icons-plus:hover {
-  color: #404040;
+  color: #515151;
 }
 #view .abbinamentiLista i.icons-plus:active {
-  color: #595959;
+  color: #6a6a6a;
 }
 #view .abbinamentiLista i.icons-minus {
   color: #000000;
@@ -361,22 +389,22 @@ body a:link {
   user-select: none;
 }
 #view .abbinamentiLista i.icons-minus:hover {
-  color: #404040;
+  color: #515151;
 }
 #view .abbinamentiLista i.icons-minus:active {
-  color: #595959;
+  color: #6a6a6a;
 }
 #view .abbinamentiLista i.addMargin {
   margin-right: 40px;
 }
 #view .icons-sort.blu {
-  color: #3071a8;
+  color: #173244;
 }
 #view .icons-sort.red {
-  color: #ac2925;
+  color: #dc3545;
 }
 #view .icons-sort.green {
-  color: #449c44;
+  color: #28a745;
 }
 #view .innerFilters {
   margin: 5px 0 5px 15px;
@@ -387,7 +415,7 @@ body a:link {
   width: 200px;
   height: 150px;
   margin: auto;
-  border: 1px dashed #cccccc;
+  border: 1px dashed #ddd;
   background: rgba(255, 255, 255, 0.8);
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -398,7 +426,7 @@ body a:link {
   height: 150px;
 }
 #view .dropAreaFileImage.solidBorder {
-  border: 1px solid #cccccc;
+  border: 1px solid #ddd;
 }
 #view .dropAreaFileImage.insertPDF {
   display: inline-block !important;
@@ -413,11 +441,11 @@ body a:link {
   right: 5px;
   font-size: 20px;
   z-index: 3;
-  color: #ac2925;
+  color: #dc3545;
   cursor: pointer;
 }
 #view .dropAreaFileImage .icons-available-not:hover {
-  color: #821f1c;
+  color: #bd2130;
 }
 #view .dropAreaFileImage .dropArea {
   position: relative;
@@ -431,7 +459,7 @@ body a:link {
   position: absolute;
   top: 58px;
   font-size: 22px;
-  color: #8c8c8c;
+  color: #9d9d9d;
   pointer-events: none;
   z-index: 2;
   width: 150px;
@@ -459,7 +487,7 @@ body a:link {
   font-size: 50px;
   margin-left: -25px;
   left: 50%;
-  color: #449c44;
+  color: #28a745;
 }
 #view input[type=text],
 #view input[type=number],
@@ -573,7 +601,7 @@ body a:link {
   margin-left: -105px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
 }
 #view .ratingPrice span.ng-valid i {
   font-size: 34px;
@@ -598,7 +626,7 @@ body a:link {
   vertical-align: middle;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
   margin-right: 5px;
   cursor: pointer;
   -webkit-touch-callout: none;
@@ -609,10 +637,10 @@ body a:link {
   user-select: none;
 }
 #view .filtri i:hover {
-  background: #f2f2f2;
+  background: #ffffff;
 }
 #view .filtri i:active {
-  background: #e6e6e6;
+  background: #f7f7f7;
 }
 #view .gestione {
   margin-top: 50px;
@@ -625,7 +653,7 @@ body a:link {
   text-align: center;
 }
 #view .paginationContainer a {
-  color: #8c8c8c;
+  color: #9d9d9d;
 }
 #view .paginationContainer .active a {
   color: #ffffff;
@@ -638,11 +666,23 @@ body a:link {
   padding: 0 0 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
 }
-#view .checkboxContainer .checkbox {
+#view .checkboxContainer > .checkbox {
   display: inline-block;
-  left: 30px;
+}
+#view .checkboxContainer > .checkbox > fieldset {
+  width: 210px;
+  margin: 0.6rem;
+}
+#view .checkboxContainer > .checkbox > fieldset > input {
+  margin: 0;
+  top: 0;
+  vertical-align: middle;
+}
+#view .checkboxContainer > .checkbox > fieldset > label {
+  margin: 0;
+  vertical-align: middle;
 }
 #view .checkboxContainer h3 {
   text-align: center;
@@ -659,7 +699,7 @@ body a:link {
   user-select: none;
 }
 #view .checkboxContainer h3.showList:hover {
-  color: #8c8c8c;
+  color: #9d9d9d;
 }
 #view .checkboxContainer.marchi {
   width: 592px;
@@ -678,7 +718,7 @@ body a:link {
   text-align: left;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: thin solid #cccccc;
+  border: thin solid #ddd;
 }
 #view .list h4 {
   margin: 10px 0 5px;
@@ -686,7 +726,7 @@ body a:link {
   cursor: pointer;
 }
 #view .list h4:hover {
-  color: #8c8c8c;
+  color: #9d9d9d;
 }
 #view .list h4 span {
   font-size: 16px;
@@ -698,22 +738,22 @@ body a:link {
   font-size: 22px;
 }
 #view .list a {
-  color: #3071a8;
+  color: #173244;
   cursor: pointer;
   margin-bottom: 5px;
   display: block;
   font-size: 16px;
 }
 #view .list a:hover {
-  color: #193c59;
+  color: #000000;
 }
 #view .list p {
   display: inline-block;
   font-size: 16px;
-  color: #8c8c8c;
+  color: #9d9d9d;
   padding: 0 10px;
   margin-bottom: 5px;
-  border-left: thin solid #cccccc;
+  border-left: thin solid #ddd;
   white-space: nowrap;
 }
 #view .list p.noBorder {

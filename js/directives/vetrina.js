@@ -25,16 +25,14 @@
                     scope.vetrina.prezzo += (v.scontanto * v.quantita);
                 });
 
-                console.log(scope.vetrina)
-
-/*
-                scope.urls =
-                {
-                    linea: mixin.generateUrl(scope.linea.nome),
-                    settore: mixin.generateUrl(scope.settore),
-                    categoria: mixin.generateUrl(scope.categoria),
-                };
-*/
+                /*
+                                scope.urls =
+                                {
+                                    linea: mixin.generateUrl(scope.linea.nome),
+                                    settore: mixin.generateUrl(scope.settore),
+                                    categoria: mixin.generateUrl(scope.categoria),
+                                };
+                */
             }
         }
     }

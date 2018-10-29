@@ -21,9 +21,9 @@ if($_GET['type'] == 'save' && $_GET['type'] != 'db') {
             $rowComp_array['l'] = (int)$rowComp['cmp_line_id'];
             $rowComp_array['v'] = (int)$rowComp['cmp_show'];
             $rowComp_array['y'] = (int)$rowComp['cmp_pos'];
+            $rowComp_array['s'] = json_decode($rowComp['cmp_settore']);
             $rowComp_array['n'] = html_entity_decode($rowComp['cmp_title']);
             $rowComp_array['o'] = html_entity_decode($rowComp['cmp_note']);
-//            $rowComp_array['h'] = json_decode($rowComp['cmp_array']);
 
             array_push($compArray, $rowComp_array);
         }
@@ -40,6 +40,7 @@ if($_GET['type'] == 'save' && $_GET['type'] != 'db') {
     $data = json_decode(file_get_contents("php://input"));
     $title = addslashes($data->title);
     $note = (isset($data->note)) ? addslashes($data->note) : null;
+    $settore = json_encode($data->settore);
     $cod = $data->cod;
 
     $mark_id = $data->mark;
@@ -63,8 +64,8 @@ if($_GET['type'] == 'save' && $_GET['type'] != 'db') {
     switch ($_GET['type']) {
         case 'new':
             $sql="INSERT INTO composizioni (
-cmp_id, cmp_title, cmp_nome, cmp_mark_id, cmp_line_id, cmp_note, cmp_show, cmp_pos) VALUES (
-'$data->id', '$title', '$cod', '$mark_id', '$line_id', '$note', '$data->show', '$data->pos')";
+cmp_id, cmp_title, cmp_nome, cmp_mark_id, cmp_line_id, cmp_note, cmp_settore, cmp_show, cmp_pos) VALUES (
+'$data->id', '$title', '$cod', '$mark_id', '$line_id', '$note', '$settore', '$data->show', '$data->pos')";
             mysqli_query($con,$sql) or die(mysqli_error($con));
 
             if (substr($data->image, 0, 4) === 'data') {
@@ -86,6 +87,7 @@ cmp_id, cmp_title, cmp_nome, cmp_mark_id, cmp_line_id, cmp_note, cmp_show, cmp_p
                     cmp_mark_id     = '$mark_id',
                     cmp_line_id     = '$line_id',
                     cmp_note        = '$note',
+                    cmp_settore        = '$settore',
                     cmp_show         = '$data->show',
                     cmp_pos         = '$data->pos'
                     WHERE cmp_id='$data->id'";

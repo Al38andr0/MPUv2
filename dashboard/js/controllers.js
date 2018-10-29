@@ -1909,6 +1909,24 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
         selected : false
     };
 
+    $scope.generateSettoriInLinea = function(id) {
+        if(id) {
+            var array = [];
+            var settori = _.find($scope.vm.linee, function(num) {
+                return num.i === id
+            }).q;
+            _.each(settori, function(v) {
+                var settore = _.find($scope.vm.settori, function (num) {
+                    return num.i === v;
+                }).n;
+                array.push({i: v, n: settore});
+            });
+            return array;
+        }
+    };
+
+    $scope.settoriInLinea = false;
+
     $scope.selectVetrina = function(result) {
         $scope.vetrina = {};
         $scope.vetrina.selected = true;
@@ -1917,18 +1935,11 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
 
     $scope.vm.sorting = 'c';
 
-    // $scope.$watch('vm.nuovaVetrina.l', function(newVal){
-    //     $scope.settoriAvailable = _.where($scope.vm.lineeSettori, {l : newVal});
-    //     _.each($scope.settoriAvailable, function(v){
-    //         v.n = _.findWhere($scope.vm.settori, {i : v.h}).n;
-    //     });
-    // });
-
     $scope.toggleSet = function(ID) {
-        if($scope.vm.nuovaVetrina.h.indexOf(ID) == -1) {
-            $scope.vm.nuovaVetrina.h.push(parseInt(ID));
+        if($scope.vm.nuovaVetrina.s.indexOf(ID) == -1) {
+            $scope.vm.nuovaVetrina.s.push(parseInt(ID));
         } else {
-            $scope.vm.nuovaVetrina.h.splice($scope.vm.nuovaVetrina.h.indexOf(ID), 1);
+            $scope.vm.nuovaVetrina.s.splice($scope.vm.nuovaVetrina.s.indexOf(ID), 1);
         }
     };
 
@@ -1937,8 +1948,9 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
         $scope.vm.nuovaVetrina.h = [];
     });
 
-    $scope.$watch('vm.nuovaVetrina.l', function(){
+    $scope.$watch('vm.nuovaVetrina.l', function(n, o){
         $scope.vm.nuovaVetrina.h = [];
+        $scope.settoriInLinea = $scope.generateSettoriInLinea(n);
     });
 
     $scope.vm.saveVetrinaData = function(){
@@ -1982,6 +1994,7 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
         !$scope.vm.nuovaVetrina.m ||
         !$scope.vm.nuovaVetrina.l ||
         !$scope.vm.nuovaVetrina.r ||
+        !$scope.vm.nuovaVetrina.s ||
         isNaN($scope.vm.nuovaVetrina.y)
         );
     };
@@ -2003,6 +2016,7 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
             i : $scope.vm.nuovaVetrina.i + 1,
             m : false,
             l : false,
+            s : false,
             y : 1,
             v : 1
             // h : []
@@ -2022,6 +2036,7 @@ angular.module("mpuDashboard").controller("vetrineCtrl", ['$scope', '$rootScope'
                         'pos'       :   $scope.vm.nuovaVetrina.y,
                         'show'      :   $scope.vm.nuovaVetrina.v,
                         'note'      :   $scope.vm.nuovaVetrina.o,
+                        'settore'      :   $scope.vm.nuovaVetrina.s,
                         // 'array'      :   $scope.vm.nuovaVetrina.h,
                         'image'     :   $scope.vm.nuovaVetrina.r
                     }

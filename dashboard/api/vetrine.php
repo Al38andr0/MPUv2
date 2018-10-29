@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 
 $result_array = array();
 
-$_GET['action'] = 'getAllByLinea';
-$_GET['id'] = 139;
+//$_GET['action'] = 'getAllByLinea';
+//$_GET['id'] = 139;
 
 if (!isset($_GET['action'])) {
     $result_array = 'No action has been defined';

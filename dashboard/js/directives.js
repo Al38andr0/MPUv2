@@ -1895,17 +1895,34 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                 return lineByName;
             }
 
-            // $scope.selectedCat = function(ID) {
-            //     return ($scope.vetrina.h.indexOf(ID) != -1);
-            // };
+            $scope.generateSettoriInLinea = function(id) {
+                if(id) {
+                    var array = [];
+                    var settori = _.find($scope.vm.linee, function(num) {
+                        return num.i === id
+                    }).q;
+                    _.each(settori, function(v) {
+                        var settore = _.find($scope.vm.settori, function (num) {
+                            return num.i === v;
+                        }).n;
+                        array.push({i: v, n: settore});
+                    });
+                    return array;
+                }
+            };
 
-            // $scope.toggleSet = function(ID) {
-            //     if($scope.vetrina.h.indexOf(ID) == -1) {
-            //         $scope.vetrina.h.push(parseInt(ID));
-            //     } else {
-            //         $scope.vetrina.h.splice($scope.vetrina.h.indexOf(ID), 1);
-            //     }
-            // };
+            $scope.selectedCat = function(ID) {
+                console.log($scope.vetrina)
+                return ($scope.vetrina.s.indexOf(ID) != -1);
+            };
+
+            $scope.toggleSet = function(ID) {
+                if($scope.vetrina.s.indexOf(ID) == -1) {
+                    $scope.vetrina.s.push(parseInt(ID));
+                } else {
+                    $scope.vetrina.s.splice($scope.vetrina.s.indexOf(ID), 1);
+                }
+            };
 
             function replaceAll(string, find, replace) {
                 return string.replace(new RegExp(find, 'g'), replace);
@@ -1922,12 +1939,11 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                 $scope.vetrina.r = '../dashboard/archivio_dati/' + markName + '/' + lineName + '/Vetrina/' + fileName;
             });
 
-            // $scope.$watch('vetrina.l', function(newVal){
-            //     $scope.settoriAvailable = _.where($scope.vm.lineeSettori, {l : newVal});
-            //     _.each($scope.settoriAvailable, function(v){
-            //         v.n = _.findWhere($scope.vm.settori, {i : v.h}).n;
-            //     });
-            // });
+            $scope.settoriInLinea = false;
+
+            $scope.$watch('vetrina.l', function(n){
+                $scope.settoriInLinea = $scope.generateSettoriInLinea(n);
+            });
 
             $scope.confirm = false;
             $scope.askConfirm = function(){
@@ -1944,6 +1960,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                 !$scope.vetrina.m ||
                 !$scope.vetrina.l ||
                 !$scope.vetrina.r ||
+                !$scope.vetrina.s ||
                 isNaN($scope.vetrina.y)
                 );
             };
@@ -1953,7 +1970,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                 $scope.vetrina.c !== $scope.vetrinaOriginal.vetrina.c ||
                 $scope.vetrina.m !== $scope.vetrinaOriginal.vetrina.m ||
                 $scope.vetrina.l !== $scope.vetrinaOriginal.vetrina.l
-                );
+                )
             };
 
             $scope.copyCheck = function() {
@@ -1992,6 +2009,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                     i : $scope.vm.nuovaVetrina.i + 1,
                     m : false,
                     l : false,
+                    s : false,
                     y : 1,
                     // h : []
                     v : 1
@@ -2011,6 +2029,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                                 'show'      :   $scope.vetrina.v,
                                 'pos'       :   $scope.vetrina.y,
                                 'note'      :   $scope.vetrina.o,
+                                'settore'      :   $scope.vetrina.s,
                                 // 'array'     :   $scope.vetrina.h,
                                 'image'     :   $scope.vetrina.r,
                                 'sourceCod'     :   $scope.vetrinaOriginal.vetrina.c,
@@ -2027,6 +2046,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                                         v.l = $scope.vetrina.l;
                                         v.c = $scope.vetrina.c;
                                         v.n = $scope.vetrina.n;
+                                        v.s = $scope.vetrina.s;
                                         // v.h = $scope.vetrina.h;
                                         v.v = $scope.vetrina.v;
                                         v.y = $scope.vetrina.y;
@@ -2054,6 +2074,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                                 'show'      :   $scope.vetrina.v,
                                 'pos'       :   $scope.vetrina.y,
                                 'note'      :   $scope.vetrina.o,
+                                'settore'      :   $scope.vetrina.s,
                                 // 'array'     :   $scope.vetrina.h,
                                 'image'     :   $scope.vetrina.r,
                                 'sourceCod'     :   $scope.vetrinaOriginal.vetrina.c,
@@ -2068,6 +2089,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                                     l :   $scope.vetrina.l,
                                     c :   $scope.vetrina.c,
                                     n :   $scope.vetrina.n,
+                                    s :   $scope.vetrina.s,
                                     // h :   $scope.vetrina.h,
                                     v :   $scope.vetrina.v,
                                     y :   $scope.vetrina.y,
@@ -2096,6 +2118,7 @@ angular.module("mpuDashboard").directive('vetrine', function(){
                             'show'      :   $scope.vetrina.v,
                             'pos'       :   $scope.vetrina.y,
                             'note'      :   $scope.vetrina.o,
+                            'settore'      :   $scope.vetrina.s,
                             // 'array'     :   $scope.vetrina.h,
                             'image'     :   $scope.vetrina.r
                         }

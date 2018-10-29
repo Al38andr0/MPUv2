@@ -4,9 +4,9 @@
     angular.module('mpu')
         .controller('vetrinaCtrl', vetrinaCtrl);
 
-    vetrinaCtrl.$inject = ['$scope', '$rootScope', 'params', 'vetrineSrv'];
+    vetrinaCtrl.$inject = ['$scope', '$rootScope', 'params', 'vetrineSrv', 'settoriSrv'];
 
-    function vetrinaCtrl($scope, $rootScope, params, vetrineSrv) {
+    function vetrinaCtrl($scope, $rootScope, params, vetrineSrv, settoriSrv) {
         let mixin = new window.Mixin();
 
         $scope.current = {
@@ -15,13 +15,21 @@
             settore: {},
             linea: {},
             vetrine: [],
-            getAllByLinea: function (id) {
+            getAllByLinea: function (id, settore) {
                 let success = function (data) {
-                    $scope.current.vetrine = data;
+                    _.each(angular.copy(data), function (v) {
+                        if(_.find(v.settori, function (num) {
+                            return num.id === settore;
+                        }))
+                            $scope.current.vetrine.unshift(v);
+                        else
+                            $scope.current.vetrine.push(v);
+                    });
                 };
                 vetrineSrv.getAllByLinea(id, success)
             }
         };
+
         $scope.current.categoria = _.find($rootScope.current.categorie, function (num) {
             return mixin.generateUrl(num.nome) === params.categoria
         });
@@ -32,6 +40,6 @@
             return mixin.generateUrl(num.nome) === params.linea
         });
 
-        $scope.current.getAllByLinea($scope.current.linea.id);
+        $scope.current.getAllByLinea($scope.current.linea.id, $scope.current.settore.id);
     }
 })();

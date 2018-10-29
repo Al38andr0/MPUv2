@@ -62,10 +62,10 @@
 <div class="checkboxContainer marchi linee">
     <h3>SETTORI</h3>
     <div class="checkbox" ng-show="linea.g" ng-repeat="s in vm.settori | filter : {g : linea.g}">
-        <label>
-            <input class="categorieCheck" type="checkbox" ng-checked="selectedCat(s.i)" value="{{s.i}}" ng-click="toggleSet(s.i)">
-            {{s.n}}
-        </label>
+        <fieldset>
+            <input id="settoriPerLinee_{{s.n}}" class="categorieCheck" type="checkbox" ng-checked="selectedCat(s.i)" value="{{s.i}}" ng-click="toggleSet(s.i)">
+            <label for="settoriPerLinee_{{s.n}}">{{s.n}}</label>
+        </fieldset>
     </div>
 </div>
 <div class="rows">

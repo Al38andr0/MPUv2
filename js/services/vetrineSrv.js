@@ -4,13 +4,20 @@
     angular.module('mpu')
         .service('vetrineSrv', vetrineSrv);
 
-    vetrineSrv.$inject = ['$http', '$rootScope', 'API'];
+    vetrineSrv.$inject = ['$http', '$rootScope', 'API', 'settoriSrv'];
 
-    function vetrineSrv($http, $rootScope, API) {
+    function vetrineSrv($http, $rootScope, API, settoriSrv) {
         let reference = 'vetrine',
             url = API + reference + '.php';
 
         let _create = function (v) {
+            let settori = [];
+            _.each(JSON.parse(v['cmp_settore']), function (v) {
+                settori.push({
+                    id: v,
+                    nome : settoriSrv.createTitle('settore', settoriSrv.getNameFromId($rootScope.current.settori, v))
+                });
+            });
             return {
                 id: parseInt(v['cmp_id']),
                 nome: v['cmp_nome'],
@@ -19,6 +26,7 @@
                 marchio: parseInt(v['cmp_mark_id']),
                 linea: parseInt(v['cmp_line_id']),
                 posizione: parseInt(v['cmp_pos']),
+                settori: settori,
                 prodotti : []
             }
         };

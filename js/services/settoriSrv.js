@@ -76,7 +76,7 @@
             ];
         };
 
-        let _createTitle = function (type, nome) {
+        let createTitle = function (type, nome) {
             switch (type) {
                 case 'categoria':
                     switch (nome) {
@@ -123,7 +123,7 @@
                 let categoria = {
                     nome: existingCategoria.nome,
                     url: mixin.generateUrl(existingCategoria.nome),
-                    titolo: _createTitle('categoria', existingCategoria.nome),
+                    titolo: createTitle('categoria', existingCategoria.nome),
                     id: existingCategoria.id,
                     posizione: existingCategoria.posizione,
                     settori: []
@@ -158,7 +158,7 @@
                                     categorie.list.push({
                                         nome: v['cat_nome'],
                                         url: mixin.generateUrl(v['cat_nome']),
-                                        title: _createTitle('settore', v['set_nome']),
+                                        title: createTitle('settore', v['set_nome']),
                                         id: parseInt(v['cat_id']),
                                         posizione: parseInt(v['cat_pos']),
                                         settori: []
@@ -168,7 +168,7 @@
                                 categorie.list[index].settori.push({
                                     nome: v['set_nome'],
                                     url: mixin.generateUrl(v['set_nome']),
-                                    title: _createTitle('settore', v['set_nome']),
+                                    title: createTitle('settore', v['set_nome']),
                                     id: parseInt(v['set_id'])
                                 })
                             });
@@ -239,7 +239,8 @@
             extractCategorie: extractCategorie,
             extractSettori: extractSettori,
             getNameFromId: getNameFromId,
-            addLinee: addLinee
+            addLinee: addLinee,
+            createTitle: createTitle
         }
     }
 })();

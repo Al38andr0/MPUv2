@@ -1,7 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
-@import "../../css[OLD]/mixins";
-@import "../../css[OLD]/variable";
-@import "../../css[OLD]/mpuIcons.css";
+@import "../../css/icons.css";
+@import "../../css/variables";
+@import "../../css/mixins";
+
 
 body{
   background: #ffffff;
@@ -53,7 +54,7 @@ body{
   }
 }
 #menu{
-  background: @colorBg;
+  background: @blue;
   position: fixed;
   .coords();
   width: 320px;
@@ -63,13 +64,13 @@ body{
     & .link{
       cursor: pointer;
       &:hover, &.selected{
-        background: @colorBg;
+        background: @blue;
       }
       &.selected{
         cursor: default;
       }
       &.sub.selected, &.sub:hover{
-        background: darken(@colorBg, 20%);
+        background: darken(@blue, 20%);
       }
     }
     h1{
@@ -91,7 +92,7 @@ body{
         font-size: 57px;
         left: -16px;
         top: 2px;
-        .selectedColor();
+        //.selectedColor();
       }
     }
   }
@@ -179,7 +180,7 @@ body{
     padding: 3px 15px;
     text-align: left;
     .borderRadius(4px);
-    border: thin solid @borderColor;
+    border: thin solid @grey;
     margin-right: 4px;
   }
   & .errore{
@@ -199,7 +200,7 @@ body{
       background: #eeeeee;
       margin-right: 5px;
       .borderRadius(4px);
-      border: thin solid @borderColor;
+      border: thin solid @grey;
       line-height: 45px;
       &.perc{
         width: 40px;
@@ -225,20 +226,20 @@ body{
         color: #000000;
         .noSelect;
         &:hover{
-          color: darken(@borderColor, 55%);
+          color: darken(@grey, 55%);
         }
         &:active{
-          color: darken(@borderColor, 45%);
+          color: darken(@grey, 45%);
         }
       }
       &.icons-minus{
         color: #000000;
         .noSelect;
         &:hover{
-          color: darken(@borderColor, 55%);
+          color: darken(@grey, 55%);
         }
         &:active{
-          color: darken(@borderColor, 45%);
+          color: darken(@grey, 45%);
         }
       }
       &.addMargin{
@@ -248,7 +249,7 @@ body{
   }
   & .icons-sort{
     &.blu{
-      color: @blu;
+      color: @blue;
     }
     &.red{
       color: @red;
@@ -270,12 +271,12 @@ body{
       height: 150px;
     }
     margin: auto;
-    border: 1px dashed @borderColor;
+    border: 1px dashed @grey;
     background: rgba(255,255,255,.8);
     .borderRadius(4px);
     overflow: hidden;
     &.solidBorder{
-      border: 1px solid @borderColor;
+      border: 1px solid @grey;
     }
     &.insertPDF{
       display: inline-block!important;
@@ -308,7 +309,7 @@ body{
       position: absolute;
       top: 58px;
       font-size: 22px;
-      color: darken(@borderColor, 25%);
+      color: darken(@grey, 25%);
       pointer-events: none;
       z-index: 2;
       width: 150px;
@@ -441,7 +442,7 @@ body{
       left: 50%;
       margin-left: -105px;
       .borderRadius(4px);
-      border: thin solid @borderColor;
+      border: thin solid @grey;
       & i{
         font-size: 34px;
         line-height:29px;
@@ -465,15 +466,15 @@ body{
       padding: 9px;
       vertical-align: middle;
       .borderRadius(4px);
-      border: thin solid @borderColor;
+      border: thin solid @grey;
       margin-right: 5px;
       cursor: pointer;
       .noSelect;
       &:hover{
-        background: lighten(@borderColor, 15%);
+        background: lighten(@grey, 15%);
       }
       &:active{
-        background: lighten(@borderColor, 10%);
+        background: lighten(@grey, 10%);
       }
     }
   }
@@ -487,7 +488,7 @@ body{
     width: 100%;
     text-align: center;
     & a{
-      color: darken(@borderColor, 25%);
+      color: darken(@grey, 25%);
     }
     & .active a{
       color: #ffffff;
@@ -500,10 +501,22 @@ body{
     background: #ffffff;
     padding: 0 0 4px;
     .borderRadius(4px);
-    border: thin solid @borderColor;
-    & .checkbox{
+    border: thin solid @grey;
+    & > .checkbox{
       display: inline-block;
-      left: 30px;
+      & > fieldset {
+        width: 210px;
+        margin: 0.6rem;
+        & > input {
+          margin: 0;
+          top: 0;
+          vertical-align: middle;
+        }
+        & > label {
+          margin: 0;
+          vertical-align: middle;
+        }
+      }
     }
     & h3{
       text-align: center;
@@ -513,7 +526,7 @@ body{
         cursor: pointer;
         .noSelect;
         &:hover{
-          color: darken(@borderColor, 25%);
+          color: darken(@grey, 25%);
         }
       }
     }
@@ -534,13 +547,13 @@ body{
     padding: 15px 20px 0;
     text-align: left;
     .borderRadius(4px);
-    border: thin solid @borderColor;
+    border: thin solid @grey;
     & h4{
       margin: 10px 0 5px;
       font-size: 22px;
       cursor: pointer;
       &:hover{
-        color: darken(@borderColor, 25%);
+        color: darken(@grey, 25%);
       }
       & span{
         font-size: 16px;
@@ -553,22 +566,22 @@ body{
       font-size: 22px;
     }
     & a{
-      color: @blu;
+      color: @blue;
       cursor: pointer;
       margin-bottom: 5px;
       display: block;
       font-size: 16px;
       &:hover{
-        color: darken(@blu, 20%);
+        color: darken(@blue, 20%);
       }
     }
     & p{
       display: inline-block;
       font-size: 16px;
-      color: darken(@borderColor, 25%);
+      color: darken(@grey, 25%);
       padding: 0 10px;
       margin-bottom: 5px;
-      border-left: thin solid @borderColor;
+      border-left: thin solid @grey;
       white-space: nowrap;
       &.noBorder{
         padding-left: 0!important;
