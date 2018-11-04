@@ -10,13 +10,13 @@
         let reference = 'linee',
             url = API + reference + '.php';
 
-        let _find = function(list, value, param) {
+        let _find = function (list, value, param) {
             return _.find(list, function (num) {
                 return num[value] === parseInt(param);
             });
         };
 
-        let _create = function(v) {
+        let _create = function (v) {
             return {
                 id: parseInt(v['line_id']),
                 nome: v['line_nome'],
@@ -26,9 +26,13 @@
                     sconto: parseInt(v['mark_disc']),
                     listino: parseInt(v['mark_list'])
                 },
-                settori: [parseInt(v['stln_set_id'])],
+                settori: [
+                    {
+                        id: parseInt(v['stln_set_id']),
+                        prezzo: parseInt(v['stln_price'])
+                    }
+                ],
                 consegna: parseInt(v['line_time']),
-                prezzo: parseInt(v['line_price']),
                 sconto: parseInt(v['line_disc']),
                 garanzia: parseInt(v['line_war']),
                 vetrina: (parseInt(v['line_vtr']) === 1),
@@ -48,7 +52,7 @@
                             let marchi = [];
                             _.each(data.data, function (v) {
                                 let stored = _find(marchi, 'id', v['mark_id']);
-                                if(!stored) {
+                                if (!stored) {
                                     let marchio = {
                                         id: parseInt(v['mark_id']),
                                         nome: v['mark_nome'],
@@ -56,19 +60,21 @@
                                         sconto: parseInt(v['mark_disc']),
                                         listino: parseInt(v['mark_list']),
                                         settori: [parseInt(v['stln_set_id'])],
-                                        linee: [
-                                            _create(v)
-                                        ]
+                                        linee: [_create(v)]
                                     };
                                     marchi.push(marchio);
                                 } else {
                                     stored.settori.push(parseInt(v['stln_set_id']));
                                     let linea = _find(stored.linee, 'id', v['line_id']);
-                                    if(!linea) {
+                                    if (!linea)
                                         stored.linee.push(_create(v));
-                                    } else {
-                                        linea.settori.push(parseInt(v['stln_set_id']));
-                                    }
+                                    else
+                                        linea.settori.push(
+                                            {
+                                                id: parseInt(v['stln_set_id']),
+                                                prezzo: parseInt(v['stln_price'])
+                                            }
+                                        );
                                 }
                             });
                             _.each(marchi, function (v) {

@@ -20,21 +20,6 @@
         <button ng-if="vm.nuovaLinea.v == 0" class="btn btn-danger large" type="button" value="0" ng-click="vm.nuovaLinea.v = 1">NON VISIBILE</button>
         <button ng-if="vm.nuovaLinea.c == 1" class="btn btn-primary large" type="button" value="1" ng-click="vm.nuovaLinea.c = 0" popover="Vetrina visibile" popover-trigger="mouseenter">CON VETRINA</button>
         <button ng-if="vm.nuovaLinea.c == 0" class="btn btn-info large" type="button" value="0" ng-click="vm.nuovaLinea.c = 1" popover="Vetrina non visibile" popover-trigger="mouseenter">SENZA VETRINA</button>
-        <select class="form-control marchio" ng-options="p.i as p.n for p in priceName | orderBy : 'i'" data-ng-model="vm.nuovaLinea.z"></select>
-<!--
-        <div class="ratingPrice linee">
-            <rating
-                    ng-model="vm.nuovaLinea.zz"
-                    max="3"
-                    readonly="isReadonly"
-                    state-on="'icons-euro selected'"
-                    state-off="'icons-euro'"
-                    popover="Indice prezzo"
-                    popover-trigger="mouseenter"
-            >
-            </rating>
-        </div>
--->
         <span class="info sigla">posizione</span><input class="form-control posPrd" type="number" placeholder="100" ng-model="vm.nuovaLinea.y" popover="Posizione" popover-trigger="mouseenter">
     </div>
     <div class="rows">
@@ -60,15 +45,6 @@
                 <i class="icons-available" ng-if="vm.nuovaLinea.j"></i>
             </div>
             <i class="icons-available-not" ng-if="vm.nuovaLinea.j" ng-click="vm.nuovaLinea.j = false" title="Elinima file"></i>
-        </div>
-    </div>
-    <div class="checkboxContainer marchi linee">
-        <h3>SETTORI</h3>
-        <div class="checkbox" ng-show="vm.nuovaLinea.g" ng-repeat="s in vm.settori | filter : {g : vm.nuovaLinea.g}">
-            <fieldset>
-                <input id="settoriPerLinee_{{s.n}}" class="categorieCheck" type="checkbox"  value="{{s.i}}" ng-click="toggleSet(s.i)">
-                <label for="settoriPerLinee_{{s.n}}">{{s.n}}</label>
-            </fieldset>
         </div>
     </div>
     <div class="rows">

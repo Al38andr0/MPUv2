@@ -1,8 +1,11 @@
 <div class="row">
     <div class="col-sm-5 col-xs-12">
-        <h3>Composizione # {{index}}</h3>
+        <div class="titolo">
+            <h3>Composizione # {{index}}</h3>
+        </div>
         <p>Ref.: {{linea.nome}}_{{vetrina.nome}}</p>
         <p>Linea: {{linea.nome}}</p>
+        <p class="link">Listino completo {{linea.nome}}</p>
         <p>Descrizione: {{vetrina.titolo}}<span ng-if="vetrina.note"> ({{vetrina.note}})</span>.</p>
         <p>Composizione ideale per:</p>
         <ul>
@@ -10,8 +13,8 @@
                 <p>{{s.nome}}</p>
             </li>
         </ul>
-        <p>Prezzo: {{vetrina.prezzo | currency : '€'}}</p>
-        <button class="btn btn-success text-uppercase" ui-sref="vetrina({ loc : $root.current.location, categoria: urls.categoria, settore: urls.settore, linea: urls.linea})">Vedi dettagli</button>
+        <h3>Prezzo: {{vetrina.prezzo | currency : '€'}}</h3>
+        <button class="btn btn-success text-uppercase" ui-sref="composizione({ loc : $root.current.location, categoria: urls.categoria, settore: urls.settore, linea: urls.linea, ref: urls.ref})">Vedi dettagli</button>
     </div>
     <div class="col-sm-6 offset-sm-1 col-xs-12">
         <img ng-src="{{vetrina.image}}" title="linea {{linea.nome}}: composizione #{{index}}">

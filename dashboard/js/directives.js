@@ -674,21 +674,6 @@ angular.module("mpuDashboard").directive('linee', function(){
                 linea : false
             };
 
-            $scope.priceName = [
-                {
-                    n : 'economico',
-                    i : 2
-                },
-                {
-                    n : 'design',
-                    i : 3
-                },
-                {
-                    n : 'top class',
-                    i : 4
-                }
-            ];
-
             function convertMark(IDS) {
                 _.each($scope.vm.marchi, function(v) {
                     if(v.i == IDS){
@@ -1196,6 +1181,29 @@ angular.module("mpuDashboard").directive('lineeSettori', function(){
             $scope.errore = {
                 lineaSettore : false
             };
+
+            $scope.priceName = [
+                {
+                    n : 'basso',
+                    i : 1
+                },
+                {
+                    n : 'medio/basso',
+                    i : 2
+                },
+                {
+                    n : 'medio',
+                    i : 3
+                },
+                {
+                    n : 'medio/alto',
+                    i : 4
+                },
+                {
+                    n : 'alto',
+                    i : 5
+                }
+            ];
 
             function convertMark(IDS) {
                 _.each($scope.vm.marchi, function(v) {

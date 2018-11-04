@@ -23,6 +23,8 @@
                 settoriSrv.getDescription($scope.current.settore.id, success);
             }
         };
+        $scope.order = "prezzo";
+
         $scope.current.categoria = _.find($rootScope.current.categorie, function (num) {
             return mixin.generateUrl(num.nome) === params.categoria
         });

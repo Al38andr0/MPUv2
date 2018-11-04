@@ -57,13 +57,13 @@
 .container .row > div img {
   border: thin solid #ddd;
 }
-.container .row img {
-  width: 100%;
-}
 .container .row h3 {
   font-family: "Pathway Gothic One", sans-serif;
-  margin-bottom: 1.5rem;
   color: #173244;
+  margin-bottom: 1.5rem;
+}
+.container .row img {
+  width: 100%;
 }
 .container .row p {
   margin-bottom: 0.5rem;

@@ -1,11 +1,5 @@
 @import "../../css/icons.css";
 @font-face {
-  font-family: 'Pathway Gothic One';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Pathway Gothic One Regular'), local('PathwayGothicOne-Regular'), url(http://fonts.gstatic.com/s/pathwaygothicone/v6/MwQrbgD32-KAvjkYGNUUxAtW7pEBwx-tS1Za.ttf) format('truetype');
-}
-@font-face {
   font-family: 'Open Sans';
   src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -125,6 +119,12 @@
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+@font-face {
+  font-family: 'Pathway Gothic One';
+  src: url('../../fonts/PathwayGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 body {
   background: #ffffff;
@@ -672,8 +672,8 @@ body a:link {
   display: inline-block;
 }
 #view .checkboxContainer > .checkbox > fieldset {
-  width: 210px;
-  margin: 0.6rem;
+  width: 230px;
+  margin: 0.5rem;
 }
 #view .checkboxContainer > .checkbox > fieldset > input {
   margin: 0;

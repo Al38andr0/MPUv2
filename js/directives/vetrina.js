@@ -4,16 +4,18 @@
     angular.module('mpu')
         .directive('vetrina', vetrina);
 
-    vetrina.$inject = ['ASSETS', 'URL', 'settoriSrv', '$rootScope'];
+    vetrina.$inject = ['ASSETS', 'URL'];
 
-    function vetrina(ASSETS, URL, settoriSrv, $rootScope) {
+    function vetrina(ASSETS, URL) {
         return {
             restrict: 'E',
             templateUrl: '/html/templates/vetrina.html',
             scope: {
                 vetrina: '<',
                 index: '<',
-                linea: '<'
+                linea: '<',
+                settore: '<',
+                categoria: '<'
             },
             link: function (scope) {
                 let mixin = new window.Mixin();
@@ -25,14 +27,13 @@
                     scope.vetrina.prezzo += (v.scontanto * v.quantita);
                 });
 
-                /*
-                                scope.urls =
-                                {
-                                    linea: mixin.generateUrl(scope.linea.nome),
-                                    settore: mixin.generateUrl(scope.settore),
-                                    categoria: mixin.generateUrl(scope.categoria),
-                                };
-                */
+                scope.urls =
+                    {
+                        ref: mixin.generateUrl(scope.linea.nome) + '_' + scope.vetrina.nome,
+                        linea: mixin.generateUrl(scope.linea.nome),
+                        settore: mixin.generateUrl(scope.settore),
+                        categoria: mixin.generateUrl(scope.categoria),
+                    };
             }
         }
     }

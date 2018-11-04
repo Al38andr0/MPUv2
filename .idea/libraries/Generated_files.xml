@@ -5,6 +5,7 @@
         <item url="file://$PROJECT_DIR$/dashboard/js/controllers.min.js" />
         <item url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
         <item url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
+        <item url="file://$PROJECT_DIR$/js/controllers/composizioniCtrl.min.js" />
         <item url="file://$PROJECT_DIR$/js/controllers/homeCtrl.min.js" />
         <item url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
         <item url="file://$PROJECT_DIR$/js/controllers/settoreCtrl.min.js" />
@@ -80,6 +81,7 @@
       <root url="file://$PROJECT_DIR$/dashboard/js/controllers.min.js" />
       <root url="file://$PROJECT_DIR$/dashboard/js/directives.min.js" />
       <root url="file://$PROJECT_DIR$/dashboard/js/services.min.js" />
+      <root url="file://$PROJECT_DIR$/js/controllers/composizioniCtrl.min.js" />
       <root url="file://$PROJECT_DIR$/js/controllers/homeCtrl.min.js" />
       <root url="file://$PROJECT_DIR$/js/controllers/mainCtrl.min.js" />
       <root url="file://$PROJECT_DIR$/js/controllers/settoreCtrl.min.js" />

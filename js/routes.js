@@ -84,5 +84,27 @@
                         }
                     }
                 })
+                .state('composizione', {
+                    url: '/:loc/composizione/:categoria/:settore/:linea/:ref',
+                    templateUrl: '/html/views/composizione.html',
+                    controller: 'composizioniCtrl',
+                    resolve: {
+                        params: ['$transition$', function ($transition$) {
+                            return {
+                                loc: $transition$.params()['loc'],
+                                categoria: $transition$.params()['categoria'],
+                                settore: $transition$.params()['settore'],
+                                linea: $transition$.params()['linea'],
+                                ref: $transition$.params()['ref']
+                            }
+                        }]
+                    },
+                    data: {
+                        meta: {
+                            title: 'Composizione',
+                            description: 'Composizione'
+                        }
+                    }
+                })
         }]);
 })();

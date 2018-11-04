@@ -4,5 +4,5 @@
             <h4><span>{{current.categoria.nome}}</span> <span class="chevron">&#10095;</span> <span>{{current.settore.title}}</span> <span class="chevron">&#10095;</span> <span>Linea {{current.linea.nome}}</span> <span class="chevron">&#10095;</span> <span>Vetrina</span></h4>
         </div>
     </div>
-    <vetrina ng-repeat="v in current.vetrine" vetrina="v" index="$index + 1" linea="current.linea"></vetrina>
+    <vetrina ng-repeat="v in current.vetrine" vetrina="v" index="$index + 1" linea="current.linea" settore="current.settore.nome" categoria="current.categoria.nome"></vetrina>
 </div>

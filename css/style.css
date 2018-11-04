@@ -512,13 +512,13 @@ carousel > div > div.messageContainer > h6 {
 .container .row > div img {
   border: thin solid #ddd;
 }
-.container .row img {
-  width: 100%;
-}
 .container .row h3 {
   font-family: "Pathway Gothic One", sans-serif;
-  margin-bottom: 1.5rem;
   color: #173244;
+  margin-bottom: 1.5rem;
+}
+.container .row img {
+  width: 100%;
 }
 .container .row p {
   margin-bottom: 0.5rem;
@@ -566,6 +566,10 @@ ui-view {
 .notes {
   font-family: "Open Sans", sans-serif !important;
   font-size: 0.8rem !important;
+}
+.removeBoxShadow {
+  box-shadow: none!important;
+  outline: none !important;
 }
 ::-webkit-scrollbar {
   width: 6px;

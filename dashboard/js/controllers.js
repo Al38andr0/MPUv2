@@ -73,8 +73,8 @@ angular.module("mpuDashboard").controller("mainCtrl", ['$scope', '$rootScope', '
         nuovaLineaSettore : {
             v : 1,
             p : 0,
-            z : 1,
-            q :   [],
+            z : 2,
+            q : [],
             m : false,
             r : false
         },
@@ -1120,21 +1120,6 @@ angular.module("mpuDashboard").controller("lineeCtrl", ['$scope', '$rootScope', 
         selected : false
     };
 
-    $scope.priceName = [
-        {
-            n : 'economico',
-            i : 2
-        },
-        {
-            n : 'design',
-            i : 3
-        },
-        {
-            n : 'top class',
-            i : 4
-        }
-    ];
-
     $scope.vm.sorting = ['m', 'n', 'y'];
     $scope.vm.lineeManager = lineeManager;
     $scope.selectLinea = function(result) {
@@ -1495,6 +1480,29 @@ angular.module("mpuDashboard").controller("lineeSettoriCtrl", ['$scope', '$rootS
         selected : false
     };
 
+    $scope.priceName = [
+        {
+            n : 'basso',
+            i : 1
+        },
+        {
+            n : 'medio/basso',
+            i : 2
+        },
+        {
+            n : 'medio',
+            i : 3
+        },
+        {
+            n : 'medio/alto',
+            i : 4
+        },
+        {
+            n : 'alto',
+            i : 5
+        }
+    ];
+
     $scope.vm.lineeManager = lineeManager;
 
     $scope.vm.sorting = ['m'];
@@ -1581,7 +1589,7 @@ angular.module("mpuDashboard").controller("lineeSettoriCtrl", ['$scope', '$rootS
             i : $scope.vm.nuovaLineaSettore.i + 1,
             v : 1,
             p : 0,
-            z : 1,
+            z : 2,
             q : [],
             m : false,
             r : false

@@ -205,17 +205,39 @@
         let addLinee = function (settori, marchi) {
             _.each(settori, function (s) {
                 let array = [];
-                _.each(angular.copy(marchi), function (v) {
-                    let linee = _.filter(v.linee, function (num) {
-                        return _.contains(num.settori, s.id)
+                _.each(marchi, function (m) {
+                    _.each(m.linee, function (l) {
+                        if (_.find(l.settori, function (num) {
+                            return num.id === s.id;
+                        }))
+                            array.push(l);
                     });
-                    array.push(linee);
                 });
 
                 s.linee = _.sortBy(_.flatten(array), function (num) {
                     return num.position;
                 });
             });
+        };
+
+        let mapSettoriInLinee = function (settori, marchi) {
+            _.each(marchi, function (m) {
+                _.each(m.linee, function (l) {
+                    let settoriFromLinee = angular.copy(l.settori);
+                    l.settori = [];
+                    _.each(settoriFromLinee, function (s) {
+                        let nome = _.find(settori, function (num) {
+                            return num.id === s.id;
+                        }).nome;
+                        l.settori.push({
+                            id: s.id,
+                            prezzo: s.prezzo,
+                            nome: nome,
+                            titolo: (nome.indexOf('arredi') !== -1) ? nome.replace('arredi', 'ambienti') : nome
+                        });
+                    })
+                })
+            })
         };
 
         let extractSettori = function (categorie) {
@@ -240,7 +262,8 @@
             extractSettori: extractSettori,
             getNameFromId: getNameFromId,
             addLinee: addLinee,
-            createTitle: createTitle
+            createTitle: createTitle,
+            mapSettoriInLinee: mapSettoriInLinee
         }
     }
 })();
