@@ -13,6 +13,16 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
                 label: 'Offline'
             }
         ],
+        finitura: [
+            {
+                id: 1,
+                label: 'Rivestimento'
+            },
+            {
+                id: 0,
+                label: 'Finitura'
+            }
+        ],
         homepage: [
             {
                 id: 1,
@@ -69,7 +79,7 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         convert: (item, entity, id, name) => {
             if ($rootScope[entity])
                 return _.find($rootScope[entity], function (num) {
-                    return parseInt(num[id]) === item;
+                    return parseInt(num[id]) === parseInt(item);
                 })[name];
         },
         parse: (string) => JSON.parse(string),
@@ -86,6 +96,9 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
                 )
             });
             return array;
+        },
+        replaceAll: (string, find, replace) => {
+            return string.replace(new RegExp(find, 'g'), replace);
         }
     };
 
@@ -654,6 +667,7 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
 
 angular.module("mpuDashboard").controller("categorieCtrl", categorieCtrl);
 categorieCtrl.$inject = ['$scope', '$rootScope'];
+
 function categorieCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.categoria = {
@@ -679,6 +693,7 @@ function categorieCtrl($scope, $rootScope) {
 
 angular.module("mpuDashboard").controller("settoriCtrl", settoriCtrl);
 settoriCtrl.$inject = ['$scope', '$rootScope'];
+
 function settoriCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.settore = {
@@ -709,6 +724,7 @@ function settoriCtrl($scope, $rootScope) {
 
 angular.module("mpuDashboard").controller("marchiCtrl", marchiCtrl);
 marchiCtrl.$inject = ['$scope', '$rootScope'];
+
 function marchiCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.marchio = {
@@ -743,6 +759,7 @@ function marchiCtrl($scope, $rootScope) {
 
 angular.module("mpuDashboard").controller("tabelleProdottiCtrl", tabelleProdottiCtrl);
 tabelleProdottiCtrl.$inject = ['$scope', '$rootScope'];
+
 function tabelleProdottiCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.tabella_prodotti = {
@@ -767,6 +784,7 @@ function tabelleProdottiCtrl($scope, $rootScope) {
 
 angular.module("mpuDashboard").controller("finitureCtrl", finitureCtrl);
 finitureCtrl.$inject = ['$scope', '$rootScope'];
+
 function finitureCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.finitura = {
@@ -778,13 +796,25 @@ function finitureCtrl($scope, $rootScope) {
     };
 
     $scope.selectItem = function (entity) {
+
+        let nome = entity['fin_nome'],
+            codice = entity['fin_cod'],
+            marchio = entity['fin_mark_id'],
+            file = {
+                name: $rootScope.settings.replaceAll(nome, ' ', '_'),
+                codice: $rootScope.settings.replaceAll(codice, ' ', '_'),
+                marchio: $rootScope.settings.replaceAll($rootScope.settings.convert(marchio, 'marchi', 'mark_id', 'mark_nome'), ' ', '_')
+            },
+            immagine = file.name + '_' + file.codice + '.jpg';
+
         $scope.entity.finitura = {
             id: parseInt(entity['fin_id']),
-            nome: entity['fin_nome'],
-            codice: entity['fin_codice'],
-            marchio: entity['fin_mark_id'],
+            nome: nome,
+            codice: codice,
+            marchio: marchio,
             show: parseInt(entity['fin_show']),
-            tipo: parseInt(entity['fin_type'])
+            tipo: parseInt(entity['fin_type_id']),
+            immagine: '../dashboard/archivio_dati/' + file.marchio + '/Finiture/' + immagine,
         };
     };
 
@@ -793,122 +823,6 @@ function finitureCtrl($scope, $rootScope) {
     $rootScope.load('marchi');
     $rootScope.load('finiture');
 }
-
-/*
-angular.module("mpuDashboard").controller("finitureCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
-
-    $scope.finitura = {
-        selected: false
-    };
-
-    $scope.vm.sorting = ['m', 'n'];
-
-    $scope.switchType = function () {
-        return ($scope.vm.nuovaFinitura.p === 0) ? 'finitura' : 'rivestimento';
-    };
-
-    $scope.selectFinitura = function (result) {
-        $scope.finitura = {};
-        $scope.finitura.selected = true;
-        $scope.finitura.finitura = result;
-    };
-
-    $scope.vm.saveFinituraData = function () {
-        $rootScope.saving = true;
-        $http.post('php/finiture.php?type=save', $scope.vm.finiture).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/finiture.php?type=db').success(function () {
-            $rootScope.saving = false;
-            dataSvc.finiture().then(function (result) {
-                $scope.vm.finiture = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.finitura.n = tempFilterText;
-        }, 250);
-    });
-
-    $scope.$watch('inputCod', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.finitura.c = tempFilterText;
-        }, 250);
-    });
-
-    $scope.eraseInput = function (e, type) {
-        if (e.key === 27)
-            (!type) ? $scope.input = '' : $scope.inputCod = '';
-    };
-
-    $scope.updateCheck = function () {
-        return (!$scope.vm.nuovaFinitura.n || !$scope.vm.nuovaFinitura.c || !$scope.vm.nuovaFinitura.m || !$scope.vm.nuovaFinitura.r);
-    };
-
-    let checkFinitura = function () {
-        return _.findWhere($scope.vm.finiture, {
-            n: $scope.vm.nuovaFinitura.n,
-            c: $scope.vm.nuovaFinitura.c,
-            m: $scope.vm.nuovaFinitura.m
-        });
-    };
-
-    $scope.newFinitura = function () {
-        $rootScope.saving = false;
-        $scope.errore.finitura = false;
-        $scope.vm.nuovaFinitura = {
-            i: $scope.vm.nuovaFinitura.i + 1,
-            v: 1,
-            p: 0,
-            m: false,
-            r: false
-        };
-    };
-
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkFinitura()) {
-                $rootScope.saving = true;
-                $http.post('php/finiture.php?type=new', {
-                        'id': $scope.vm.nuovaFinitura.i,
-                        'nome': $scope.vm.nuovaFinitura.n,
-                        'cod': $scope.vm.nuovaFinitura.c,
-                        'show': $scope.vm.nuovaFinitura.v,
-                        'mark': $scope.vm.nuovaFinitura.m,
-                        'image': $scope.vm.nuovaFinitura.r,
-                        'type': $scope.vm.nuovaFinitura.p
-                    }
-                ).success(function (result) {
-                    console.log('Risposta dalla pagina PHP', result);
-                    delete $scope.vm.nuovaFinitura.r;
-                    $scope.vm.finiture.push($scope.vm.nuovaFinitura);
-                    $scope.vm.saveFinituraData();
-                    $scope.newFinitura()
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.finitura = true;
-            }
-        }
-    };
-}]);
-*/
 
 angular.module("mpuDashboard").controller("lineeCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', 'lineeManager', function ($scope, $rootScope, _, dataSvc, $http, $timeout, lineeManager) {
 

@@ -24,7 +24,7 @@ angular.module("services").service('dashboardPages', function(){
                     link : 'marchi'
                 },
                 {
-                    name : 'tabelle marchi',
+                    name : 'tabelle prodotti',
                     link : 'marchiTabelle'
                 }
             ]

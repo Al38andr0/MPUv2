@@ -1,11 +1,11 @@
-function actions (scope, entity) {
-    this.success = function(data) {
+function actions(scope, entity) {
+    this.success = function (data) {
         console.log('Risposta dalla pagina PHP', data);
         scope.$emit('updateTable');
         scope.actions.reset();
         $rootScope.saving = false;
     };
-    this.fail = function(error) {
+    this.fail = function (error) {
         console.log(error);
         $rootScope.saving = false;
     };
@@ -53,6 +53,7 @@ angular.module("mpuDashboard").directive("fileread", [function () {
 
 angular.module("mpuDashboard").directive('categorie', categorie);
 categorie.$inject = ['$rootScope'];
+
 function categorie($rootScope) {
     return {
         restrict: 'E',
@@ -96,6 +97,7 @@ function categorie($rootScope) {
 
 angular.module("mpuDashboard").directive('settori', settori);
 settori.$inject = ['$rootScope'];
+
 function settori($rootScope) {
     return {
         restrict: 'E',
@@ -144,6 +146,7 @@ function settori($rootScope) {
 
 angular.module("mpuDashboard").directive('marchi', marchi);
 marchi.$inject = ['$rootScope'];
+
 function marchi($rootScope) {
     return {
         restrict: 'E',
@@ -190,6 +193,7 @@ function marchi($rootScope) {
 
 angular.module("mpuDashboard").directive('tabelleProdotti', tabelleProdotti);
 tabelleProdotti.$inject = ['$rootScope'];
+
 function tabelleProdotti($rootScope) {
     return {
         restrict: 'E',
@@ -230,6 +234,7 @@ function tabelleProdotti($rootScope) {
 
 angular.module("mpuDashboard").directive('finiture', finiture);
 finiture.$inject = ['$rootScope'];
+
 function finiture($rootScope) {
     return {
         restrict: 'E',
@@ -244,8 +249,11 @@ function finiture($rootScope) {
             scope.buildBody = () => {
                 return {
                     nome: scope.entity.nome,
-                    pos: scope.entity.posizione,
-                    mark: scope.entity.marchio
+                    cod: scope.entity.codice,
+                    mark: scope.entity.marchio,
+                    show: scope.entity.show,
+                    type: scope.entity.tipo,
+                    image: scope.entity.immagine
                 }
             };
 
@@ -253,7 +261,8 @@ function finiture($rootScope) {
                 return (
                     !scope.entity.nome ||
                     !scope.entity.marchio ||
-                    !scope.entity.posizione
+                    !scope.entity.codice ||
+                    !scope.entity.immagine
                 );
             };
 
@@ -262,7 +271,6 @@ function finiture($rootScope) {
                 scope.entity = {
                     show: 1,
                     tipo: 0,
-                    posizione: 0,
                     marchio: false,
                     immagine: false
                 };
@@ -270,204 +278,6 @@ function finiture($rootScope) {
         }
     }
 }
-
-/*
-angular.module("mpuDashboard").directive('finiture', function () {
-    return {
-        restrict: 'E',
-        templateUrl: 'template/finiture.html',
-        scope: {
-            finituraOriginal: "=",
-            vm: "="
-        },
-        controller: function ($scope, $http, $timeout, $rootScope) {
-
-            $scope.errore = {
-                finitura: false
-            };
-
-            function convertMark(IDS) {
-                _.each($scope.vm.marchi, function (v) {
-                    if (v.i == IDS) {
-                        markByName = v.n;
-                    }
-                });
-                return markByName;
-            }
-
-            function replaceAll(string, find, replace) {
-                return string.replace(new RegExp(find, 'g'), replace);
-            }
-
-            $scope.$watch('finituraOriginal', function (newVal) {
-                $scope.finitura = angular.copy(newVal.finitura);
-
-                var markName = convertMark($scope.finitura.m);
-                markName = replaceAll(markName, ' ', '_');
-                var finName = replaceAll($scope.finitura.n, ' ', '_');
-                var fileName = finName + '_' + $scope.finitura.c.replace(" ", "_") + '.jpg';
-                $scope.finitura.r = '../dashboard/archivio_dati/' + markName + '/Finiture/' + fileName;
-            });
-
-            $scope.confirm = false;
-            $scope.askConfirm = function () {
-                $scope.confirm = true;
-                $timeout(function () {
-                    $scope.confirm = false;
-                }, 4000);
-            };
-
-            $scope.updateCheck = function () {
-                return (!$scope.finitura.n || !$scope.finitura.c || !$scope.finitura.m);
-            };
-
-            $scope.deleteCheck = function () {
-                return ($scope.finitura.n !== $scope.finituraOriginal.finitura.n || $scope.finitura.c !== $scope.finituraOriginal.finitura.c || $scope.finitura.m !== $scope.finituraOriginal.finitura.m);
-            };
-
-            $scope.copyCheck = function () {
-                return (!$scope.finitura.n || !$scope.finitura.c || !$scope.finitura.m || ($scope.finitura.n === $scope.finituraOriginal.finitura.n && $scope.finitura.c === $scope.finituraOriginal.finitura.c));
-            };
-
-            var checkFinitura = function () {
-                if ($scope.finitura.n != $scope.finituraOriginal.finitura.n || $scope.finitura.c != $scope.finituraOriginal.finitura.c || $scope.finitura.m != $scope.finituraOriginal.finitura.m) {
-                    return _.findWhere($scope.vm.finiture, {
-                        n: $scope.finitura.n,
-                        c: $scope.finitura.c,
-                        m: $scope.finitura.m
-                    });
-                } else {
-                    return false;
-                }
-            };
-
-            var checkCopy = function () {
-                return _.findWhere($scope.vm.finiture, {
-                    n: $scope.finitura.n,
-                    c: $scope.finitura.c,
-                    m: $scope.finitura.m
-                });
-            };
-
-            $scope.newFinitura = function () {
-                $rootScope.saving = false;
-                $scope.errore.finitura = false;
-                $scope.finituraOriginal.selected = false;
-                $scope.vm.nuovaFinitura = {
-                    i: $scope.vm.nuovaFinitura.i + 1,
-                    v: 1,
-                    p: 0,
-                    m: false,
-                    r: false
-                };
-            };
-
-            $scope.action = function (type) {
-                if (type == 'U') {
-                    if (!checkFinitura()) {
-                        $rootScope.saving = true;
-                        $http.post('php/finiture.php?type=update', {
-                                'id': $scope.finitura.i,
-                                'nome': $scope.finitura.n,
-                                'cod': $scope.finitura.c,
-                                'show': $scope.finitura.v,
-                                'mark': $scope.finitura.m,
-                                'type': $scope.finitura.p,
-                                'image': $scope.finitura.r,
-                                'sourceNome': $scope.finituraOriginal.finitura.n,
-                                'sourceCod': $scope.finituraOriginal.finitura.c,
-                                'sourceMark': $scope.finituraOriginal.finitura.m
-                            }
-                        ).success(function (data) {
-                            $scope.errore.finitura = false;
-                            $scope.vm.saveFinituraData();
-                            console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.finiture, function (v) {
-                                if (v.i == $scope.finitura.i) {
-                                    v.n = $scope.finitura.n;
-                                    v.m = $scope.finitura.m;
-                                    v.c = $scope.finitura.c;
-                                    v.r = $scope.finitura.r;
-                                    v.p = $scope.finitura.p;
-                                    v.v = $scope.finitura.v;
-                                    $scope.finitura = angular.copy(v);
-                                }
-                            });
-                            $rootScope.saving = false;
-                            $scope.errore.finitura = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.finitura = true;
-                    }
-                }
-                if (type == 'C') {
-                    if (!checkCopy()) {
-                        $rootScope.saving = true;
-                        $http.post('php/finiture.php?type=new', {
-                                'id': $scope.vm.nuovaFinitura.i,
-                                'nome': $scope.finitura.n,
-                                'cod': $scope.finitura.c,
-                                'show': $scope.finitura.v,
-                                'mark': $scope.finitura.m,
-                                'type': $scope.finitura.p,
-                                'image': $scope.finitura.r,
-                                'sourceNome': $scope.finituraOriginal.finitura.n,
-                                'sourceCod': $scope.finituraOriginal.finitura.c,
-                                'sourceMark': $scope.finituraOriginal.finitura.m
-                            }
-                        ).success(function (data) {
-                            //console.log('Risposta dalla pagina PHP', data);
-                            $scope.vm.copiedfinitura = {
-                                i: $scope.vm.nuovaFinitura.i,
-                                n: $scope.finitura.n,
-                                c: $scope.finitura.c,
-                                v: $scope.finitura.v,
-                                m: $scope.finitura.m,
-                                p: $scope.finitura.p
-                            };
-                            $scope.vm.finiture.push($scope.vm.copiedfinitura);
-                            $scope.vm.nuovaFinitura = {
-                                i: $scope.vm.nuovaFinitura.i + 1
-                            };
-                            $scope.vm.saveFinituraData();
-                            $rootScope.saving = false;
-                            $scope.errore.finitura = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.finitura = true;
-                    }
-                }
-                if (type == 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/finiture.php?type=delete', {
-                            'id': $scope.finitura.i,
-                            'nome': $scope.finitura.n,
-                            'cod': $scope.finitura.c,
-                            'show': $scope.finitura.v,
-                            'mark': $scope.finitura.m,
-                            'type': $scope.finitura.p,
-                            'image': $scope.finitura.r
-                        }
-                    ).success(function (data) {
-                        //console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.finiture = _.filter($scope.vm.finiture, function (list) {
-                            return list.i != $scope.finitura.i;
-                        });
-                        $scope.vm.saveFinituraData();
-                        $scope.newFinitura();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
-            };
-        }
-    }
-});
-*/
 
 angular.module("mpuDashboard").directive('linee', function () {
     return {

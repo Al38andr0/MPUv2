@@ -1,57 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Vetrine">
-      <change afterPath="$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui-bootstrap-tpls-3.0.5.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Dashboard:&#10;1) Categorie&#10;2) Settori&#10;3) Marchi&#10;4) Tabelle Prodotti">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/footer.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/home.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/home.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/loader.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/loader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/loader.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/loader.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/mixins.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/settore.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/settore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/settore.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/settore.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/variables.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/variables.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/variables.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/variables.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/vetrina.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/vetrina.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/vetrina.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/vetrina.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/archivio_dati/Las_Mobili/Finiture/_.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/archivio_dati/Las_Mobili/Finiture/__thumb.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/include/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/include/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/js/configure.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/configure.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/controllers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/controllers.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/controllers.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/directives.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/directives.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/directives.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/directives.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/js/mpuDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/mpuDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/services.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/services.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/services.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/php/categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/categorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/php/marchi.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/marchi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/php/marchiTabelle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/php/settori.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/settori.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/template/categorie.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/categorie.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/template/linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/linee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/template/marchi.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/marchi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/template/marchiTabelle.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/template/settori.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/settori.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views/categorie.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/categorie.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views/linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/linee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views/marchi.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/marchi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views/marchiTabelle.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views/settori.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/settori.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/php/finiture.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/finiture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/finiture.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/finiture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/views/finiture.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/finiture.html" afterDir="false" />
     </list>
     <ignored path="mpu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,21 +73,21 @@
         <counts>
           <entry key="css" value="10" />
           <entry key="htaccess" value="5" />
-          <entry key="html" value="133" />
-          <entry key="js" value="217" />
+          <entry key="html" value="139" />
+          <entry key="js" value="218" />
           <entry key="json" value="7" />
           <entry key="less" value="53" />
-          <entry key="php" value="97" />
+          <entry key="php" value="101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="10" />
-          <entry key="HTML" value="133" />
+          <entry key="HTML" value="139" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="217" />
+          <entry key="JavaScript" value="218" />
           <entry key="Less" value="53" />
-          <entry key="PHP" value="97" />
+          <entry key="PHP" value="101" />
           <entry key="composer.json" value="4" />
           <entry key="htaccess" value="5" />
         </counts>
@@ -132,22 +97,22 @@
           <entry key="css" value="7" />
           <entry key="dummy" value="24" />
           <entry key="htaccess" value="13" />
-          <entry key="html" value="8947" />
-          <entry key="js" value="28785" />
+          <entry key="html" value="9139" />
+          <entry key="js" value="29202" />
           <entry key="json" value="28" />
-          <entry key="less" value="6894" />
-          <entry key="php" value="3289" />
-          <entry key="txt" value="121" />
+          <entry key="less" value="6901" />
+          <entry key="php" value="3449" />
+          <entry key="txt" value="192" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="7" />
-          <entry key="HTML" value="8949" />
-          <entry key="JavaScript" value="28783" />
-          <entry key="Less" value="6894" />
-          <entry key="PHP" value="3273" />
-          <entry key="PLAIN_TEXT" value="145" />
+          <entry key="HTML" value="9141" />
+          <entry key="JavaScript" value="29200" />
+          <entry key="Less" value="6901" />
+          <entry key="PHP" value="3433" />
+          <entry key="PLAIN_TEXT" value="216" />
           <entry key="SQL" value="16" />
           <entry key="composer.json" value="28" />
           <entry key="htaccess" value="13" />
@@ -184,13 +149,14 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dashboard/js/controllers.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="445">
-                  <caret line="772" selection-start-line="772" selection-end-line="776" selection-end-column="23" />
+                <state relative-caret-position="242">
+                  <caret line="760" column="55" selection-start-line="760" selection-start-column="55" selection-end-line="760" selection-end-column="55" />
                   <folding>
                     <element signature="n#!!block;n#categorieCtrl#0" />
-                    <element signature="n#!!block;n#settoriCtrl#0" />
+                    <element signature="e#19402#19873#0" />
                     <element signature="n#!!block;n#marchiCtrl#0" />
                     <element signature="n#!!block;n#marchiCtrl#1" />
+                    <element signature="n#!!block;n#tabelleProdottiCtrl#1" />
                   </folding>
                 </state>
               </provider>
@@ -199,8 +165,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard/views/finiture.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="325">
-                  <caret line="15" column="82" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="82" />
+                <state relative-caret-position="812">
+                  <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dashboard/template/finiture.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="812">
+                  <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -212,14 +187,14 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dashboard/js/directives.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="816">
-                  <caret line="266" column="35" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
+                <state relative-caret-position="582">
+                  <caret line="291" column="29" selection-start-line="291" selection-start-column="29" selection-end-line="291" selection-end-column="29" />
                   <folding>
                     <element signature="n#!!block;n#categorie#0" />
                     <element signature="n#!!block;n#settori#0" />
                     <element signature="n#!!block;n#marchi#0" />
                     <element signature="n#!!block;n#marchi#1" />
-                    <element signature="e#12080#20958#0" />
+                    <element signature="n#!!block;n#tabelleProdotti#1" />
                   </folding>
                 </state>
               </provider>
@@ -228,8 +203,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="748">
-                  <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+                <state relative-caret-position="493">
+                  <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -248,11 +223,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>option</find>
-      <find>inputX3</find>
-      <find>dropAreaFileImage</find>
-      <find>scope.ca</find>
-      <find>$scope.vm.nuovaCategoria</find>
       <find>vm.cate</find>
       <find>.rows</find>
       <find>col</find>
@@ -266,21 +236,25 @@
       <find>.o</find>
       <find>.list</find>
       <find>$rootScope.model</find>
-      <find>cat_</find>
       <find>categorie</find>
       <find>fiel</find>
       <find>pos</find>
       <find>mark_</find>
       <find>tabelle_prod</find>
-      <find>settore</find>
       <find>set_</find>
-      <find>settori</find>
       <find>tabella_prodotti</find>
       <find>tbpr_</find>
       <find>.r</find>
+      <find>settore</find>
+      <find>cat_</find>
+      <find>categoria</find>
+      <find>settori</find>
+      <find>replaceAll</find>
+      <find>convert</find>
+      <find>settings.convert</find>
+      <find>sourceNome</find>
     </findStrings>
     <replaceStrings>
-      <replace>p[</replace>
       <replace>prd_</replace>
       <replace>$sql</replace>
       <replace>@grey</replace>
@@ -300,16 +274,17 @@
       <replace>entity.</replace>
       <replace>$rootScope.Model</replace>
       <replace>set_</replace>
-      <replace>marchio</replace>
       <replace>marchi</replace>
       <replace>settori</replace>
-      <replace>mark_</replace>
       <replace>tabelle_prodotti</replace>
       <replace>tabella_prodotti</replace>
       <replace>tbpr_</replace>
       <replace>tabelleProdotti</replace>
-      <replace>finitura</replace>
       <replace>fin_</replace>
+      <replace>finitura</replace>
+      <replace>finiture</replace>
+      <replace>mark_</replace>
+      <replace>marchio</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -336,9 +311,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dashboard/php/vetrine.php" />
-        <option value="$PROJECT_DIR$/dashboard/api/vetrine.php" />
-        <option value="$PROJECT_DIR$/css/vetrina.less" />
         <option value="$PROJECT_DIR$/js/services/marchiSrv.js" />
         <option value="$PROJECT_DIR$/dashboard/api/rivenditori.php" />
         <option value="$PROJECT_DIR$/html/templates/vetrina.html" />
@@ -362,7 +334,6 @@
         <option value="$PROJECT_DIR$/html/views/settore.html" />
         <option value="$PROJECT_DIR$/dashboard/template/linee.html" />
         <option value="$PROJECT_DIR$/dashboard/views/linee.html" />
-        <option value="$PROJECT_DIR$/dashboard/js/services.js" />
         <option value="$PROJECT_DIR$/dashboard/include/menu.html" />
         <option value="$PROJECT_DIR$/css/variables.less" />
         <option value="$PROJECT_DIR$/css/mixins.less" />
@@ -384,7 +355,11 @@
         <option value="$PROJECT_DIR$/dashboard/index.php" />
         <option value="$PROJECT_DIR$/dashboard/js/mpuDashboard.js" />
         <option value="$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html" />
+        <option value="$PROJECT_DIR$/dashboard/js/services.js" />
         <option value="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" />
+        <option value="$PROJECT_DIR$/dashboard/php/finiture.php" />
+        <option value="$PROJECT_DIR$/dashboard/template/finiture.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/finiture.html" />
         <option value="$PROJECT_DIR$/dashboard/js/controllers.js" />
         <option value="$PROJECT_DIR$/dashboard/js/directives.js" />
       </list>
@@ -727,7 +702,7 @@
       <workItem from="1541448759246" duration="6766000" />
       <workItem from="1541535053661" duration="9391000" />
       <workItem from="1541620475961" duration="12269000" />
-      <workItem from="1541711448709" duration="4573000" />
+      <workItem from="1541711448709" duration="9321000" />
     </task>
     <task id="LOCAL-00001" summary="Home page carousel + header">
       <created>1535839387384</created>
@@ -771,11 +746,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541327541355</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Dashboard:&#10;1) Categorie&#10;2) Settori&#10;3) Marchi&#10;4) Tabelle Prodotti">
+      <created>1541716160049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1541716160049</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="467863000" />
+    <option name="totallyTimeSpent" value="472611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -882,7 +864,8 @@
     <MESSAGE value="Created current" />
     <MESSAGE value="Linee" />
     <MESSAGE value="Vetrine" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vetrine" />
+    <MESSAGE value="Dashboard:&#10;1) Categorie&#10;2) Settori&#10;3) Marchi&#10;4) Tabelle Prodotti" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dashboard:&#10;1) Categorie&#10;2) Settori&#10;3) Marchi&#10;4) Tabelle Prodotti" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -899,23 +882,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/vetrina.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/rivenditoriSrv.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mixin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/directives/vetrina.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1101,13 +1067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6307">
-          <caret line="371" selection-start-line="371" selection-end-line="371" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_ajax.googleapis.com_ajax_libs_angularjs_1.7.4_angular.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1145,31 +1104,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="37" column="49" lean-forward="true" selection-end-line="43" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="30" column="18" lean-forward="true" selection-end-line="46" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/js/configure.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/settori.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
@@ -1208,13 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1229,36 +1160,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/settori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="63" selection-start-line="63" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/views/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33443" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/views/settori.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/settori.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="30" column="18" lean-forward="true" selection-end-line="46" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/finiture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="82" column="67" lean-forward="true" selection-start-line="82" selection-start-column="67" selection-end-line="82" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/finiture.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/views/finiture.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="15" column="82" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="82" />
+        <state relative-caret-position="812">
+          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="772" selection-start-line="772" selection-end-line="776" selection-end-column="23" />
+        <state relative-caret-position="242">
+          <caret line="760" column="55" selection-start-line="760" selection-start-column="55" selection-end-line="760" selection-end-column="55" />
           <folding>
             <element signature="n#!!block;n#categorieCtrl#0" />
-            <element signature="n#!!block;n#settoriCtrl#0" />
+            <element signature="e#19402#19873#0" />
             <element signature="n#!!block;n#marchiCtrl#0" />
             <element signature="n#!!block;n#marchiCtrl#1" />
+            <element signature="n#!!block;n#tabelleProdottiCtrl#1" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/js/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="266" column="35" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
+        <state relative-caret-position="582">
+          <caret line="291" column="29" selection-start-line="291" selection-start-column="29" selection-end-line="291" selection-end-column="29" />
           <folding>
             <element signature="n#!!block;n#categorie#0" />
             <element signature="n#!!block;n#settori#0" />
             <element signature="n#!!block;n#marchi#0" />
             <element signature="n#!!block;n#marchi#1" />
-            <element signature="e#12080#20958#0" />
+            <element signature="n#!!block;n#tabelleProdotti#1" />
           </folding>
         </state>
       </provider>
