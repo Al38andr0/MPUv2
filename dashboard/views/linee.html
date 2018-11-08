@@ -1,4 +1,3 @@
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
 <div class="nuovo" ng-show="!linea.selected">
     <h1>nuova linea</h1>
     <div class="rows">
@@ -23,13 +22,6 @@
         <span class="info sigla">posizione</span><input class="form-control posPrd" type="number" placeholder="100" ng-model="vm.nuovaLinea.y" popover="Posizione" popover-trigger="mouseenter">
     </div>
     <div class="rows">
-        <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : vm.nuovaLinea.r}">
-            <input type="file" class="dropArea" fileread="vm.nuovaLinea.r">
-            <span ng-if="!vm.nuovaLinea.r">IMMAGINE</span>
-            <div class="fileImage">
-                <img ng-if="vm.nuovaLinea.r" ng-src="{{vm.nuovaLinea.r}}">
-            </div>
-        </div>
         <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : vm.nuovaLinea.k}" popover="Catalogo" popover-trigger="mouseenter">
             <input type="file" class="dropArea" fileread="vm.nuovaLinea.k">
             <span ng-if="!vm.nuovaLinea.k">CATALOGO</span>

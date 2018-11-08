@@ -1,54 +1,38 @@
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
-<div class="nuovo" ng-if="!categorie.selected">
-    <h1>nuova categoria</h1>
-    <div class="rows">
-        <input class="form-control nome" type="text" placeholder="Nome categoria" ng-model="vm.nuovaCategoria.n" popover="Nome categoria" popover-trigger="mouseenter">
-        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovaCategoria.y" popover="Posizione" popover-trigger="mouseenter">
-        <button ng-if="vm.nuovaCategoria.v== 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaCategoria.v= 0">ON</button>
-        <button ng-if="vm.nuovaCategoria.v== 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaCategoria.v= 1">OFF</button>
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Categorie</h1>
     </div>
-    <div class="rows">
-        <textarea class="form-control" placeholder="Descrizione" ng-model="vm.nuovaCategoria.x"></textarea>
+    <div class="col-12 mb-5">
+        <categorie entity="entity.categoria"></categorie>
     </div>
-    <div class="rows">
-        <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : vm.nuovaCategoria.r}">
-            <input type="file" class="dropArea" fileread="vm.nuovaCategoria.r">
-            <span ng-if="!vm.nuovaCategoria.r">DROP FILE HERE</span>
-            <div class="fileImage">
-                <img class="finiture" ng-if="vm.nuovaCategoria.r" ng-src="{{vm.nuovaCategoria.r}}">
-            </div>
-        </div>
+    <div class="col-9">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            boundary-links="true"
+            total-items="($root.categorie | filter : {cat_nome : $root.settings.query.categoria}).length"
+            items-per-page="$root.settings.itemsPerPage"
+            max-size="3"
+            ng-model="entity.currentPage"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            force-ellipses="true"
+        ></ul>
     </div>
-    <div class="rows">
-        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
-        <button class="btn btn-primary" type="reset">RESET</button>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title=""  uib-tooltip="Elementi per pagina" >
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.categoria" title="" placeholder="Filtro categorie">
     </div>
 </div>
-<div class="modifica" ng-if="categorie.selected">
-    <h1>modifica categoria</h1>
-    <categorie categoria-original = "categorie" vm = "vm"></categorie>
-</div>
-
-<div class="gestione">
-    <h1>gestione categorie</h1>
-    <div class="list">
-        <div ng-repeat="s in vm.categorie
-        | orderBy : 'y'
-        | offset: ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)">
-            <h4 ng-click="selectItem(s)">{{s.n}}</h4>
-            <p ng-if="s.v == 1">Online</p>
-            <p ng-if="s.v == 0">Offline</p>
-            <p>Posizione: {{s.y}}</p>
-        </div>
-        <div class="paginationContainer">
-            <pagination
-                    total-items="vm.categorie.length"
-                    ng-model="vm.currentPage"
-                    boundary-links="true"
-                    max-size = "vm.maxSize"
-                    items-per-page = "vm.itemsPerPage"
-                    rotate = "false">
-            </pagination>
-        </div>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root.categorie | filter : {cat_nome : $root.settings.query.categoria}"
+         ng-show="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4>{{e['cat_nome']}}</h4>
+        <p ng-if="e['cat_show'] == 1">Online</p>
+        <p ng-if="e['cat_show'] == 0">Offline</p>
+        <p>Posizione: {{e['cat_pos']}}</p>
     </div>
 </div>

@@ -62,8 +62,8 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 controller: 'marchiCtrl'
             })
             .when('/marchiTabelle', {
-                templateUrl: 'views/marchiTabelle.html',
-                controller: 'marchiTabelleCtrl'
+                templateUrl: 'views/tabelle_prodotti.html',
+                controller: 'tabelleProdottiCtrl'
             })
             .when('/prodotti', {
                 templateUrl: 'views/prodotti.html',

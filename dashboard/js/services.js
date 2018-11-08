@@ -2,19 +2,21 @@ var app = angular.module("services", ['ngRoute']);
 angular.module("services").service('dashboardPages', function(){
     return [
         {
-            name : 'home',
-            link : 'home'
+            name : 'struttura',
+            link : 'marchi',
+            sub : [
+                {
+                    name : 'categorie',
+                    link : 'categorie'
+                },
+                {
+                    name : 'settori',
+                    link : 'settori'
+                }
+            ]
         },
         {
-            name : 'categorie',
-            link : 'categorie'
-        },
-        {
-            name : 'settori',
-            link : 'settori'
-        },
-        {
-            name : 'gestione marchi',
+            name : 'marchi',
             link : 'marchi',
             sub : [
                 {
@@ -28,7 +30,7 @@ angular.module("services").service('dashboardPages', function(){
             ]
         },
         {
-            name : 'gestione finiture',
+            name : 'finiture',
             link : 'finiture',
             sub : [
                 {
@@ -46,7 +48,7 @@ angular.module("services").service('dashboardPages', function(){
             ]
         },
         {
-            name : 'gestione linee',
+            name : 'linee',
             link : 'linee',
             sub : [
                 {
@@ -60,7 +62,7 @@ angular.module("services").service('dashboardPages', function(){
             ]
         },
         {
-            name : 'gestione prodotti',
+            name : 'prodotti',
             link : 'prodotti',
             sub : [
                 {
@@ -74,7 +76,7 @@ angular.module("services").service('dashboardPages', function(){
             ]
         },
         {
-            name : 'gestione vetrine',
+            name : 'vetrine',
             link : 'vetrine',
             sub : [
                 {
@@ -84,44 +86,6 @@ angular.module("services").service('dashboardPages', function(){
                 {
                     name : 'prodotti',
                     link : 'vetrineProdotti'
-                }
-            ]
-        },
-/*
-        {
-            name : 'gestione esposizioni',
-            link : 'esposizioni',
-            sub : [
-                {
-                    name : 'esposizioni',
-                    link : 'esposizioni'
-                },
-                {
-                    name : 'prodotti',
-                    link : 'esposizioniProdotti'
-                },
-                {
-                    name : 'settori',
-                    link : 'esposizioniSettori'
-                }
-            ]
-        },
-*/
-        {
-            name : 'gestione composizioni',
-            link : 'composti',
-            sub : [
-                {
-                    name : 'composizioni',
-                    link : 'composti'
-                },
-                {
-                    name : 'prodotti',
-                    link : 'compostiProdotti'
-                },
-                {
-                    name : 'settori',
-                    link : 'compostiSettori'
                 }
             ]
         },

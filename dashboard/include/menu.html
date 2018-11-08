@@ -1,13 +1,10 @@
-<div class="title">
-    <a href="/mpu/home">
-        <h1 class="link">PORTAL</h1>
-    </a>
-    <div ng-repeat="l in vm.links">
-        <h1 class="link" ng-class="{selected : vm.currentLink == l.name}" ng-click="vm.changeLink(l)">{{l.name}}</h1>
-        <div class="sub link" ng-class="{selected : vm.currentSubLink == sl.link}" ng-if="vm.currentLink == l.name && l.sub" ng-repeat="sl in l.sub" ng-click="vm.changeLink(sl)">
-            <i ng-if="!$last" class="icons-tree"></i>
-            <i ng-if="$last" class="icons-tree-last"></i>
-            <h1>{{sl.name}}</h1>
-        </div>
-    </div>
-</div>
+<ul>
+    <li class="text-capitalize" ng-repeat="l in vm.links">
+        <p>{{l.name}}</p>
+        <ul ng-if="l.sub">
+            <li class="text-capitalize" ng-repeat="sl in l.sub" ng-click="vm.changeLink(sl)">
+                <p ng-class="{selected : vm.currentSubLink == sl.link}" >{{sl.name}}</p>
+            </li>
+        </ul>
+    </li>
+</ul>

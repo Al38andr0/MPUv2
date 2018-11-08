@@ -20,13 +20,6 @@
     <span class="info sigla">posizione</span><input class="form-control posPrd" type="number" ng-model="linea.y" popover="Posizione" popover-trigger="mouseenter">
 </div>
 <div class="rows">
-    <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : linea.r}">
-        <input type="file" class="dropArea" fileread="linea.r">
-        <span ng-if="!linea.r">IMMAGINE</span>
-        <div class="fileImage">
-            <img ng-if="linea.r" ng-src="{{linea.r}}">
-        </div>
-    </div>
     <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : linea.k}" popover="Catalogo" popover-trigger="mouseenter">
         <input type="file" class="dropArea" fileread="linea.k">
         <span ng-if="!linea.k">CATALOGO</span>

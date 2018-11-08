@@ -1,21 +1,21 @@
 @import "icons.css";
 @font-face {
   font-family: 'Open Sans';
-  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
-  font-weight: normal;
   font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Open Sans Light';
-  src: url('../fonts/OpenSans-Light.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Open Sans';
   font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Open Sans Bold';
-  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Open Sans';
   font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Pathway Gothic One';
@@ -125,6 +125,7 @@
 #header > .row .logoContainer > h6 {
   font-size: 0.7vw;
   font-family: "Open Sans Light", sans-serif;
+  font-weight: 300;
 }
 #header > .row .logoContainer > a {
   font-size: 1vw;
@@ -531,6 +532,7 @@ carousel > div > div.messageContainer > h6 {
 }
 * {
   font-family: "Open Sans", sans-serif;
+  font-weight: 400;
 }
 html {
   position: relative;
@@ -538,6 +540,7 @@ html {
 }
 body {
   font-family: "Open Sans", sans-serif;
+  font-weight: 400;
   padding: 0;
   margin-bottom: 500px;
   overflow-x: hidden;
@@ -565,6 +568,7 @@ ui-view {
 }
 .notes {
   font-family: "Open Sans", sans-serif !important;
+  font-weight: 400 !important;
   font-size: 0.8rem !important;
 }
 .removeBoxShadow {

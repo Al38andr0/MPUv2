@@ -11,7 +11,7 @@
     <?php include('php/connessione.php'); ?>
 </head>
 
-<body ng-app="mpuDashboard" ng-controller="mainCtrl">
+<body ng-app="mpuDashboard" ng-controller="mainCtrl" ng-cloak>
 <?php
 function listaProdottiGoogle($con) {
     $message = "wrong answer";
@@ -139,9 +139,9 @@ function siteMapRivGoogle($con) {
 //siteMapRivGoogle($con);
 ?>
 <div class="background"></div>
-<div ng-include="'include/menu.html'" id="menu" ng-ftscroller ftoptions="vm.ftscroller"></div>
-<div ng-view id="view"></div>
-<div class="notification" ng-if="saving">
+<div ng-include="'include/menu.html'" id="menu"></div>
+<div class="container" ng-view id="view"></div>
+<div class="notification" ng-if="$root.saving">
     <span>Loading data</span>
     <i class="icons-loader"></i>
 </div>
@@ -150,15 +150,15 @@ function siteMapRivGoogle($con) {
 </body>
 
 <script type="text/javascript" src="/lib/underscore-min.js"></script>
-<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>-->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-route.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-animate.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-touch.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-cookies.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-<script type='text/javascript' src='http://rawgithub.com/ftlabs/ftscroller/master/lib/ftscroller.js'></script>
-<script type="text/javascript" src="../lib/ng-ftscroller.js"></script>
+<script type="text/javascript" src="/lib/ui-bootstrap-tpls-3.0.5.min.js"></script>
 <script type="text/javascript" src="js/mpuDashboard.js"></script>
 <script type="text/javascript" src="js/configure.js"></script>
 <script type="text/javascript" src="js/services.js"></script>

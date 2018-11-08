@@ -1,25 +1,42 @@
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Nome marchio" ng-model="mark.n" popover="Nome marchio" popover-trigger="mouseenter">
-    <input class="form-control numero" type="number" placeholder="0" ng-model="mark.b" popover="Variazione listino" popover-trigger="mouseenter"><span class="info perc">%</span>
-    <input class="form-control numero" type="number" placeholder="0" ng-model="mark.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
-    <button ng-if="mark.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="mark.v = 0">ON</button>
-    <button ng-if="mark.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="mark.v = 1">OFF</button>
-</div>
-<div class="checkboxContainer marchi">
-    <h3>categorie</h3>
-    <div class="checkbox" ng-repeat="c in vm.categorie">
-        <label>
-            <input class="categorieCheck" type="checkbox" value="{{c.i}}" ng-checked="selectedCat(c.i)" ng-click="toggleSet(c.i)">
-            {{c.n}}
-        </label>
+<form class="row mt-3" name="marchi">
+    <div class="col-3">
+        <fieldset>
+            <label for="nome">Nome:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+        </fieldset>
+        <fieldset>
+            <label for="listino">Variazione listino (%):</label>
+            <input id="listino" class="form-control" type="number" ng-model="entity.listino">
+        </fieldset>
+        <fieldset>
+            <label for="sconto">Sconto: (%)</label>
+            <input id="sconto" class="form-control" type="number" ng-model="entity.sconto">
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show"
+                    ng-options="o.id as o.label for o in $root.options.show"></select>
+        </fieldset>
     </div>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="marchioOriginal.selected = false">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.marchio">ERRORE - MARCHIO ESISTENTE</button>
-</div>
+    <div class="col-6 pt-3 d-flex flex-wrap align-content-start">
+        <fieldset ng-repeat="c in entity.categorie" class="form-check col-6">
+            <input id="_{{c.nome}}" type="checkbox" value="{{c.id}}" class="form-check-input" ng-checked="c.checked" ng-model="c.checked">
+            <label for="_{{c.nome}}" class="form-check-label">{{c.nome}}</label>
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()"
+                ng-disabled="updateCheck()">CREATE
+        </button>
+        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()"
+                ng-disabled="updateCheck()">UPDATE
+        </button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.confirm()">DELETE
+        </button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button"
+                ng-click="actions.erase()">CONFIRM
+        </button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

@@ -1,26 +1,39 @@
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Nome categoria" ng-model="cat.n" popover="Nome categoria" popover-trigger="mouseenter">
-    <input class="form-control pos" type="number" placeholder="0" ng-model="cat.y" popover="Posizione" popover-trigger="mouseenter">
-    <button ng-if="cat.v== 1" class="btn btn-success switch" type="button" value="1" ng-click="cat.v= 0">ON</button>
-    <button ng-if="cat.v== 0" class="btn btn-danger switch" type="button" value="0" ng-click="cat.v= 1">OFF</button>
-</div>
-<div class="rows">
-    <textarea class="form-control" placeholder="Descrizione" ng-model="cat.x"></textarea>
-</div>
-<div class="rows">
-    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : cat.r}">
-        <input type="file" class="dropArea" fileread="cat.r">
-        <span ng-if="!cat.r">DROP FILE HERE</span>
-        <div class="fileImage">
-            <img class="finiture" ng-if="cat.r" ng-src="{{cat.r}}">
-        </div>
+<form class="row mt-3" name="categorie">
+    <div class="col-3">
+        <fieldset>
+            <label for="nome">Nome:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+        </fieldset>
+        <fieldset>
+            <label for="posizione">Posizione:</label>
+            <input id="posizione" class="form-control" type="number" placeholder="0" ng-model="entity.posizione">
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
+        </fieldset>
     </div>
-</div>
-
-<div class="commands">
-        <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-        <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
-        <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
-</div>
-</div>
+    <div class="col-3">
+        <fieldset>
+            <label for="descrizione">Descrizione:</label>
+            <textarea id="descrizione" class="form-control inputX3" ng-model="entity.descrizione"></textarea>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label>Immagine</label>
+            <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
+                <input type="file" fileread="entity.immagine">
+                <span ng-if="!entity.immagine">DROP FILE HERE</span>
+                <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>
