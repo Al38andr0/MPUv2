@@ -1,3 +1,52 @@
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Linee</h1>
+    </div>
+    <div class="col-12 mb-5">
+        <linee entity="entity.linea"></linee>
+    </div>
+    <div class="col-7">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            boundary-links="true"
+            total-items="($root.linee | filter : {line_nome : $root.settings.query.linea, mark_nome : $root.settings.query.marchio}).length"
+            items-per-page="$root.settings.itemsPerPage"
+            max-size="3"
+            ng-model="entity.currentPage"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            force-ellipses="true"
+        ></ul>
+    </div>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.linea" title="" placeholder="Filtro linea">
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
+    </div>
+</div>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root.linee | filter : {line_nome : $root.settings.query.linea, mark_nome : $root.settings.query.marchio}"
+         ng-show="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4>{{e['line_nome']}}</h4>
+        <p ng-if="e['line_show'] === '1'">Online</p>
+        <p ng-if="e['line_show'] === '0'">Offline</p>
+        <p>Consegna: {{e['line_time']}} giorni</p>
+        <p>Garanzia: {{e['line_war']}} anni</p>
+        <p>{{e['mark_nome']}}</p>
+        <p>{{e['cat_nome']}}</p>
+        <p ng-if="e['line_vtr'] === '1'" class="">Vetrina</p>
+        <p ng-if="e['line_pdf_file'] === '1'">Catalogo</p>
+        <p ng-if="e['line_spec_file'] === '1'">Specifiche</p>
+    </div>
+</div>
+
+<!--
 <div class="nuovo" ng-show="!linea.selected">
     <h1>nuova linea</h1>
     <div class="rows">
@@ -99,4 +148,4 @@
         </div>
         <h5 ng-if="(vm.linee | filter : {n : filtro.linea.n}).length == 0">Nessun risultato disponibile</h5>
     </div>
-</div>
+</div>-->

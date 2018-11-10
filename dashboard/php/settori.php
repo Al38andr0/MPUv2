@@ -22,7 +22,7 @@ switch ($_GET['type']) {
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);
         }
-        echo json_encode($result_array);
+        echo json_encode($result_array, JSON_NUMERIC_CHECK);
         break;
     case 'new':
         $sql = "INSERT INTO settori (set_nome, set_pos, set_show, set_cat_id, set_txt, set_home) VALUES ('$nome', '$data->pos', '$data->show', '$data->cat', '$text', '$data->home')";

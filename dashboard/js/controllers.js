@@ -32,6 +32,16 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
                 id: 0,
                 label: 'Non visibile'
             }
+        ],
+        vetrina: [
+            {
+                id: 1,
+                label: 'Attivata'
+            },
+            {
+                id: 0,
+                label: 'Disattivata'
+            }
         ]
     };
 
@@ -140,22 +150,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         maxSize: 10,
         dummy: {
             image: false
-        },
-        nuovaLinea: {
-            a: [false],
-            q: [],
-            v: 1,
-            z: 2,
-            b: 0,
-            y: 100,
-            c: 0,
-            s: 0,
-            e: 25,
-            w: 2,
-            g: false,
-            r: false,
-            k: false,
-            j: false
         },
         nuovaFinituraTabella: {
             m: false,
@@ -472,13 +466,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         }).i + 1;
     });
 
-    dataSvc.linee().then(function (result) {
-        $scope.vm.linee = result.data;
-        $scope.vm.nuovaLinea.i = _.max($scope.vm.linee, function (list) {
-            return list.i;
-        }).i + 1;
-    });
-
     dataSvc.vetrine().then(function (result) {
         $scope.vm.vetrine = result.data;
         $scope.vm.nuovaVetrina.i = _.max($scope.vm.vetrine, function (list) {
@@ -790,7 +777,6 @@ function finitureCtrl($scope, $rootScope) {
     $scope.entity.finitura = {
         show: 1,
         tipo: 0,
-        posizione: 0,
         marchio: false,
         immagine: false
     };
@@ -824,6 +810,52 @@ function finitureCtrl($scope, $rootScope) {
     $rootScope.load('finiture');
 }
 
+angular.module("mpuDashboard").controller("lineeCtrl", lineeCtrl);
+lineeCtrl.$inject = ['$scope', '$rootScope'];
+
+function lineeCtrl($scope, $rootScope) {
+    $scope.entity = new $rootScope.Model();
+    $scope.entity.linea = {
+        show: 1,
+        vetrina: 0,
+        posizione: 0,
+        consegna: 25,
+        garanzia: 2,
+        sconto: 0,
+        abbinamenti: [],
+        marchio: false,
+        categoria: false,
+        catalogo: "",
+        specifiche: ""
+    };
+
+    $scope.selectItem = function (entity) {
+
+        $scope.entity.linea = {
+            id: parseInt(entity['line_id']),
+            nome: entity['line_nome'],
+            marchio: entity['mark_id'],
+            categoria: entity['cat_id'],
+            show: parseInt(entity['line_show']),
+            posizione: parseInt(entity['line_pos']),
+            consegna: parseInt(entity['line_time']),
+            vetrina: parseInt(entity['line_vtr']),
+            garanzia: parseInt(entity['line_war']),
+            sconto: parseInt(entity['line_disc']),
+            catalogo: parseInt(entity['line_ctl']),
+            specifiche: parseInt(entity['line_spc']),
+            abbinamenti: JSON.parse(entity['line_link'])
+        };
+    };
+
+    $scope.$on('updateTable', () => $rootScope.load('linee', true));
+
+    $rootScope.load('marchi');
+    $rootScope.load('categorie');
+    $rootScope.load('linee');
+}
+
+/*
 angular.module("mpuDashboard").controller("lineeCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', 'lineeManager', function ($scope, $rootScope, _, dataSvc, $http, $timeout, lineeManager) {
 
     $scope.linea = {
@@ -964,6 +996,7 @@ angular.module("mpuDashboard").controller("lineeCtrl", ['$scope', '$rootScope', 
         }
     };
 }]);
+*/
 
 angular.module("mpuDashboard").controller("finitureTabelleCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 

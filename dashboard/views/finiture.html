@@ -38,10 +38,10 @@
          ng-click="selectItem(e)">
         <h4>{{e['fin_nome']}}</h4>
         <p>Codice: {{e['fin_cod']}}</p>
-        <p ng-if="e['fin_show'] == 1">Online</p>
-        <p ng-if="e['fin_show'] == 0">Offline</p>
+        <p ng-if="e['fin_show'] === 1">Online</p>
+        <p ng-if="e['fin_show'] === 0">Offline</p>
         <p>{{e['mark_nome']}}</p>
-        <p ng-if="e['fin_type_id'] == 1">Rivestimento</p>
-        <p ng-if="e['fin_type_id'] == 0">Finitura</p>
+        <p ng-if="e['fin_type_id'] === 1">Rivestimento</p>
+        <p ng-if="e['fin_type_id'] === 0">Finitura</p>
     </div>
 </div>

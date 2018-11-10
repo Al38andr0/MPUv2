@@ -34,7 +34,7 @@ switch ($_GET['type']) {
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);
         }
-        echo json_encode($result_array);
+        echo json_encode($result_array, JSON_NUMERIC_CHECK);
         break;
     case 'new':
         $sql = "INSERT INTO finiture (fin_nome, fin_cod, fin_mark_id, fin_show, fin_type_id) VALUES ('$nome', '$data->cod', '$mark_id', '$data->show', '$data->type')";

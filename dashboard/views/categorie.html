@@ -31,8 +31,8 @@
          ng-show="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['cat_nome']}}</h4>
-        <p ng-if="e['cat_show'] == 1">Online</p>
-        <p ng-if="e['cat_show'] == 0">Offline</p>
+        <p ng-if="e['cat_show'] === 1">Online</p>
+        <p ng-if="e['cat_show'] === 0">Offline</p>
         <p>Posizione: {{e['cat_pos']}}</p>
     </div>
 </div>

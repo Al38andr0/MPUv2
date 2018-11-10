@@ -19,7 +19,7 @@ switch ($_GET['type']) {
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);
         }
-        echo json_encode($result_array);
+        echo json_encode($result_array, JSON_NUMERIC_CHECK);
         break;
     case 'new':
         mkdir($path);

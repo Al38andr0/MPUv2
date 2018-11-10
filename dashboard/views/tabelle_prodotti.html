@@ -34,12 +34,10 @@
          ng-show="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['tbpr_nome']}}</h4>
-        <p ng-if="e['tbpr_show'] == 1">Online</p>
-        <p ng-if="e['tbpr_show'] == 0">Offline</p>
+        <p ng-if="e['tbpr_show'] === 1">Online</p>
+        <p ng-if="e['tbpr_show'] === 0">Offline</p>
         <p>Posizione: {{e['tbpr_pos']}}</p>
         <p>{{e['mark_nome']}}</p>
-        <p ng-if="e['tbpr_home'] == 1">Visible in homepage</p>
-        <p ng-if="e['tbpr_home'] == 0">Non visible in homepage</p>
     </div>
 </div>
 

@@ -14,7 +14,7 @@
     <div class="col-3">
         <fieldset>
             <label for="posizione">Posizione:</label>
-            <input id="posizione" class="form-control" type="number" placeholder="0" ng-model="entity.posizione">
+            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
         </fieldset>
     </div>
     <div class="col-3 pt-4">
@@ -25,22 +25,3 @@
         <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
     </div>
 </form>
-
-<!--
-<div class="rows">
-    <input class="form-control abbinamento" type="text" placeholder="Nome tabella" ng-model="tbpr.n" popover="Nome tabella" popover-trigger="mouseenter">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="tbpr.m">
-    </select>
-    <input class="form-control pos" type="number" placeholder="0" ng-model="tbpr.y" popover="Posizione" popover-trigger="mouseenter"><br>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled = "copyCheck()">COPY</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="tbprOriginal.selected = false">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.tbpr">ERRORE - TABELLA ESISTENTE</button>
-</div>
--->

@@ -279,6 +279,67 @@ function finiture($rootScope) {
     }
 }
 
+angular.module("mpuDashboard").directive('linee', linee);
+linee.$inject = ['$rootScope'];
+
+function linee($rootScope) {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/linee.html',
+        scope: {
+            entity: "="
+        },
+        link: function (scope) {
+            scope.entity = angular.copy(scope.entity);
+            scope.confirm = false;
+
+            scope.buildBody = () => {
+                return {
+                    nome: scope.entity.nome,
+                    mark: scope.entity.marchio,
+                    cat: scope.entity.categoria,
+                    show: scope.entity.show,
+                    vtr: scope.entity.vetrina,
+                    time: scope.entity.consegna,
+                    war: scope.entity.garanzia,
+                    disc: scope.entity.sconto,
+                    pos: scope.entity.posizione,
+                    link: scope.entity.abbinamenti,
+                    ctl: scope.entity.catalogo,
+                    spc: scope.entity.specifiche
+                }
+            };
+
+            scope.updateCheck = function () {
+                return (
+                    !scope.entity.nome ||
+                    !scope.entity.marchio ||
+                    !scope.entity.categoria ||
+                    !scope.entity.posizione
+                );
+            };
+
+            scope.actions = new $rootScope.Actions(scope, 'linee');
+            scope.actions.reset = () => {
+                scope.entity = {
+                    show: 1,
+                    vetrina: 0,
+                    posizione: 0,
+                    consegna: 25,
+                    garanzia: 2,
+                    sconto: 0,
+                    abbinamenti: [],
+                    marchio: false,
+                    categoria: false,
+                    catalogo: "",
+                    specifiche: ""
+                };
+            };
+        }
+    }
+}
+
+/*
 angular.module("mpuDashboard").directive('linee', function () {
     return {
         restrict: 'E',
@@ -485,6 +546,7 @@ angular.module("mpuDashboard").directive('linee', function () {
         }
     }
 });
+*/
 
 angular.module("mpuDashboard").directive('finitureTabelle', function () {
     return {

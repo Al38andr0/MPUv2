@@ -461,6 +461,10 @@ button.btn {
   margin: 0.25rem 0 0;
   color: #173244;
 }
+#view fieldset > input.custom-file-input {
+  padding: 0.2rem;
+  opacity: 1;
+}
 #view fieldset.form-check {
   padding: 0.5rem;
 }

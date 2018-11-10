@@ -1,3 +1,60 @@
+<form class="row mt-3" name="linee">
+    <div class="col-3">
+        <fieldset>
+            <label for="nome">Nome:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+        </fieldset>
+        <fieldset>
+            <label for="marchio">Marchio:</label>
+            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+        </fieldset>
+        <fieldset>
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" class="form-control" ng-model="entity.categoria" ng-options="o.cat_id as o.cat_nome for o in $root.categorie"></select>
+        </fieldset>
+        <fieldset>
+            <label for="posizione">Posizione:</label>
+            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="vetrina">Vetrina:</label>
+            <select id="vetrina" class="form-control" ng-model="entity.vetrina" ng-options="o.id as o.label for o in $root.options.vetrina"></select>
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
+        </fieldset>
+        <fieldset>
+            <label for="consegna">Consegna (giorni):</label>
+            <input id="consegna" class="form-control" type="number" ng-model="entity.consegna">
+        </fieldset>
+        <fieldset>
+            <label for="garanzia">Garanzia (anni):</label>
+            <input id="garanzia" class="form-control" type="number" ng-model="entity.garanzia">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="catalogo">Catalogo</label>
+            <input id="catalogo" class="form-control custom-file-input" type="file" fileread="entity.catalogo" ng-model="entity.catalogo">
+        </fieldset>
+        <fieldset>
+            <label for="specifiche">Specifiche</label>
+            <input id="specifiche" class="form-control custom-file-input" type="file" fileread="entity.specifiche" ng-model="entity.specifiche">
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>
+
+<!--
 <div class="rows">
     <input class="form-control nome" type="text" placeholder="Nome linea" ng-model="linea.n" popover="Nome linea" popover-trigger="mouseenter">
     <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="linea.m">
@@ -55,4 +112,4 @@
 </div>
 <div class="rows">
     <button class="btn btn-danger errore" ng-if="errore.finitura">ERRORE - LINEA ESISTENTE</button>
-</div>
+</div>-->
