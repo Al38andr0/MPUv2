@@ -42,12 +42,34 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
                 id: 0,
                 label: 'Disattivata'
             }
+        ],
+        prezzo: [
+            {
+                id: 1,
+                label: 'Bassa'
+            },
+            {
+                id: 2,
+                label: 'Media/Bassa'
+            },
+            {
+                id: 3,
+                label: 'Media'
+            },
+            {
+                id: 4,
+                label: 'Media/Alta'
+            },
+            {
+                id: 5,
+                label: 'Alta'
+            }
         ]
     };
 
     $rootScope.Actions = function (scope, entity) {
         this.success = function (data) {
-            console.log('Risposta dalla pagina PHP', data);
+            console.log('SUCCESS: ', data);
             scope.$emit('updateTable');
             if (data.data !== 'Updated')
                 scope.actions.reset();
@@ -55,7 +77,7 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
             scope.confirm = false;
         };
         this.fail = function (error) {
-            console.log(error);
+            console.log('FAIL: ', error);
             $rootScope.saving = false;
         };
         this.confirm = function () {
@@ -79,6 +101,13 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
             body.id = scope.entity.id;
             $http.post('php/' + entity + '.php?type=delete', JSON.stringify(body)).then(this.success, this.fail);
         };
+        this.cleanInputFile = function () {
+            angular.forEach(
+                angular.element("input[type='file']"),
+                function (inputElem) {
+                    angular.element(inputElem).val(null);
+                });
+        }
     };
 
     $rootScope.settings = {
@@ -109,6 +138,9 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         },
         replaceAll: (string, find, replace) => {
             return string.replace(new RegExp(find, 'g'), replace);
+        },
+        idToLabel: (id, list) => {
+            return _.find(list, (num) => num.id === id).label;
         }
     };
 
@@ -128,12 +160,12 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
 
         $http.get('php/' + entity + '.php?type=get').then(
             function (data) {
-                console.log('GET ' + entity + ': risposta dalla pagina PHP', data.data);
+                console.log('GET SUCCESS ' + entity + ': ', data.data);
                 $rootScope[entity] = data.data;
                 $rootScope.$broadcast(entity);
             },
             function (error) {
-                console.log(error);
+                console.log('GET FAILS: ', error);
             }
         )
     };
@@ -169,14 +201,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
             y: 1,
             f: 0,
             z: [{z: '', a: ''}]
-        },
-        nuovaLineaSettore: {
-            v: 1,
-            p: 0,
-            z: 2,
-            q: [],
-            m: false,
-            r: false
         },
         nuovoProdottoSettore: {
             m: false,
@@ -452,13 +476,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         }).i + 1;
     });
 
-    dataSvc.lineeSettori().then(function (result) {
-        $scope.vm.lineeSettori = result.data;
-        $scope.vm.nuovaLineaSettore.i = _.max($scope.vm.lineeSettori, function (list) {
-            return list.i;
-        }).i + 1;
-    });
-
     dataSvc.prodottiSettori().then(function (result) {
         $scope.vm.prodottiSettori = result.data;
         $scope.vm.nuovoProdottoSettore.i = _.max($scope.vm.prodottiSettori, function (list) {
@@ -664,11 +681,11 @@ function categorieCtrl($scope, $rootScope) {
 
     $scope.selectItem = function (entity) {
         $scope.entity.categoria = {
-            id: parseInt(entity['cat_id']),
+            id: entity['cat_id'],
             nome: entity['cat_nome'],
-            posizione: parseInt(entity['cat_pos']),
-            show: parseInt(entity['cat_show']),
-            immagine: "/dashboard/archivio_dati/Categorie/" + parseInt(entity['cat_id']) + ".jpg",
+            posizione: entity['cat_pos'],
+            show: entity['cat_show'],
+            immagine: "/dashboard/archivio_dati/Categorie/" + entity['cat_id'] + ".jpg",
             descrizione: entity['cat_txt']
         };
     };
@@ -692,13 +709,13 @@ function settoriCtrl($scope, $rootScope) {
 
     $scope.selectItem = function (entity) {
         $scope.entity.settore = {
-            id: parseInt(entity['set_id']),
+            id: entity['set_id'],
             nome: entity['set_nome'],
             categoria: entity['set_cat_id'],
-            posizione: parseInt(entity['set_pos']),
-            show: parseInt(entity['set_show']),
-            homepage: parseInt(entity['set_home']),
-            immagine: "/dashboard/archivio_dati/Settori/" + parseInt(entity['set_id']) + ".jpg",
+            posizione: entity['set_pos'],
+            show: entity['set_show'],
+            homepage: entity['set_home'],
+            immagine: "/dashboard/archivio_dati/Settori/" + entity['set_id'] + ".jpg",
             descrizione: entity['set_txt']
         };
     };
@@ -723,11 +740,11 @@ function marchiCtrl($scope, $rootScope) {
 
     $scope.selectItem = function (entity) {
         $scope.entity.marchio = {
-            id: parseInt(entity['mark_id']),
+            id: entity['mark_id'],
             nome: entity['mark_nome'],
-            show: parseInt(entity['mark_show']),
-            listino: parseInt(entity['mark_list']),
-            sconto: parseInt(entity['mark_disc'])
+            show: entity['mark_show'],
+            listino: entity['mark_list'],
+            sconto: entity['mark_disc']
         };
 
         let categorie = JSON.parse(entity['mark_cat_array']);
@@ -756,9 +773,9 @@ function tabelleProdottiCtrl($scope, $rootScope) {
 
     $scope.selectItem = function (entity) {
         $scope.entity.tabella_prodotti = {
-            id: parseInt(entity['tbpr_id']),
+            id: entity['tbpr_id'],
             nome: entity['tbpr_nome'],
-            posizione: parseInt(entity['tbpr_pos']),
+            posizione: entity['tbpr_pos'],
             marchio: entity['tbpr_mark_id']
         };
     };
@@ -794,12 +811,12 @@ function finitureCtrl($scope, $rootScope) {
             immagine = file.name + '_' + file.codice + '.jpg';
 
         $scope.entity.finitura = {
-            id: parseInt(entity['fin_id']),
+            id: entity['fin_id'],
             nome: nome,
             codice: codice,
             marchio: marchio,
-            show: parseInt(entity['fin_show']),
-            tipo: parseInt(entity['fin_type_id']),
+            show: entity['fin_show'],
+            tipo: entity['fin_type_id'],
             immagine: '../dashboard/archivio_dati/' + file.marchio + '/Finiture/' + immagine,
         };
     };
@@ -822,28 +839,28 @@ function lineeCtrl($scope, $rootScope) {
         consegna: 25,
         garanzia: 2,
         sconto: 0,
-        abbinamenti: [],
         marchio: false,
         categoria: false,
         catalogo: "",
-        specifiche: ""
+        specifiche: "",
+        abbinamenti: []
     };
 
     $scope.selectItem = function (entity) {
 
         $scope.entity.linea = {
-            id: parseInt(entity['line_id']),
+            id: entity['line_id'],
             nome: entity['line_nome'],
             marchio: entity['mark_id'],
             categoria: entity['cat_id'],
-            show: parseInt(entity['line_show']),
-            posizione: parseInt(entity['line_pos']),
-            consegna: parseInt(entity['line_time']),
-            vetrina: parseInt(entity['line_vtr']),
-            garanzia: parseInt(entity['line_war']),
-            sconto: parseInt(entity['line_disc']),
-            catalogo: parseInt(entity['line_ctl']),
-            specifiche: parseInt(entity['line_spc']),
+            show: entity['line_show'],
+            posizione: entity['line_pos'],
+            consegna: entity['line_time'],
+            vetrina: entity['line_vtr'],
+            garanzia: entity['line_war'],
+            sconto: entity['line_disc'],
+            catalogo: entity['line_pdf_file'],
+            specifiche: entity['line_spec_file'],
             abbinamenti: JSON.parse(entity['line_link'])
         };
     };
@@ -851,152 +868,54 @@ function lineeCtrl($scope, $rootScope) {
     $scope.$on('updateTable', () => $rootScope.load('linee', true));
 
     $rootScope.load('marchi');
+    $rootScope.load('settori');
     $rootScope.load('categorie');
     $rootScope.load('linee');
 }
 
-/*
-angular.module("mpuDashboard").controller("lineeCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', 'lineeManager', function ($scope, $rootScope, _, dataSvc, $http, $timeout, lineeManager) {
+angular.module("mpuDashboard").controller("settoriLineeCtrl", settoriLineeCtrl);
+settoriLineeCtrl.$inject = ['$scope', '$rootScope'];
 
-    $scope.linea = {
-        selected: false
+function settoriLineeCtrl($scope, $rootScope) {
+    $scope.entity = new $rootScope.Model();
+    $scope.entity.settore_linea = {
+        show: 1,
+        prezzo: 3,
+        marchio: false,
+        linea: false,
+        settore: false,
+        immagine: false
     };
 
-    $scope.vm.sorting = ['m', 'n', 'y'];
-    $scope.vm.lineeManager = lineeManager;
-    $scope.selectLinea = function (result) {
-        $scope.linea = {};
-        $scope.linea.selected = true;
-        $scope.linea.linea = result;
-    };
+    $scope.selectItem = function (entity) {
+        let marchio = entity['stln_mark_id'],
+            linea = entity['stln_line_id'],
+            settore = entity['stln_set_id'],
+            file = {
+                marchio: $rootScope.settings.replaceAll($rootScope.settings.convert(marchio, 'marchi', 'mark_id', 'mark_nome'), ' ', '_'),
+                linea: $rootScope.settings.replaceAll($rootScope.settings.convert(linea, 'linee', 'line_id', 'line_nome'), ' ', '_'),
+                settore: $rootScope.settings.replaceAll($rootScope.settings.convert(settore, 'settori', 'set_id', 'set_nome'), ' ', '_')
+            },
+            immagine = file.linea + '_' + file.settore + '.jpg';
 
-    $scope.vm.saveLineaData = function () {
-        $rootScope.saving = true;
-        $http.post('php/linee.php?type=save', $scope.vm.linee).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/linee.php?type=db').success(function () {
-            $rootScope.saving = false;
-            dataSvc.linee().then(function (result) {
-                $scope.vm.linee = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB();
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.linea.n = tempFilterText;
-        }, 250);
-    });
-
-    $scope.eraseInput = function (e) {
-        if (e.key === 27)
-            $scope.input = '';
-    };
-
-    $scope.addLink = function () {
-        $scope.vm.nuovaLinea.a.push(false);
-    };
-
-    $scope.removeLink = function (index) {
-        if ($scope.vm.nuovaLinea.a.length === 1) {
-            $scope.vm.nuovaLinea.a = [false];
-        } else {
-            $scope.vm.nuovaLinea.splice(index, 1);
-        }
-    };
-
-    $scope.toggleSet = function (ID) {
-        if ($scope.vm.nuovaLinea.q.indexOf(ID) === -1) {
-            $scope.vm.nuovaLinea.q.push(parseInt(ID));
-        } else {
-            $scope.vm.nuovaLinea.q.splice($scope.vm.nuovaLinea.q.indexOf(ID), 1);
-        }
-    };
-
-    $scope.updateCheck = function () {
-        return (!$scope.vm.nuovaLinea.n || isNaN($scope.vm.nuovaLinea.e) || isNaN($scope.vm.nuovaLinea.w) || isNaN($scope.vm.nuovaLinea.s) || !$scope.vm.nuovaLinea.m);
-    };
-
-    let checkLinea = function () {
-        return _.findWhere($scope.vm.linee, {nome: $scope.vm.nuovaLinea.n, mark: $scope.vm.nuovaLinea.m});
-    };
-
-    $scope.newLinea = function () {
-        $rootScope.saving = false;
-        $scope.errore.linea = false;
-        $scope.vm.nuovaLinea = {
-            i: $scope.vm.nuovaLinea.i + 1,
-            q: [],
-            a: [false],
-            v: 1,
-            z: 2,
-            b: 0,
-            y: 100,
-            c: 0,
-            s: 0,
-            e: 25,
-            w: 2,
-            g: false,
-            r: false,
-            k: false,
-            j: false
+        $scope.entity.settore_linea = {
+            id: entity['stln_id'],
+            marchio: marchio,
+            linea: linea,
+            settore: settore,
+            show: entity['stln_show'],
+            prezzo: entity['stln_price'],
+            immagine: '../dashboard/archivio_dati/' + file.marchio + '/' + file.linea + '/Vetrina/' + immagine,
         };
     };
 
+    $scope.$on('updateTable', () => $rootScope.load('settori_linee', true));
 
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkLinea()) {
-                $rootScope.saving = true;
-                $http.post('php/linee.php?type=new', {
-                        'id': $scope.vm.nuovaLinea.i,
-                        'nome': $scope.vm.nuovaLinea.n,
-                        'mark': $scope.vm.nuovaLinea.m,
-                        'disc': $scope.vm.nuovaLinea.s,
-                        'time': $scope.vm.nuovaLinea.e,
-                        'war': $scope.vm.nuovaLinea.w,
-                        'ctl': $scope.vm.nuovaLinea.k,
-                        'spc': $scope.vm.nuovaLinea.j,
-                        'image': $scope.vm.nuovaLinea.r,
-                        'show': $scope.vm.nuovaLinea.v,
-                        'price': $scope.vm.nuovaLinea.z,
-                        'cat': $scope.vm.nuovaLinea.g,
-                        'set': $scope.vm.nuovaLinea.q,
-                        'link': $scope.vm.nuovaLinea.a,
-                        'vtr': $scope.vm.nuovaLinea.c,
-                        'pos': $scope.vm.nuovaLinea.y
-                    }
-                ).success(function (result) {
-                    console.log('Risposta dalla pagina PHP', result);
-                    $scope.vm.nuovaLinea.k = ($scope.vm.nuovaLinea.k) ? 1 : false;
-                    $scope.vm.nuovaLinea.j = ($scope.vm.nuovaLinea.j) ? 1 : false;
-                    $scope.vm.linee.push($scope.vm.nuovaLinea);
-                    $scope.vm.saveLineaData();
-                    $scope.newLinea();
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.linea = true;
-            }
-        }
-    };
-}]);
-*/
+    $rootScope.load('marchi');
+    $rootScope.load('linee');
+    $rootScope.load('settori');
+    $rootScope.load('settori_linee');
+}
 
 angular.module("mpuDashboard").controller("finitureTabelleCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 
@@ -1226,164 +1145,6 @@ angular.module("mpuDashboard").controller("abbinamentiCtrl", ['$scope', '$rootSc
                 });
             } else {
                 $scope.errore.abbinamento = true;
-            }
-        }
-    };
-}]);
-
-angular.module("mpuDashboard").controller("lineeSettoriCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', 'lineeManager', function ($scope, $rootScope, _, dataSvc, $http, $timeout, lineeManager) {
-
-    $scope.lineaSettore = {
-        selected: false
-    };
-
-    $scope.priceName = [
-        {
-            n: 'basso',
-            i: 1
-        },
-        {
-            n: 'medio/basso',
-            i: 2
-        },
-        {
-            n: 'medio',
-            i: 3
-        },
-        {
-            n: 'medio/alto',
-            i: 4
-        },
-        {
-            n: 'alto',
-            i: 5
-        }
-    ];
-
-    $scope.vm.lineeManager = lineeManager;
-
-    $scope.vm.sorting = ['m'];
-
-    $scope.selectLineaSettore = function (result) {
-        $scope.lineaSettore = {};
-        $scope.lineaSettore.selected = true;
-        $scope.lineaSettore.lineaSettore = result;
-    };
-
-    $scope.vm.saveLineaSettoreData = function () {
-        $rootScope.saving = true;
-        $http.post('php/lineeSettori.php?type=save', $scope.vm.lineeSettori).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/lineeSettori.php?type=db').success(function () {
-            $rootScope.saving = false;
-            dataSvc.lineeSettori().then(function (result) {
-                $scope.vm.lineeSettori = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB();
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.lineaSettore.n = tempFilterText;
-        }, 250);
-    });
-
-    $scope.$watch('inputCod', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.lineaSettore.c = tempFilterText;
-        }, 250);
-    });
-
-    $scope.toggleSet = function (ID) {
-        if ($scope.vm.nuovaLineaSettore.q.indexOf(ID) === -1) {
-            $scope.vm.nuovaLineaSettore.q.push(parseInt(ID));
-        } else {
-            $scope.vm.nuovaLineaSettore.q.splice($scope.vm.nuovaLineaSettore.q.indexOf(ID), 1);
-        }
-    };
-
-    $scope.checkList = function (ID) {
-        return ($scope.vm.nuovaLineaSettore.q.indexOf(ID) !== -1);
-    };
-
-    let checkList = function (ID) {
-        return ($scope.vm.nuovaLineaSettore.length);
-    };
-
-    $scope.eraseInput = function (e, type) {
-        if (e.key === 27)
-            (!type) ? $scope.input = '' : $scope.inputCod = '';
-    };
-
-    $scope.updateCheck = function () {
-        return (!$scope.vm.nuovaLineaSettore.h || !$scope.vm.nuovaLineaSettore.l || !$scope.vm.nuovaLineaSettore.r);
-    };
-
-    let checkLineaSettori = function () {
-        return _.findWhere($scope.vm.lineeSettori, {
-            m: $scope.vm.nuovaLineaSettore.m,
-            l: $scope.vm.nuovaLineaSettore.l,
-            h: $scope.vm.nuovaLineaSettore.h
-        });
-    };
-
-    $scope.newItem = function () {
-        $rootScope.saving = false;
-        $scope.errore.lineaSettore = false;
-        $scope.vm.nuovaLineaSettore = {
-            i: $scope.vm.nuovaLineaSettore.i + 1,
-            v: 1,
-            p: 0,
-            z: 2,
-            q: [],
-            m: false,
-            r: false
-
-        };
-        $scope.errore.lineaSettore = false;
-    };
-
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkLineaSettori() && checkList() !== 0) {
-                $rootScope.saving = true;
-                $http.post('php/lineeSettori.php?type=new', {
-                        'id': $scope.vm.nuovaLineaSettore.i,
-                        'line': $scope.vm.nuovaLineaSettore.l,
-                        'price': $scope.vm.nuovaLineaSettore.z,
-                        'show': $scope.vm.nuovaLineaSettore.v,
-                        'mark': $scope.vm.nuovaLineaSettore.m,
-                        'man': $scope.vm.nuovaLineaSettore.q,
-                        'image': $scope.vm.nuovaLineaSettore.r,
-                        'set': $scope.vm.nuovaLineaSettore.h
-                    }
-                ).success(function (result) {
-                    console.log('Risposta dalla pagina PHP', result);
-                    delete $scope.vm.nuovaLineaSettore.r;
-                    $scope.vm.lineeSettori.push($scope.vm.nuovaLineaSettore);
-                    $scope.vm.saveLineaSettoreData();
-                    $scope.newItem();
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.lineaSettore = true;
             }
         }
     };

@@ -34,8 +34,7 @@
          ng-show="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['set_nome']}}</h4>
-        <p ng-if="e['set_show'] === 1">Online</p>
-        <p ng-if="e['set_show'] === 0">Offline</p>
+        <p>{{$root.settings.idToLabel(e['set_show'], $root.options.show)}}</p>
         <p>Posizione: {{e['set_pos']}}</p>
         <p>{{e['cat_nome']}}</p>
         <p ng-if="e['set_home'] === 1">Homepage</p>

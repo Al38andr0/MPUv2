@@ -31,8 +31,7 @@
          ng-show="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['mark_nome']}}</h4>
-        <p ng-if="e['mark_show'] === 1">Online</p>
-        <p ng-if="e['mark_show'] === 0">Offline</p>
+        <p>{{$root.settings.idToLabel(e['mark_show'], $root.options.show)}}</p>
         <p>Variazione listino: {{e['mark_list']}} %</p>
         <p>Sconto: {{e['mark_disc']}} %</p>
         <p>

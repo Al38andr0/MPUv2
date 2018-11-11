@@ -34,67 +34,7 @@
          ng-show="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['tbpr_nome']}}</h4>
-        <p ng-if="e['tbpr_show'] === 1">Online</p>
-        <p ng-if="e['tbpr_show'] === 0">Offline</p>
         <p>Posizione: {{e['tbpr_pos']}}</p>
         <p>{{e['mark_nome']}}</p>
     </div>
 </div>
-
-<!--
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
-<div class="nuovo" ng-if="!tbpr.selected">
-    <h1>nuovo tabella marchio</h1>
-    <div class="rows">
-        <input class="form-control abbinamento" type="text" placeholder="Nome tabella" ng-model="vm.nuovaTbpr.n" popover="Nome tabella" popover-trigger="mouseenter">
-        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovaTbpr.m">
-            <option value="" selected>Marchio</option>
-        </select>
-        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovaTbpr.y" popover="Posizione" popover-trigger="mouseenter">
-    </div>
-    <div class="rows">
-        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
-        <button class="btn btn-primary" type="button" ng-click="newTbpr()">RESET</button>
-    </div>
-    <div class="rows">
-        <button class="btn btn-danger errore" ng-if="errore.tbpr">ERRORE - TABELLA ESISTENTE</button>
-    </div>
-</div>
-<div class="modifica" ng-if="tbpr.selected">
-    <h1>modifica tabella marchio</h1>
-    <tbpr tbpr-original = "tbpr" vm = "vm"></tbpr>
-</div>
-
-<div class="gestione">
-    <h1>gestione tabelle marchi</h1>
-    <div class="filtri">
-        <input class="form-control nome" type="text" placeholder="Filtro marchio" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro settore">
-        <div class="inlineBlock" ng-include="'include/marchiFilter.html'"></div>
-        <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
-        <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
-        <i class="icons-sort green" popover="Ordina per posizione" popover-trigger="mouseenter" ng-click="sorting('y')"></i>
-    </div>
-    <div class="list">
-        <div ng-repeat="s in vm.tbpr
-        | orderBy : vm.sorting
-        | filterByMark : filtro.marchio.i
-        | filter : {n : filtro.tbpr.n}
-        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
-        ">
-            <h4 ng-click="selectTbpr(s)">{{s.n}}</h4>
-            <p>Posizione: {{s.y}}</p>
-            <p>{{convert(s.m, 'marchi', 'n')}}</p>
-        </div>
-        <div ng-if="(vm.tbpr | filter : {n : filtro.tbpr.n}).length != 0" class="paginationContainer">
-            <pagination
-                    total-items = "(vm.tbpr | filterByMark : filtro.marchio.i | filter : {nome : filtro.tbpr.n}).length"
-                    ng-model = "vm.currentPage"
-                    boundary-links = "true"
-                    max-size = "vm.maxSize"
-                    items-per-page = "vm.itemsPerPage"
-                    rotate = "false">
-            </pagination>
-        </div>
-        <h5 ng-if="(vm.tbpr | filter : {n : filtro.tbpr.n}).length == 0">Nessun risultato disponibile</h5>
-    </div>
-</div>-->

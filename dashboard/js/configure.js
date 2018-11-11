@@ -54,8 +54,8 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 controller: 'lineeCtrl'
             })
             .when('/lineeSettori', {
-                templateUrl: 'views/lineeSettori.html',
-                controller: 'lineeSettoriCtrl'
+                templateUrl: 'views/settori_linee.html',
+                controller: 'settoriLineeCtrl'
             })
             .when('/marchi', {
                 templateUrl: 'views/marchi.html',

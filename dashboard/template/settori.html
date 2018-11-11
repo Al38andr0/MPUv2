@@ -31,7 +31,7 @@
         <fieldset>
             <label>Immagine</label>
             <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
-                <input type="file" fileread="entity.immagine">
+                <input type="file" file-read="entity.immagine">
                 <span ng-if="!entity.immagine">DROP FILE HERE</span>
                 <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
             </div>

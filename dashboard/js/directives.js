@@ -1,55 +1,23 @@
-function actions(scope, entity) {
-    this.success = function (data) {
-        console.log('Risposta dalla pagina PHP', data);
-        scope.$emit('updateTable');
-        scope.actions.reset();
-        $rootScope.saving = false;
-    };
-    this.fail = function (error) {
-        console.log(error);
-        $rootScope.saving = false;
-    };
-    this.confirm = function () {
-        scope.confirm = true;
-        $timeout(() => scope.confirm = false, 4E3);
-    };
-    this.create = function () {
-        $rootScope.saving = true;
-        let body = scope.buildBody();
-        $http.post('php/' + entity + '.php?type=new', JSON.stringify(body)).then(scope.actions.success, scope.actions.fail);
-    };
-    this.update = function () {
-        $rootScope.saving = true;
-        let body = scope.buildBody();
-        body.id = scope.entity.id;
-        $http.post('php/' + entity + 'categorie.php?type=update', JSON.stringify(body)).then(scope.actions.success, scope.actions.fail);
-    };
-    this.erase = function () {
-        $rootScope.saving = true;
-        let body = scope.buildBody();
-        body.id = scope.entity.id;
-        $http.post('php/' + entity + 'categorie.php?type=delete', JSON.stringify(body)).then(scope.actions.success, scope.actions.fail);
-    };
-};
+angular.module("mpuDashboard").directive("fileRead", fileRead);
 
-angular.module("mpuDashboard").directive("fileread", [function () {
+function fileRead() {
     return {
         scope: {
-            fileread: "="
+            fileRead: "="
         },
-        link: function (scope, element, attributes) {
+        link: function (scope, element) {
             element.bind("change", function (changeEvent) {
-                var reader = new FileReader();
+                let reader = new FileReader();
                 reader.onload = function (loadEvent) {
                     scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
+                        scope.fileRead = loadEvent.target.result;
                     });
                 };
                 reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }
     }
-}]);
+}
 
 angular.module("mpuDashboard").directive('categorie', categorie);
 categorie.$inject = ['$rootScope'];
@@ -86,11 +54,14 @@ function categorie($rootScope) {
 
             scope.actions = new $rootScope.Actions(scope, 'categorie');
             scope.actions.reset = () => {
-                scope.entity = {
-                    show: 1,
-                    immagine: false
+                scope.actions.reset = () => {
+                    scope.actions.cleanInputFile();
+                    scope.entity = {
+                        show: 1,
+                        immagine: false
+                    };
                 };
-            };
+            }
         }
     }
 }
@@ -133,6 +104,7 @@ function settori($rootScope) {
 
             scope.actions = new $rootScope.Actions(scope, 'settori');
             scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
                 scope.entity = {
                     show: 1,
                     homepage: 0,
@@ -268,6 +240,7 @@ function finiture($rootScope) {
 
             scope.actions = new $rootScope.Actions(scope, 'finiture');
             scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
                 scope.entity = {
                     show: 1,
                     tipo: 0,
@@ -294,6 +267,12 @@ function linee($rootScope) {
             scope.confirm = false;
 
             scope.buildBody = () => {
+                let abbinamenti = [];
+                if (scope.entity.abbinamenti.length > 0)
+                    _.each(scope.entity.abbinamenti, function (v) {
+                        if (v.categoria && v.settore && v.linea)
+                            abbinamenti.push(JSON.parse(angular.toJson(v)));
+                    });
                 return {
                     nome: scope.entity.nome,
                     mark: scope.entity.marchio,
@@ -304,7 +283,7 @@ function linee($rootScope) {
                     war: scope.entity.garanzia,
                     disc: scope.entity.sconto,
                     pos: scope.entity.posizione,
-                    link: scope.entity.abbinamenti,
+                    link: abbinamenti,
                     ctl: scope.entity.catalogo,
                     spc: scope.entity.specifiche
                 }
@@ -320,7 +299,25 @@ function linee($rootScope) {
             };
 
             scope.actions = new $rootScope.Actions(scope, 'linee');
+            scope.actions.abbinamenti = {
+                add: function (abbinamenti) {
+                    abbinamenti.push(
+                        {
+                            categoria: false,
+                            settore: false,
+                            linea: false
+                        }
+                    )
+                },
+                reset: function (abbinamenti) {
+                    abbinamenti.length = 0;
+                },
+                remove: function (abbinamenti, index) {
+                    abbinamenti.splice(index, 1);
+                }
+            };
             scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
                 scope.entity = {
                     show: 1,
                     vetrina: 0,
@@ -328,225 +325,66 @@ function linee($rootScope) {
                     consegna: 25,
                     garanzia: 2,
                     sconto: 0,
-                    abbinamenti: [],
                     marchio: false,
                     categoria: false,
                     catalogo: "",
-                    specifiche: ""
+                    specifiche: "",
+                    abbinamenti: []
                 };
             };
         }
     }
 }
 
-/*
-angular.module("mpuDashboard").directive('linee', function () {
+angular.module("mpuDashboard").directive('settoriLinee', settoriLinee);
+settoriLinee.$inject = ['$rootScope'];
+
+function settoriLinee($rootScope) {
     return {
         restrict: 'E',
-        templateUrl: 'template/linee.html',
+        templateUrl: 'template/settori_linee.html',
         scope: {
-            lineaOriginal: "=",
-            vm: "="
+            entity: "="
         },
-        controller: function ($scope, $http, $timeout, $rootScope) {
+        link: function (scope) {
+            scope.entity = angular.copy(scope.entity);
+            scope.confirm = false;
 
-            $scope.errore = {
-                linea: false
-            };
-
-            function convertMark(IDS) {
-                _.each($scope.vm.marchi, function (v) {
-                    if (v.i == IDS) {
-                        markByName = v.n;
-                    }
-                });
-                return markByName;
-            }
-
-            function replaceAll(string, find, replace) {
-                return string.replace(new RegExp(find, 'g'), replace);
-            }
-
-            $scope.$watch('lineaOriginal', function (newVal) {
-                $scope.linea = angular.copy(newVal.linea);
-
-                var markName = convertMark($scope.linea.m);
-                markName = replaceAll(markName, ' ', '_');
-                lineaName = replaceAll($scope.linea.n, ' ', '_');
-                var fileNameS = $scope.linea.n.replace(" ", "_") + '_specifiche.pdf';
-                var fileNameC = $scope.linea.n.replace(" ", "_") + '_catalogo.pdf';
-                var fileNameI = $scope.linea.n.replace(" ", "_") + '.jpg';
-                $scope.linea.ctlPath = '../dashboard/archivio_dati/' + markName + '/' + lineaName + '/' + fileNameC;
-                $scope.linea.jPath = '../dashboard/archivio_dati/' + markName + '/' + lineaName + '/' + fileNameS;
-                $scope.linea.r = '../dashboard/archivio_dati/' + markName + '/' + lineaName + '/' + fileNameI;
-
-            });
-
-            $scope.confirm = false;
-            $scope.askConfirm = function () {
-                $scope.confirm = true;
-                $timeout(function () {
-                    $scope.confirm = false;
-                }, 4000);
-            };
-
-            $scope.updateCheck = function () {
-                return (!$scope.linea.n || isNaN($scope.linea.e) || isNaN($scope.linea.w) || isNaN($scope.linea.s) || !$scope.linea.m);
-            };
-
-            $scope.deleteCheck = function () {
-                return ($scope.linea.n !== $scope.lineaOriginal.linea.n || $scope.linea.m !== $scope.lineaOriginal.linea.m);
-            };
-
-            var checkLinea = function () {
-                if ($scope.linea.n != $scope.lineaOriginal.linea.n || $scope.linea.m != $scope.lineaOriginal.linea.m) {
-                    return _.findWhere($scope.vm.linee, {n: $scope.linea.n, m: $scope.linea.m});
-                } else {
-                    return false;
+            scope.buildBody = () => {
+                return {
+                    mark: scope.entity.marchio,
+                    line: scope.entity.linea,
+                    set: scope.entity.settore,
+                    show: scope.entity.show,
+                    price: scope.entity.prezzo,
+                    image: scope.entity.immagine
                 }
             };
 
-            $scope.addLink = function () {
-                $scope.linea.a.push(false);
+            scope.updateCheck = function () {
+                return (
+                    !scope.entity.marchio ||
+                    !scope.entity.linea ||
+                    !scope.entity.settore ||
+                    !scope.entity.immagine
+                );
             };
 
-            $scope.removeLink = function (index) {
-                if ($scope.linea.a.length == 1) {
-                    $scope.linea.a = [false];
-                } else {
-                    $scope.linea.a.splice(index, 1);
-                }
-            };
-
-            $scope.selectedCat = function (ID) {
-                return ($scope.linea.q.indexOf(ID) != -1);
-            };
-
-            $scope.toggleSet = function (ID) {
-                if ($scope.linea.q.indexOf(ID) == -1) {
-                    $scope.linea.q.push(parseInt(ID));
-                } else {
-                    $scope.linea.q.splice($scope.linea.q.indexOf(ID), 1);
-                }
-            };
-
-            $scope.newLinea = function () {
-                $rootScope.saving = false;
-                $scope.errore.linea = false;
-                $scope.lineaOriginal.selected = false;
-                $scope.vm.nuovaLinea = {
-                    i: $scope.vm.nuovaLinea.i + 1,
-                    q: [],
-                    a: [false],
-                    v: 1,
-                    z: 2,
-                    b: 0,
-                    y: 100,
-                    c: 0,
-                    s: 0,
-                    e: 25,
-                    w: 2,
-                    r: false,
-                    k: false,
-                    j: false
+            scope.actions = new $rootScope.Actions(scope, 'settori_linee');
+            scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
+                scope.entity = {
+                    show: 1,
+                    prezzo: 3,
+                    marchio: false,
+                    linea: false,
+                    settore: false,
+                    immagine: false
                 };
-            };
-
-            $scope.action = function (type) {
-                if (type == 'U') {
-                    if (!checkLinea()) {
-                        $rootScope.saving = true;
-                        $http.post('php/linee.php?type=update', {
-                                'id': $scope.linea.i,
-                                'nome': $scope.linea.n,
-                                'mark': $scope.linea.m,
-                                'disc': $scope.linea.s,
-                                'time': $scope.linea.e,
-                                'war': $scope.linea.w,
-                                'ctl': $scope.linea.k,
-                                'spc': $scope.linea.j,
-                                'image': $scope.linea.r,
-                                'show': $scope.linea.v,
-                                'price': $scope.linea.z,
-                                'cat': $scope.linea.g,
-                                'set': $scope.linea.q,
-                                'link': $scope.linea.a,
-                                'vtr': $scope.linea.c,
-                                'pos': $scope.linea.y,
-                                'sourceNome': $scope.lineaOriginal.linea.n,
-                                'sourceMark': $scope.lineaOriginal.linea.m,
-                                'sourceCtl': $scope.lineaOriginal.linea.k,
-                                'sourceSpc': $scope.lineaOriginal.linea.j
-                            }
-                        ).success(function (data) {
-                            $scope.errore.linea = false;
-                            $scope.vm.saveLineaData();
-                            console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.linee, function (v) {
-                                if (v.i == $scope.linea.i) {
-                                    v.n = $scope.linea.n;
-                                    v.m = $scope.linea.m;
-                                    v.e = $scope.linea.e;
-                                    v.w = $scope.linea.w;
-                                    v.j = $scope.linea.j;
-                                    v.k = $scope.linea.k;
-                                    v.s = $scope.linea.s;
-                                    v.r = $scope.linea.r;
-                                    v.v = $scope.linea.v;
-                                    v.z = $scope.linea.z;
-                                    v.g = $scope.linea.g;
-                                    v.y = $scope.linea.y;
-                                    v.a = $scope.linea.a;
-                                    v.c = $scope.linea.c;
-                                    $scope.linea = angular.copy(v);
-                                }
-                                return $scope.vm.linee;
-                            });
-                            $rootScope.saving = false;
-                            $scope.errore.linea = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.linea = true;
-                    }
-                }
-                if (type == 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/linee.php?type=delete', {
-                            'id': $scope.linea.i,
-                            'nome': $scope.linea.n,
-                            'mark': $scope.linea.m,
-                            'disc': $scope.linea.s,
-                            'time': $scope.linea.e,
-                            'war': $scope.linea.w,
-                            'ctl': $scope.linea.k,
-                            'spc': $scope.linea.j,
-                            'image': $scope.linea.r,
-                            'show': $scope.linea.v,
-                            'price': $scope.linea.z,
-                            'cat': $scope.linea.g,
-                            'set': $scope.linea.q,
-                            'link': $scope.linea.a,
-                            'vtr': $scope.linea.c,
-                            'pos': $scope.linea.y
-                        }
-                    ).success(function (data) {
-                        console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.linee = _.filter($scope.vm.linee, function (list) {
-                            return list.i != $scope.linea.i;
-                        });
-                        $scope.vm.saveLineaData();
-                        $scope.newLinea();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
             };
         }
     }
-});
-*/
+}
 
 angular.module("mpuDashboard").directive('finitureTabelle', function () {
     return {
@@ -876,214 +714,6 @@ angular.module("mpuDashboard").directive('abbinamenti', function () {
     }
 });
 
-angular.module("mpuDashboard").directive('lineeSettori', function () {
-    return {
-        restrict: 'E',
-        templateUrl: 'template/lineeSettori.html',
-        scope: {
-            lineaSettoreOriginal: "=",
-            vm: "="
-        },
-        controller: function ($scope, $http, $timeout, $rootScope) {
-
-            $scope.errore = {
-                lineaSettore: false
-            };
-
-            $scope.priceName = [
-                {
-                    n: 'basso',
-                    i: 1
-                },
-                {
-                    n: 'medio/basso',
-                    i: 2
-                },
-                {
-                    n: 'medio',
-                    i: 3
-                },
-                {
-                    n: 'medio/alto',
-                    i: 4
-                },
-                {
-                    n: 'alto',
-                    i: 5
-                }
-            ];
-
-            function convertMark(IDS) {
-                _.each($scope.vm.marchi, function (v) {
-                    if (v.i == IDS) {
-                        markByName = v.n;
-                    }
-                });
-                return markByName;
-            }
-
-            function convertLine(IDS) {
-                _.each($scope.vm.linee, function (v) {
-                    if (v.i == IDS) {
-                        lineByName = v.n;
-                    }
-                });
-                return lineByName;
-            }
-
-            function convertSet(IDS) {
-                _.each($scope.vm.settori, function (v) {
-                    if (v.i == IDS) {
-                        setByName = v.n;
-                    }
-                });
-                return setByName;
-            }
-
-            function replaceAll(string, find, replace) {
-                return string.replace(new RegExp(find, 'g'), replace);
-            }
-
-            $scope.$watch('lineaSettoreOriginal', function (newVal) {
-                $scope.lineaSettore = angular.copy(newVal.lineaSettore);
-
-                var markName = convertMark($scope.lineaSettore.m);
-                var lineName = convertLine($scope.lineaSettore.l);
-                var setName = convertSet($scope.lineaSettore.h);
-                markName = replaceAll(markName, ' ', '_');
-                lineName = replaceAll(lineName, ' ', '_');
-                setName = replaceAll(setName, ' ', '_');
-                var fileName = lineName + '_' + setName + '.jpg';
-                $scope.lineaSettore.r = '../dashboard/archivio_dati/' + markName + '/' + lineName + '/Vetrina/' + fileName;
-            });
-
-            $scope.confirm = false;
-            $scope.askConfirm = function () {
-                $scope.confirm = true;
-                $timeout(function () {
-                    $scope.confirm = false;
-                }, 4000);
-            };
-
-            $scope.toggleSet = function (ID) {
-                if ($scope.lineaSettore.q.indexOf(ID) == -1) {
-                    $scope.lineaSettore.q.push(parseInt(ID));
-                } else {
-                    $scope.lineaSettore.q.splice($scope.lineaSettore.q.indexOf(ID), 1);
-                }
-            };
-
-            $scope.checkList = function (ID) {
-                return ($scope.lineaSettore.q.indexOf(ID) != -1);
-            };
-
-            var checkList = function () {
-                return ($scope.lineaSettore.q.length);
-            };
-
-            $scope.updateCheck = function () {
-                return (!$scope.lineaSettore.m || !$scope.lineaSettore.l || !$scope.lineaSettore.h);
-            };
-
-            $scope.deleteCheck = function () {
-                return ($scope.lineaSettore.m !== $scope.lineaSettoreOriginal.lineaSettore.m || $scope.lineaSettore.l !== $scope.lineaSettoreOriginal.lineaSettore.l || $scope.lineaSettore.h !== $scope.lineaSettoreOriginal.lineaSettore.h);
-            };
-
-            var checkLineaSettore = function () {
-                if ($scope.lineaSettore.m != $scope.lineaSettoreOriginal.lineaSettore.m || $scope.lineaSettore.l != $scope.lineaSettoreOriginal.lineaSettore.l || $scope.lineaSettore.h != $scope.lineaSettoreOriginal.lineaSettore.h) {
-                    return _.findWhere($scope.vm.lineeSettori, {
-                        m: $scope.lineaSettore.m,
-                        l: $scope.lineaSettore.l,
-                        h: $scope.lineaSettore.h
-                    });
-                } else {
-                    return false;
-                }
-            };
-
-            $scope.newItem = function () {
-                $rootScope.saving = false;
-                $scope.lineaSettoreOriginal.selected = false;
-                $scope.vm.nuovaLineaSettore = {
-                    i: $scope.vm.nuovaLineaSettore.i + 1,
-                    v: 1,
-                    p: 0,
-                    z: 1,
-                    q: [],
-                    m: false,
-                    r: false
-                };
-                $scope.errore.lineaSettore = false;
-            };
-
-            $scope.action = function (type) {
-                if (type == 'U') {
-                    if (!checkLineaSettore() && checkList() != 0) {
-                        $rootScope.saving = true;
-                        $http.post('php/lineeSettori.php?type=update', {
-                                'id': $scope.lineaSettore.i,
-                                'mark': $scope.lineaSettore.m,
-                                'line': $scope.lineaSettore.l,
-                                'set': $scope.lineaSettore.h,
-                                'show': $scope.lineaSettore.v,
-                                'price': $scope.lineaSettore.z,
-                                'man': $scope.lineaSettore.q,
-                                'image': $scope.lineaSettore.r,
-                                'sourceMark': $scope.lineaSettoreOriginal.lineaSettore.m,
-                                'sourceLine': $scope.lineaSettoreOriginal.lineaSettore.l,
-                                'sourceSet': $scope.lineaSettoreOriginal.lineaSettore.h
-                            }
-                        ).success(function (data) {
-                            $scope.errore.lineaSettore = false;
-                            $scope.vm.saveLineaSettoreData();
-                            console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.lineeSettori, function (v) {
-                                if (v.i == $scope.lineaSettore.i) {
-                                    v.m = $scope.lineaSettore.m;
-                                    v.l = $scope.lineaSettore.l;
-                                    v.h = $scope.lineaSettore.h;
-                                    v.r = $scope.lineaSettore.r;
-                                    v.z = $scope.lineaSettore.z;
-                                    v.q = $scope.lineaSettore.q;
-                                    v.v = $scope.lineaSettore.v;
-                                    $scope.lineaSettore = angular.copy(v);
-                                }
-                            });
-                            $rootScope.saving = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.lineaSettore = true;
-                    }
-                }
-                if (type == 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/lineeSettori.php?type=delete', {
-                            'id': $scope.lineaSettore.i,
-                            'mark': $scope.lineaSettore.m,
-                            'line': $scope.lineaSettore.l,
-                            'set': $scope.lineaSettore.h,
-                            'show': $scope.lineaSettore.v,
-                            'price': $scope.lineaSettore.z,
-                            'man': $scope.lineaSettore.q,
-                            'image': $scope.lineaSettore.r
-                        }
-                    ).success(function (data) {
-                        //console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.lineeSettori = _.filter($scope.vm.lineeSettori, function (list) {
-                            return list.i != $scope.lineaSettore.i;
-                        });
-                        $scope.vm.saveLineaSettoreData();
-                        $scope.newItem();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
-            };
-        }
-    }
-});
 
 angular.module("mpuDashboard").directive('prodotti', function () {
     return {
@@ -1730,7 +1360,11 @@ angular.module("mpuDashboard").directive('vetrine', function () {
             };
 
             var checkCopy = function () {
-                return _.findWhere($scope.vm.vetrine, {c: $scope.vetrina.c, m: $scope.vetrina.m, l: $scope.vetrina.l});
+                return _.findWhere($scope.vm.vetrine, {
+                    c: $scope.vetrina.c,
+                    m: $scope.vetrina.m,
+                    l: $scope.vetrina.l
+                });
             };
 
             /*

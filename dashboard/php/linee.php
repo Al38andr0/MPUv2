@@ -15,8 +15,8 @@ if ($_GET['type'] !== 'get') {
     $pathSpecifiche = $path . '/' . $specifiche;
     $pathCatalogo = $path . '/' . $catalogo;
 
-    $ctl = ($data->ctl !== 0) ? 1 : 0;
-    $spc = ($data->spc !== 0) ? 1 : 0;
+    $ctl = ($data->ctl) ? 1 : 0;
+    $spc = ($data->spc) ? 1 : 0;
 
     $link = json_encode($data->link);
 }
@@ -88,11 +88,15 @@ switch ($_GET['type']) {
     case 'update':
         $lineaOriginaleNome = false;
         $marchioOriginaleId = false;
+        $catalogoOriginaleValue = false;
+        $specificheOriginaleValue = false;
 
         $result = mysqli_query($con, "SELECT * FROM linee WHERE line_id='$data->id'");
         while ($row = mysqli_fetch_array($result)) {
             $lineaOriginaleNome = $row['line_nome'];
             $marchioOriginaleId = $row['line_mark_id'];
+            $catalogoOriginaleValue = $row['line_pdf_file'];
+            $specificheOriginaleValue = $row['line_spec_file'];
         };
 
         $marchioOriginale = str_replace(" ", "_", convertMark($marchioOriginaleId, $con));
@@ -107,7 +111,7 @@ switch ($_GET['type']) {
         $nuovoPathSpecifiche = $originalePathLinea . "/" . $specifiche;
         $nuovoPathCatalogo = $originalePathLinea. "/" . $catalogo;
 
-        if ($marchioOriginaleId !== $data->mark) {
+        if (intval($marchioOriginaleId) !== intval($data->mark)) {
             if ($lineaOriginaleNome !== $data->nome) {
                 if (file_exists($originalePathSpecifiche)) rename($originalePathSpecifiche, $nuovoPathSpecifiche);
                 if (file_exists($originalePathCatalogo)) rename($originalePathCatalogo, $nuovoPathCatalogo);
@@ -122,11 +126,11 @@ switch ($_GET['type']) {
                 rename($originalePathLinea, $nuovoPathLinea);
             }
         }
-        if ($data->spc) {
+        if (substr($data->spc, 0, 4) === "data") {
             $specifiche = explode('base64,', $data->spc);
             file_put_contents($pathSpecifiche, base64_decode($specifiche[1]));
         }
-        if ($data->ctl) {
+        if (substr($data->ctl, 0, 4) === "data") {
             $catalogo = explode('base64,', $data->ctl);
             file_put_contents($pathCatalogo, base64_decode($catalogo[1]));
         }

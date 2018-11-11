@@ -1,22 +1,26 @@
-<form class="row mt-3" name="categorie">
+<form class="row mt-3" name="settori_linee">
     <div class="col-3">
         <fieldset>
-            <label for="nome">Nome:</label>
-            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+            <label for="marchio">Marchio:</label>
+            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-disabled="entity.id"></select>
         </fieldset>
         <fieldset>
-            <label for="posizione">Posizione:</label>
-            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+            <label for="linea">Linea:</label>
+            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio || entity.id"></select>
         </fieldset>
         <fieldset>
-            <label for="status">Status:</label>
-            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
+            <label for="settore">Settore:</label>
+            <select id="settore" class="form-control" ng-model="entity.settore" ng-options="o.set_id as o.set_nome for o in $root.settori" ng-disabled="!entity.marchio || entity.id"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
-            <label for="descrizione">Descrizione:</label>
-            <textarea id="descrizione" class="form-control inputX3" ng-model="entity.descrizione"></textarea>
+            <label for="prezzo">Fascia prezzo:</label>
+            <select id="prezzo" class="form-control" ng-model="entity.prezzo" ng-options="o.id as o.label for o in $root.options.prezzo"></select>
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
         </fieldset>
     </div>
     <div class="col-3">

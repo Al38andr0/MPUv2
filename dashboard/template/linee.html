@@ -6,11 +6,13 @@
         </fieldset>
         <fieldset>
             <label for="marchio">Marchio:</label>
-            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+            <select id="marchio" class="form-control" ng-model="entity.marchio"
+                    ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
         </fieldset>
         <fieldset>
             <label for="categoria">Categoria:</label>
-            <select id="categoria" class="form-control" ng-model="entity.categoria" ng-options="o.cat_id as o.cat_nome for o in $root.categorie"></select>
+            <select id="categoria" class="form-control" ng-model="entity.categoria"
+                    ng-options="o.cat_id as o.cat_nome for o in $root.categorie"></select>
         </fieldset>
         <fieldset>
             <label for="posizione">Posizione:</label>
@@ -20,11 +22,13 @@
     <div class="col-3">
         <fieldset>
             <label for="vetrina">Vetrina:</label>
-            <select id="vetrina" class="form-control" ng-model="entity.vetrina" ng-options="o.id as o.label for o in $root.options.vetrina"></select>
+            <select id="vetrina" class="form-control" ng-model="entity.vetrina"
+                    ng-options="o.id as o.label for o in $root.options.vetrina"></select>
         </fieldset>
         <fieldset>
             <label for="status">Status:</label>
-            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
+            <select id="status" class="form-control" ng-model="entity.show"
+                    ng-options="o.id as o.label for o in $root.options.show"></select>
         </fieldset>
         <fieldset>
             <label for="consegna">Consegna (giorni):</label>
@@ -37,79 +41,69 @@
     </div>
     <div class="col-3">
         <fieldset>
-            <label for="catalogo">Catalogo</label>
-            <input id="catalogo" class="form-control custom-file-input" type="file" fileread="entity.catalogo" ng-model="entity.catalogo">
+            <label>Catalogo</label>
+            <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.catalogo}">
+                <input type="file" file-read="entity.catalogo" ng-model="entity.catalogo">
+                <span ng-if="!entity.catalogo">DROP FILE HERE</span>
+                <span ng-if="entity.catalogo">PDF CARICATO</span>
+            </div>
         </fieldset>
         <fieldset>
-            <label for="specifiche">Specifiche</label>
-            <input id="specifiche" class="form-control custom-file-input" type="file" fileread="entity.specifiche" ng-model="entity.specifiche">
+            <label>Specifiche</label>
+            <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.specifiche}">
+                <input type="file" file-read="entity.specifiche" ng-model="entity.specifiche">
+                <span ng-if="!entity.specifiche">DROP FILE HERE</span>
+                <span ng-if="entity.specifiche">PDF CARICATO</span>
+            </div>
         </fieldset>
     </div>
     <div class="col-3 pt-4">
-        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()" ng-disabled="updateCheck()">CREATE</button>
-        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()" ng-disabled="updateCheck()">UPDATE</button>
-        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
-        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button ng-if="entity.abbinamenti.length === 0" class="btn btn-success btm-md btn-block mb-4" type="button" ng-click="actions.abbinamenti.add(entity.abbinamenti)">AGGIUNGI ABBINAMENTI
+        </button>
+        <button ng-if="entity.abbinamenti.length > 0" class="btn btn-danger btm-md btn-block mb-4" type="button" ng-click="actions.abbinamenti.reset(entity.abbinamenti)">RIMUOVI ABBINAMENTI
+        </button>
+        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()"
+                ng-disabled="updateCheck()">CREATE
+        </button>
+        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()"
+                ng-disabled="updateCheck()">UPDATE
+        </button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.confirm()">DELETE
+        </button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button"
+                ng-click="actions.erase()">CONFIRM
+        </button>
         <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
     </div>
+    <div ng-if="entity.abbinamenti.length > 0" class="col-12 mt-3">
+        <p class="mb-0">Linee abbinate</p>
+    </div>
 </form>
-
-<!--
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Nome linea" ng-model="linea.n" popover="Nome linea" popover-trigger="mouseenter">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="linea.m">
-        <option value="" selected>Marchio</option>
-    </select>
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.categorie | orderBy : 'n'" data-ng-model="linea.g">
-        <option value="" selected>Categoria</option>
-    </select>
-</div>
-<div class="rows">
-    <span class="info sigla">consegna</span><input class="form-control numero" type="number" ng-model="linea.e" popover="Tempi di consegna (giorni)" popover-trigger="mouseenter"><span class="info text">giorni</span>
-    <span class="info sigla">garanzia</span><input class="form-control numero" type="number" ng-model="linea.w" popover="Garanzia (anni)" popover-trigger="mouseenter"><span class="info text">anni</span>
-    <input class="form-control numero" type="number" ng-model="linea.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
-</div>
-<div class="rows">
-    <button ng-if="linea.v == 1" class="btn btn-success large" type="button" value="1" ng-click="linea.v = 0">VISIBILE</button>
-    <button ng-if="linea.v == 0" class="btn btn-danger large" type="button" value="0" ng-click="linea.v = 1">NON VISIBILE</button>
-    <button ng-if="linea.c == 1" class="btn btn-primary large" type="button" value="1" ng-click="linea.c = 0" popover="Vetrina visibile" popover-trigger="mouseenter">VETRINA</button>
-    <button ng-if="linea.c == 0" class="btn btn-info large" type="button" value="0" ng-click="linea.c = 1" popover="Vetrina non visibile" popover-trigger="mouseenter">SENZA VETRINA</button>
-    <span class="info sigla">posizione</span><input class="form-control posPrd" type="number" ng-model="linea.y" popover="Posizione" popover-trigger="mouseenter">
-</div>
-<div class="rows">
-    <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : linea.k}" popover="Catalogo" popover-trigger="mouseenter">
-        <input type="file" class="dropArea" fileread="linea.k">
-        <span ng-if="!linea.k">CATALOGO</span>
-        <div class="fileImage">
-            <i class="icons-available" ng-if="linea.k"></i>
-        </div>
-        <i class="icons-available-not" ng-if="linea.k" ng-click="linea.k = false" title="Elinima file"></i>
+<form ng-if="entity.abbinamenti.length > 0" class="row" ng-repeat="a in entity.abbinamenti">
+    <fieldset class="col-3">
+        <label for="categoria_{{$index}}">Categoria:</label>
+        <select id="categoria_{{$index}}" class="form-control" ng-model="a.categoria"
+                ng-options="o.cat_id as o.cat_nome for o in $root.categorie"></select>
+    </fieldset>
+    <fieldset class="col-3">
+        <label for="settore_{{$index}}">Settore:</label>
+        <select id="settore_{{$index}}" class="form-control" ng-model="a.settore"
+                ng-options="o.set_id as o.set_nome for o in ($root.settori | filter : {set_cat_id : a.categoria})" ng-disabled="!a.categoria"></select>
+    </fieldset>
+    <fieldset class="col-3">
+        <label for="linea_{{$index}}">Linea:</label>
+        <select id="linea_{{$index}}" class="form-control" ng-model="a.linea"
+                ng-options="o.line_id as o.line_nome for o in ($root.linee | orderBy : 'line_nome' | filter : {line_cat : a.categoria})" ng-disabled="!a.categoria"></select>
+    </fieldset>
+    <div class="col-1">
+        <button  class="btn btn-danger btm-md btn-block mt-4" type="button"
+                ng-click="actions.abbinamenti.remove(entity.abbinamenti, $index)">-
+        </button>
     </div>
-    <div class="dropAreaFileImage insertPDF" ng-class="{solidBorder : linea.j}" popover="Specifiche tecniche" popover-trigger="mouseenter">
-        <input type="file" class="dropArea" fileread="linea.j">
-        <span ng-if="!linea.j">SPECIFICHE</span>
-        <div class="fileImage">
-            <i class="icons-available" ng-if="linea.j"></i>
-        </div>
-        <i class="icons-available-not" ng-if="linea.j" ng-click="linea.j = false" title="Elinima file"></i>
+    <div class="col-1">
+        <button ng-if="$last" class="btn btn-success btm-md btn-block mt-4" type="button"
+                ng-click="actions.abbinamenti.add(entity.abbinamenti)">+
+        </button>
     </div>
-</div>
-<div class="rows">
-    <div class="abbinamentiLista" ng-repeat="n in linea.a track by $index">
-        <input class="form-control dim" type="text" placeholder="Titolo" ng-model="linea.a[$index].t">
-        <select class="form-control dim" ng-options="l.i as l.n for l in vm.linee | filter : {m : linea.m} | orderBy : 'n'" data-ng-model="linea.a[$index].i">
-            <option value="" selected>Link alla linea</option>
-        </select>
-        <i class="icons-minus" ng-click="removeLink($index)" ng-show="linea.a.length > 1 || linea.a[0]" ng-class="{addMargin : !$last}"></i>
-        <i class="icons-plus" ng-click="addLink()" ng-show="$last" ng-class="{addMargin : $first}"></i>
-    </div>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newLinea()">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.finitura">ERRORE - LINEA ESISTENTE</button>
-</div>-->
+</form>
