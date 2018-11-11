@@ -1,4 +1,4 @@
-<form class="row mt-3" name="tabelleProdotti">
+<form class="row mt-3" name="tabelleFiniture">
     <div class="col-3">
         <fieldset>
             <label for="nome">Nome:</label>
@@ -7,14 +7,14 @@
     </div>
     <div class="col-3">
         <fieldset>
-            <label for="marchio">Marchio:</label>
-            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+            <label for="categoria">Marchio:</label>
+            <select id="categoria" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
-            <label for="posizione">Posizione:</label>
-            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+            <label for="linea">Linea:</label>
+            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio"></select>
         </fieldset>
     </div>
     <div class="col-3 pt-4">

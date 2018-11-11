@@ -386,155 +386,120 @@ function settoriLinee($rootScope) {
     }
 }
 
-angular.module("mpuDashboard").directive('finitureTabelle', function () {
+angular.module("mpuDashboard").directive('tabelleFiniture', tabelleFiniture);
+tabelleFiniture.$inject = ['$rootScope'];
+
+function tabelleFiniture($rootScope) {
     return {
         restrict: 'E',
-        templateUrl: 'template/finitureTabelle.html',
+        templateUrl: 'template/tabelle_finiture.html',
         scope: {
-            finituraTabellaOriginal: "=",
-            vm: "="
+            entity: "="
         },
-        controller: function ($scope, $http, $timeout, $rootScope) {
-            $scope.$watch('finituraTabellaOriginal', function (newVal) {
-                $scope.finituraTabella = angular.copy(newVal.finituraTabella);
-            });
+        link: function (scope) {
+            scope.entity = angular.copy(scope.entity);
+            scope.confirm = false;
 
-            $scope.errore = {
-                finituraTabella: false
-            };
-
-            $scope.confirm = false;
-            $scope.askConfirm = function () {
-                $scope.confirm = true;
-                $timeout(function () {
-                    $scope.confirm = false;
-                }, 4000);
-            };
-
-            $scope.updateCheck = function () {
-                return (!$scope.finituraTabella.n || !$scope.finituraTabella.m || !$scope.finituraTabella.l);
-            };
-
-            $scope.copyCheck = function () {
-                return (!$scope.finituraTabella.n || !$scope.finituraTabella.m || !$scope.finituraTabella.l || ($scope.finituraTabella.n === $scope.finituraTabellaOriginal.finituraTabella.n && $scope.finituraTabella.m === $scope.finituraTabellaOriginal.finituraTabella.m && $scope.finituraTabella.l === $scope.finituraTabellaOriginal.finituraTabella.l));
-            };
-
-            $scope.newFinituraTabella = function () {
-                $rootScope.saving = false;
-                $scope.errore.finituraTabella = false;
-                $scope.finituraTabellaOriginal.selected = false;
-                $scope.vm.nuovaFinituraTabella = {
-                    i: $scope.vm.nuovaFinituraTabella.i + 1,
-                    m: false,
-                    l: false
+            scope.buildBody = () => {
+                return {
+                    nome: scope.entity.nome,
+                    line: scope.entity.linea,
+                    mark: scope.entity.marchio
                 }
             };
 
-            var checkUpdate = function () {
-                if ($scope.finituraTabella.n != $scope.finituraTabellaOriginal.finituraTabella.n || $scope.finituraTabella.m != $scope.finituraTabellaOriginal.finituraTabella.m || $scope.finituraTabella.l != $scope.finituraTabellaOriginal.finituraTabella.l) {
-                    return _.findWhere($scope.vm.finitureTabelle, {
-                        n: $scope.finituraTabella.n,
-                        m: $scope.finituraTabella.m,
-                        l: $scope.finituraTabella.l
-                    });
-                } else {
-                    return false;
-                }
+            scope.updateCheck = function () {
+                return (
+                    !scope.entity.nome ||
+                    !scope.entity.marchio ||
+                    !scope.entity.linea
+                );
             };
 
-            var checkCopy = function () {
-                return _.findWhere($scope.vm.finitureTabelle, {
-                    n: $scope.finituraTabella.n,
-                    m: $scope.finituraTabella.m,
-                    l: $scope.finituraTabella.l
-                });
-            };
-
-            $scope.action = function (type) {
-                if (type == 'U') {
-                    if (!checkUpdate()) {
-                        $rootScope.saving = true;
-                        $http.post('php/finitureTabelle.php?type=update', {
-                                'id': $scope.finituraTabella.i,
-                                'nome': $scope.finituraTabella.n,
-                                'line': $scope.finituraTabella.l,
-                                'mark': $scope.finituraTabella.m
-                            }
-                        ).success(function (data) {
-                            $scope.vm.saveFinitureTabelleData();
-                            //console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.finitureTabelle, function (v) {
-                                if (v.i == $scope.finituraTabella.i) {
-                                    v.n = $scope.finituraTabella.n;
-                                    v.m = $scope.finituraTabella.m;
-                                    v.l = $scope.finituraTabella.l;
-                                    $scope.finituraTabella = angular.copy(v);
-                                }
-                            });
-                            $rootScope.saving = false;
-                            $scope.errore.finituraTabella = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.finituraTabella = true;
-                    }
-                }
-                if (type == 'C') {
-                    if (!checkCopy()) {
-                        $rootScope.saving = true;
-                        $http.post('php/finitureTabelle.php?type=new', {
-                                'id': $scope.vm.nuovaFinituraTabella.i,
-                                'nome': $scope.finituraTabella.n,
-                                'line': $scope.finituraTabella.l,
-                                'mark': $scope.finituraTabella.m
-                            }
-                        ).success(function (data) {
-                            //console.log('Risposta dalla pagina PHP', data);
-                            $scope.vm.copiedFinituraTabella = {
-                                i: $scope.vm.nuovaFinituraTabella.i,
-                                n: $scope.finituraTabella.n,
-                                l: $scope.finituraTabella.l,
-                                m: $scope.finituraTabella.m
-                            };
-                            $scope.vm.finitureTabelle.push($scope.vm.copiedFinituraTabella);
-                            $scope.vm.nuovaFinituraTabella = {
-                                i: $scope.vm.nuovaFinituraTabella.i + 1
-                            };
-                            $scope.vm.saveFinitureTabelleData();
-                            $rootScope.saving = false;
-                            $scope.errore.finituraTabella = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.finituraTabella = true;
-                    }
-                }
-                if (type == 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/finitureTabelle.php?type=delete', {
-                            'id': $scope.finituraTabella.i,
-                            'nome': $scope.finituraTabella.n,
-                            'line': $scope.finituraTabella.l,
-                            'mark': $scope.finituraTabella.m
-                        }
-                    ).success(function (data) {
-                        //console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.finitureTabelle = _.filter($scope.vm.finitureTabelle, function (list) {
-                            return list.i != $scope.finituraTabella.i;
-                        });
-                        $scope.vm.saveFinitureTabelleData();
-                        $scope.newFinituraTabella();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
+            scope.actions = new $rootScope.Actions(scope, 'tabelle_finiture');
+            scope.actions.reset = () => {
+                scope.entity = {
+                    linea: false,
+                    marchio: false
+                };
             };
         }
     }
-});
+}
 
+angular.module("mpuDashboard").directive('abbinamenti', abbinamenti);
+abbinamenti.$inject = ['$rootScope'];
+
+function abbinamenti($rootScope) {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/abbinamenti.html',
+        scope: {
+            entity: "="
+        },
+        link: function (scope) {
+            scope.entity = angular.copy(scope.entity);
+            scope.confirm = false;
+
+            scope.buildBody = () => {
+                let abbinamenti = [];
+                if (scope.entity.abbinamenti.length > 0)
+                    _.each(scope.entity.abbinamenti, function (v) {
+                        if (v.i && v.n)
+                            abbinamenti.push(JSON.parse(angular.toJson(v)));
+                    });
+                return {
+                    cod: scope.entity.codice,
+                    mark: scope.entity.marchio,
+                    line: scope.entity.linea,
+                    tab: scope.entity.tabella,
+                    abb_array: abbinamenti
+                }
+            };
+
+            scope.updateCheck = function () {
+                return (
+                    !scope.entity.codice ||
+                    !scope.entity.marchio ||
+                    !scope.entity.linea ||
+                    !scope.entity.tabella ||
+                    scope.entity.abbinamenti.length === 0
+                );
+            };
+
+            scope.actions = new $rootScope.Actions(scope, 'abbinamenti');
+            scope.actions.abbinamenti = {
+                add: function (abbinamenti) {
+                    abbinamenti.push(
+                        {
+                            i: false,
+                            n: ""
+                        }
+                    )
+                },
+                remove: function (abbinamenti, index) {
+                    abbinamenti.splice(index, 1);
+                }
+            };
+            scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
+                scope.entity = {
+                    marchio: false,
+                    linea: false,
+                    tabella: false,
+                    abbinamenti: [
+                        {
+                            i: false,
+                            n: ""
+                        }
+                    ]
+                };
+            };
+        }
+    }
+}
+
+/*
 angular.module("mpuDashboard").directive('abbinamenti', function () {
     return {
         restrict: 'E',
@@ -713,6 +678,7 @@ angular.module("mpuDashboard").directive('abbinamenti', function () {
         }
     }
 });
+*/
 
 
 angular.module("mpuDashboard").directive('prodotti', function () {

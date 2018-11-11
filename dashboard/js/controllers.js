@@ -183,16 +183,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
         dummy: {
             image: false
         },
-        nuovaFinituraTabella: {
-            m: false,
-            l: false
-        },
-        nuovoAbbinamento: {
-            m: false,
-            l: false,
-            u: false,
-            f: [{i: false, n: ''}]
-        },
         nuovoProdotto: {
             m: false,
             l: false,
@@ -453,20 +443,6 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
 
     $scope.$on('$locationChangeSuccess', function () {
         setPage($location.path());
-    });
-
-    dataSvc.finitureTabelle().then(function (result) {
-        $scope.vm.finitureTabelle = result.data;
-        $scope.vm.nuovaFinituraTabella.i = _.max($scope.vm.finitureTabelle, function (list) {
-            return list.i;
-        }).i + 1;
-    });
-
-    dataSvc.abbinamenti().then(function (result) {
-        $scope.vm.abbinamenti = result.data;
-        $scope.vm.nuovoAbbinamento.i = _.max($scope.vm.abbinamenti, function (list) {
-            return list.i;
-        }).i + 1;
     });
 
     dataSvc.prodotti().then(function (result) {
@@ -917,103 +893,71 @@ function settoriLineeCtrl($scope, $rootScope) {
     $rootScope.load('settori_linee');
 }
 
-angular.module("mpuDashboard").controller("finitureTabelleCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
+angular.module("mpuDashboard").controller("tabelleFinitureCtrl", tabelleFinitureCtrl);
+tabelleFinitureCtrl.$inject = ['$scope', '$rootScope'];
 
-    $scope.finituraTabella = {
-        selected: false
+function tabelleFinitureCtrl($scope, $rootScope) {
+    $scope.entity = new $rootScope.Model();
+    $scope.entity.tabella_finitura = {
+        linea: false,
+        marchio: false
     };
 
-    $scope.vm.sorting = ['m', 'l', 'n'];
-
-    $scope.selectFinituraTabella = function (result) {
-        $scope.finituraTabella = {};
-        $scope.finituraTabella.selected = true;
-        $scope.finituraTabella.finituraTabella = result;
-    };
-
-    $scope.vm.saveFinitureTabelleData = function () {
-        $rootScope.saving = true;
-        $http.post('php/finitureTabelle.php?type=save', $scope.vm.finitureTabelle).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/finitureTabelle.php?type=db').success(function (result) {
-            $rootScope.saving = false;
-            //console.log(result);
-            dataSvc.finitureTabelle().then(function (result) {
-                $scope.vm.finitureTabelle = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.finituraTabella.n = tempFilterText;
-        }, 250);
-    });
-
-    $scope.eraseInput = function (e) {
-        if (e.key === 27)
-            $scope.input = '';
-    };
-
-    $scope.newFinituraTabella = function () {
-        $rootScope.saving = false;
-        $scope.errore.finituraTabella = false;
-        $scope.vm.nuovaFinituraTabella = {
-            i: $scope.vm.nuovaFinituraTabella.i + 1,
-            m: false,
-            l: false
+    $scope.selectItem = function (entity) {
+        $scope.entity.tabella_finitura = {
+            id: entity['tab_id'],
+            nome: entity['tab_nome'],
+            linea: entity['tab_line_id'],
+            marchio: entity['tab_mark_id']
         };
     };
 
-    $scope.updateCheck = function () {
-        return (!$scope.vm.nuovaFinituraTabella.n || !$scope.vm.nuovaFinituraTabella.m || !$scope.vm.nuovaFinituraTabella.l);
-    };
+    $scope.$on('updateTable', () => $rootScope.load('tabelle_finiture', true));
 
-    let checkFinituraTabella = function () {
-        return _.findWhere($scope.vm.finitureTabelle, {
-            n: $scope.vm.nuovaFinituraTabella.n,
-            m: $scope.vm.nuovaFinituraTabella.m,
-            l: $scope.vm.nuovaFinituraTabella.l
-        });
-    };
+    $rootScope.load('marchi');
+    $rootScope.load('linee');
+    $rootScope.load('tabelle_finiture');
+}
 
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkFinituraTabella()) {
-                $rootScope.saving = true;
-                $http.post('php/finitureTabelle.php?type=new', {
-                        'id': $scope.vm.nuovaFinituraTabella.i,
-                        'nome': $scope.vm.nuovaFinituraTabella.n,
-                        'line': $scope.vm.nuovaFinituraTabella.l,
-                        'mark': $scope.vm.nuovaFinituraTabella.m
-                    }
-                ).success(function (result) {
-                    //console.log('Risposta dalla pagina PHP', result);
-                    $scope.vm.finitureTabelle.push($scope.vm.nuovaFinituraTabella);
-                    $scope.vm.saveFinitureTabelleData();
-                    $scope.newFinituraTabella();
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.finituraTabella = true;
+angular.module("mpuDashboard").controller("abbinamentiCtrl", abbinamentiCtrl);
+abbinamentiCtrl.$inject = ['$scope', '$rootScope'];
+
+function abbinamentiCtrl($scope, $rootScope) {
+    $scope.entity = new $rootScope.Model();
+    $scope.entity.abbinamento = {
+        marchio: false,
+        linea: false,
+        tabella: false,
+        abbinamenti: [
+            {
+                i: false,
+                n: ""
             }
-        }
+        ]
     };
-}]);
 
+    $scope.selectItem = function (entity) {
+
+        $scope.entity.abbinamento = {
+            id: entity['abb_id'],
+            codice: entity['abb_cod'].slice(0, -1),
+            marchio: entity['abb_mark_id'],
+            linea: entity['abb_line_id'],
+            tabella: entity['abb_tab'],
+            abbinamenti: entity['abb_array']
+        };
+    };
+
+    $scope.$on('updateTable', () => $rootScope.load('abbinamenti', true));
+
+    $rootScope.load('marchi');
+    $rootScope.load('linee');
+    $rootScope.load('tabelle_finiture');
+    $rootScope.load('finiture');
+    $rootScope.load('abbinamenti');
+}
+
+/*
 angular.module("mpuDashboard").controller("abbinamentiCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 
     $scope.abbinamento = {
@@ -1149,6 +1093,7 @@ angular.module("mpuDashboard").controller("abbinamentiCtrl", ['$scope', '$rootSc
         }
     };
 }]);
+*/
 
 angular.module("mpuDashboard").controller("prodottiCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 

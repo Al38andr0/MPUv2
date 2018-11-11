@@ -31,7 +31,7 @@
 </div>
 <div class="col-12 p-0  mt-3 list">
     <div ng-repeat="e in $root.settori | filter : {set_nome : $root.settings.query.settore, cat_nome : $root.settings.query.categoria}"
-         ng-show="$root.settings.show($index, entity.currentPage)"
+         ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['set_nome']}}</h4>
         <p>{{$root.settings.idToLabel(e['set_show'], $root.options.show)}}</p>

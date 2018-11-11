@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-12 mt-3">
-        <h1>Abbinamenti finiture</h1>
+        <h1>Tabelle finiture</h1>
     </div>
     <div class="col-12 mb-5">
-        <abbinamenti entity="entity.abbinamento"></abbinamenti>
+        <tabelle_finiture entity="entity.tabella_finitura"></tabelle_finiture>
     </div>
     <div class="col-5">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
             boundary-links="true"
-            total-items="($root.abbinamenti | filter : {abb_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea}).length"
+            total-items="($root.tabelle_finiture | filter : {tab_nome : $root.settings.query.tabella_prodotti, mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea}).length"
             items-per-page="$root.settings.itemsPerPage"
             max-size="3"
             ng-model="entity.currentPage"
@@ -23,22 +23,21 @@
         <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.codice" title="" placeholder="Filtro codice">
-    </div>
-    <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.linea" title="" placeholder="Filtro linea">
+        <input type="text" class="form-control" ng-model="$root.settings.query.tabella_prodotti" title="" placeholder="Filtro tabella">
     </div>
     <div class="col-2">
         <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
     </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.linea" title="" placeholder="Filtro linea">
+    </div>
 </div>
 <div class="col-12 p-0  mt-3 list">
-    <div ng-repeat="e in $root.abbinamenti | filter : {abb_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea}"
+    <div ng-repeat="e in $root['tabelle_finiture'] | filter : {tab_nome : $root.settings.query.tabella_prodotti, mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea}"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['abb_cod']}}<span>{{e['tab_nome']}}</span></h4>
+        <h4>{{e['tab_nome']}}</h4>
         <p>{{e['mark_nome']}}</p>
         <p>{{e['line_nome']}}</p>
-        <p ng-repeat="a in e['abb_array']">{{a.n}}: {{$root.settings.convert(a.i, 'finiture', 'fin_id', 'fin_nome')}}</p>
     </div>
 </div>

@@ -46,8 +46,8 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 controller: 'finitureCtrl'
             })
             .when('/finitureTabelle', {
-                templateUrl: 'views/finitureTabelle.html',
-                controller: 'finitureTabelleCtrl'
+                templateUrl: 'views/tabelle_finiture.html',
+                controller: 'tabelleFinitureCtrl'
             })
             .when('/linee', {
                 templateUrl: 'views/linee.html',

@@ -34,7 +34,7 @@
 </div>
 <div class="col-12 p-0  mt-3 list">
     <div ng-repeat="e in $root.finiture | filter : {fin_nome : $root.settings.query.finitura, fin_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio}"
-         ng-show="$root.settings.show($index, entity.currentPage)"
+         ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['fin_nome']}}</h4>
         <p>Codice: {{e['fin_cod']}}</p>
