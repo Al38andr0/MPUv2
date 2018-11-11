@@ -957,144 +957,69 @@ function abbinamentiCtrl($scope, $rootScope) {
     $rootScope.load('abbinamenti');
 }
 
-/*
-angular.module("mpuDashboard").controller("abbinamentiCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
+angular.module("mpuDashboard").controller("prodottiCtrl", prodottiCtrl);
+prodottiCtrl.$inject = ['$scope', '$rootScope'];
 
-    $scope.abbinamento = {
-        selected: false
+function prodottiCtrl($scope, $rootScope) {
+    $scope.entity = new $rootScope.Model();
+    $scope.entity.prodotto = {
+        show: 1,
+        prezzo: [
+            {
+                z: 0,
+                a: false
+            }
+        ],
+        marchio: false,
+        linea: false,
+        finitura_linea: false,
+        tabella: false,
+        finitura_tipo: 0,
+        finitura_unica: false,
+        immagine: false
     };
 
-    $scope.vm.sorting = ['m', 'l', 'c'];
+    $scope.selectItem = function (entity) {
+        let marchio = entity['prd_mark_id'],
+            linea = entity['prd_line_id'],
+            codice = entity['prd_cod'],
+            file = {
+                marchio: $rootScope.settings.replaceAll($rootScope.settings.convert(marchio, 'marchi', 'mark_id', 'mark_nome'), ' ', '_'),
+                linea: $rootScope.settings.replaceAll($rootScope.settings.convert(linea, 'linee', 'line_id', 'line_nome'), ' ', '_')
+            },
+            immagine = codice + '.jpg';
 
-    $scope.$watch('vm.nuovoAbbinamento.m', function () {
-        $scope.vm.nuovoAbbinamento.l = false;
-        $scope.vm.nuovoAbbinamento.u = false;
-        $scope.vm.nuovoAbbinamento.f = [{i: false, n: ''}];
-    });
-
-    $scope.$watch('vm.nuovoAbbinamento.l', function () {
-        $scope.vm.nuovoAbbinamento.u = false;
-        $scope.vm.nuovoAbbinamento.f = [{i: false, n: ''}];
-    });
-
-    $scope.$watch('filtro.marchio.i', function () {
-        $scope.filtro.linea.i = false;
-        $scope.filtro.finituraTabella.i = false;
-    });
-
-    $scope.$watch('filtro.linea.i', function () {
-        $scope.filtro.finituraTabella.i = false;
-    });
-
-    $scope.addAbbinamento = function () {
-        $scope.vm.nuovoAbbinamento.f.push({i: false, n: ''});
-    };
-
-    $scope.removeAbbinamento = function (index) {
-        $scope.vm.nuovoAbbinamento.f.splice(index, 1);
-    };
-
-    $scope.selectAbbinamento = function (result) {
-        $scope.abbinamento = {};
-        $scope.abbinamento.selected = true;
-        $scope.abbinamento.abbinamento = result;
-    };
-
-    $scope.vm.saveAbbinamentiData = function () {
-        $rootScope.saving = true;
-        $http.post('php/abbinamenti.php?type=save', $scope.vm.abbinamenti).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/abbinamenti.php?type=db').success(function (result) {
-            console.log(result);
-            $rootScope.saving = false;
-            dataSvc.abbinamenti().then(function (result) {
-                $scope.vm.abbinamenti = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.abbinamento.c = tempFilterText;
-        }, 250);
-    });
-
-    $scope.eraseInput = function (e) {
-        if (e.key === 27)
-            $scope.input = '';
-    };
-
-    $scope.newAbbinamento = function () {
-        $rootScope.saving = false;
-        $scope.errore.abbinamento = false;
-        $scope.vm.nuovoAbbinamento = {
-            i: $scope.vm.nuovoAbbinamento.i + 1,
-            m: false,
-            l: false,
-            u: false,
-            f: [{i: false, n: ''}]
+        $scope.entity.prodotto = {
+            id: entity['prd_id'],
+            codice: codice,
+            titolo: entity['prd_title'],
+            dimensioni: entity['prd_dim'],
+            note: entity['prd_note'],
+            tabella: entity['prd_tbpr'],
+            marchio: marchio,
+            linea: linea,
+            prezzi: entity['prd_price_array'],
+            posizione: entity['prd_pos'],
+            finitura_linea: entity['prd_lnfn'],
+            finitura_unica: entity['prd_abb'],
+            finitura_tipo: entity['prd_fin'],
+            show: entity['prd_show'],
+            immagine: '../dashboard/archivio_dati/' + file.marchio + '/' + file.linea + '/Prodotti/' + immagine,
         };
     };
 
-    $scope.updateCheck = function () {
-        return (!$scope.vm.nuovoAbbinamento.c || !$scope.vm.nuovoAbbinamento.u);
-    };
+    $scope.$on('updateTable', () => $rootScope.load('prodotti', true));
 
-    function checkAbbinamento() {
-        return _.findWhere($scope.vm.abbinamenti, {
-            c: $scope.vm.nuovoAbbinamento.c,
-            l: $scope.vm.nuovoAbbinamento.l,
-            u: $scope.vm.nuovoAbbinamento.u
-        });
-    }
+    $rootScope.load('marchi');
+    $rootScope.load('linee');
+    $rootScope.load('finiture');
+    $rootScope.load('abbinamenti');
+    $rootScope.load('tabelle_finiture');
+    $rootScope.load('tabelle_prodotti');
+    $rootScope.load('prodotti');
+}
 
-    function checkFinArray() {
-        let emptyArray = _.filter($scope.vm.nuovoAbbinamento.f, function (list) {
-            return !list.i || !list.n
-        });
-        return emptyArray.length;
-    }
-
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkAbbinamento() && checkFinArray() === 0) {
-                $rootScope.saving = true;
-                $http.post('php/abbinamenti.php?type=new', {
-                        'id': $scope.vm.nuovoAbbinamento.i,
-                        'cod': $scope.vm.nuovoAbbinamento.c,
-                        'line': $scope.vm.nuovoAbbinamento.l,
-                        'mark': $scope.vm.nuovoAbbinamento.m,
-                        'abb_array': $scope.vm.nuovoAbbinamento.f,
-                        'tab': $scope.vm.nuovoAbbinamento.u
-                    }
-                ).success(function (result) {
-                    //console.log('Risposta dalla pagina PHP', result);
-                    $scope.vm.abbinamenti.push($scope.vm.nuovoAbbinamento);
-                    $scope.vm.saveAbbinamentiData();
-                    $scope.newAbbinamento();
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.abbinamento = true;
-            }
-        }
-    };
-}]);
-*/
-
+/*
 angular.module("mpuDashboard").controller("prodottiCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 
     $scope.prodotto = {
@@ -1243,6 +1168,7 @@ angular.module("mpuDashboard").controller("prodottiCtrl", ['$scope', '$rootScope
         }
     };
 }]);
+*/
 
 angular.module("mpuDashboard").controller("prodottiSettoriCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 

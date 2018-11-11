@@ -499,188 +499,77 @@ function abbinamenti($rootScope) {
     }
 }
 
-/*
-angular.module("mpuDashboard").directive('abbinamenti', function () {
+angular.module("mpuDashboard").directive('prodotti', prodotti);
+prodotti.$inject = ['$rootScope'];
+
+function prodotti($rootScope) {
     return {
         restrict: 'E',
-        templateUrl: 'template/abbinamenti.html',
+        templateUrl: 'template/prodotti.html',
         scope: {
-            abbinamentoOriginal: "=",
-            vm: "="
+            entity: "="
         },
-        controller: function ($scope, $http, $timeout, $rootScope) {
-            $scope.$watch('abbinamentoOriginal', function (newVal) {
-                $scope.abbinamento = angular.copy(newVal.abbinamento);
-            });
+        link: function (scope) {
+            scope.entity = angular.copy(scope.entity);
+            scope.confirm = false;
 
-            $scope.errore = {
-                abbinamento: false
-            };
-
-            $scope.addAbbinamento = function () {
-                $scope.abbinamento.f.push({i: false, n: ''});
-            };
-
-            $scope.removeAbbinamento = function (index) {
-                $scope.abbinamento.f.splice(index, 1);
-            };
-
-            $scope.confirm = false;
-            $scope.askConfirm = function () {
-                $scope.confirm = true;
-                $timeout(function () {
-                    $scope.confirm = false;
-                }, 4000);
-            };
-
-            $scope.updateCheck = function () {
-                return (!$scope.abbinamento.c || !$scope.abbinamento.u);
-            };
-
-            $scope.copyCheck = function () {
-                return (!$scope.abbinamento.c || !$scope.abbinamento.m || !$scope.abbinamento.l || ($scope.abbinamento.c === $scope.abbinamentoOriginal.abbinamento.c && $scope.abbinamento.m === $scope.abbinamentoOriginal.abbinamento.m && $scope.abbinamento.l === $scope.abbinamentoOriginal.abbinamento.l));
-            };
-
-            $scope.newAbbinamento = function () {
-                $rootScope.saving = false;
-                $scope.errore.abbinamento = false;
-                $scope.abbinamentoOriginal.selected = false;
-                $scope.vm.nuovoAbbinamento = {
-                    i: $scope.vm.nuovoAbbinamento.i + 1,
-                    m: false,
-                    l: false,
-                    u: false,
-                    f: [{i: false, n: ''}]
-                };
-            };
-
-            function checkUpdate() {
-                if ($scope.abbinamento.c != $scope.abbinamentoOriginal.abbinamento.c || $scope.abbinamento.m != $scope.abbinamentoOriginal.abbinamento.m || $scope.abbinamento.l != $scope.abbinamentoOriginal.abbinamento.l) {
-                    return _.findWhere($scope.vm.abbinamenti, {
-                        n: $scope.abbinamento.c,
-                        m: $scope.abbinamento.m,
-                        l: $scope.abbinamento.l
-                    });
-                } else {
-                    return false;
+            scope.buildBody = () => {
+                return {
+                    cod: scope.entity.codice,
+                    title: scope.entity.titolo,
+                    dim: scope.entity.dimensioni,
+                    note: scope.entity.note,
+                    tbpr: scope.entity.tabella,
+                    mark: scope.entity.marchio,
+                    line: scope.entity.linea,
+                    price_array: scope.entity.prezzi,
+                    pos: scope.entity.posizione,
+                    lnfn: scope.entity.finitura_linea,
+                    abb: scope.entity.finitura_unica,
+                    fin: scope.entity.finitura_tipo,
+                    show: scope.entity.show,
+                    image: scope.entity.immagine
                 }
-            }
+            };
 
-            function checkCopy() {
-                return _.findWhere($scope.vm.abbinamenti, {
-                    c: $scope.abbinamento.c,
-                    m: $scope.abbinamento.m,
-                    l: $scope.abbinamento.l,
-                    u: $scope.abbinamento.u
-                });
-            }
+            scope.updateCheck = function () {
+                return (
+                    !scope.entity.codice ||
+                    !scope.entity.titolo ||
+                    !scope.entity.tabella ||
+                    !scope.entity.marchio ||
+                    !scope.entity.linea ||
+                    !scope.entity.settore ||
+                    !scope.entity.immagine
+                );
+            };
 
-            function checkFinArray() {
-                var emptyArray = _.filter($scope.abbinamento.f, function (list) {
-                    return !list.i || !list.n
-                });
-                return emptyArray.length;
-            }
-
-            $scope.action = function (type) {
-                if (type == 'U') {
-                    if (!checkUpdate() && checkFinArray() === 0) {
-                        $rootScope.saving = true;
-                        $http.post('php/abbinamenti.php?type=update', {
-                                'id': $scope.abbinamento.i,
-                                'cod': $scope.abbinamento.c,
-                                'line': $scope.abbinamento.l,
-                                'mark': $scope.abbinamento.m,
-                                'abb_array': $scope.abbinamento.f,
-                                'tab': $scope.abbinamento.u
-                            }
-                        ).success(function (data) {
-                            $scope.vm.saveAbbinamentiData();
-                            //console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.abbinamenti, function (v) {
-                                if (v.i == $scope.abbinamento.i) {
-                                    v.c = $scope.abbinamento.c;
-                                    v.l = $scope.abbinamento.l;
-                                    v.m = $scope.abbinamento.m;
-                                    v.f = $scope.abbinamento.f;
-                                    v.u = $scope.abbinamento.u;
-                                    $scope.abbinamento = angular.copy(v);
-                                }
-                            });
-                            $rootScope.saving = false;
-                            $scope.errore.abbinamento = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.abbinamento = true;
-                    }
-                }
-                if (type == 'C') {
-                    if (!checkCopy()) {
-                        $rootScope.saving = true;
-                        $http.post('php/abbinamenti.php?type=new', {
-                                'id': $scope.vm.nuovoAbbinamento.i,
-                                'cod': $scope.abbinamento.c,
-                                'line': $scope.abbinamento.l,
-                                'mark': $scope.abbinamento.m,
-                                'abb_array': $scope.abbinamento.f,
-                                'tab': $scope.abbinamento.u
-                            }
-                        ).success(function (data) {
-                            //console.log('Risposta dalla pagina PHP', data);
-                            var copiedAbbinamento = {
-                                i: $scope.vm.nuovoAbbinamento.i,
-                                c: $scope.abbinamento.c,
-                                l: $scope.abbinamento.l,
-                                m: $scope.abbinamento.m,
-                                f: $scope.abbinamento.f,
-                                u: $scope.abbinamento.u
-
-                            };
-                            $scope.vm.copiedAbbinamento = angular.copy(copiedAbbinamento);
-                            $scope.vm.abbinamenti.push($scope.vm.copiedAbbinamento);
-                            $scope.vm.nuovoAbbinamento = {
-                                i: $scope.vm.nuovoAbbinamento.i + 1
-                            };
-                            $scope.vm.saveAbbinamentiData();
-                            $rootScope.saving = false;
-                            $scope.errore.abbinamento = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.abbinamento = true;
-                    }
-                }
-                if (type == 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/abbinamenti.php?type=delete', {
-                            'id': $scope.abbinamento.i,
-                            'cod': $scope.abbinamento.c,
-                            'line': $scope.abbinamento.l,
-                            'mark': $scope.abbinamento.m,
-                            'abb_array': $scope.abbinamento.f,
-                            'tab': $scope.abbinamento.u
+            scope.actions = new $rootScope.Actions(scope, 'prodotti');
+            scope.actions.reset = () => {
+                scope.actions.cleanInputFile();
+                scope.entity = {
+                    show: 1,
+                    prezzo: [
+                        {
+                            z: 0,
+                            a: false
                         }
-                    ).success(function (data) {
-                        //console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.abbinamenti = _.filter($scope.vm.abbinamenti, function (list) {
-                            return list.i != $scope.abbinamento.i;
-                        });
-                        $scope.vm.saveAbbinamentiData();
-                        $scope.newAbbinamento();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
+                    ],
+                    marchio: false,
+                    linea: false,
+                    finitura_linea: false,
+                    tabella: false,
+                    finitura_tipo: 0,
+                    finitura_unica: false,
+                    immagine: false
+                };
             };
         }
     }
-});
-*/
+}
 
 
+/*
 angular.module("mpuDashboard").directive('prodotti', function () {
     return {
         restrict: 'E',
@@ -977,6 +866,7 @@ angular.module("mpuDashboard").directive('prodotti', function () {
         }
     }
 });
+*/
 
 angular.module("mpuDashboard").directive('prodottiSettori', function () {
     return {
