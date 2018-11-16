@@ -15,7 +15,7 @@
         <fieldset>
             <label for="tabella">Tabella finitura:</label>
             <select id="tabella" class="form-control" ng-model="entity.tabella"
-                    ng-options="o.tab_id as o.tab_nome for o in ($root.tabelle_finiture | filter : {tab_mark_id : entity.marchio})" ng-disabled="!entity.marchio"></select>
+                    ng-options="o.tab_id as o.tab_nome | decoded for o in ($root.tabelle_finiture | filter : {tab_mark_id : entity.marchio})" ng-disabled="!entity.marchio"></select>
         </fieldset>
     </div>
     <div class="col-3">

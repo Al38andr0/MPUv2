@@ -36,7 +36,7 @@
         <h4>{{e['set_nome']}}</h4>
         <p>{{$root.settings.idToLabel(e['set_show'], $root.options.show)}}</p>
         <p>Posizione: {{e['set_pos']}}</p>
-        <p>{{e['cat_nome']}}</p>
+        <p>{{$root.settings.convert(e['set_cat_id'], 'categorie', 'cat_id' ,'cat_nome')}}</p>
         <p ng-if="e['set_home'] === 1">Homepage</p>
     </div>
 </div>

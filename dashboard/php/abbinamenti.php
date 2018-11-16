@@ -9,12 +9,14 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT a.*, line_id, line_nome, line_mark_id, mark_id, mark_nome, tab_id, tab_nome FROM abbinamenti a JOIN marchi m ON a.abb_mark_id = m.mark_id JOIN linee l ON a.abb_line_id = line_id JOIN tabelle_finiture t on a.abb_tab = t.tab_id ORDER BY line_nome";
-        $result = mysqli_query($con, $sql);
-        while ($row = $result->fetch_assoc()) {
-            $row['abb_array'] = json_decode($row['abb_array']);
-            $row['abb_cod'] = $row['abb_cod'] . " ";
-            array_push($result_array, $row);
+        for ($i = 0; $i < 20; $i++) {
+            $sql = "SELECT * FROM abbinamenti LIMIT " . 1000 . " OFFSET " . 1000 * $i;
+            $result = mysqli_query($con, $sql);
+            while ($row = $result->fetch_assoc()) {
+                $row['abb_array'] = json_decode($row['abb_array']);
+                $row['abb_cod'] = $row['abb_cod'] . " ";
+                array_push($result_array, $row);
+            }
         }
         echo json_encode($result_array, JSON_NUMERIC_CHECK);
         break;

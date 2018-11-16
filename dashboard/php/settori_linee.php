@@ -16,7 +16,7 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM settori_linee sl JOIN marchi m ON sl.stln_mark_id = m.mark_id JOIN linee l ON sl.stln_line_id = l.line_id JOIN settori s ON sl.stln_set_id = set_id ORDER BY line_nome";
+        $sql = "SELECT * FROM settori_linee";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);

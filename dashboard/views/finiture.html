@@ -39,7 +39,7 @@
         <h4>{{e['fin_nome']}}</h4>
         <p>Codice: {{e['fin_cod']}}</p>
         <p>{{$root.settings.idToLabel(e['fin_show'], $root.options.show)}}</p>
-        <p>{{e['mark_nome']}}</p>
+        <p>{{$root.settings.convert(e['fin_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
         <p>{{$root.settings.idToLabel(e['fin_type_id'], $root.options.show)}}</p>
     </div>
 </div>

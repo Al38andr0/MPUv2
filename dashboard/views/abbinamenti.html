@@ -36,9 +36,9 @@
     <div ng-repeat="e in $root.abbinamenti | filter : {abb_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea}"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['abb_cod']}}<span>{{e['tab_nome']}}</span></h4>
-        <p>{{e['mark_nome']}}</p>
-        <p>{{e['line_nome']}}</p>
+        <h4>{{e['abb_cod']}}<span ng-bind-html="e['tab_nome']"></span></h4>
+        <p>{{$root.settings.convert(e['abb_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
+        <p>{{$root.settings.convert(e['abb_line_id'], 'linee', 'line_id' ,'line_nome')}}</p>
         <p ng-repeat="a in e['abb_array']">{{a.n}}: {{$root.settings.convert(a.i, 'finiture', 'fin_id', 'fin_nome')}}</p>
     </div>
 </div>

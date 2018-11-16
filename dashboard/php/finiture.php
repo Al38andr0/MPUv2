@@ -29,7 +29,7 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM finiture f JOIN marchi m ON f.fin_mark_id = m.mark_id ORDER BY fin_nome";
+        $sql = "SELECT * FROM finiture ORDER BY fin_nome";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);

@@ -9,7 +9,7 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM tabelle_prodotti t JOIN marchi m ON t.tbpr_mark_id = m.mark_id ORDER BY tbpr_pos";
+        $sql = "SELECT * FROM tabelle_prodotti ORDER BY tbpr_pos";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);

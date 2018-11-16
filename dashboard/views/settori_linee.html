@@ -36,9 +36,9 @@
     <div ng-repeat="e in $root.settori_linee | filter : {mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea, set_nome : $root.settings.query.settore}"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['line_nome']}} - {{e['set_nome']}}</h4>
+        <h4>{{$root.settings.convert(e['stln_line_id'], 'linee', 'line_id' ,'line_nome')}} - {{$root.settings.convert(e['stln_set_id'], 'settori', 'set_id' ,'set_nome')}}</h4>
         <p>{{$root.settings.idToLabel(e['stln_show'], $root.options.show)}}</p>
-        <p>{{e['mark_nome']}}</p>
+        <p>{{$root.settings.convert(e['stln_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
         <p>Fascia prezzo: {{$root.settings.idToLabel(e['stln_price'], $root.options.prezzo)}}</p>
     </div>
 </div>

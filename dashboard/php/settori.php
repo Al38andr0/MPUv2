@@ -17,7 +17,7 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM settori s JOIN categorie c ON s.set_cat_id = c.cat_id ORDER BY set_pos";
+        $sql = "SELECT * FROM settori ORDER BY set_pos";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);

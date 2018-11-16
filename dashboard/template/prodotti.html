@@ -1,63 +1,63 @@
-<div class="rows">
-    <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="prodotto.n">
-</div>
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Cod" ng-model="prodotto.c">
-    <input class="form-control abbinamento" type="text" placeholder="Dimensioni prodotto" ng-model="prodotto.d">
-</div>
-<div class="rows">
-    <input class="form-control titolo" type="text" placeholder="Note" ng-model="prodotto.o">
-</div>
-<div class="rows">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="prodotto.m">
-        <option value="" selected>Marchio</option>
-    </select>
-    <select ng-disabled="!prodotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.l">
-        <option value="" selected>Linea</option>
-    </select>
-    <select ng-disabled="!prodotto.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.x">
-        <option value="" selected>Linea finitura</option>
-    </select>
-</div>
-<div class="rows">
-    <select ng-disabled="!prodotto.l" class="form-control marchio" ng-options="t.i as t.n for t in vm.tbpr | filter : {m : prodotto.m} : true | orderBy : 'n'" data-ng-model="prodotto.t">
-        <option value="" selected>Tipologia</option>
-    </select>
-    <input class="form-control posPrd" type="number" placeholder="0" ng-model="prodotto.y" popover="Posizione" popover-trigger="mouseenter">
-    <button ng-if="prodotto.f == 0" class="btn btn-info multi" type="button" value="1" ng-click="prodotto.f = 1" popover="Finiture multiple" popover-trigger="mouseenter">MULTIPLE</button>
-    <button ng-if="prodotto.f == 1" class="btn btn-warning multi" type="button" value="0" ng-click="prodotto.f = 0; prodotto.a = false" popover="Finitura singola" popover-trigger="mouseenter">SINGOLA</button>
-    <select ng-disabled="prodotto.f == 0 || !prodotto.z[0].a" class="form-control marchio" ng-options="a.i as a.c for a in vm.abbinamenti | filter : {u : prodotto.z[0].a} : true | orderBy : 'c'" data-ng-model="prodotto.a">
-        <option value="" selected>Finitura singola</option>
-    </select>
-</div>
-<div class="rows">
-    <div class="abbinamentiLista" ng-repeat="n in prodotto.z track by $index">
-        <input class="form-control shortCod" type="number" placeholder="Prezzo" ng-model="prodotto.z[$index].z" popover="Prezzo" popover-trigger="mouseenter">
-        <select ng-disabled="!prodotto.x" class="form-control tabFin" ng-options="ft.i as ft.n for ft in vm.finitureTabelle | filter : {l : prodotto.x} : true | orderBy : 'n'" data-ng-model="prodotto.z[$index].a">
-            <option value="" selected>Tabella finitura</option>
-        </select>
-        <i class="icons-minus" ng-click="removeProdotto($index)" ng-show="prodotto.z.length > 1" ng-class="{addMargin : !$last}"></i>
-        <i class="icons-plus" ng-click="addProdotto()" ng-show="$last" ng-class="{addMargin : $first}"></i>
+<form class="row mt-3" name="prodotti">
+    <div class="col-3">
+        <fieldset>
+            <label for="titolo">Titolo:</label>
+            <input id="titolo" class="form-control" type="text" ng-model="entity.titolo">
+        </fieldset>
+        <fieldset>
+            <label for="codice">Codice:</label>
+            <input id="codice" class="form-control" type="text" ng-model="entity.codice">
+        </fieldset>
+        <fieldset>
+            <label for="dimensioni">Dimensioni:</label>
+            <input id="dimensioni" class="form-control" type="text" ng-model="entity.dimensioni">
+        </fieldset>
+        <fieldset>
+            <label for="note">Note:</label>
+            <input id="note" class="form-control" type="text" ng-model="entity.note">
+        </fieldset>
+        <fieldset>
+            <label for="marchio">Marchio:</label>
+            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-disabled="entity.id"></select>
+        </fieldset>
+        <fieldset>
+            <label for="linea">Linea:</label>
+            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio || entity.id"></select>
+        </fieldset>
+        <fieldset>
+            <label for="finitura_linea">Linea finitura:</label>
+            <select id="finitura_linea" class="form-control" ng-model="entity.finitura_linea" ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio || entity.id"></select>
+        </fieldset>
+        <fieldset>
+            <label for="tabella">Tabella prodotti:</label>
+            <select id="tabella" class="form-control" ng-model="entity.tabella" ng-options="o.tab_id as o.tab_nome for o in ($root.tabelle_prodotti | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio || entity.id"></select>
+        </fieldset>
     </div>
-</div>
-<div class="rows">
-    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : prodotto.r}" ng-click="prodotto.r = false">
-        <input type="file" class="dropArea" fileread="prodotto.r">
-        <span ng-if="!prodotto.r">DROP FILE HERE</span>
-        <div class="fileImage">
-            <img ng-if="prodotto.r" ng-src="{{prodotto.r}}">
-        </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="posizione">Posizione:</label>
+            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show" ng-options="o.id as o.label for o in $root.options.show"></select>
+        </fieldset>
     </div>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newProdotto()">NEW</button>
-    <button style="width: 100px" class="btn btn-warning" ng-if="!confirmAll" type="button" ng-click="askConfirm('All')" ng-disabled="deleteCheck()">DELETE ALL</button>
-    <button style="width: 100px" class="btn btn-danger" ng-if="confirmAll" type="button" ng-click="action('A')">CONFIRM</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.prodotto">ERRORE - PRODOTTO ESISTENTE O VALORI PREZZI VUOTI</button>
-</div>
+    <div class="col-3">
+        <fieldset>
+            <label>Immagine</label>
+            <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
+                <input type="file" file-read="entity.immagine">
+                <span ng-if="!entity.immagine">DROP FILE HERE</span>
+                <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

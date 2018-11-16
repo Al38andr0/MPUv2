@@ -190,3 +190,30 @@ angular.module("mpuDashboard").filter('offset', function() {
         return (items|| []).slice(start, end);
     };
 });
+
+angular.module("mpuDashboard").filter('decoded', function() {
+    "use strict";
+
+    let e = null; //only init as-needed, and keep around
+    let cache = {};
+
+    function htmlDecode(input) {
+        if (cache[input]) {
+            //console.log('using cached', input, cache[input])
+            return cache[input];
+        }
+
+        if (e === null)
+            e = document.createElement('div');
+
+        e.innerHTML = input;
+        let result = e.childNodes[0].nodeValue;
+
+        cache[input] = result;
+        return result;
+    }
+
+    return function(input) {
+        return htmlDecode(input);
+    }
+});

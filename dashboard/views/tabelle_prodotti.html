@@ -35,6 +35,6 @@
          ng-click="selectItem(e)">
         <h4>{{e['tbpr_nome']}}</h4>
         <p>Posizione: {{e['tbpr_pos']}}</p>
-        <p>{{e['mark_nome']}}</p>
+        <p>{{$root.settings.convert(e['tbpr_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
     </div>
 </div>

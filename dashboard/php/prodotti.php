@@ -26,7 +26,7 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM prodotti p JOIN marchi m ON p.prd_mark_id = m.mark_id JOIN linee l ON p.prd_line_id = l.line_id JOIN tabelle_prodotti tp ON p.prd_tbpr = tp.tbpr_id JOIN tabelle_finiture tf ON l.line_id = tf.tab_line_id JOIN finiture f ON m.mark_id = f.fin_mark_id JOIN abbinamenti a ON l.line_id = a.abb_line_id";
+        $sql = "SELECT * FROM prodotti";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
             array_push($result_array, $row);
@@ -85,7 +85,7 @@ switch ($_GET['type']) {
         };
         $originalePathFile = $path . $codiceOriginale . 'jpg';
 
-        if($codiceOriginale !== $cod) {
+        if ($codiceOriginale !== $cod) {
             rename($originalePathFile, $pathFile);
         }
         if (substr($data->image, 0, 4) === 'data') {
