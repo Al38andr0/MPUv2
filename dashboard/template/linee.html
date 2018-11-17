@@ -41,7 +41,7 @@
     </div>
     <div class="col-3">
         <fieldset>
-            <label>Catalogo</label>
+            <label>Catalogo:</label>
             <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.catalogo}">
                 <input type="file" file-read="entity.catalogo" ng-model="entity.catalogo">
                 <span ng-if="!entity.catalogo">DROP FILE HERE</span>
@@ -49,7 +49,7 @@
             </div>
         </fieldset>
         <fieldset>
-            <label>Specifiche</label>
+            <label>Specifiche:</label>
             <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.specifiche}">
                 <input type="file" file-read="entity.specifiche" ng-model="entity.specifiche">
                 <span ng-if="!entity.specifiche">DROP FILE HERE</span>
@@ -62,12 +62,9 @@
         </button>
         <button ng-if="entity.abbinamenti.length > 0" class="btn btn-danger btm-md btn-block mb-4" type="button" ng-click="actions.abbinamenti.reset(entity.abbinamenti)">RIMUOVI ABBINAMENTI
         </button>
-        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()"
-                ng-disabled="updateCheck()">CREATE
-        </button>
-        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()"
-                ng-disabled="updateCheck()">UPDATE
-        </button>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.linee, 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.linee, 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
         <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
                 ng-click="actions.confirm()">DELETE
         </button>

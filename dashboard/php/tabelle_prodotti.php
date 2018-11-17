@@ -9,12 +9,15 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM tabelle_prodotti ORDER BY tbpr_pos";
+        $sql = "SELECT * FROM tabelle_prodotti ORDER BY tbpr_nome ASC";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['tbpr_id'] = intval($row['tbpr_id']);
+            $row['tbpr_mark_id'] = intval($row['tbpr_mark_id']);
+            $row['tbpr_pos'] = intval($row['tbpr_pos']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO tabelle_prodotti (tbpr_nome, tbpr_pos, tbpr_mark_id) VALUES ('$nome', '$data->pos', '$data->mark')";

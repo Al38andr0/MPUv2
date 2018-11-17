@@ -20,9 +20,12 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM categorie ORDER BY cat_pos";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['cat_id'] = intval($row['cat_id']);
+            $row['cat_pos'] = intval($row['cat_pos']);
+            $row['cat_show'] = intval($row['cat_show']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO categorie (cat_nome, cat_pos, cat_show, cat_txt) VALUES ('$nome', '$data->pos', '$data->show', '$text')";

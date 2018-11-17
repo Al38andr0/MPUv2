@@ -19,9 +19,16 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM settori_linee";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['stln_id'] = json_decode($row['stln_id']);
+            $row['stln_line_id'] = json_decode($row['stln_line_id']);
+            $row['stln_mark_id'] = json_decode($row['stln_mark_id']);
+            $row['stln_price'] = json_decode($row['stln_price']);
+            $row['stln_set_id'] = json_decode($row['stln_set_id']);
+            $row['stln_show'] = json_decode($row['stln_show']);
+            $row['stln_manager'] = json_decode($row['stln_manager']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO settori_linee (

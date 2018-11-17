@@ -6,7 +6,7 @@
         </fieldset>
         <fieldset>
             <label for="linea">Linea:</label>
-            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio})" ng-disabled="!entity.marchio || entity.id"></select>
+            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio || entity.id"></select>
         </fieldset>
         <fieldset>
             <label for="settore">Settore:</label>
@@ -25,7 +25,7 @@
     </div>
     <div class="col-3">
         <fieldset>
-            <label>Immagine</label>
+            <label>Immagine:</label>
             <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
                 <input type="file" file-read="entity.immagine">
                 <span ng-if="!entity.immagine">DROP FILE HERE</span>
@@ -34,8 +34,9 @@
         </fieldset>
     </div>
     <div class="col-3 pt-4">
-        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()" ng-disabled="updateCheck()">CREATE</button>
-        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['settori_linee'], 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['settori_linee'], 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
         <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
         <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
         <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>

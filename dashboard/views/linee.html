@@ -8,7 +8,7 @@
     <div class="col-7">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
             boundary-links="true"
-            total-items="($root.linee | filter : {line_nome : $root.settings.query.linea, mark_nome : $root.settings.query.marchio}).length"
+            total-items="($root.linee | filter : {line_nome : $root.settings.query.linea} | filterById : $root.settings.query.marchi : 'line_mark_id').length"
             items-per-page="$root.settings.itemsPerPage"
             max-size="3"
             ng-model="entity.currentPage"
@@ -26,11 +26,13 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.linea" title="" placeholder="Filtro linea">
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
+        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+            <option value="">Tutti i marchi</option>
+        </select>
     </div>
 </div>
 <div class="col-12 p-0  mt-3 list">
-    <div ng-repeat="e in $root.linee | filter : {line_nome : $root.settings.query.linea, mark_nome : $root.settings.query.marchio}"
+    <div ng-repeat="e in $root.linee | filter : {line_nome : $root.settings.query.linea} | filterById : $root.settings.query.marchi : 'line_mark_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['line_nome']}}</h4>
@@ -40,7 +42,7 @@
         <p>Garanzia: {{e['line_war']}} anni</p>
         <p>Sconto: {{e['line_disc']}} %</p>
         <p>{{$root.settings.convert(e['line_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
-        <p>{{$root.settings.convert(e['line_cat'], 'categorie', 'cat_id' ,'cat_nome')}}</p>
+        <p ng-if="e['line_cat']">{{$root.settings.convert(e['line_cat'], 'categorie', 'cat_id' ,'cat_nome')}}</p>
         <p ng-if="e['line_vtr'] === 1" class="">Vetrina</p>
         <p ng-if="e['line_pdf_file'] === 1">Catalogo</p>
         <p ng-if="e['line_spec_file'] === 1">Specifiche</p>

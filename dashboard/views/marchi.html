@@ -35,7 +35,7 @@
         <p>Variazione listino: {{e['mark_list']}} %</p>
         <p>Sconto: {{e['mark_disc']}} %</p>
         <p>
-            <span ng-repeat="c in $root.settings.parse(e['mark_cat_array'])">{{$root.settings.convert(c, 'categorie', 'cat_id', 'cat_nome')}}</span>
+            <span ng-repeat="c in e['mark_cat_array']">{{$root.settings.convert(c, 'categorie', 'cat_id', 'cat_nome')}}</span>
         </p>
     </div>
 </div>

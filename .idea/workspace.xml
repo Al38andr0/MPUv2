@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Dashboard:&#10;Prodotti I">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Dashboard:&#10;Prodotti II&#10;Miglioramento SQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/css/mpuDashboard.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/js/controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/controllers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/controllers.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/controllers.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/js/directives.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/directives.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/js/directives.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/directives.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/js/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/js/filters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/abbinamenti.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/abbinamenti.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/php/categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/categorie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/finiture.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/finiture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/linee.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/linee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/php/marchi.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/marchi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/prodotti.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/prodotti.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/settori.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/settori.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/settori_linee.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/settori_linee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/tabelle_finiture.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/tabelle_finiture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/template/abbinamenti.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/abbinamenti.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/categorie.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/categorie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/finiture.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/finiture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/linee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/template/prodotti.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/prodotti.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/settori.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/settori.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/settori_linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/settori_linee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/tabelle_finiture.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/tabelle_finiture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/abbinamenti.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/abbinamenti.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/finiture.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/finiture.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/linee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/views/marchi.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/marchi.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/prodotti.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/prodotti.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/settori.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/settori.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views/settori_linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views/settori_linee.html" afterDir="false" />
@@ -64,38 +79,38 @@
     <session id="283235535">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="47" />
+          <entry key="project.closed" value="48" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="11" />
-          <entry key="project.open.time.8" value="16" />
+          <entry key="project.open.time.8" value="17" />
           <entry key="project.open.time.9" value="12" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.opened" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="10" />
           <entry key="htaccess" value="5" />
-          <entry key="html" value="216" />
-          <entry key="js" value="232" />
+          <entry key="html" value="259" />
+          <entry key="js" value="236" />
           <entry key="json" value="7" />
-          <entry key="less" value="53" />
-          <entry key="php" value="156" />
+          <entry key="less" value="54" />
+          <entry key="php" value="178" />
           <entry key="ts" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="10" />
-          <entry key="HTML" value="216" />
+          <entry key="HTML" value="259" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="232" />
-          <entry key="Less" value="53" />
-          <entry key="PHP" value="156" />
+          <entry key="JavaScript" value="236" />
+          <entry key="Less" value="54" />
+          <entry key="PHP" value="178" />
           <entry key="TypeScript" value="2" />
           <entry key="composer.json" value="4" />
           <entry key="htaccess" value="5" />
@@ -106,22 +121,22 @@
           <entry key="css" value="7" />
           <entry key="dummy" value="24" />
           <entry key="htaccess" value="13" />
-          <entry key="html" value="12338" />
-          <entry key="js" value="32331" />
+          <entry key="html" value="13936" />
+          <entry key="js" value="33538" />
           <entry key="json" value="28" />
-          <entry key="less" value="6987" />
-          <entry key="php" value="4661" />
-          <entry key="txt" value="268" />
+          <entry key="less" value="6991" />
+          <entry key="php" value="5007" />
+          <entry key="txt" value="287" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="7" />
-          <entry key="HTML" value="12340" />
-          <entry key="JavaScript" value="32329" />
-          <entry key="Less" value="6987" />
-          <entry key="PHP" value="4643" />
-          <entry key="PLAIN_TEXT" value="292" />
+          <entry key="HTML" value="13937" />
+          <entry key="JavaScript" value="33537" />
+          <entry key="Less" value="6991" />
+          <entry key="PHP" value="4989" />
+          <entry key="PLAIN_TEXT" value="311" />
           <entry key="SQL" value="18" />
           <entry key="composer.json" value="28" />
           <entry key="htaccess" value="13" />
@@ -155,74 +170,44 @@
     <splitter split-orientation="vertical" split-proportion="0.5110988">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard/js/controllers.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="118" selection-start-line="118" selection-end-line="118" />
+                <state relative-caret-position="431">
+                  <caret line="837" lean-forward="true" selection-start-line="837" selection-end-line="837" />
+                  <folding>
+                    <element signature="n#!!block;n#settoriLineeCtrl#0" />
+                    <element signature="n#!!block;n#tabelleFinitureCtrl#0" />
+                    <element signature="n#!!block;n#abbinamentiCtrl#0" />
+                    <element signature="n#!!block;n#prodottiCtrl#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/views/settori_linee.html">
+            <entry file="file://$PROJECT_DIR$/dashboard/template/linee.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="799">
-                  <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+                <state relative-caret-position="515">
+                  <caret line="68" column="51" lean-forward="true" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/dashboard/php/linee.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="629">
+                  <caret line="106" selection-start-line="106" selection-end-line="106" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/template/abbinamenti.html">
+            <entry file="file://$PROJECT_DIR$/dashboard/template/settori_linee.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/php/abbinamenti.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="714">
-                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/php/prodotti.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/views/prodotti.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="765">
-                  <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/template/prodotti.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="697">
-                  <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dashboard/php/tabelle_finiture.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="595">
-                  <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+                <state relative-caret-position="612">
+                  <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -230,21 +215,45 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="468">
+                  <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard/js/directives.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="347">
-                  <caret line="527" column="49" selection-start-line="527" selection-start-column="49" selection-end-line="527" selection-end-column="49" />
+                <state relative-caret-position="114">
+                  <caret line="264" column="32" lean-forward="true" selection-start-line="264" selection-start-column="32" selection-end-line="264" selection-end-column="32" />
+                  <folding>
+                    <element signature="n#!!block;n#settoriLinee#0" />
+                    <element signature="n#!!block;n#tabelleFiniture#0" />
+                    <element signature="n#!!block;n#abbinamenti#0" />
+                    <element signature="n#!!block;n#prodotti#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dashboard/template/prodotti.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/dashboard/views/linee.html">
+            <entry file="file://$PROJECT_DIR$/dashboard/php/prodotti.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="697">
-                  <caret line="41" column="90" lean-forward="true" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="90" />
+                <state relative-caret-position="170">
+                  <caret line="77" column="45" lean-forward="true" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -263,10 +272,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$nuovoMarchio</find>
-      <find>$lineaOriginale</find>
-      <find>$marchioOriginale</find>
-      <find>$sourceMark</find>
       <find>$sourceNome</find>
       <find>originale</find>
       <find>$sourceFileC</find>
@@ -288,14 +293,17 @@
       <find>parseInt(</find>
       <find>tbpr_</find>
       <find>.list</find>
-      <find>stln_</find>
       <find>settori_linee</find>
       <find>line_</find>
       <find>tabelle_finiture</find>
       <find>tabella_finitura</find>
+      <find>#view</find>
+      <find>filterById</find>
+      <find>tab_nome</find>
+      <find>tab_</find>
+      <find>stln_</find>
     </findStrings>
     <replaceStrings>
-      <replace>line_</replace>
       <replace>linea</replace>
       <replace>$nuovaLInea</replace>
       <replace>$nuovaLinea</replace>
@@ -315,7 +323,6 @@
       <replace>$originalePathSpecifiche</replace>
       <replace>$originalePathCatalogo</replace>
       <replace>fileread</replace>
-      <replace>stln_</replace>
       <replace>$data_mark</replace>
       <replace>$data-&gt;mark</replace>
       <replace>$data-&gt;set</replace>
@@ -325,6 +332,8 @@
       <replace>prd_</replace>
       <replace>prodotti</replace>
       <replace>prodotto</replace>
+      <replace>stln_</replace>
+      <replace>line_</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -367,41 +376,41 @@
         <option value="$PROJECT_DIR$/dashboard/index.php" />
         <option value="$PROJECT_DIR$/dashboard/js/mpuDashboard.js" />
         <option value="$PROJECT_DIR$/dashboard/js/services.js" />
-        <option value="$PROJECT_DIR$/dashboard/php/categorie.php" />
-        <option value="$PROJECT_DIR$/dashboard/php/marchi.php" />
+        <option value="$PROJECT_DIR$/dashboard/js/configure.js" />
+        <option value="$PROJECT_DIR$/dashboard/php/tabele_finiture.php" />
+        <option value="$PROJECT_DIR$/dashboard/views/categorie.html" />
+        <option value="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" />
         <option value="$PROJECT_DIR$/dashboard/template/categorie.html" />
         <option value="$PROJECT_DIR$/dashboard/template/settori.html" />
-        <option value="$PROJECT_DIR$/dashboard/template/finiture.html" />
-        <option value="$PROJECT_DIR$/dashboard/template/linee.html" />
-        <option value="$PROJECT_DIR$/dashboard/template/settori_linee.html" />
-        <option value="$PROJECT_DIR$/dashboard/js/configure.js" />
         <option value="$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html" />
-        <option value="$PROJECT_DIR$/dashboard/php/tabele_finiture.php" />
-        <option value="$PROJECT_DIR$/dashboard/template/tabelle_finiture.html" />
-        <option value="$PROJECT_DIR$/dashboard/css/mpuDashboard.less" />
-        <option value="$PROJECT_DIR$/dashboard/views/categorie.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/marchi.html" />
-        <option value="$PROJECT_DIR$/dashboard/js/filters.js" />
-        <option value="$PROJECT_DIR$/dashboard/template/abbinamenti.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/prodotti.html" />
-        <option value="$PROJECT_DIR$/dashboard/js/directives.js" />
+        <option value="$PROJECT_DIR$/dashboard/template/finiture.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/finiture.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/settori.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/tabelle_finiture.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/linee.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/settori_linee.html" />
         <option value="$PROJECT_DIR$/dashboard/template/prodotti.html" />
         <option value="$PROJECT_DIR$/dashboard/php/prodotti.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/abbinamenti.html" />
-        <option value="$PROJECT_DIR$/dashboard/php/linee.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/linee.html" />
+        <option value="$PROJECT_DIR$/dashboard/php/marchi.php" />
+        <option value="$PROJECT_DIR$/dashboard/views/marchi.html" />
+        <option value="$PROJECT_DIR$/dashboard/php/categorie.php" />
         <option value="$PROJECT_DIR$/dashboard/php/settori.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/settori.html" />
         <option value="$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html" />
         <option value="$PROJECT_DIR$/dashboard/php/finiture.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/finiture.html" />
         <option value="$PROJECT_DIR$/dashboard/php/tabelle_finiture.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/tabelle_finiture.html" />
-        <option value="$PROJECT_DIR$/dashboard/php/settori_linee.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/settori_linee.html" />
         <option value="$PROJECT_DIR$/dashboard/php/abbinamenti.php" />
+        <option value="$PROJECT_DIR$/dashboard/php/settori_linee.php" />
+        <option value="$PROJECT_DIR$/dashboard/js/filters.js" />
+        <option value="$PROJECT_DIR$/dashboard/views/prodotti.html" />
+        <option value="$PROJECT_DIR$/dashboard/template/abbinamenti.html" />
+        <option value="$PROJECT_DIR$/dashboard/views/abbinamenti.html" />
+        <option value="$PROJECT_DIR$/dashboard/template/tabelle_finiture.html" />
+        <option value="$PROJECT_DIR$/dashboard/template/settori_linee.html" />
+        <option value="$PROJECT_DIR$/dashboard/js/directives.js" />
+        <option value="$PROJECT_DIR$/dashboard/template/linee.html" />
         <option value="$PROJECT_DIR$/dashboard/js/controllers.js" />
+        <option value="$PROJECT_DIR$/dashboard/php/linee.php" />
       </list>
     </option>
   </component>
@@ -766,7 +775,8 @@
       <workItem from="1541972096273" duration="3887000" />
       <workItem from="1542066319833" duration="493000" />
       <workItem from="1542316207469" duration="33000" />
-      <workItem from="1542392977231" duration="9100000" />
+      <workItem from="1542392977231" duration="9165000" />
+      <workItem from="1542458904393" duration="33064000" />
     </task>
     <task id="LOCAL-00001" summary="Home page carousel + header">
       <created>1535839387384</created>
@@ -852,18 +862,25 @@
       <option name="project" value="LOCAL" />
       <updated>1541975973254</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Dashboard:&#10;Prodotti II&#10;Miglioramento SQL">
+      <created>1542410973438</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1542410973438</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="523100000" />
+    <option name="totallyTimeSpent" value="556229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-332" width="1096" height="1936" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.19470699" />
+      <window_info active="true" content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.17958412" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Database" order="3" weight="0.32876712" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -942,7 +959,8 @@
     <MESSAGE value="Dashboard:&#10;Linee - part II&#10;Settori-linee" />
     <MESSAGE value="Dashboard:&#10;Tabelle-finiture&#10;Abbinamenti" />
     <MESSAGE value="Dashboard:&#10;Prodotti I" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard:&#10;Prodotti I" />
+    <MESSAGE value="Dashboard:&#10;Prodotti II&#10;Miglioramento SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dashboard:&#10;Prodotti II&#10;Miglioramento SQL" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -988,27 +1006,6 @@
         <state relative-caret-position="-33443" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="24" column="58" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/marchi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="39" column="28" lean-forward="true" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1039,45 +1036,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/finiture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/js/configure.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="50" column="14" lean-forward="true" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/tabelle_finiture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="16" column="134" selection-start-line="16" selection-start-column="134" selection-end-line="16" selection-end-column="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1175">
-          <caret line="94" column="52" lean-forward="true" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="450" column="27" selection-start-line="450" selection-start-column="27" selection-end-line="450" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1104,20 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/settori_linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="40" column="26" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/js/filters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="197" column="19" selection-start-line="197" selection-start-column="19" selection-end-line="197" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -1125,164 +1073,246 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/prodotti.html">
+    <entry file="file://$PROJECT_DIR$/dashboard/css/mpuDashboard.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+        <state relative-caret-position="468">
+          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/prodotti.php">
+    <entry file="file://$PROJECT_DIR$/dashboard/template/settori.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/finiture.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/settori.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/abbinamenti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/js/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="527" column="49" selection-start-line="527" selection-start-column="49" selection-end-line="527" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/categorie.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="6" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/marchi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/marchi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/finiture.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/views/finiture.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+        <state relative-caret-position="629">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/prodotti.html">
+    <entry file="file://$PROJECT_DIR$/dashboard/template/tabelle_prodotti.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        <state relative-caret-position="510">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/linee.php">
+    <entry file="file://$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        <state relative-caret-position="561">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/settori_linee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/views/tabelle_finiture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="40" column="88" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/tabelle_finiture.php">
+    <entry file="file://$PROJECT_DIR$/dashboard/views/settori.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/views/linee.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="90" lean-forward="true" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="90" />
+        <state relative-caret-position="629">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/template/abbinamenti.html">
+    <entry file="file://$PROJECT_DIR$/dashboard/views/tabelle_finiture.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/php/abbinamenti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="85">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="15" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/views/settori_linee.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        <state relative-caret-position="742">
+          <caret line="46" selection-start-line="46" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/marchi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/marchi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/views/marchi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/categorie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/categorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/settori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/tabelle_prodotti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/finiture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/tabelle_finiture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="62" lean-forward="true" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/abbinamenti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/settori_linee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/abbinamenti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="62" column="7" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/views/prodotti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/tabelle_finiture.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="21" column="173" selection-start-line="21" selection-start-column="173" selection-end-line="21" selection-end-column="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/views/abbinamenti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="45" column="84" selection-start-line="45" selection-start-column="84" selection-end-line="45" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/settori_linee.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/prodotti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="264" column="32" lean-forward="true" selection-start-line="264" selection-start-column="32" selection-end-line="264" selection-end-column="32" />
+          <folding>
+            <element signature="n#!!block;n#settoriLinee#0" />
+            <element signature="n#!!block;n#tabelleFiniture#0" />
+            <element signature="n#!!block;n#abbinamenti#0" />
+            <element signature="n#!!block;n#prodotti#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/template/linee.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="68" column="51" lean-forward="true" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/prodotti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="77" column="45" lean-forward="true" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="431">
+          <caret line="837" lean-forward="true" selection-start-line="837" selection-end-line="837" />
+          <folding>
+            <element signature="n#!!block;n#settoriLineeCtrl#0" />
+            <element signature="n#!!block;n#tabelleFinitureCtrl#0" />
+            <element signature="n#!!block;n#abbinamentiCtrl#0" />
+            <element signature="n#!!block;n#prodottiCtrl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/linee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
         </state>
       </provider>
     </entry>

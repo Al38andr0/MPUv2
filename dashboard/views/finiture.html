@@ -8,7 +8,7 @@
     <div class="col-5">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
             boundary-links="true"
-            total-items="($root.finiture | filter : {fin_nome : $root.settings.query.finitura, fin_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio}).length"
+            total-items="($root.finiture | filter : {fin_nome : $root.settings.query.finitura, fin_cod : $root.settings.query.codice} | filterById : $root.settings.query.marchi : 'fin_mark_id').length"
             items-per-page="$root.settings.itemsPerPage"
             max-size="3"
             ng-model="entity.currentPage"
@@ -29,11 +29,13 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.codice" title="" placeholder="Filtro codice">
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
+        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+            <option value="">Tutti i marchi</option>
+        </select>
     </div>
 </div>
 <div class="col-12 p-0  mt-3 list">
-    <div ng-repeat="e in $root.finiture | filter : {fin_nome : $root.settings.query.finitura, fin_cod : $root.settings.query.codice, mark_nome : $root.settings.query.marchio}"
+    <div ng-repeat="e in $root.finiture | filter : {fin_nome : $root.settings.query.finitura, fin_cod : $root.settings.query.codice} | filterById : $root.settings.query.marchi : 'fin_mark_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['fin_nome']}}</h4>

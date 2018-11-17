@@ -265,6 +265,7 @@ function linee($rootScope) {
         link: function (scope) {
             scope.entity = angular.copy(scope.entity);
             scope.confirm = false;
+            scope.checked = false;
 
             scope.buildBody = () => {
                 let abbinamenti = [];
@@ -316,6 +317,14 @@ function linee($rootScope) {
                     abbinamenti.splice(index, 1);
                 }
             };
+            scope.actions.checkItem = function (entity, list, action) {
+                let result;
+                result = _.find(list, function (num) {
+                    let main = num['line_nome'] === entity.nome && num['line_mark_id'] === entity.marchio;
+                    return (entity.id) ? main && num['line_id'] !== entity.id : main;
+                });
+                (!result) ? scope.actions[action]() : scope.actions.checked();
+            };
             scope.actions.reset = () => {
                 scope.actions.cleanInputFile();
                 scope.entity = {
@@ -349,6 +358,7 @@ function settoriLinee($rootScope) {
         link: function (scope) {
             scope.entity = angular.copy(scope.entity);
             scope.confirm = false;
+            scope.checked = false;
 
             scope.buildBody = () => {
                 return {
@@ -371,6 +381,14 @@ function settoriLinee($rootScope) {
             };
 
             scope.actions = new $rootScope.Actions(scope, 'settori_linee');
+            scope.actions.checkItem = function (entity, list, action) {
+                let result;
+                result = _.find(list, function (num) {
+                    let main = num['stln_set_id'] === entity.settore && num['stln_mark_id'] === entity.marchio && num['stln_line_id'] === entity.linea;
+                    return (entity.id) ? main && num['stln_id'] !== entity.id : main;
+                });
+                (!result) ? scope.actions[action]() : scope.actions.checked();
+            };
             scope.actions.reset = () => {
                 scope.actions.cleanInputFile();
                 scope.entity = {
@@ -399,6 +417,7 @@ function tabelleFiniture($rootScope) {
         link: function (scope) {
             scope.entity = angular.copy(scope.entity);
             scope.confirm = false;
+            scope.checked = false;
 
             scope.buildBody = () => {
                 return {
@@ -415,8 +434,15 @@ function tabelleFiniture($rootScope) {
                     !scope.entity.linea
                 );
             };
-
             scope.actions = new $rootScope.Actions(scope, 'tabelle_finiture');
+            scope.actions.checkItem = function (entity, list, action) {
+                let result;
+                result = _.find(list, function (num) {
+                    let main = num['tab_nome'] === entity.nome && num['tab_mark_id'] === entity.marchio && num['tab_line_id'] === entity.linea;
+                    return (entity.id) ? main && num['tab_id'] !== entity.id : main;
+                });
+                (!result) ? scope.actions[action]() : scope.actions.checked();
+            };
             scope.actions.reset = () => {
                 scope.entity = {
                     linea: false,
@@ -440,22 +466,19 @@ function abbinamenti($rootScope) {
         link: function (scope) {
             scope.entity = angular.copy(scope.entity);
             scope.confirm = false;
+            scope.checked = false;
 
             scope.buildBody = () => {
-                let abbinamenti = [];
-                if (scope.entity.abbinamenti.length > 0)
-                    _.each(scope.entity.abbinamenti, function (v) {
-                        if (v.i && v.n)
-                            abbinamenti.push(JSON.parse(angular.toJson(v)));
-                    });
                 return {
                     cod: scope.entity.codice,
                     mark: scope.entity.marchio,
                     line: scope.entity.linea,
                     tab: scope.entity.tabella,
-                    abb_array: abbinamenti
+                    abb_array: scope.entity.abbinamenti
                 }
             };
+
+            let checkArray = () => _.filter(scope.entity.abbinamenti, (num) => !num.i || !num.n).length;
 
             scope.updateCheck = function () {
                 return (
@@ -463,7 +486,8 @@ function abbinamenti($rootScope) {
                     !scope.entity.marchio ||
                     !scope.entity.linea ||
                     !scope.entity.tabella ||
-                    scope.entity.abbinamenti.length === 0
+                    scope.entity.abbinamenti.length === 0 ||
+                    checkArray() > 0
                 );
             };
 
@@ -480,6 +504,14 @@ function abbinamenti($rootScope) {
                 remove: function (abbinamenti, index) {
                     abbinamenti.splice(index, 1);
                 }
+            };
+            scope.actions.checkItem = function (entity, list, action) {
+                let result;
+                result = _.find(list, function (num) {
+                    let main = num['abb_cod'] === entity.codice && num['abb_mark_id'] === entity.marchio && num['abb_line_id'] === entity.linea && num['abb_tab'] === entity.tabella;
+                    return (entity.id) ? main && num['abb_id'] !== entity.id : main;
+                });
+                (!result) ? scope.actions[action]() : scope.actions.checked();
             };
             scope.actions.reset = () => {
                 scope.actions.cleanInputFile();
@@ -512,6 +544,7 @@ function prodotti($rootScope) {
         link: function (scope) {
             scope.entity = angular.copy(scope.entity);
             scope.confirm = false;
+            scope.checked = false;
 
             scope.buildBody = () => {
                 return {
@@ -522,7 +555,7 @@ function prodotti($rootScope) {
                     tbpr: scope.entity.tabella,
                     mark: scope.entity.marchio,
                     line: scope.entity.linea,
-                    price_array: scope.entity.prezzi,
+                    prices: scope.entity.prezzi,
                     pos: scope.entity.posizione,
                     lnfn: scope.entity.finitura_linea,
                     abb: scope.entity.finitura_unica,
@@ -532,6 +565,8 @@ function prodotti($rootScope) {
                 }
             };
 
+            let checkArray = () => _.filter(scope.entity.prezzi, (num) => !num.z || !num.a).length;
+
             scope.updateCheck = function () {
                 return (
                     !scope.entity.codice ||
@@ -539,17 +574,38 @@ function prodotti($rootScope) {
                     !scope.entity.tabella ||
                     !scope.entity.marchio ||
                     !scope.entity.linea ||
-                    !scope.entity.settore ||
-                    !scope.entity.immagine
+                    !scope.entity.immagine ||
+                    checkArray() > 0
                 );
             };
 
             scope.actions = new $rootScope.Actions(scope, 'prodotti');
+            scope.actions.prezzi = {
+                add: function (prezzi) {
+                    prezzi.push(
+                        {
+                            z: 0,
+                            a: false
+                        }
+                    )
+                },
+                remove: function (prezzi, index) {
+                    prezzi.splice(index, 1);
+                }
+            };
+            scope.actions.checkItem = function (entity, list, action) {
+                let result;
+                result = _.find(list, function (num) {
+                    let main = num['prd_cod'] === entity.codice && num['prd_mark_id'] === entity.marchio && num['prd_line_id'] === entity.linea;
+                    return (entity.id) ? main && num['prd_id'] !== entity.id : main;
+                });
+                (!result) ? scope.actions[action]() : scope.actions.checked();
+            };
             scope.actions.reset = () => {
                 scope.actions.cleanInputFile();
                 scope.entity = {
-                    show: 1,
-                    prezzo: [
+                    posizione: 0,
+                    prezzi: [
                         {
                             z: 0,
                             a: false
@@ -560,313 +616,13 @@ function prodotti($rootScope) {
                     finitura_linea: false,
                     tabella: false,
                     finitura_tipo: 0,
-                    finitura_unica: false,
+                    finitura_unica: 0,
                     immagine: false
                 };
             };
         }
     }
 }
-
-
-/*
-angular.module("mpuDashboard").directive('prodotti', function () {
-    return {
-        restrict: 'E',
-        templateUrl: 'template/prodotti.html',
-        scope: {
-            prodottoOriginal: "=",
-            vm: "="
-        },
-        controller: function ($scope, $http, $timeout, $rootScope) {
-
-            $scope.errore = {
-                prodotto: false
-            };
-
-            $scope.addProdotto = function () {
-                $scope.prodotto.z.push({z: '', a: ''});
-            };
-
-            $scope.removeProdotto = function (index) {
-                $scope.prodotto.z.splice(index, 1);
-            };
-
-            function convertMark(IDS) {
-                _.each($scope.vm.marchi, function (v) {
-                    if (v.i == IDS) {
-                        markByName = v.n;
-                    }
-                });
-                return markByName;
-            }
-
-            function convertLine(IDS) {
-                _.each($scope.vm.linee, function (v) {
-                    if (v.i == IDS) {
-                        lineByName = v.n;
-                    }
-                });
-                return lineByName;
-            }
-
-            function replaceAll(string, find, replace) {
-                return string.replace(new RegExp(find, 'g'), replace);
-            }
-
-            $scope.$watch('prodottoOriginal', function (newVal) {
-                $scope.prodotto = angular.copy(newVal.prodotto);
-
-                var markName = convertMark($scope.prodotto.m);
-                var lineName = convertLine($scope.prodotto.l);
-                markName = replaceAll(markName, ' ', '_');
-                lineName = replaceAll(lineName, ' ', '_');
-                var fileName = $scope.prodotto.c + '.jpg';
-                $scope.prodotto.r = '../dashboard/archivio_dati/' + markName + '/' + lineName + '/Prodotti/' + fileName;
-            });
-
-            $scope.confirm = false;
-            $scope.confirmAll = false;
-            $scope.askConfirm = function (type) {
-                if (!type) {
-                    $scope.confirm = true;
-                    $timeout(function () {
-                        $scope.confirm = false;
-                    }, 4000);
-                } else {
-                    $scope.confirmAll = true;
-                    $timeout(function () {
-                        $scope.confirmAll = false;
-                    }, 4000);
-                }
-            };
-
-            $scope.updateCheck = function () {
-                return (
-                    !$scope.prodotto.c ||
-                    !$scope.prodotto.n ||
-                    !$scope.prodotto.m ||
-                    !$scope.prodotto.l ||
-                    !$scope.prodotto.x ||
-                    !$scope.prodotto.t ||
-                    !$scope.prodotto.r
-                );
-            };
-
-            $scope.deleteCheck = function () {
-                return (
-                    $scope.prodotto.c !== $scope.prodottoOriginal.prodotto.c ||
-                    $scope.prodotto.m !== $scope.prodottoOriginal.prodotto.m ||
-                    $scope.prodotto.l !== $scope.prodottoOriginal.prodotto.l
-                );
-            };
-
-            $scope.copyCheck = function () {
-                return (
-                    !$scope.prodotto.c ||
-                    !$scope.prodotto.m ||
-                    !$scope.prodotto.l ||
-                    $scope.prodotto.c === $scope.prodottoOriginal.prodotto.c);
-            };
-
-            var checkProdotto = function () {
-                if ($scope.prodotto.c != $scope.prodottoOriginal.prodotto.c || $scope.prodotto.l != $scope.prodottoOriginal.prodotto.l) {
-                    return _.findWhere($scope.vm.prodotti, {c: $scope.prodotto.c, l: $scope.prodotto.l});
-                } else {
-                    return false;
-                }
-            };
-
-            var checkCopy = function () {
-                return _.findWhere($scope.vm.prodotti, {
-                    c: $scope.prodotto.c,
-                    m: $scope.prodotto.m,
-                    l: $scope.prodotto.l
-                });
-            };
-
-            var checkPricesArray = function () {
-                var emptyArray = _.filter($scope.prodotto.z, function (list) {
-                    return isNaN(list.z) || !list.z || !list.a
-                });
-                return emptyArray.length;
-            };
-
-            $scope.newProdotto = function () {
-                $rootScope.saving = false;
-                $scope.errore.prodotto = false;
-                $scope.prodottoOriginal.selected = false;
-                $scope.vm.nuovoProdotto = {
-                    i: $scope.vm.nuovoProdotto.i + 1,
-                    m: false,
-                    l: false,
-                    t: false,
-                    a: '',
-                    y: 1,
-                    f: 0,
-                    z: [{z: '', a: ''}]
-                };
-            };
-
-            $scope.action = function (type) {
-                if (type === 'U') {
-                    if (!checkProdotto() && checkPricesArray() === 0) {
-                        $rootScope.saving = true;
-                        $http.post('php/prodotti.php?type=update', {
-                                'id': $scope.prodotto.i,
-                                'mark': $scope.prodotto.m,
-                                'line': $scope.prodotto.l,
-                                'cod': $scope.prodotto.c,
-                                'title': $scope.prodotto.n,
-                                'tbpr': $scope.prodotto.t,
-                                'dim': $scope.prodotto.d,
-                                'pos': $scope.prodotto.y,
-                                'lnfn': $scope.prodotto.x,
-                                'note': $scope.prodotto.o,
-                                'abb': $scope.prodotto.a,
-                                'fin': $scope.prodotto.f,
-                                'prices': $scope.prodotto.z,
-                                'image': $scope.prodotto.r,
-                                'sourceCod': $scope.prodottoOriginal.prodotto.c,
-                                'sourceMark': $scope.prodottoOriginal.prodotto.m,
-                                'sourceLine': $scope.prodottoOriginal.prodotto.l
-                            }
-                        ).success(function (data) {
-                            $scope.errore.prodotto = false;
-                            $scope.vm.saveProdottoData();
-                            console.log('Risposta dalla pagina PHP', data);
-                            _.each($scope.vm.prodotti, function (v) {
-                                if (v.i == $scope.prodotto.i) {
-                                    v.m = $scope.prodotto.m;
-                                    v.l = $scope.prodotto.l;
-                                    v.c = $scope.prodotto.c;
-                                    v.n = $scope.prodotto.n;
-                                    v.t = $scope.prodotto.t;
-                                    v.d = $scope.prodotto.d;
-                                    v.y = $scope.prodotto.y;
-                                    v.x = $scope.prodotto.x;
-                                    v.o = $scope.prodotto.o;
-                                    v.a = $scope.prodotto.a;
-                                    v.f = $scope.prodotto.f;
-                                    v.z = $scope.prodotto.z;
-                                    v.r = $scope.prodotto.r;
-                                    $scope.prodotto = angular.copy(v);
-                                }
-                            });
-                            $rootScope.saving = false;
-                            $scope.errore.prodotto = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.prodotto = true;
-                    }
-                }
-                if (type === 'C') {
-                    if (!checkCopy() && checkPricesArray() === 0) {
-                        $rootScope.saving = true;
-                        $http.post('php/prodotti.php?type=new', {
-                                'id': $scope.vm.nuovoProdotto.i,
-                                'mark': $scope.prodotto.m,
-                                'line': $scope.prodotto.l,
-                                'cod': $scope.prodotto.c,
-                                'title': $scope.prodotto.n,
-                                'tbpr': $scope.prodotto.t,
-                                'dim': $scope.prodotto.d,
-                                'pos': $scope.prodotto.y,
-                                'lnfn': $scope.prodotto.x,
-                                'note': $scope.prodotto.o,
-                                'abb': $scope.prodotto.a,
-                                'fin': $scope.prodotto.f,
-                                'prices': $scope.prodotto.z,
-                                'image': $scope.prodotto.r,
-                                'sourceCod': $scope.prodottoOriginal.prodotto.c,
-                                'sourceMark': $scope.prodottoOriginal.prodotto.m,
-                                'sourceLine': $scope.prodottoOriginal.prodotto.l
-                            }
-                        ).success(function (data) {
-                            console.log('Risposta dalla pagina PHP', data);
-                            var copiedProdotto = {
-                                i: $scope.vm.nuovoProdotto.i,
-                                m: $scope.prodotto.m,
-                                l: $scope.prodotto.l,
-                                c: $scope.prodotto.c,
-                                n: $scope.prodotto.n,
-                                t: $scope.prodotto.t,
-                                d: $scope.prodotto.d,
-                                y: $scope.prodotto.y,
-                                x: $scope.prodotto.x,
-                                o: $scope.prodotto.o,
-                                a: $scope.prodotto.a,
-                                f: $scope.prodotto.f,
-                                z: $scope.prodotto.z
-                            };
-
-                            $scope.vm.prodotti.push(angular.copy(copiedProdotto));
-                            $scope.vm.nuovoProdotto = {
-                                i: $scope.vm.nuovoProdotto.i + 1
-                            };
-                            $scope.vm.saveProdottoData();
-                            $rootScope.saving = false;
-                            $scope.errore.prodotto = false;
-                        }).error(function (data, status) {
-                            console.log(status);
-                        });
-                    } else {
-                        $scope.errore.prodotto = true;
-                    }
-                }
-                if (type === 'D') {
-                    $rootScope.saving = true;
-                    $http.post('php/prodotti.php?type=delete', {
-                            'id': $scope.prodotto.i,
-                            'mark': $scope.prodotto.m,
-                            'line': $scope.prodotto.l,
-                            'cod': $scope.prodotto.c,
-                            'title': $scope.prodotto.n,
-                            'tbpr': $scope.prodotto.t,
-                            'dim': $scope.prodotto.d,
-                            'pos': $scope.prodotto.y,
-                            'lnfn': $scope.prodotto.x,
-                            'note': $scope.prodotto.o,
-                            'abb': $scope.prodotto.a,
-                            'fin': $scope.prodotto.f,
-                            'prices': $scope.prodotto.z,
-                            'image': $scope.prodotto.r
-                        }
-                    ).success(function (data) {
-                        console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.prodotti = _.filter($scope.vm.prodotti, function (list) {
-                            return list.i != $scope.prodotto.i;
-                        });
-                        $scope.vm.saveProdottoData();
-                        $scope.newProdotto();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
-                if (type === 'A') {
-                    $rootScope.saving = true;
-                    $http.post('php/prodotti.php?type=deleteAll', {
-                            'mark': $scope.prodotto.m,
-                            'line': $scope.prodotto.l
-                        }
-                    ).success(function (data) {
-                        console.log('Risposta dalla pagina PHP', data);
-                        $scope.vm.prodotti = _.filter($scope.vm.prodotti, function (list) {
-                            return list.i != $scope.prodotto.i;
-                        });
-                        $scope.vm.saveProdottoData();
-                        $scope.newProdotto();
-                    }).error(function (data, status) {
-                        console.log(status);
-                    });
-                }
-            };
-        }
-    }
-});
-*/
 
 angular.module("mpuDashboard").directive('prodottiSettori', function () {
     return {

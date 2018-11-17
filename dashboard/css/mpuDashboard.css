@@ -223,8 +223,9 @@ button.btn {
 }
 #view h1 {
   text-transform: capitalize;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #173244;
+  margin: 0;
 }
 #view .form-group {
   position: relative;

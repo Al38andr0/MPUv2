@@ -24,12 +24,26 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM linee ORDER BY line_pos";
+        $sql = "SELECT * FROM linee ORDER BY line_nome";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['line_cat'] = intval($row['line_cat']);
+            $row['line_disc'] = intval($row['line_disc']);
+            $row['line_id'] = intval($row['line_id']);
+            $row['line_mark_id'] = intval($row['line_mark_id']);
+            $row['line_pdf_file'] = intval($row['line_pdf_file']);
+            $row['line_pos'] = intval($row['line_pos']);
+            $row['line_price'] = intval($row['line_price']);
+            $row['line_show'] = intval($row['line_show']);
+            $row['line_spec_file'] = intval($row['line_spec_file']);
+            $row['line_time'] = intval($row['line_time']);
+            $row['line_vtr'] = intval($row['line_vtr']);
+            $row['line_war'] = intval($row['line_war']);
+            $row['line_set'] = json_decode($row['line_set']);
+            $row['line_link'] = json_decode($row['line_link']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
 
@@ -80,9 +94,17 @@ switch ($_GET['type']) {
         echo "Created";
         break;
     case 'delete':
+        $result = mysqli_query($con, "SELECT line_nome, line_mark_id FROM linee WHERE line_id = '$data->id'");
+        $linea = false;
+        $marchio = false;
+        while ($row = mysqli_fetch_array($result)) {
+            $linea = $row['line_nome'];
+            $marchio = str_replace(" ", "_", convertMark($row['line_mark_id'], $con));
+        };
+        $path = '../archivio_dati/' . $marchio . '/' . $linea;
+        deleteDirectory($path);
         $sql = "DELETE FROM linee WHERE line_id='$data->id'";
         mysqli_query($con, $sql) or die(mysqli_error($con));
-        deleteDirectory($path);
         echo "Deleted";
         break;
     case 'update':

@@ -1,5 +1,5 @@
 <form class="row mt-3" name="tabelleProdotti">
-    <div class="col-3">
+    <div class="col-6">
         <fieldset>
             <label for="nome">Nome:</label>
             <input id="nome" class="form-control" type="text" ng-model="entity.nome">
@@ -10,8 +10,6 @@
             <label for="marchio">Marchio:</label>
             <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
         </fieldset>
-    </div>
-    <div class="col-3">
         <fieldset>
             <label for="posizione">Posizione:</label>
             <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">

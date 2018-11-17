@@ -8,7 +8,7 @@
     <div class="col-5">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
             boundary-links="true"
-            total-items="($root.settori_linee | filter : {mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea, set_nome : $root.settings.query.settore}).length"
+            total-items="($root.settori_linee | filterById : $root.settings.query.marchi : 'stln_mark_id' | filterById : $root.settings.query.linee : 'stln_line_id' | filterById : $root.settings.query.settori : 'stln_set_id').length"
             items-per-page="$root.settings.itemsPerPage"
             max-size="3"
             ng-model="entity.currentPage"
@@ -23,17 +23,23 @@
         <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
+        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+            <option value="">Tutti i marchi</option>
+        </select>
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.linea" title="" placeholder="Filtro linea">
+        <select class="form-control" ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee | filterById : $root.settings.query.marchi : 'line_mark_id'" title="">
+            <option value="">Tutti le linee</option>
+        </select>
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.settore" title="" placeholder="Filtro settore">
+        <select class="form-control" ng-model="$root.settings.query.settori" ng-options="o.set_id as o.set_nome for o in $root.settori" title="">
+            <option value="">Tutti i settori</option>
+        </select>
     </div>
 </div>
 <div class="col-12 p-0  mt-3 list">
-    <div ng-repeat="e in $root.settori_linee | filter : {mark_nome : $root.settings.query.marchio, line_nome : $root.settings.query.linea, set_nome : $root.settings.query.settore}"
+    <div ng-repeat="e in $root.settori_linee | filterById : $root.settings.query.marchi : 'stln_mark_id' | filterById : $root.settings.query.linee : 'prd_line_id' | filterById : $root.settings.query.settori : 'stln_set_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{$root.settings.convert(e['stln_line_id'], 'linee', 'line_id' ,'line_nome')}} - {{$root.settings.convert(e['stln_set_id'], 'settori', 'set_id' ,'set_nome')}}</h4>

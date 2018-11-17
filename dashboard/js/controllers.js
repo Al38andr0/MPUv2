@@ -13,6 +13,16 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
                 label: 'Offline'
             }
         ],
+        multiple: [
+            {
+                id: 1,
+                label: 'Singola'
+            },
+            {
+                id: 0,
+                label: 'Multiple'
+            }
+        ],
         finitura: [
             {
                 id: 1,
@@ -80,9 +90,13 @@ function mainCtrl($scope, $rootScope, $location, _, $cookies, dataSvc, $timeout,
             console.log('FAIL: ', error);
             $rootScope.saving = false;
         };
-        this.confirm = function () {
+        this.confirm = () => {
             scope.confirm = true;
             $timeout(() => scope.confirm = false, 4E3);
+        };
+        this.checked = () => {
+            scope.checked = true;
+            $timeout(() => scope.checked = false, 4E3);
         };
         this.create = function () {
             $rootScope.saving = true;
@@ -723,7 +737,7 @@ function marchiCtrl($scope, $rootScope) {
             sconto: entity['mark_disc']
         };
 
-        let categorie = JSON.parse(entity['mark_cat_array']);
+        let categorie = entity['mark_cat_array'];
         $scope.entity.marchio.categorie = $rootScope.settings.generateObject('categorie', 'cat', categorie);
     };
 
@@ -827,8 +841,8 @@ function lineeCtrl($scope, $rootScope) {
         $scope.entity.linea = {
             id: entity['line_id'],
             nome: entity['line_nome'],
-            marchio: entity['mark_id'],
-            categoria: entity['cat_id'],
+            marchio: entity['line_mark_id'],
+            categoria: entity['line_cat'],
             show: entity['line_show'],
             posizione: entity['line_pos'],
             consegna: entity['line_time'],
@@ -837,7 +851,7 @@ function lineeCtrl($scope, $rootScope) {
             sconto: entity['line_disc'],
             catalogo: entity['line_pdf_file'],
             specifiche: entity['line_spec_file'],
-            abbinamenti: JSON.parse(entity['line_link'])
+            abbinamenti: entity['line_link']
         };
     };
 
@@ -940,11 +954,11 @@ function abbinamentiCtrl($scope, $rootScope) {
 
         $scope.entity.abbinamento = {
             id: entity['abb_id'],
-            codice: entity['abb_cod'].slice(0, -1),
+            codice: entity['abb_cod'],
             marchio: entity['abb_mark_id'],
             linea: entity['abb_line_id'],
             tabella: entity['abb_tab'],
-            abbinamenti: entity['abb_array']
+            abbinamenti: angular.copy(entity['abb_array'])
         };
     };
 
@@ -963,8 +977,8 @@ prodottiCtrl.$inject = ['$scope', '$rootScope'];
 function prodottiCtrl($scope, $rootScope) {
     $scope.entity = new $rootScope.Model();
     $scope.entity.prodotto = {
-        show: 1,
-        prezzo: [
+        posizione: 0,
+        prezzi: [
             {
                 z: 0,
                 a: false
@@ -975,7 +989,7 @@ function prodottiCtrl($scope, $rootScope) {
         finitura_linea: false,
         tabella: false,
         finitura_tipo: 0,
-        finitura_unica: false,
+        finitura_unica: 0,
         immagine: false
     };
 
@@ -998,9 +1012,9 @@ function prodottiCtrl($scope, $rootScope) {
             tabella: entity['prd_tbpr'],
             marchio: marchio,
             linea: linea,
-            prezzi: entity['prd_price_array'],
+            prezzi: angular.copy(entity['prd_price_array']),
             posizione: entity['prd_pos'],
-            finitura_linea: entity['prd_lnfn'],
+            finitura_linea: entity['prd_lnfn_id'],
             finitura_unica: entity['prd_abb'],
             finitura_tipo: entity['prd_fin'],
             show: entity['prd_show'],
@@ -1018,157 +1032,6 @@ function prodottiCtrl($scope, $rootScope) {
     $rootScope.load('tabelle_prodotti');
     $rootScope.load('prodotti');
 }
-
-/*
-angular.module("mpuDashboard").controller("prodottiCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
-
-    $scope.prodotto = {
-        selected: false
-    };
-
-    $scope.vm.sorting = 'c';
-
-    $scope.$watch('vm.nuovoProdotto.m', function () {
-        $scope.vm.nuovoProdotto.l = false;
-        $scope.vm.nuovoProdotto.u = false;
-        $scope.vm.nuovoProdotto.t = false;
-        $scope.vm.nuovoProdotto.x = false;
-        $scope.vm.nuovoProdotto.z = [{z: '', a: ''}];
-    });
-
-    $scope.$watch('vm.nuovoProdotto.l', function () {
-        $scope.vm.nuovoProdotto.u = false;
-        $scope.vm.nuovoProdotto.t = false;
-        $scope.vm.nuovoProdotto.x = false;
-        $scope.vm.nuovoProdotto.z = [{z: '', a: ''}];
-    });
-
-    $scope.$watch('filtro.marchio.i', function () {
-        $scope.filtro.linea.i = false;
-    });
-
-    $scope.addProdotto = function () {
-        $scope.vm.nuovoProdotto.z.push({z: '', a: ''});
-    };
-
-    $scope.removeProdotto = function (index) {
-        $scope.vm.nuovoProdotto.z.splice(index, 1);
-    };
-
-    $scope.selectProdotto = function (result) {
-        $scope.prodotto = {};
-        $scope.prodotto.selected = true;
-        $scope.prodotto.prodotto = result;
-    };
-
-    $scope.vm.saveProdottoData = function () {
-        $rootScope.saving = true;
-        $http.post('php/prodotti.php?type=save', $scope.vm.prodotti).success(function () {
-            $rootScope.saving = false;
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    $scope.saveDataDB = function () {
-        $rootScope.saving = true;
-        $http.post('php/prodotti.php?type=db').success(function () {
-            $rootScope.saving = false;
-            dataSvc.prodotti().then(function (result) {
-                $scope.vm.prodotti = result.data;
-            });
-        }).error(function (data, status) {
-            console.log(status);
-        });
-    };
-
-    let tempFilterText = '', filterTextTimeout;
-    $scope.$watch('input', function (val) {
-        if (filterTextTimeout) $timeout.cancel(filterTextTimeout);
-        tempFilterText = val;
-        filterTextTimeout = $timeout(function () {
-            $scope.filtro.prodotto.c = tempFilterText;
-        }, 250);
-    });
-
-    $scope.eraseInput = function (e) {
-        if (e.key === 27) $scope.input = '';
-    };
-
-    $scope.updateCheck = function () {
-        return (
-            !$scope.vm.nuovoProdotto.c ||
-            !$scope.vm.nuovoProdotto.n ||
-            !$scope.vm.nuovoProdotto.m ||
-            !$scope.vm.nuovoProdotto.l ||
-            !$scope.vm.nuovoProdotto.x ||
-            !$scope.vm.nuovoProdotto.t ||
-            !$scope.vm.nuovoProdotto.r
-        );
-    };
-
-    let checkProdotto = function () {
-        return _.findWhere($scope.vm.prodotti, {c: $scope.vm.nuovoProdotto.c, l: $scope.vm.nuovoProdotto.l});
-    };
-
-    let checkPricesArray = function () {
-        let emptyArray = _.filter($scope.vm.nuovoProdotto.z, function (list) {
-            return isNaN(list.z) || !list.z || !list.a
-        });
-        return emptyArray.length;
-    };
-
-    $scope.newProdotto = function () {
-        $rootScope.saving = false;
-        $scope.errore.prodotto = false;
-        $scope.vm.nuovoProdotto = {
-            i: $scope.vm.nuovoProdotto.i + 1,
-            m: false,
-            l: false,
-            t: false,
-            a: '',
-            y: 1,
-            f: 0,
-            z: [{z: '', a: ''}]
-        };
-    };
-
-    $scope.action = function (type) {
-        if (type === 'N') {
-            if (!checkProdotto() && checkPricesArray() === 0) {
-                $rootScope.saving = true;
-                $http.post('php/prodotti.php?type=new', {
-                        'id': $scope.vm.nuovoProdotto.i,
-                        'mark': $scope.vm.nuovoProdotto.m,
-                        'line': $scope.vm.nuovoProdotto.l,
-                        'cod': $scope.vm.nuovoProdotto.c,
-                        'title': $scope.vm.nuovoProdotto.n,
-                        'tbpr': $scope.vm.nuovoProdotto.t,
-                        'dim': $scope.vm.nuovoProdotto.d,
-                        'pos': $scope.vm.nuovoProdotto.y,
-                        'lnfn': $scope.vm.nuovoProdotto.x,
-                        'note': $scope.vm.nuovoProdotto.o,
-                        'abb': $scope.vm.nuovoProdotto.a,
-                        'fin': $scope.vm.nuovoProdotto.f,
-                        'prices': $scope.vm.nuovoProdotto.z,
-                        'image': $scope.vm.nuovoProdotto.r
-                    }
-                ).success(function (result) {
-                    console.log('Risposta dalla pagina PHP', result);
-                    delete $scope.vm.nuovoProdotto.r;
-                    $scope.vm.prodotti.push($scope.vm.nuovoProdotto);
-                    $scope.vm.saveProdottoData();
-                    $scope.newProdotto()
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            } else {
-                $scope.errore.prodotto = true;
-            }
-        }
-    };
-}]);
-*/
 
 angular.module("mpuDashboard").controller("prodottiSettoriCtrl", ['$scope', '$rootScope', '_', 'dataSvc', '$http', '$timeout', function ($scope, $rootScope, _, dataSvc, $http, $timeout) {
 

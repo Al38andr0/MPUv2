@@ -3,34 +3,31 @@
         <fieldset>
             <label for="marchio">Marchio:</label>
             <select id="marchio" class="form-control" ng-model="entity.marchio"
-                    ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+                    ng-options="o.mark_id as o.mark_nome for o in $root.marchi" tabindex="10"></select>
         </fieldset>
         <fieldset>
             <label for="linea">Linea:</label>
             <select id="linea" class="form-control" ng-model="entity.linea"
-                    ng-options="o.line_id as o.line_nome for o in ($root.linee | filter : {line_mark_id : entity.marchio} | orderBy : 'line_nome')" ng-disabled="!entity.marchio"></select>
+                    ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio" tabindex="11"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
             <label for="tabella">Tabella finitura:</label>
             <select id="tabella" class="form-control" ng-model="entity.tabella"
-                    ng-options="o.tab_id as o.tab_nome | decoded for o in ($root.tabelle_finiture | filter : {tab_mark_id : entity.marchio})" ng-disabled="!entity.marchio"></select>
+                    ng-options="o.tab_id as o.tab_nome | decoded for o in $root.tabelle_finiture | filter : {tab_line_id : entity.linea} : true" ng-disabled="!entity.linea" tabindex="12"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
             <label for="codice">Codice:</label>
-            <input id="codice" class="form-control" type="text" ng-model="entity.codice">
+            <input id="codice" class="form-control" type="text" ng-model="entity.codice" tabindex="13">
         </fieldset>
     </div>
     <div class="col-3 pt-4">
-        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()"
-                ng-disabled="updateCheck()">CREATE
-        </button>
-        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()"
-                ng-disabled="updateCheck()">UPDATE
-        </button>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.abbinamenti, 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.abbinamenti, 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
         <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
                 ng-click="actions.confirm()">DELETE
         </button>
@@ -47,19 +44,19 @@
     <fieldset class="col-3">
         <label for="finitura_{{$index}}">Finitura:</label>
         <select id="finitura_{{$index}}" class="form-control" ng-model="a.i"
-                ng-options="o.fin_id as o.fin_nome for o in ($root.finiture | filter : {fin_mark_id : entity.marchio})" ng-disabled="!entity.marchio"></select>
+                ng-options="o.fin_id as o.fin_cod + ' - ' + o.fin_nome for o in $root.finiture | filter : {fin_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio"></select>
     </fieldset>
     <fieldset class="col-3">
         <label for="titolo_{{$index}}">Abbinato a:</label>
         <input id="titolo_{{$index}}" class="form-control" type="text" ng-model="a.n">
     </fieldset>
     <div class="col-1">
-        <button  class="btn btn-danger btm-md btn-block mt-4" type="button"
+        <button ng-disabled="$first" class="btn btn-danger btm-md btn-block mt-4" type="button"
                  ng-click="actions.abbinamenti.remove(entity.abbinamenti, $index)">-
         </button>
     </div>
     <div class="col-1">
-        <button ng-if="$last" class="btn btn-success btm-md btn-block mt-4" type="button"
+        <button class="btn btn-success btm-md btn-block mt-4" type="button"
                 ng-click="actions.abbinamenti.add(entity.abbinamenti)">+
         </button>
     </div>

@@ -9,16 +9,17 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        for ($i = 0; $i < 20; $i++) {
-            $sql = "SELECT * FROM abbinamenti LIMIT " . 1000 . " OFFSET " . 1000 * $i;
+            $sql = "SELECT * FROM abbinamenti ORDER BY abb_cod ASC";
             $result = mysqli_query($con, $sql);
             while ($row = $result->fetch_assoc()) {
                 $row['abb_array'] = json_decode($row['abb_array']);
-                $row['abb_cod'] = $row['abb_cod'] . " ";
+                $row['abb_id'] = intval($row['abb_id']);
+                $row['abb_line_id'] = intval($row['abb_line_id']);
+                $row['abb_mark_id'] = intval($row['abb_mark_id']);
+                $row['abb_tab'] = intval($row['abb_tab']);
                 array_push($result_array, $row);
             }
-        }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO abbinamenti (abb_cod, abb_mark_id, abb_line_id, abb_tab, abb_array) VALUES ('$cod', '$data->mark', '$data->line', '$data->tab', '$abb_array')";

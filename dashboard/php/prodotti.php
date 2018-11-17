@@ -26,12 +26,20 @@ if ($_GET['type'] !== 'get') {
 switch ($_GET['type']) {
     case 'get' :
         $result_array = array();
-        $sql = "SELECT * FROM prodotti";
+        $sql = "SELECT * FROM prodotti ORDER BY prd_cod ASC";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['prd_price_array'] = json_decode($row['prd_price_array']);
+            $row['prd_abb'] = intval($row['prd_abb']);
+            $row['prd_fin'] = intval($row['prd_fin']);
+            $row['prd_id'] = intval($row['prd_id']);
+            $row['prd_line_id'] = intval($row['prd_line_id']);
+            $row['prd_mark_id'] = intval($row['prd_mark_id']);
+            $row['prd_pos'] = intval($row['prd_pos']);
+            $row['prd_tbpr'] = intval($row['prd_tbpr']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO prodotti (
@@ -72,18 +80,23 @@ switch ($_GET['type']) {
         echo "Created";
         break;
     case 'delete':
+        $result = mysqli_query($con, "SELECT * FROM prodotti WHERE prd_id = '$data->id'");
+        while ($row = mysqli_fetch_array($result)) {
+            $codiceOriginale = $row['prd_cod'];
+        };
+        $originalePathFile = $path . $codiceOriginale . '.jpg';
+        unlink($originalePathFile);
         $sql = "DELETE FROM prodotti WHERE prd_id='$data->id'";
         mysqli_query($con, $sql) or die(mysqli_error($con));
-        unlink($pathFile);
         echo "Deleted";
         break;
     case 'update':
         $codiceOriginale = false;
         $result = mysqli_query($con, "SELECT * FROM prodotti WHERE prd_id = '$data->id'");
         while ($row = mysqli_fetch_array($result)) {
-            $codiceOriginale = $row['line_cod'];
+            $codiceOriginale = $row['prd_cod'];
         };
-        $originalePathFile = $path . $codiceOriginale . 'jpg';
+        $originalePathFile = $path . $codiceOriginale . '.jpg';
 
         if ($codiceOriginale !== $cod) {
             rename($originalePathFile, $pathFile);
@@ -109,6 +122,7 @@ switch ($_GET['type']) {
                     prd_price_array = '$prices'
                     WHERE prd_id='$data->id'";
         mysqli_query($con, $sql) or die(mysqli_error($con));
+        echo "Updated";
         break;
 }
 

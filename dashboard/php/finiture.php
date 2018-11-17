@@ -32,9 +32,13 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM finiture ORDER BY fin_nome";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['fin_id'] = intval($row['fin_id']);
+            $row['fin_mark_id'] = intval($row['fin_mark_id']);
+            $row['fin_show'] = intval($row['fin_show']);
+            $row['fin_type_id'] = intval($row['fin_type_id']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO finiture (fin_nome, fin_cod, fin_mark_id, fin_show, fin_type_id) VALUES ('$nome', '$data->cod', '$mark_id', '$data->show', '$data->type')";

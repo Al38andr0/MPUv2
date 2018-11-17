@@ -12,9 +12,12 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM tabelle_finiture ORDER BY tab_nome";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['tab_id'] = intval($row['tab_id']);
+            $row['tab_line_id'] = intval($row['tab_line_id']);
+            $row['tab_mark_id'] = intval($row['tab_mark_id']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO tabelle_finiture (tab_nome, tab_mark_id, tab_line_id) VALUES ('$nome', '$data->mark', '$data->line')";

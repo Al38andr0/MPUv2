@@ -17,9 +17,14 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM marchi";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['mark_id'] = intval($row['mark_id']);
+            $row['mark_disc'] = intval($row['mark_disc']);
+            $row['mark_list'] = intval($row['mark_list']);
+            $row['mark_show'] = intval($row['mark_show']);
+            $row['mark_cat_array'] = json_decode($row['mark_cat_array']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         mkdir($path);

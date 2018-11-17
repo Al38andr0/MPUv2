@@ -20,9 +20,14 @@ switch ($_GET['type']) {
         $sql = "SELECT * FROM settori ORDER BY set_pos";
         $result = mysqli_query($con, $sql);
         while ($row = $result->fetch_assoc()) {
+            $row['set_cat_id'] = intval($row['set_cat_id']);
+            $row['set_home'] = intval($row['set_home']);
+            $row['set_id'] = intval($row['set_id']);
+            $row['set_pos'] = intval($row['set_pos']);
+            $row['set_show'] = intval($row['set_show']);
             array_push($result_array, $row);
         }
-        echo json_encode($result_array, JSON_NUMERIC_CHECK);
+        echo json_encode($result_array);
         break;
     case 'new':
         $sql = "INSERT INTO settori (set_nome, set_pos, set_show, set_cat_id, set_txt, set_home) VALUES ('$nome', '$data->pos', '$data->show', '$data->cat', '$text', '$data->home')";

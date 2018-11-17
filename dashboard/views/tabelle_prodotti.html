@@ -20,17 +20,19 @@
         ></ul>
     </div>
     <div class="col-1">
-        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina">
     </div>
     <div class="col-2">
         <input type="text" class="form-control" ng-model="$root.settings.query.tabella_prodotti" title="" placeholder="Filtro tabella">
     </div>
     <div class="col-2">
-        <input type="text" class="form-control" ng-model="$root.settings.query.marchio" title="" placeholder="Filtro marchio">
+        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+            <option value="">Tutti i marchi</option>
+        </select>
     </div>
 </div>
 <div class="col-12 p-0  mt-3 list">
-    <div ng-repeat="e in $root['tabelle_prodotti'] | filter : {tbpr_nome : $root.settings.query.tabella_prodotti, mark_nome : $root.settings.query.marchio}"
+    <div ng-repeat="e in $root['tabelle_prodotti'] | filter : {tbpr_nome : $root.settings.query.tabella_prodotti} | filterById : $root.settings.query.marchi : 'tbpr_mark_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
         <h4>{{e['tbpr_nome']}}</h4>
