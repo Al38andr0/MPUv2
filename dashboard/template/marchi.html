@@ -25,12 +25,9 @@
         </fieldset>
     </div>
     <div class="col-3 pt-4">
-        <button ng-if="!entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.create()"
-                ng-disabled="updateCheck()">CREATE
-        </button>
-        <button ng-if="entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.update()"
-                ng-disabled="updateCheck()">UPDATE
-        </button>
+            <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.marchi, 'create')" ng-disabled="updateCheck()">CREATE</button>
+            <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.marchi, 'update')" ng-disabled="updateCheck()">UPDATE</button>
+            <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
         <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
                 ng-click="actions.confirm()">DELETE
         </button>

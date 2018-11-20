@@ -1,40 +1,52 @@
-<div class="rows">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="provincia.z">
-        <option value="" selected>Nazione</option>
-    </select>
-    <select ng-disabled="!provincia.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : provincia.z} : true | orderBy : 'n'" data-ng-model="provincia.r">
-        <option value="" selected>Regione</option>
-    </select>
-</div>
-<div class="rows">
-    <input ng-disabled="!provincia.r" class="form-control descrizione" type="text" placeholder="Nome provincia" ng-model="provincia.n" popover="Nome provincia" popover-trigger="mouseenter">
-</div>
-<div class="rows">
-    <input ng-disabled="!provincia.r" class="form-control sigla" type="text" placeholder="Sigla" ng-model="provincia.c" popover="Sigla" popover-trigger="mouseenter">
-    <input class="form-control shortCod" type="number" ng-model="provincia.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-    <input class="form-control shortCod" type="number" ng-model="provincia.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-</div>
-<div class="rows">
-    <select class="form-control trasp" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="provincia.j">
-    </select>
-    <input class="form-control shortCod" type="number" ng-model="provincia.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
-    <span ng-if="provincia.j == 1 || provincia.j == 3 || provincia.j == 4" class="info perc">€</span>
-    <span ng-if="provincia.j == 2" class="info perc">%</span>
-</div>
-<div class="rows">
-    <select class="form-control trasp" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="provincia.k">
-    </select>
-    <input class="form-control shortCod" type="number" ng-model="provincia.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
-    <span ng-if="provincia.k == 1 || provincia.k == 3 || provincia.k == 4" class="info perc">€</span>
-    <span ng-if="provincia.k == 2" class="info perc">%</span>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.provincia">ERRORE - PROVINCIA ESISTENTE</button>
-</div>
+<form class="row mt-3" name="province">
+    <div class="col-3">
+        <fieldset>
+            <label for="regione">Regione:</label>
+            <select id="regione" class="form-control" ng-model="entity.regione" ng-options="o.regioni_id as o.regioni_nome for o in $root.regioni" tabindex="11"></select>
+        </fieldset>
+        <fieldset>
+            <label for="provincia">Provincia:</label>
+            <input id="provincia" class="form-control" type="text" ng-model="entity.provincia" tabindex="12">
+        </fieldset>
+        <fieldset>
+            <label for="sigla">Sigla:</label>
+            <input id="sigla" class="form-control" type="text" ng-model="entity.sigla" tabindex="13">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="minimo.limite">Limite minimo d'ordine (€):</label>
+            <input id="minimo.limite" class="form-control" type="number" step="0.01" ng-model="entity.minimo.limite" tabindex="14">
+        </fieldset>
+        <fieldset>
+            <label for="trasporto.tipologia">Tipologia spese di trasporto:</label>
+            <select id="trasporto.tipologia" class="form-control" ng-model="entity.trasporto.tipologia" ng-options="o.id as o.label for o in $root.options.servizi" tabindex="16"></select>
+        </fieldset>
+        <fieldset>
+            <label for="montaggio.tipologia">Tipologia spese di montaggio:</label>
+            <select id="montaggio.tipologia" class="form-control" ng-model="entity.montaggio.tipologia" ng-options="o.id as o.label for o in $root.options.servizi" tabindex="18"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="minimo.importo">Spese minimo d'ordine (€):</label>
+            <input id="minimo.importo" class="form-control" type="number" step="0.01" ng-model="entity.minimo.importo" tabindex="15">
+        </fieldset>
+        <fieldset>
+            <label for="trasporto.importo">Maggiorazione trasporto (€):</label>
+            <input id="trasporto.importo" class="form-control" type="number" step="0.01" ng-model="entity.trasporto.importo" tabindex="17">
+        </fieldset>
+        <fieldset>
+            <label for="montaggio.importo">Maggiorazione montaggio (€):</label>
+            <input id="montaggio.importo" class="form-control" type="number" step="0.01" ng-model="entity.montaggio.importo" tabindex="19">
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['province'], 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['province'], 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

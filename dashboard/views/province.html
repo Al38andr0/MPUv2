@@ -1,106 +1,49 @@
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
-<div class="nuovo" ng-if="!provincia.selected">
-    <h1>nuova provincia</h1>
-    <div class="rows">
-        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="vm.nuovaProvincia.z">
-            <option value="" selected>Nazione</option>
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Province</h1>
+    </div>
+    <div class="col-12 mb-5">
+        <province entity="entity.provincia"></province>
+    </div>
+    <div class="col-7">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            data-boundary-links="true"
+            data-total-items="($root.province | filter : {provincia :  $root.settings.query.provincia} | filterById : $root.settings.query.regione : 'regione_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
+        ></ul>
+    </div>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.provincia" title="" placeholder="Filtro provincia">
+    </div>
+    <div class="col-2">
+        <select class="form-control" data-ng-model="$root.settings.query.regione" ng-options="o.regioni_id as o.regioni_nome for o in $root.regioni" title="">
+            <option value="">Tutte le regioni</option>
         </select>
-        <select ng-disabled="!vm.nuovaProvincia.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : vm.nuovaProvincia.z} : true | orderBy : 'n'" data-ng-model="vm.nuovaProvincia.r">
-            <option value="" selected>Regione</option>
-        </select>
     </div>
-    <div class="rows">
-        <input ng-disabled="!vm.nuovaProvincia.r" class="form-control descrizione" type="text" placeholder="Nome provincia" ng-model="vm.nuovaProvincia.n" popover="Nome provincia" popover-trigger="mouseenter">
-    </div>
-    <div class="rows">
-        <input ng-disabled="!vm.nuovaProvincia.r" class="form-control sigla" type="text" placeholder="Sigla" ng-model="vm.nuovaProvincia.c" popover="Sigla" popover-trigger="mouseenter">
-        <input class="form-control shortCod" type="number" ng-model="vm.nuovaProvincia.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-        <input class="form-control shortCod" type="number" ng-model="vm.nuovaProvincia.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-    </div>
-    <div class="rows">
-        <select class="form-control trasp" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="vm.nuovaProvincia.j">
-        </select>
-        <input class="form-control shortCod" type="number" ng-model="vm.nuovaProvincia.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
-        <span ng-if="vm.nuovaProvincia.j == 1 || vm.nuovaProvincia.j == 3 || vm.nuovaProvincia.j == 4" class="info perc">€</span>
-        <span ng-if="vm.nuovaProvincia.j == 2" class="info perc">%</span>
-    </div>
-    <div class="rows">
-        <select class="form-control trasp" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'n'" data-ng-model="vm.nuovaProvincia.k">
-        </select>
-        <input class="form-control shortCod" type="number" ng-model="vm.nuovaProvincia.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
-        <span ng-if="vm.nuovaProvincia.k == 1 || vm.nuovaProvincia.k == 3 || vm.nuovaProvincia.k == 4" class="info perc">€</span>
-        <span ng-if="vm.nuovaProvincia.k == 2" class="info perc">%</span>
-    </div>
-    <div class="rows">
-        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
-        <button class="btn btn-primary" type="button" ng-click="newItem()">RESET</button>
-    </div>
-    <button class="btn btn-danger errore" ng-if="errore.provincia">ERRORE - PROVINCIA ESISTENTE</button>
 </div>
-<div class="modifica" ng-if="provincia.selected">
-    <h1>modifica provincia</h1>
-    <province provincia-original = "provincia" vm = "vm"></province>
-</div>
-
-<div class="gestione">
-    <h1>gestione province</h1>
-    <div class="filtri">
-        <div class="rows">
-            <input class="form-control nome" type="text" placeholder="Filtro provincia" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro provincia">
-            <div class="inlineBlock" ng-include="'include/nazioniFilter.html'"></div>
-            <div class="inlineBlock" ng-include="'include/regioniFilter.html'"></div>
-        </div>
-        <div class="rows">
-            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage"
-                   popover="Numero di risultati per pagina" popover-trigger="mouseenter">
-            <i class="icons-sort blu" popover="Ordina per province" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
-            <i class="icons-sort green" popover="Ordina per regioni" popover-trigger="mouseenter" ng-click="sorting('r')"></i>
-            <i class="icons-sort red" popover="Ordina per nazioni" popover-trigger="mouseenter" ng-click="sorting('z')"></i>
-        </div>
-    </div>
-    <div class="list">
-        <div ng-repeat="s in vm.province
-        | orderBy : vm.sorting
-        | filterByNaz : filtro.nazione.i
-        | filterByReg : filtro.regione.i
-        | filter : {n : filtro.provincia.n}
-        | offset: ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)">
-            <h4 ng-click="selectItem(s)">{{s.n}} - {{s.c}}</h4>
-            <p>{{convert(s.z, 'nazioni', 'n')}}</p>
-            <p>{{convert(s.r, 'regioni', 'n')}}</p>
-            <p>Minimo d'ordine: {{convertPrice(s.b)}} €</p>
-            <p>Gestione: {{convertPrice(s.l)}} €</p>
-            <p ng-if="s.j == 2">Trasporto: {{s.t}} %</p>
-            <p ng-if="s.j == 1">Trasporto: gratuito</p>
-            <p ng-if="s.j == 3">Trasporto: {{convertPrice(s.t)}} €</p>
-            <p ng-if="s.j == 4">Trasporto: da quantificare</p>
-            <p ng-if="s.k == 2">Montaggio: {{s.m}} %</p>
-            <p ng-if="s.k == 1">Montaggio: gratuito</p>
-            <p ng-if="s.k == 3">Montaggio: {{convertPrice(s.m)}} €</p>
-            <p ng-if="s.k == 4">Montaggio: da quantificare</p>
-        </div>
-        <div ng-if="(vm.province
-            | filterByNaz : filtro.nazione.i
-            | filterByReg : filtro.regione.i
-            | filter : {n : filtro.provincia.n}
-        ).length != 0" class="paginationContainer">
-            <pagination
-                    total-items="(vm.province
-                    | filterByNaz : filtro.nazione.i
-                    | filterByReg : filtro.regione.i
-                    | filter : {n : filtro.provincia.n}
-                    ).length"
-                    ng-model="vm.currentPage"
-                    boundary-links="true"
-                    max-size = "vm.maxSize"
-                    items-per-page = "vm.itemsPerPage"
-                    rotate = "false">
-            </pagination>
-        </div>
-        <h5 ng-if="(vm.province
-        | filterByNaz : filtro.nazione.i
-        | filterByReg : filtro.regione.i
-        | filter : {n : filtro.provincia.n}
-        ).length == 0">Nessun risultato disponibile</h5>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root.province | filter : {provincia :  $root.settings.query.provincia} | filterById : $root.settings.query.regione : 'regione_id'"
+         ng-if="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4 uib-tooltip="ID: {{e['provincia_id']}}" data-tooltip-placement="left">{{e['provincia']}} - {{e['sigla']}} </h4>
+        <p>{{$root.settings.convert(e['regione_id'], 'regioni', 'regioni_id' ,'regioni_nome')}}</p>
+        <p>Minimo d'ordine: {{e['limite'] | currency}}</p>
+        <p>Costi gestione minimo d'ordine: {{e['minimo'] | currency}}</p>
+        <p ng-if="e['trasporto_type'] === 1">Trasporto: {{e['trasporto'] | currency}}</p>
+        <p ng-if="e['trasporto_type'] === 2">Trasporto: {{e['trasporto']}} %</p>
+        <p ng-if="e['trasporto_type'] === 3">Trasporto: da quantificare</p>
+        <p ng-if="e['montaggio_type'] === 1">Montaggio: {{e['montaggio'] | currency}}</p>
+        <p ng-if="e['montaggio_type'] === 2">Montaggio: {{e['montaggio']}} %</p>
+        <p ng-if="e['montaggio_type'] === 3">Montaggio: da quantificare</p>
     </div>
 </div>

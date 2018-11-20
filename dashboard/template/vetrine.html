@@ -1,64 +1,74 @@
-<div class="rows">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'"
-            data-ng-model="vetrina.m">
-        <option value="" selected>Marchio</option>
-    </select>
-    <select ng-disabled="!vetrina.m" class="form-control linea"
-            ng-options="l.i as l.n for l in vm.linee | filter : {m : vetrina.m} : true | orderBy : 'n'"
-            data-ng-model="vetrina.l">
-        <option value="" selected>Linea</option>
-    </select>
-    <input class="form-control vetrinaCod" type="text" placeholder="Cod" ng-model="vetrina.c">
-    <input class="form-control pos" type="number" placeholder="0" ng-model="vetrina.y" popover="Posizione"
-           popover-trigger="mouseenter">
-    <button ng-if="vetrina.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vetrina.v = 0">ON
-    </button>
-    <button ng-if="vetrina.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vetrina.v = 1">OFF
-    </button>
-</div>
-<div class="checkboxContainer titolo">
-    <h3>SETTORI</h3>
-    <div class="checkbox" ng-if="vetrina.l" ng-repeat="s in settoriInLinea">
+<form class="row mt-3" name="vetrine">
+    <div class="col-6">
         <fieldset>
-            <input id="settoreInLinea_{{s.n}}" class="categorieCheck" type="checkbox" value="{{s.i}}" ng-click="toggleSet(s.i)" ng-checked="selectedCat(s.i)">
-            <label for="settoreInLinea_{{s.n}}">{{s.n}}</label>
+            <label for="titolo">Titolo:</label>
+            <input id="titolo" class="form-control" type="text" ng-model="entity.titolo">
         </fieldset>
-    </div>
-</div>
-<div class="rows">
-    <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="vetrina.n">
-</div>
-<div class="rows">
-    <input class="form-control titolo" type="text" placeholder="Note" ng-model="vetrina.o">
-</div>
-<!--<div ng-show="vetrina.l" class="checkboxContainer marchi">
-    <h3>settori</h3>
-    <div class="checkbox" ng-repeat="s in settoriAvailable">
-        <label>
-            <input class="categorieCheck" type="checkbox" value="{{s.h}}"  ng-click="toggleSet(s.h)" ng-checked="selectedCat(s.h)">
-            {{s.n}}
-        </label>
-    </div>
-</div>-->
-<div class="rows">
-    <div class="dropAreaFileImage" ng-class="{solidBorder : vetrina.r}">
-        <input type="file" class="dropArea" fileread="vetrina.r">
-        <span ng-if="!vetrina.r">DROP FILE HERE</span>
-        <div class="fileImage">
-            <img ng-if="vetrina.r" ng-src="{{vetrina.r}}">
+        <fieldset>
+            <label for="note">Note:</label>
+            <input id="note" class="form-control" type="text" ng-model="entity.note">
+        </fieldset>
+        <div ng-if="entity.categoria" class="col-12 p-0 m-0 d-flex flex-wrap align-content-start">
+            <p class="col-12 pseudoLabel p-0">Settori:</p>
+            <fieldset ng-repeat="s in entity.settori | filter : {categoria : entity.categoria} : true" class="form-check col-6 pl-0">
+                <input id="_{{s.nome}}" type="checkbox" value="{{s.id}}" class="form-check-input" ng-checked="s.checked"
+                       ng-model="s.checked">
+                <label for="_{{s.nome}}" class="form-check-label">{{s.nome}}</label>
+            </fieldset>
         </div>
     </div>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">
-        DELETE
-    </button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newFinitura()">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.vetrina">ERRORE - VETRINA ESISTENTE O VALORI PREZZI VUOTI
-    </button>
-</div>
+    <div class="col-3">
+        <fieldset>
+            <label for="nome">Codice:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+        </fieldset>
+        <fieldset>
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" class="form-control" ng-model="entity.categoria" ng-options="o.cat_id as o.cat_nome for o in $root.categorie"></select>
+        </fieldset>
+        <fieldset>
+            <label for="marchio">Marchio:</label>
+            <select id="marchio" class="form-control" ng-model="entity.marchio"
+                    ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-disabled="entity.id""></select>
+        </fieldset>
+        <fieldset>
+            <label for="linea">Linea:</label>
+            <select id="linea" class="form-control" ng-model="entity.linea"
+                    ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true"
+                    ng-disabled="!entity.marchio || entity.id"></select>
+        </fieldset>
+        <fieldset>
+            <label for="posizione">Posizione:</label>
+            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+        </fieldset>
+        <fieldset>
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" ng-model="entity.show"
+                    ng-options="o.id as o.label for o in $root.options.show"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset class="mb-4">
+            <label>Immagine:</label>
+            <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
+                <input type="file" file-read="entity.immagine">
+                <span ng-if="!entity.immagine">DROP FILE HERE<br>Size: 800x600<br>Format: JPG</span>
+                <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
+            </div>
+        </fieldset>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.checkItem(entity, $root.vetrine, 'create')" ng-disabled="updateCheck()">CREATE
+        </button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.checkItem(entity, $root.vetrine, 'update')" ng-disabled="updateCheck()">UPDATE
+        </button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.confirm()">DELETE
+        </button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button"
+                ng-click="actions.erase()">CONFIRM
+        </button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

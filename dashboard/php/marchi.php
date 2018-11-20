@@ -34,6 +34,12 @@ switch ($_GET['type']) {
         echo "Created";
         break;
     case 'delete':
+        $result = mysqli_query($con, "SELECT * FROM marchi WHERE mark_id = '$data->id'");
+        while ($row = mysqli_fetch_array($result)) {
+            $nome = $row['mark_nome'];
+        };
+        $pathNome = str_replace(" ", "_", $nome);
+        $path = '../archivio_dati/' . $pathNome;
         deleteDirectory($path);
         $sql = "DELETE FROM marchi WHERE mark_id='$data->id'";
         mysqli_query($con, $sql) or die(mysqli_error($con));

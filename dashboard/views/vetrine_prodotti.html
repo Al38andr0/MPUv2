@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Vetrine prodotti</h1>
+    </div>
+    <div class="col-12 mb-5">
+        <vetrine-prodotti entity="entity.vetrina_prodotto"></vetrine-prodotti>
+    </div>
+    <div class="col-9">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            data-boundary-links="true"
+            data-total-items="($root.vetrine_prodotti | filterById : $root.settings.query.linee : 'cmpr_line_cmp_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
+        ></ul>
+    </div>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
+    </div>
+    <div class="col-2">
+        <select class="form-control" data-ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee | filterById : $root.settings.query.marchi : 'line_mark_id'" title="">
+            <option value="">Tutti le linee</option>
+        </select>
+    </div>
+</div>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root['vetrine_prodotti'] | filterById : $root.settings.query.linee : 'cmpr_line_cmp_id'"
+         ng-if="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4 uib-tooltip="ID: {{e['cmpr_id']}}" data-tooltip-placement="left">{{$root.settings.convert(e['cmpr_prd'], 'prodotti', 'prd_id' ,'prd_cod')}} {{$root.settings.convert(e['cmpr_cod'], 'abbinamenti', 'abb_id' ,'abb_cod')}} <span>{{$root.settings.convert(e['cmpr_tab'], 'tabelle_finiture', 'tab_id' ,'tab_nome')}}</span></h4>
+        <p>Composizione: {{$root.settings.convert(e['cmpr_line_cmp_id'], 'linee', 'line_id' ,'line_nome')}}_{{$root.settings.convert(e['cmpr_comp'], 'vetrine', 'cmp_id' ,'cmp_nome')}}</p>
+        <p>{{$root.settings.convert(e['cmpr_mark_cmp_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
+        <p>Articolo: {{$root.settings.convert(e['cmpr_prd'], 'prodotti', 'prd_id' ,'prd_cod')}}</p>
+        <p>{{$root.settings.convert(e['cmpr_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
+        <p>{{$root.settings.convert(e['cmpr_line_id'], 'linee', 'line_id' ,'line_nome')}}</p>
+        <p>Posizione: {{e['cmpr_pos']}}</p>
+        <p>Quantità: {{e['cmpr_qnt']}}</p>
+    </div>
+</div>

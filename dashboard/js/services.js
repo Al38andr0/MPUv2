@@ -1,4 +1,4 @@
-var app = angular.module("services", ['ngRoute']);
+angular.module("services", ['ngRoute']);
 angular.module("services").service('dashboardPages', function(){
     return [
         {
@@ -68,10 +68,6 @@ angular.module("services").service('dashboardPages', function(){
                 {
                     name : 'prodotti',
                     link : 'prodotti'
-                },
-                {
-                    name : 'settori',
-                    link : 'prodottiSettori'
                 }
             ]
         },
@@ -90,27 +86,13 @@ angular.module("services").service('dashboardPages', function(){
             ]
         },
         {
-            name : 'mappa',
-            link : 'nazioni',
-            sub : [
-                {
-                    name : 'nazioni',
-                    link : 'nazioni'
-                },
-                {
-                    name : 'regioni',
-                    link : 'regioni'
-                },
-                {
-                    name : 'province',
-                    link : 'province'
-                }
-            ]
-        },
-        {
             name : 'distribuzione',
             link : 'rivenditori',
             sub : [
+                {
+                    name : 'province',
+                    link : 'province'
+                },
                 {
                     name : 'convenzioni',
                     link : 'convenzioni'

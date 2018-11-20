@@ -7,16 +7,16 @@
     </div>
     <div class="col-9">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
-            boundary-links="true"
-            total-items="($root.categorie | filter : {cat_nome : $root.settings.query.categoria}).length"
-            items-per-page="$root.settings.itemsPerPage"
-            max-size="3"
-            ng-model="entity.currentPage"
-            previous-text="&lsaquo;"
-            next-text="&rsaquo;"
-            first-text="&laquo;"
-            last-text="&raquo;"
-            force-ellipses="true"
+            data-boundary-links="true"
+            data-total-items="($root.categorie | filter : {cat_nome : $root.settings.query.categoria}).length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
         ></ul>
     </div>
     <div class="col-1">
@@ -30,7 +30,7 @@
     <div ng-repeat="e in $root.categorie | filter : {cat_nome : $root.settings.query.categoria}"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['cat_nome']}}</h4>
+        <h4 uib-tooltip="ID: {{e['cat_id']}}" data-tooltip-placement="left">{{e['cat_nome']}}</h4>
         <p>{{$root.settings.idToLabel(e['cat_show'], $root.options.show)}}</p>
         <p>Posizione: {{e['cat_pos']}}</p>
     </div>

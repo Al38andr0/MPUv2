@@ -173,18 +173,51 @@ button.btn {
   transition: none !important;
 }
 #menu {
-  background: #173244;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  width: 140px;
+  width: 175px;
   color: #ffffff;
+  display: flex;
+  align-items: start;
+  transform: translateX(-136px);
+  transition: all 150ms ease-out;
+  z-index: 10;
+}
+#menu:hover {
+  transform: translateX(0);
+}
+#menu:hover > div {
+  opacity: 0;
+}
+#menu:hover > div > p {
+  transform: rotate(180deg);
+}
+#menu > div {
+  width: 40px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #112431;
+  transition: all 150ms ease-out;
+}
+#menu > div > p {
+  margin: 0;
+  font-size: 2rem;
+  transform-origin: 50%;
+  transition: all 150ms ease-out;
 }
 #menu > ul {
+  width: 140px;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
+  background: #112431;
 }
 #menu > ul > li {
   font-size: 12px;
@@ -192,7 +225,6 @@ button.btn {
 #menu > ul > li > p {
   margin: 0;
   padding: 5px 10px;
-  background: #112431;
   text-transform: uppercase;
 }
 #menu > ul > li > ul {
@@ -200,12 +232,13 @@ button.btn {
   list-style-type: none;
 }
 #menu > ul > li > ul > li {
+  background: #173244;
   cursor: pointer;
 }
 #menu > ul > li > ul > li > p {
   font-size: 14px;
   margin: 0;
-  padding: 7px 0 7px 15px;
+  padding: 11px 0 11px 15px;
   border-bottom: thin solid #142c3c;
 }
 #menu > ul > li > ul > li > p:hover {
@@ -402,27 +435,6 @@ button.btn {
   -webkit-border-radius: 4px;
   border-radius: 4px;
   overflow: hidden;
-  /*
-    &.insertPDF{
-      display: inline-block!important;
-      margin: 0 7px;
-      & span{
-        top: 60px;
-      }
-    }
-    & .icons-available-not{
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      font-size: 20px;
-      z-index: 3;
-      color: @red;
-      cursor: pointer;
-      &:hover{
-        color: darken(@red, 10%);
-      }
-    }
-    */
 }
 #view .dropAreaFileImage.solidBorder {
   border: 1px solid #ddd;
@@ -440,6 +452,7 @@ button.btn {
   color: #9d9d9d;
   pointer-events: none;
   z-index: 2;
+  text-align: center;
 }
 #view .dropAreaFileImage img {
   height: 100%;
@@ -455,15 +468,20 @@ button.btn {
       */
 }
 #view .inputX2 {
-  height: 6.3rem;
+  height: 6.2rem;
 }
 #view .inputX3 {
-  height: 10.4rem;
+  height: 10.2rem;
+}
+#view .pseudoLabel {
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+  color: #9d9d9d;
 }
 #view fieldset > label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin: 0.25rem 0 0;
-  color: #173244;
+  color: #9d9d9d;
 }
 #view fieldset > input.custom-file-input {
   padding: 0.2rem;
@@ -479,7 +497,9 @@ button.btn {
   display: inline-block;
 }
 #view fieldset.form-check > label {
+  font-size: 0.9rem;
   padding-left: 2rem;
+  color: #173244;
 }
 #view .filtri {
   margin-bottom: 15px;
@@ -581,6 +601,7 @@ button.btn {
   border-radius: 4px;
   border: thin solid #ddd;
   margin-bottom: 30px;
+  font-size: 0;
 }
 #view .list > div {
   padding: 10px 15px;
@@ -620,7 +641,7 @@ button.btn {
   color: #9d9d9d;
   padding: 0 10px;
   margin: 0;
-  border-left: thin solid #ddd;
+  border-right: thin solid #ddd;
   white-space: nowrap;
 }
 #view .list > div p.noBorder {
@@ -632,7 +653,10 @@ button.btn {
 }
 #view .list > div p:first-of-type {
   padding-left: 0;
-  border-left: none;
+}
+#view .list > div p:last-of-type {
+  padding-right: 0;
+  border-right: none;
 }
 #view .list > div p span {
   margin-left: 3px;

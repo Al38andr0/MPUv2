@@ -1,0 +1,60 @@
+<form class="row mt-3" name="vetrineProdotti">
+    <div class="col-3">
+        <fieldset>
+            <label for="marchio_composizione">Marchio composizione:</label>
+            <select id="marchio_composizione" class="form-control" ng-model="entity.composizione.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-change="entity.articolo.marchio = entity.composizione.marchio"></select>
+        </fieldset>
+        <fieldset>
+            <label for="linea_composizione">Linea composizione:</label>
+            <select id="linea_composizione" class="form-control" ng-model="entity.composizione.linea" ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.composizione.marchio} : true" ng-disabled="!entity.composizione.marchio" ng-change="entity.articolo.linea = entity.composizione.linea"></select>
+        </fieldset>
+        <fieldset>
+            <label for="codice_composizione">Codice composizione:</label>
+            <select id="codice_composizione" class="form-control" ng-model="entity.composizione.id" ng-options="o.cmp_id as o.cmp_nome for o in $root.vetrine | filter : {cmp_line_id : entity.composizione.linea} : true" ng-disabled="!entity.composizione.linea"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="marchio_articolo">Marchio articolo:</label>
+            <select id="marchio_articolo" class="form-control" ng-model="entity.articolo.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+        </fieldset>
+        <fieldset>
+            <label for="linea_articolo">Linea articolo:</label>
+            <select id="linea_articolo" class="form-control" ng-model="entity.articolo.linea" ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.articolo.marchio} : true" ng-disabled="!entity.articolo.marchio"></select>
+        </fieldset>
+        <fieldset>
+            <label for="codice_articolo">Codice articolo:</label>
+            <select id="codice_articolo" class="form-control" ng-model="entity.articolo.id" ng-options="o.prd_id as o.prd_cod for o in $root.prodotti | filter : {prd_line_id : entity.articolo.linea} : true" ng-disabled="!entity.articolo.linea"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="posizione">Posizione:</label>
+            <input id="posizione" class="form-control" type="number" ng-model="entity.posizione">
+        </fieldset>
+        <fieldset>
+            <label for="quantita">Quantità:</label>
+            <input id="quantita" class="form-control" type="number" ng-model="entity.quantita">
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['vetrine_prodotti'], 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['vetrine_prodotti'], 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+    <div class="col-6">
+        <fieldset>
+            <label for="tabella">Tabella finitura:</label>
+            <select id="tabella" class="form-control" ng-model="entity.tabella" ng-options="o.tab_id as o.tab_nome for o in $root.tabelle_finiture | filter : {tab_line_id : entity.articolo.linea} : true" ng-disabled="!entity.articolo.linea"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="abbinamento">Abbinamento finitura:</label>
+            <select id="abbinamento" class="form-control" ng-model="entity.finitura" ng-options="o.abb_id as o.abb_cod for o in $root.abbinamenti | filter : {abb_tab : entity.tabella} : true" ng-disabled="!entity.tabella"></select>
+        </fieldset>
+    </div>
+</form>

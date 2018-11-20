@@ -1,106 +1,54 @@
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
-<div class="nuovo" ng-if="!vetrina.selected">
-    <h1>nuova vetrina</h1>
-    <div class="rows">
-        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.marchi | orderBy : 'n'" data-ng-model="vm.nuovaVetrina.m">
-            <option value="" selected>Marchio</option>
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Vetrine</h1>
+    </div>
+    <div class="col-12 mb-5">
+        <vetrine entity="entity.vetrina"></vetrine>
+    </div>
+    <div class="col-5">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            data-boundary-links="true"
+            data-total-items="($root.vetrine | filter : {cmp_nome : $root.settings.query.nome} | filterById : $root.settings.query.linee : 'cmp_line_id' | filterById : $root.settings.query.marchi : 'cmp_mark_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
+        ></ul>
+    </div>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.nome" title="" placeholder="Filtro codice">
+    </div>
+    <div class="col-2">
+        <select class="form-control" data-ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+            <option value="">Tutti i marchi</option>
         </select>
-        <select ng-disabled="!vm.nuovaVetrina.m" class="form-control linea" ng-options="l.i as l.n for l in vm.linee | filter : {m : vm.nuovaVetrina.m} : true | orderBy : 'n'" data-ng-model="vm.nuovaVetrina.l">
-            <option value="" selected>Linea</option>
+    </div>
+    <div class="col-2">
+        <select class="form-control" data-ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee" title="">
+            <option value="">Tutte le linee</option>
         </select>
-        <input class="form-control vetrinaCod" type="text" placeholder="Cod" ng-model="vm.nuovaVetrina.c">
-        <input class="form-control pos" type="number" placeholder="0" ng-model="vm.nuovaVetrina.y" popover="Posizione" popover-trigger="mouseenter">
-        <button ng-if="vm.nuovaVetrina.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="vm.nuovaVetrina.v = 0">ON</button>
-        <button ng-if="vm.nuovaVetrina.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="vm.nuovaVetrina.v = 1">OFF</button>
-    </div>
-    <div class="checkboxContainer titolo">
-        <h3>SETTORI</h3>
-        <div class="checkbox" ng-if="vm.nuovaVetrina.l" ng-repeat="s in settoriInLinea">
-            <fieldset>
-                <input id="settoreInLinea_{{s.n}}" class="categorieCheck" type="checkbox" value="{{s.i}}" ng-click="toggleSet(s.i)">
-                <label for="settoreInLinea_{{s.n}}">{{s.n}}</label>
-            </fieldset>
-        </div>
-    </div>
-    <div class="rows">
-        <input class="form-control titolo" type="text" placeholder="Titolo prodotto" ng-model="vm.nuovaVetrina.n">
-    </div>
-    <div class="rows">
-        <input class="form-control titolo" type="text" placeholder="Note" ng-model="vm.nuovaVetrina.o">
-    </div>
-<!--
-    <div ng-show="vm.nuovaVetrina.l" class="checkboxContainer marchi">
-        <h3>settori</h3>
-        <div class="checkbox" ng-repeat="s in settoriAvailable">
-            <label>
-                <input class="categorieCheck" type="checkbox" value="{{s.h}}"  ng-click="toggleSet(s.h)">
-                {{s.n}}
-            </label>
-        </div>
-    </div>
--->
-    <div class="rows">
-        <div class="dropAreaFileImage" ng-class="{solidBorder : vm.nuovaVetrina.r}">
-            <input type="file" class="dropArea" fileread="vm.nuovaVetrina.r">
-            <span ng-if="!vm.nuovaVetrina.r">DROP FILE HERE</span>
-            <div class="fileImage">
-                <img ng-if="vm.nuovaVetrina.r" ng-src="{{vm.nuovaVetrina.r}}">
-            </div>
-        </div>
-    </div>
-    <div class="rows">
-        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
-        <button class="btn btn-primary reset" type="button" ng-click="newVetrina()">RESET</button>
-    </div>
-    <div class="rows">
-        <button class="btn btn-danger errore" ng-if="errore.vetrina">ERRORE - VETRINA ESISTENTE O VALORI SETTORI VUOTI</button>
     </div>
 </div>
-<div class="modifica" ng-if="vetrina.selected">
-    <h1>modifica vetrina</h1>
-    <vetrine vetrina-original = "vetrina" vm = "vm"></vetrina>
-</div>
-
-<div class="gestione">
-    <h1>gestione vetrine</h1>
-    <div class="filtri">
-        <div class="rows">
-            <input class="form-control nome" type="text" placeholder="Filtro codice" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro codice">
-            <div class="inlineBlock" ng-include="'include/lineeFilter.html'"></div>
-            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
-            <i class="icons-sort blu" popover="Ordina per codice" popover-trigger="mouseenter" ng-click="sorting('c')"></i>
-            <i class="icons-sort red" popover="Ordina per posizione" popover-trigger="mouseenter" ng-click="sorting('y')"></i>
-        </div>
-    </div>
-    <div class="list">
-        <div ng-repeat="s in vm.vetrine
-        | orderBy : vm.sorting
-        | filterByLine : filtro.linea.i
-        | filter : {c : filtro.vetrina.c}
-        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
-        ">
-            <h4 ng-click="selectVetrina(s)">{{convert(s.l, 'linee', 'n')}}_{{s.c}}<span>{{s.n}}</span></h4>
-            <p ng-if="s.v == 1">Online</p>
-            <p ng-if="s.v == 0">Offline</p>
-            <p>Pos: {{s.y}}</p>
-            <p>{{convert(s.m, 'marchi', 'n')}}</p>
-            <p>{{convert(s.l, 'linee', 'n')}}</p>
-            <p>{{convert(s.s, 'settori', 'n')}}</p>
-            <p ng-if="s.o">{{s.o}}</p>
-        </div>
-        <div ng-if="(vm.vetrine | filter : {c : filtro.vetrina.c}).length != 0" class="paginationContainer">
-            <pagination
-                    total-items = "(vm.vetrine
-                    | filterByLine : filtro.linea.i
-                    | filter : {c : filtro.vetrina.c}).length
-                    "
-                    ng-model = "vm.currentPage"
-                    boundary-links = "true"
-                    max-size = "vm.maxSize"
-                    items-per-page = "vm.itemsPerPage"
-                    rotate = "false">
-            </pagination>
-        </div>
-        <h5 ng-if="(vm.vetrine | filter : {c : filtro.vetrina.c}).length == 0">Nessun risultato disponibile</h5>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root.vetrine | filter : {cmp_nome : $root.settings.query.nome} | filterById : $root.settings.query.linee : 'cmp_line_id' | filterById : $root.settings.query.marchi : 'cmp_mark_id'"
+         ng-if="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4 uib-tooltip="ID: {{e['cmp_id']}}" data-tooltip-placement="left">{{$root.settings.convert(e['cmp_line_id'], 'linee', 'line_id' ,'line_nome')}}_{{e['cmp_nome']}} <span>{{e['cmp_title']}}</span></h4>
+        <p>{{$root.settings.idToLabel(e['cmp_show'], $root.options.show)}}</p>
+        <p>Posizione: {{e['cmp_pos']}}</p>
+        <p>{{$root.settings.convert(e['cmp_cat_id'], 'categorie', 'cat_id' ,'cat_nome')}}</p>
+        <p>{{$root.settings.convert(e['cmp_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
+        <p>{{$root.settings.convert(e['cmp_line_id'], 'linee', 'line_id' ,'line_nome')}}</p>
+        <p>
+            <span ng-repeat="s in e['cmp_settore']">{{$root.settings.convert(s, 'settori', 'set_id', 'set_nome')}}</span>
+        </p>
+        <p ng-if="e['cmp_note']">{{e['cmp_note']}}</p>
     </div>
 </div>

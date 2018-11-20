@@ -158,6 +158,7 @@ function siteMapRivGoogle($con) {
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular-cookies.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="/lib/angular-locale_it-it.min.js"></script>
 <script type="text/javascript" src="/lib/ui-bootstrap-tpls-3.0.5.min.js"></script>
 <script type="text/javascript" src="js/mpuDashboard.js"></script>
 <script type="text/javascript" src="js/configure.js"></script>

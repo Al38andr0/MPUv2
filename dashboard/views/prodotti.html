@@ -7,16 +7,16 @@
     </div>
     <div class="col-7">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
-            boundary-links="true"
-            total-items="($root.prodotti | filter : {prd_cod : $root.settings.query.codice} | filterById : $root.settings.query.linee : 'prd_line_id').length"
-            items-per-page="$root.settings.itemsPerPage"
-            max-size="3"
-            ng-model="entity.currentPage"
-            previous-text="&lsaquo;"
-            next-text="&rsaquo;"
-            first-text="&laquo;"
-            last-text="&raquo;"
-            force-ellipses="true"
+            data-boundary-links="true"
+            data-total-items="($root.prodotti | filter : {prd_cod : $root.settings.query.codice} | filterById : $root.settings.query.linee : 'prd_line_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
         ></ul>
     </div>
     <div class="col-1">
@@ -26,8 +26,8 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.codice" title="" placeholder="Filtro codice">
     </div>
     <div class="col-2">
-        <select class="form-control" ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee" title="">
-            <option value="">Tutti le linee</option>
+        <select class="form-control" data-ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee" title="">
+            <option value="">Tutte le linee</option>
         </select>
     </div>
 </div>
@@ -35,13 +35,14 @@
     <div ng-repeat="e in $root['prodotti'] | filter : {prd_cod : $root.settings.query.codice} | filterById : $root.settings.query.linee : 'prd_line_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4 uib-tooltip="ID: {{e['prd_id']}}" tooltip-placement="left">{{e['prd_cod']}}<span ng-bind-html="e['prd_title']"></span></h4>
+        <h4 uib-tooltip="ID: {{e['prd_id']}}" data-tooltip-placement="left">{{e['prd_cod']}}<span ng-bind-html="e['prd_title']"></span></h4>
         <p>{{$root.settings.convert(e['prd_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
         <p>{{$root.settings.convert(e['prd_line_id'], 'linee', 'line_id' ,'line_nome')}}</p>
         <p>{{$root.settings.convert(e['prd_lnfn_id'], 'linee', 'line_id' ,'line_nome')}}</p>
         <p>{{$root.settings.convert(e['prd_tbpr'], 'tabelle_prodotti', 'tbpr_id' ,'tbpr_nome')}}</p>
         <p>Dimensioni: {{e['prd_dim'] | decoded}}</p>
         <p>Posizione: {{e['prd_pos']}}</p>
-        <p ng-repeat="p in e['prd_price_array']">{{p.z | currency : "€"}} - {{$root.settings.convert(p.a, 'tabelle_finiture', 'tab_id' ,'tab_nome')}}</p>
+        <div ng-repeat="p in e['prd_price_array']">
+            <p>{{p.z | currency}} - {{$root.settings.convert(p.a, 'tabelle_finiture', 'tab_id' ,'tab_nome')}}</p></div>
     </div>
 </div>

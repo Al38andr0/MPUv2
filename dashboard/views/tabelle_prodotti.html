@@ -7,16 +7,16 @@
     </div>
     <div class="col-7">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
-            boundary-links="true"
-            total-items="($root.tabelle_prodotti | filter : {tbpr_nome : $root.settings.query.tabella_prodotti, mark_nome : $root.settings.query.marchio}).length"
-            items-per-page="$root.settings.itemsPerPage"
-            max-size="3"
-            ng-model="entity.currentPage"
-            previous-text="&lsaquo;"
-            next-text="&rsaquo;"
-            first-text="&laquo;"
-            last-text="&raquo;"
-            force-ellipses="true"
+            data-boundary-links="true"
+            data-total-items="($root.tabelle_prodotti | filter : {tbpr_nome : $root.settings.query.tabella_prodotti, mark_nome : $root.settings.query.marchio}).length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
         ></ul>
     </div>
     <div class="col-1">
@@ -26,7 +26,7 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.tabella_prodotti" title="" placeholder="Filtro tabella">
     </div>
     <div class="col-2">
-        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+        <select class="form-control" data-ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
             <option value="">Tutti i marchi</option>
         </select>
     </div>
@@ -35,7 +35,7 @@
     <div ng-repeat="e in $root['tabelle_prodotti'] | filter : {tbpr_nome : $root.settings.query.tabella_prodotti} | filterById : $root.settings.query.marchi : 'tbpr_mark_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['tbpr_nome']}}</h4>
+        <h4 uib-tooltip="ID: {{e['tbpr_id']}}" data-tooltip-placement="left">{{e['tbpr_nome']}}</h4>
         <p>Posizione: {{e['tbpr_pos']}}</p>
         <p>{{$root.settings.convert(e['tbpr_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
     </div>

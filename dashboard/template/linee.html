@@ -44,7 +44,7 @@
             <label>Catalogo:</label>
             <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.catalogo}">
                 <input type="file" file-read="entity.catalogo" ng-model="entity.catalogo">
-                <span ng-if="!entity.catalogo">DROP FILE HERE</span>
+                <span ng-if="!entity.catalogo">DROP FILE HERE<br>Format: PDF</span>
                 <span ng-if="entity.catalogo">PDF CARICATO</span>
             </div>
         </fieldset>
@@ -52,7 +52,7 @@
             <label>Specifiche:</label>
             <div class="dropAreaFileImage inputX2" ng-class="{solidBorder : entity.specifiche}">
                 <input type="file" file-read="entity.specifiche" ng-model="entity.specifiche">
-                <span ng-if="!entity.specifiche">DROP FILE HERE</span>
+                <span ng-if="!entity.specifiche">DROP FILE HERE<br>Format: PDF</span>
                 <span ng-if="entity.specifiche">PDF CARICATO</span>
             </div>
         </fieldset>

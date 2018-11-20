@@ -55,10 +55,26 @@ switch ($_GET['type']) {
         echo "Created";
         break;
     case 'delete':
-        $sql = "DELETE FROM finiture WHERE fin_id='$data->id'";
-        mysqli_query($con, $sql) or die(mysqli_error($con));
+        $nome = false;
+        $codice = false;
+        $marchio = false;
+
+        $result = mysqli_query($con, "SELECT * FROM finiture WHERE fin_id = '$data->id'");
+        while ($row = mysqli_fetch_array($result)) {
+            $nome = $row['fin_nome'];
+            $codice = $row['fin_cod'];
+            $marchio = $row['fin_mark_id'];
+        };
+        $file = str_replace(' ', '_', $nome) . "_" . str_replace(' ', '_', $codice) . ".jpg";
+        $file_thumb = str_replace(".jpg", "_thumb.jpg", $file);
+        $folder = str_replace(" ", "_", convertMark($marchio, $con));
+        $path = '../archivio_dati/' . $folder . '/Finiture/';
+        $pathFile = $path . $file;
+        $pathThumb = $path . $file_thumb;
         unlink($pathFile);
         unlink($pathThumb);
+        $sql = "DELETE FROM finiture WHERE fin_id='$data->id'";
+        mysqli_query($con, $sql) or die(mysqli_error($con));
         echo "Deleted";
         break;
     case 'update':

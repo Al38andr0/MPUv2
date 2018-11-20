@@ -49,31 +49,64 @@ button.btn {
 }
 
 #menu {
-  background: @blue;
   position: fixed;
   .coords();
-  width: 140px;
+  width: 175px;
   color: #ffffff;
+  display: flex;
+  align-items: start;
+  transform: translateX(-136px);
+  transition: all 150ms ease-out;
+  z-index: 10;
+  &:hover {
+    transform: translateX(0);
+    & > div {
+      opacity: 0;
+     & > p {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  & > div {
+    width: 40px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: darken(@blue, 5%);
+    transition: all 150ms ease-out;
+    & > p {
+      margin: 0;
+      font-size: 2rem;
+      transform-origin: 50%;
+      transition: all 150ms ease-out;
+    }
+  }
   & > ul {
+    width: 140px;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
     list-style-type: none;
     padding: 0;
+    background: darken(@blue, 5%);
     & > li {
       font-size: 12px;
       & > p {
         margin: 0;
         padding: 5px 10px;
-        background: darken(@blue, 5%);
         text-transform: uppercase;
       }
       & > ul {
         padding: 0;
         list-style-type: none;
         & > li {
+          background: @blue;
           cursor: pointer;
           & > p {
             font-size: 14px;
             margin: 0;
-            padding: 7px 0 7px 15px;
+            padding: 11px 0 11px 15px;
             border-bottom: thin solid darken(@blue, 2%);
             &:hover {
               background: lighten(@blue, 5%);
@@ -270,27 +303,6 @@ button.btn {
     &.solidBorder {
       border: 1px solid @grey;
     }
-    /*
-    &.insertPDF{
-      display: inline-block!important;
-      margin: 0 7px;
-      & span{
-        top: 60px;
-      }
-    }
-    & .icons-available-not{
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      font-size: 20px;
-      z-index: 3;
-      color: @red;
-      cursor: pointer;
-      &:hover{
-        color: darken(@red, 10%);
-      }
-    }
-    */
     & > input {
       position: absolute;
       top: -30px;
@@ -304,6 +316,7 @@ button.btn {
       color: darken(@grey, 25%);
       pointer-events: none;
       z-index: 2;
+      text-align: center;
     }
     & img {
       height: 100%;
@@ -320,16 +333,21 @@ button.btn {
     }
   }
   & .inputX2 {
-    height: 6.3rem;
+    height: 6.2rem;
   }
   & .inputX3 {
-    height: 10.4rem;
+    height: 10.2rem;
+  }
+  & .pseudoLabel {
+    font-size: 0.8rem;
+    margin: .25rem 0 0;
+    color: darken(@grey, 25%);
   }
   & fieldset {
     & > label {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       margin: .25rem 0 0;
-      color: @blue;
+      color: darken(@grey, 25%);
     }
     & > input {
       &.custom-file-input {
@@ -346,7 +364,9 @@ button.btn {
         display: inline-block;
       }
       & > label {
+        font-size: 0.9rem;
         padding-left: 2rem;
+        color: @blue;
       }
     }
   }
@@ -437,6 +457,7 @@ button.btn {
     .borderRadius(4px);
     border: thin solid @grey;
     margin-bottom: 30px;
+    font-size: 0;
     & > div {
       padding: 10px 15px;
       &:hover {
@@ -474,7 +495,7 @@ button.btn {
         color: darken(@grey, 25%);
         padding: 0 10px;
         margin: 0;
-        border-left: thin solid @grey;
+        border-right: thin solid @grey;
         white-space: nowrap;
         &.noBorder {
           padding-left: 0 !important;
@@ -485,7 +506,10 @@ button.btn {
         }
         &:first-of-type {
           padding-left: 0;
-          border-left: none;
+        }
+        &:last-of-type {
+          padding-right: 0;
+          border-right: none;
         }
         & span {
           margin-left: 3px;

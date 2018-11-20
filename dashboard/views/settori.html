@@ -7,16 +7,16 @@
     </div>
     <div class="col-5">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
-            boundary-links="true"
-            total-items="($root.settori | filter : {set_nome : $root.settings.query.settore} | filterById : $root.settings.query.categoria : 'set_cat_id').length"
-            items-per-page="$root.settings.itemsPerPage"
-            max-size="3"
-            ng-model="entity.currentPage"
-            previous-text="&lsaquo;"
-            next-text="&rsaquo;"
-            first-text="&laquo;"
-            last-text="&raquo;"
-            force-ellipses="true"
+            data-boundary-links="true"
+            data-total-items="($root.settori | filter : {set_nome : $root.settings.query.settore} | filterById : $root.settings.query.categoria : 'set_cat_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
         ></ul>
     </div>
     <div class="col-1">
@@ -26,7 +26,7 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.settore" title="" placeholder="Filtro settore">
     </div>
     <div class="col-4">
-        <select class="form-control" ng-model="$root.settings.query.categoria" ng-options="o.cat_id as o.cat_nome for o in $root.categorie" title="">
+        <select class="form-control" data-ng-model="$root.settings.query.categoria" ng-options="o.cat_id as o.cat_nome for o in $root.categorie" title="">
             <option value="">Tutti le categorie</option>
         </select>
     </div>
@@ -35,7 +35,7 @@
     <div ng-repeat="e in $root.settori | filter : {set_nome : $root.settings.query.settore} | filterById : $root.settings.query.categoria : 'set_cat_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4>{{e['set_nome']}}</h4>
+        <h4 uib-tooltip="ID: {{e['set_id']}}" data-tooltip-placement="left">{{e['set_nome']}}</h4>
         <p>{{$root.settings.idToLabel(e['set_show'], $root.options.show)}}</p>
         <p>Posizione: {{e['set_pos']}}</p>
         <p>{{$root.settings.convert(e['set_cat_id'], 'categorie', 'cat_id' ,'cat_nome')}}</p>

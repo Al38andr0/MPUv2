@@ -34,7 +34,6 @@ switch ($_GET['type']) {
         $sqlGet = "SELECT cat_id FROM categorie WHERE cat_id = (SELECT MAX(cat_id) FROM categorie)";
         $result = mysqli_query($con, $sqlGet);
         while ($row = $result->fetch_assoc()) {
-            echo $row['cat_id'];
             $file = $row['cat_id'] . ".jpg";
             $pathFile = $path . $file;
 

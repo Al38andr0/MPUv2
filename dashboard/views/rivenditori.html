@@ -1,180 +1,75 @@
-<button type="button" class="btn btn-info saveData" ng-click="saveDataDB()" ng-disabled="saving">SAVE DATA FROM DB</button>
-<div class="nuovo" ng-if="!rivenditore.selected">
-    <h1>nuovo rivenditore</h1>
-    <div class="rows">
-        <input class="form-control nome" type="text" placeholder="Nome società" ng-model="vm.nuovoRivenditore.n">
-        <input class="form-control nome" type="text" placeholder="Referente" ng-model="vm.nuovoRivenditore.x">
-        <input class="form-control nome" type="text" placeholder="Sede" ng-model="vm.nuovoRivenditore.s">
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1>Rivenditori</h1>
     </div>
-    <div class="rows">
-        <input class="form-control nome" type="text" placeholder="Telefono" ng-model="vm.nuovoRivenditore.h">
-        <input class="form-control nome" type="text" placeholder="Mobile" ng-model="vm.nuovoRivenditore.c">
-        <input class="form-control nome" type="text" placeholder="Fax" ng-model="vm.nuovoRivenditore.f">
+    <div class="col-12 mb-5">
+        <rivenditori entity="entity.rivenditore"></rivenditori>
     </div>
-    <div class="rows">
-        <input class="form-control nome" type="text" placeholder="Sito internet" ng-model="vm.nuovoRivenditore.q">
-        <input class="form-control nome" type="text" placeholder="Email" ng-model="vm.nuovoRivenditore.e">
-        <input class="form-control nome" type="text" placeholder="password" ng-model="vm.nuovoRivenditore.w">
+    <div class="col-9">
+        <ul uib-pagination class="pagination-md justify-content-end mb-0"
+            data-boundary-links="true"
+            data-total-items="($root.rivenditori | filter : {riv_nome :  $root.settings.query.nome}).length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
+        ></ul>
     </div>
-    <div class="rows">
-        <select class="form-control nome" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="vm.nuovoRivenditore.j">
-        </select>
-        <input class="form-control w75" type="number" ng-model="vm.nuovoRivenditore.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
-        <span ng-if="vm.nuovoRivenditore.j == 1 || vm.nuovoRivenditore.j == 3" class="info perc">€</span>
-        <span ng-if="vm.nuovoRivenditore.j == 2" class="info perc">%</span>
-        <select class="form-control nome" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="vm.nuovoRivenditore.k">
-        </select>
-        <input class="form-control w75" type="number" ng-model="vm.nuovoRivenditore.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
-        <span ng-if="vm.nuovoRivenditore.k == 1 || vm.nuovoRivenditore.k == 3" class="info perc">€</span>
-        <span ng-if="vm.nuovoRivenditore.k == 2" class="info perc">%</span>
+    <div class="col-1">
+        <input type="number" class="form-control" ng-model="$root.settings.itemsPerPage" title="" uib-tooltip="Elementi per pagina" >
     </div>
-    <div class="rows">
-        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.convenzioni | orderBy : 'n'" data-ng-model="vm.nuovoRivenditore.v">
-            <option value="" selected>No convenzione</option>
-        </select>
-        <input class="form-control riv" type="number" ng-model="vm.nuovoRivenditore.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-        <input class="form-control riv" type="number" ng-model="vm.nuovoRivenditore.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-    </div>
-    <div ng-if="!vm.nuovoRivenditore.v" class="rows">
-        <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="vm.nuovoRivenditore.z">
-            <option value="" selected>Nazione</option>
-        </select>
-        <select ng-disabled="!vm.nuovoRivenditore.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : vm.nuovoRivenditore.z} : true | orderBy : 'n'" data-ng-model="vm.nuovoRivenditore.r">
-            <option value="" selected>Regione</option>
-        </select>
-        <select ng-disabled="!vm.nuovoRivenditore.r" class="form-control marchio" ng-options="c.i as c.n for c in vm.province | filter : {r : vm.nuovoRivenditore.r} : true | orderBy : 'n'" data-ng-model="vm.nuovoRivenditore.p">
-            <option value="" selected>Provincia</option>
-        </select>
-    </div>
-    <div class="rows">
-        <textarea class="form-control marchio" ng-model="vm.nuovoRivenditore.a" title="Note per rivenditori"></textarea>
-    </div>
-    <div class="rows">
-        <!--<input class="form-control nome coords" type="text" placeholder="Coordinate" ng-model="vm.nuovoRivenditore.o" popover="Coordinate località" popover-trigger="mouseenter">-->
-    </div>
-    <button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="!vm.mv">APRI GESTIONE MARCHI</button>
-    <button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="vm.mv">CHIUDI GESTIONE MARCHI</button>
-    <div class="rows" ng-if="vm.mv" ng-repeat="m in vm.nuovoRivenditore.y">
-        <span class="pseudoInput nome">{{convert(m.i, 'marchi', 'n')}}</span>
-        <input class="form-control numero" type="number" ng-model="m.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
-        <input class="form-control numero" type="number" ng-model="m.d" popover="Consegna" popover-trigger="mouseenter">
-        <span class="pseudoInput w88">giorni</span>
-        <button ng-if="m.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="m.v = 0">ON</button>
-        <button ng-if="m.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="m.v = 1">OFF</button>
-    </div>
-    <div class="rows">
-        <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : vm.nuovoRivenditore.g}">
-            <input type="file" class="dropArea" fileread="vm.nuovoRivenditore.g">
-            <span ng-if="!vm.nuovoRivenditore.g">DROP FILE HERE</span>
-            <div class="fileImage">
-                <img class="rivenditori" ng-if="vm.nuovoRivenditore.g" ng-src="{{vm.nuovoRivenditore.g}}">
-            </div>
-        </div>
-    </div>
-    <div class="rows">
-        <button class="btn btn-primary" type="button" ng-click="action('N')" ng-disabled="updateCheck()">SUBMIT</button>
-        <button class="btn btn-primary" type="button" ng-click="newItem()">RESET</button>
-    </div>
-    <div class="rows">
-        <button class="btn btn-danger errore" ng-if="errore.rivenditore">ERRORE - PROVINCIA OCCUPATA</button>
+    <div class="col-2">
+        <input type="text" class="form-control" ng-model="$root.settings.query.nome" title="" placeholder="Filtro per nome">
     </div>
 </div>
-<div class="modifica" ng-if="rivenditore.selected">
-    <h1>modifica rivenditore</h1>
-    <rivenditori rivenditore-original = "rivenditore" vm = "vm"></rivenditori>
-</div>
-
-<div class="gestione">
-    <h1>gestione rivenditori</h1>
-    <div class="filtri">
-        <div class="rows">
-            <div class="inlineBlock" ng-include="'include/nazioniFilter.html'"></div>
-            <div class="inlineBlock" ng-include="'include/regioniFilter.html'"></div>
-            <div class="inlineBlock" ng-include="'include/provinceFilter.html'"></div>
+<div class="col-12 p-0  mt-3 list">
+    <div ng-repeat="e in $root.rivenditori | filter : {riv_nome :  $root.settings.query.nome}"
+         ng-if="$root.settings.show($index, entity.currentPage)"
+         ng-click="selectItem(e)">
+        <h4 uib-tooltip="ID: {{e['riv_id']}}" data-tooltip-placement="left">{{e['riv_nome']}}
+            <span ng-if="e['riv_prov']">{{$root.settings.convert(e['riv_prov'], 'province', 'provincia_id' ,'provincia')}}</span>
+            <span ng-if="e['riv_conv']">{{$root.settings.convert(e['riv_conv'], 'convenzioni', 'cnv_id' ,'cnv_nome')}}</span>
+        </h4>
+        <div>
+            <p>Referente: {{e['riv_rif']}}</p>
+            <p>{{e['riv_sede']}}</p>
+            <p>{{e['riv_email']}}</p>
+            <p>{{e['riv_web']}}</p><br>
         </div>
-        <div class="rows">
-            <div class="inlineBlock" ng-include="'include/convenzioniFilter.html'"></div>
-            <input class="form-control nome" type="text" placeholder="Filtro nome" ng-model="input" ng-keyup="eraseInput($event)" title="Filtro nome">
-            <input class="form-control pos" type="number" ng-model="vm.itemsPerPage" popover="Numero di risultati per pagina" popover-trigger="mouseenter">
-            <i class="icons-sort blu" popover="Ordina per nome" popover-trigger="mouseenter" ng-click="sorting('n')"></i>
+        <div>
+            <p ng-if="e['riv_tel']">Telefono: {{e['riv_tel']}}</p>
+            <p ng-if="e['riv_cell']">Mobile: {{e['riv_cell']}}</p>
+            <p ng-if="e['riv_fax']">Fax: {{e['riv_fax']}}</p>
         </div>
-    </div>
-    <div class="list">
-        <div ng-repeat="s in vm.rivenditori
-        | orderBy : vm.sorting
-        | filterByNaz : filtro.nazione.i
-        | filterByReg : filtro.regione.i
-        | filterByProv : filtro.provincia.i
-        | filterByConv : filtro.convenzione.i
-        | filter : {n : filtro.rivenditore.n}
-        | offset : ((vm.currentPage -1) * vm.itemsPerPage) : ((vm.currentPage -1) * vm.itemsPerPage + vm.itemsPerPage)
-        ">
-            <h4 ng-click="selectItem(s)">{{s.n}}
-                <span ng-if="s.p != 0">{{convert(s.p, 'province', 'n')}}</span>
-                <span ng-if="s.v != 0">{{convert(s.v, 'convenzioni', 'n')}}</span>
-            </h4>
-            <a ng-if="checkShowInfo($index) == -1" class="noBorder" ng-click="showInfoFnc($index, 'add')">Mostra dettagli</a>
-            <a ng-if="checkShowInfo($index) != -1" class="noBorder" ng-click="showInfoFnc($index, 'remove')">Nascondi dettagli</a>
-            <div ng-if="checkShowInfo($index) != -1">
-                <p ng-if="s.z != 0">{{convert(s.z, 'nazioni', 'n')}}</p>
-                <p ng-if="s.r != 0">{{convert(s.r, 'regioni', 'n')}}</p>
-                <p ng-if="s.p != 0">{{convert(s.p, 'province', 'n')}}</p>
-                <p ng-if="s.v != 0">{{convert(s.v, 'convenzioni', 'n')}}</p>
-                <p>{{s.s}}</p>
-                <p>Coordinate: {{s.i}}</p>
-                <p>{{s.x}}</p>
-                <br>
-                <p ng-if="s.h" class="noBorder">Tel: {{s.h}}</p>
-                <p ng-if="s.c" ng-class="{'noBorder' : !s.h}">Cell: {{s.c}}</p>
-                <p ng-if="s.f">Fax: {{s.f}}</p><br>
-                <p class="noBorder">Email: {{s.e}}</p>
-                <p>Password: {{s.w}}</p>
-                <p ng-if="s.q">Sito: {{s.q}}</p><br>
-                <p class="noBorder">Minimo d'ordine: {{convertPrice(s.b)}} €</p>
-                <p>Gestione: {{convertPrice(s.l)}} €</p>
-                <p ng-if="s.j == 2">Trasporto: {{s.t}} %</p>
-                <p ng-if="s.j == 1 && s.t == 0">Trasporto: gratuito</p>
-                <p ng-if="s.j == 1 && s.t != 0">Trasporto: {{convertPrice(s.t)}} €</p>
-                <p ng-if="s.j == 3">Trasporto: da quantificare</p>
-                <p ng-if="s.k == 2">Montaggio: {{s.m}} %</p>
-                <p ng-if="s.k == 1 && s.m == 0">Montaggio: gratuito</p>
-                <p ng-if="s.k == 1 && s.m != 0">Montaggio: {{convertPrice(s.m)}} €</p>
-                <p ng-if="s.k == 3">Montaggio: da quantificare</p><br>
-                <p ng-class="{'noBorder' : $first}" ng-repeat="m in s.y">{{convert(m.i, 'marchi', 'n')}}&nbsp;:
-                    <span ng-if="m.v == 1">Online</span>
-                    <span ng-if="m.v == 0">Offline</span>
-                    ({{m.s}} %)
-                </p>
-            </div>
+        <div>
+            <p>Minimo d'ordine: {{e['riv_limite'] | currency}}</p>
+            <p>Costi gestione minimo d'ordine: {{e['riv_minimo'] | currency}}</p>
+            <p ng-if="e['riv_trasporto_type'] === 1">Trasporto: {{e['riv_trasporto'] | currency}}</p>
+            <p ng-if="e['riv_trasporto_type'] === 2">Trasporto: {{e['riv_trasporto']}} %</p>
+            <p ng-if="e['riv_trasporto_type'] === 3">Trasporto: da quantificare</p>
+            <p ng-if="e['riv_montaggio_type'] === 1">Montaggio: {{e['riv_montaggio'] | currency}}</p>
+            <p ng-if="e['riv_montaggio_type'] === 2">Montaggio: {{e['riv_montaggio']}} %</p>
+            <p ng-if="e['riv_montaggio_type'] === 3">Montaggio: da quantificare</p>
         </div>
-        <div ng-if="(vm.rivenditori
-            | filterByNaz : filtro.nazione.i
-            | filterByReg : filtro.regione.i
-            | filterByProv : filtro.provincia.i
-            | filterByConv : filtro.convenzione.i
-            | filter : {n : filtro.rivenditore.n}
-            ).length != 0" class="paginationContainer">
-            <pagination
-                    total-items = "(vm.rivenditori
-                        | filterByNaz : filtro.nazione.i
-                        | filterByReg : filtro.regione.i
-                        | filterByProv : filtro.provincia.i
-                        | filterByConv : filtro.convenzione.i
-                        | filter : {n : filtro.rivenditore.n}
-                    ).length"
-                    ng-model = "vm.currentPage"
-                    boundary-links = "true"
-                    max-size = "vm.maxSize"
-                    items-per-page = "vm.itemsPerPage"
-                    rotate = "false">
-            </pagination>
+        <div ng-repeat="m in e['riv_mark']">
+            <p>
+                {{$root.settings.convert(m.i, 'marchi', 'mark_id' ,'mark_nome')}}:
+                <span>{{$root.settings.idToLabel(m.v, $root.options.show)}}</span>
+            </p>
+            <p ng-if="m.v">
+                Consegna:
+                <span ng-if="m.d">{{m.d}} giorni</span>
+                <span ng-if="!m.d">standard</span>
+            </p>
+            <p ng-if="m.v">
+                Sconto:
+                <span ng-if="m.s">{{m.s}}%</span>
+                <span ng-if="!m.s">standard</span>
+            </p>
         </div>
-        <h5 ng-if="(vm.rivenditori
-        | filterByNaz : filtro.nazione.i
-        | filterByReg : filtro.regione.i
-        | filterByProv : filtro.provincia.i
-        | filterByConv : filtro.convenzione.i
-        | filter : {n : filtro.rivenditore.n}
-        ).length == 0">Nessun risultato disponibile</h5>
     </div>
 </div>

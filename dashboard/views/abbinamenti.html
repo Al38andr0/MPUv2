@@ -7,16 +7,16 @@
     </div>
     <div class="col-5">
         <ul uib-pagination class="pagination-md justify-content-end mb-0"
-            boundary-links="true"
-            total-items="($root.abbinamenti | filter : {abb_cod : $root.settings.query.codice} | filterById : $root.settings.query.marchi : 'abb_mark_id' | filterById : $root.settings.query.linee : 'abb_line_id').length"
-            items-per-page="$root.settings.itemsPerPage"
-            max-size="3"
-            ng-model="entity.currentPage"
-            previous-text="&lsaquo;"
-            next-text="&rsaquo;"
-            first-text="&laquo;"
-            last-text="&raquo;"
-            force-ellipses="true"
+            data-boundary-links="true"
+            data-total-items="($root.abbinamenti | filter : {abb_cod : $root.settings.query.codice} | filterById : $root.settings.query.marchi : 'abb_mark_id' | filterById : $root.settings.query.linee : 'abb_line_id').length"
+            data-items-per-page="$root.settings.itemsPerPage"
+            data-max-size="3"
+            data-ng-model="entity.currentPage"
+            data-previous-text="&lsaquo;"
+            data-next-text="&rsaquo;"
+            data-first-text="&laquo;"
+            data-last-text="&raquo;"
+            data-force-ellipses="true"
         ></ul>
     </div>
     <div class="col-1">
@@ -26,12 +26,12 @@
         <input type="text" class="form-control" ng-model="$root.settings.query.codice" title="" placeholder="Filtro codice">
     </div>
     <div class="col-2">
-        <select class="form-control" ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
+        <select class="form-control" data-ng-model="$root.settings.query.marchi" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" title="">
             <option value="">Tutti i marchi</option>
         </select>
     </div>
     <div class="col-2">
-        <select class="form-control" ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee | filterById : $root.settings.query.marchi : 'line_mark_id'" title="">
+        <select class="form-control" data-ng-model="$root.settings.query.linee" ng-options="o.line_id as o.line_nome for o in $root.linee | filterById : $root.settings.query.marchi : 'line_mark_id'" title="">
             <option value="">Tutti le linee</option>
         </select>
     </div>
@@ -40,7 +40,7 @@
     <div ng-repeat="e in $root.abbinamenti | filter : {abb_cod : $root.settings.query.codice} | filterById : $root.settings.query.marchi : 'abb_mark_id' | filterById : $root.settings.query.linee : 'abb_line_id'"
          ng-if="$root.settings.show($index, entity.currentPage)"
          ng-click="selectItem(e)">
-        <h4 uib-tooltip="ID: {{e['abb_id']}}" tooltip-placement="left">{{e['abb_cod']}}<span ng-bind-html="e['tab_nome']"></span></h4>
+        <h4 uib-tooltip="ID: {{e['abb_id']}}" data-tooltip-placement="left">{{e['abb_cod']}}<span ng-bind-html="e['tab_nome']"></span></h4>
         <p>{{$root.settings.convert(e['abb_mark_id'], 'marchi', 'mark_id' ,'mark_nome')}}</p>
         <p>{{$root.settings.convert(e['abb_line_id'], 'linee', 'line_id' ,'line_nome')}}</p>
         <p>{{$root.settings.convert(e['abb_tab'], 'tabelle_finiture', 'tab_id' ,'tab_nome')}}</p>

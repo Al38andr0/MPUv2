@@ -17,30 +17,6 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 templateUrl: 'views/categorie.html',
                 controller: 'categorieCtrl'
             })
-            .when('/composti', {
-                templateUrl: 'views/composti.html',
-                controller: 'compostiCtrl'
-            })
-            .when('/compostiProdotti', {
-                templateUrl: 'views/compostiProdotti.html',
-                controller: 'compostiProdottiCtrl'
-            })
-            .when('/compostiSettori', {
-                templateUrl: 'views/compostiSettori.html',
-                controller: 'compostiSettoriCtrl'
-            })
-            .when('/esposizioni', {
-                templateUrl: 'views/esposizioni.html',
-                controller: 'esposizioniCtrl'
-            })
-            .when('/esposizioniProdotti', {
-                templateUrl: 'views/esposizioniProdotti.html',
-                controller: 'esposizioniProdottiCtrl'
-            })
-            .when('/esposizioniSettori', {
-                templateUrl: 'views/esposizioniSettori.html',
-                controller: 'esposizioniSettoriCtrl'
-            })
             .when('/finiture', {
                 templateUrl: 'views/finiture.html',
                 controller: 'finitureCtrl'
@@ -69,10 +45,6 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 templateUrl: 'views/prodotti.html',
                 controller: 'prodottiCtrl'
             })
-            .when('/prodottiSettori', {
-                templateUrl: 'views/prodottiSettori.html',
-                controller: 'prodottiSettoriCtrl'
-            })
             .when('/nazioni', {
                 templateUrl: 'views/nazioni.html',
                 controller: 'nazioniCtrl'
@@ -98,7 +70,7 @@ angular.module("mpuDashboard").config(['$routeProvider',
                 controller: 'vetrineCtrl'
             })
             .when('/vetrineProdotti', {
-                templateUrl: 'views/vetrineProdotti.html',
+                templateUrl: 'views/vetrine_prodotti.html',
                 controller: 'vetrineProdottiCtrl'
             })
             .when('/rivenditori', {

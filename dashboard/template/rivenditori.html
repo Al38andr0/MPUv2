@@ -1,80 +1,145 @@
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Nome società" ng-model="rivenditore.n" popover="Società" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="Referente" ng-model="rivenditore.x" popover="Referente" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="Sede" ng-model="rivenditore.s" popover="Sede" popover-trigger="mouseenter">
-</div>
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Telefono" ng-model="rivenditore.h" popover="Telefono" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="Mobile" ng-model="rivenditore.c" popover="Mobile" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="Fax" ng-model="rivenditore.f" popover="Fax" popover-trigger="mouseenter">
-</div>
-<div class="rows">
-    <input class="form-control nome" type="text" placeholder="Sito internet" ng-model="rivenditore.q" popover="Sito internet" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="Email" ng-model="rivenditore.e" popover="Email" popover-trigger="mouseenter">
-    <input class="form-control nome" type="text" placeholder="password" ng-model="rivenditore.w" popover="Password" popover-trigger="mouseenter">
-</div>
-<div class="rows">
-    <select class="form-control nome" ng-options="c.i as ('Trasporto: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="rivenditore.j">
-    </select>
-    <input class="form-control w75" type="number" ng-model="rivenditore.t" popover="Maggiorazione trasporto" popover-trigger="mouseenter">
-    <span ng-if="rivenditore.j == 1 || rivenditore.j == 3" class="info perc">€</span>
-    <span ng-if="rivenditore.j == 2" class="info perc">%</span>
-    <select class="form-control nome" ng-options="c.i as ('Montaggio: ' + c.n) for c in vm.priceManager | orderBy : 'i'" data-ng-model="rivenditore.k">
-    </select>
-    <input class="form-control w75" type="number" ng-model="rivenditore.m" popover="Maggiorazione montaggio" popover-trigger="mouseenter">
-    <span ng-if="rivenditore.k == 1 || rivenditore.k == 3" class="info perc">€</span>
-    <span ng-if="rivenditore.k == 2" class="info perc">%</span>
-</div>
-<div class="rows">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.convenzioni | orderBy : 'n'" data-ng-model="rivenditore.v">
-        <option value="" selected>No convenzione</option>
-    </select>
-    <input class="form-control riv" type="number" ng-model="rivenditore.l" popover="Importo minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-    <input class="form-control riv" type="number" ng-model="rivenditore.b" popover="Spese per minimo d'ordine" popover-trigger="mouseenter"><span class="info perc">€</span>
-</div>
-<div ng-if="!rivenditore.v" class="rows">
-    <select class="form-control marchio" ng-options="c.i as c.n for c in vm.nazioni | orderBy : 'n'" data-ng-model="rivenditore.z">
-        <option value="" selected>Nazione</option>
-    </select>
-    <select ng-disabled="!rivenditore.z" class="form-control marchio" ng-options="c.i as c.n for c in vm.regioni | filter : {z : rivenditore.z} : true | orderBy : 'n'" data-ng-model="rivenditore.r">
-        <option value="" selected>Regione</option>
-    </select>
-    <select ng-disabled="!rivenditore.r" class="form-control marchio" ng-options="c.i as c.n for c in vm.province | filter : {r : rivenditore.r} : true | orderBy : 'n'" data-ng-model="rivenditore.p">
-        <option value="" selected>Provincia</option>
-    </select>
-</div>
-<div class="rows">
-    <textarea class="form-control marchio" ng-model="rivenditore.a" title="Note per rivenditori"></textarea>
-</div>
-<div class="rows">
-    <!--<input class="form-control nome coords" type="text" placeholder="Coordinate" ng-model="rivenditore.o" popover="Coordinate località" popover-trigger="mouseenter">-->
-</div>
-<button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="!vm.mv">APRI GESTIONE MARCHI</button>
-<button class="btn btn-warning openMarchi" ng-click="openMarchi()" ng-if="vm.mv">CHIUDI GESTIONE MARCHI</button>
-<div class="rows" ng-if="vm.mv" ng-repeat="m in rivenditore.y">
-    <span class="pseudoInput nome">{{convert(m.i, 'marchi', 'n')}}</span>
-    <input class="form-control numero" type="number" ng-model="m.s" popover="Sconto" popover-trigger="mouseenter"><span class="info perc">%</span>
-    <input class="form-control numero" type="number" ng-model="m.d" popover="Consegna" popover-trigger="mouseenter">
-    <span class="pseudoInput w88">giorni</span>
-    <button ng-if="m.v == 1" class="btn btn-success switch" type="button" value="1" ng-click="m.v = 0">ON</button>
-    <button ng-if="m.v == 0" class="btn btn-danger switch" type="button" value="0" ng-click="m.v = 1">OFF</button>
-</div>
-<div class="rows">
-    <div class="dropAreaFileImage prodotti" ng-class="{solidBorder : rivenditore.g}">
-        <input type="file" class="dropArea" fileread="rivenditore.g">
-        <span ng-if="!rivenditore.g">DROP FILE HERE</span>
-        <div class="fileImage">
-            <img class="rivenditori" ng-if="rivenditore.g" ng-src="{{rivenditore.g}}">
+<form class="row mt-3" name="rivenditori">
+    <div class="col-3">
+        <fieldset>
+            <label for="nome">Società*:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome" tabindex="10">
+        </fieldset>
+        <fieldset>
+            <label for="referente">Referente*:</label>
+            <input id="referente" class="form-control" type="text" ng-model="entity.referente" tabindex="11">
+        </fieldset>
+        <fieldset>
+            <label for="convenzione">Convenzione:</label>
+            <select id="convenzione" class="form-control" ng-model="entity.convenzione" ng-options="o.cnv_id as o.cnv_nome for o in convenzioni" tabindex="12">
+            </select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="sede">Sede*:</label>
+            <input id="sede" class="form-control" type="text" ng-model="entity.sede" tabindex="13">
+        </fieldset>
+        <fieldset>
+            <label for="email">Email*:</label>
+            <input id="email" class="form-control" type="text" ng-model="entity.email" tabindex="14">
+        </fieldset>
+        <fieldset>
+            <label for="website">Sito web:</label>
+            <input id="website" class="form-control" type="text" ng-model="entity.website" tabindex="15">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="telefono">Telefono:</label>
+            <input id="telefono" class="form-control" type="text" ng-model="entity.telefono" tabindex="16">
+        </fieldset>
+        <fieldset>
+            <label for="mobile">Mobile:</label>
+            <input id="mobile" class="form-control" type="text" ng-model="entity.mobile" tabindex="17">
+        </fieldset>
+        <fieldset>
+            <label for="fax">Fax:</label>
+            <input id="fax" class="form-control" type="text" ng-model="entity.fax" tabindex="18">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="descrizione">Descrizione:</label>
+            <textarea id="descrizione" class="form-control inputX3" ng-model="entity.descrizione" tabindex="19"></textarea>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="nazione">Nazione:</label>
+            <select id="nazione" class="form-control" ng-model="entity.nazione" ng-options="o.nazioni_id as o.nazioni_nome for o in $root.nazioni" disabled tabindex="20"></select>
+        </fieldset>
+        <fieldset>
+            <label for="regione">Regione:</label>
+            <select id="regione" class="form-control" ng-model="entity.regione" ng-options="o.regioni_id as o.regioni_nome for o in $root.regioni" ng-disabled="entity.convenzione" tabindex="21"></select>
+        </fieldset>
+        <fieldset>
+            <label for="provincia">Provincia:</label>
+            <select id="provincia" class="form-control" ng-model="entity.provincia" ng-options="o.provincia_id as o.provincia for o in $root.province | filter : {regione_id : entity.regione} : true" ng-disabled="entity.convenzione" tabindex="22"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="minimo.limite">Limite minimo d'ordine (€):</label>
+            <input id="minimo.limite" class="form-control" type="number" step="0.01" ng-model="entity.minimo.limite" tabindex="23">
+        </fieldset>
+        <fieldset>
+            <label for="trasporto.tipologia">Tipologia spese di trasporto:</label>
+            <select id="trasporto.tipologia" class="form-control" ng-model="entity.trasporto.tipologia" ng-options="o.id as o.label for o in $root.options.servizi" tabindex="25"></select>
+        </fieldset>
+        <fieldset>
+            <label for="montaggio.tipologia">Tipologia spese di montaggio:</label>
+            <select id="montaggio.tipologia" class="form-control" ng-model="entity.montaggio.tipologia" ng-options="o.id as o.label for o in $root.options.servizi" tabindex="27"></select>
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="minimo.importo">Spese minimo d'ordine (€):</label>
+            <input id="minimo.importo" class="form-control" type="number" step="0.01" ng-model="entity.minimo.importo" tabindex="24">
+        </fieldset>
+        <fieldset>
+            <label for="trasporto.importo">Maggiorazione trasporto (€):</label>
+            <input id="trasporto.importo" class="form-control" type="number" step="0.01" ng-model="entity.trasporto.importo" tabindex="26">
+        </fieldset>
+        <fieldset>
+            <label for="montaggio.importo">Maggiorazione montaggio (€):</label>
+            <input id="montaggio.importo" class="form-control" type="number" step="0.01" ng-model="entity.montaggio.importo" tabindex="28">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label>Immagine:</label>
+            <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
+                <input type="file" file-read="entity.immagine" tabindex="29">
+                <span ng-if="!entity.immagine">DROP FILE HERE<br>Size: 300x300<br>Format: JPG</span>
+                <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-9">
+        <div class="row" ng-repeat="m in entity.marchi">
+            <fieldset class="col-4">
+                <label for="marchio_{{$index}}">Marchio:</label>
+                <select id="marchio_{{$index}}" class="form-control" ng-model="m.i" ng-options="o.mark_id as o.mark_nome for o in $root.marchi"></select>
+            </fieldset>
+            <fieldset class="col-2">
+                <label for="sconto_{{$index}}">Sconto (%):</label>
+                <input id="sconto_{{$index}}" class="form-control" type="number" step="0.01" ng-model="m.s">
+            </fieldset>
+            <fieldset class="col-2">
+                <label for="consegna_{{$index}}">Consegna (GG):</label>
+                <input id="consegna_{{$index}}" class="form-control" type="number" ng-model="m.d">
+            </fieldset>
+            <fieldset class="col-2">
+                <label for="status_{{$index}}">Status:</label>
+                <select id="status_{{$index}}" class="form-control" ng-model="m.v" ng-options="o.id as o.label for o in $root.options.show"></select>
+            </fieldset>
+            <div class="col-1">
+                <button class="btn btn-danger btm-md btn-block mt-4" type="button"
+                        ng-click="actions.marchi.remove(entity.marchi, $index)">-
+                </button>
+            </div>
+            <div class="col-1">
+                <button ng-disabled="!$last" class="btn btn-success btm-md btn-block mt-4" type="button"
+                        ng-click="actions.marchi.add(entity.marchi)">+
+                </button>
+            </div>
         </div>
     </div>
-</div>
-<div class="rows">
-    <button class="btn btn-primary" type="submit" ng-click="action('U')" ng-disabled="updateCheck()">UPDATE</button>
-    <button class="btn btn-primary" type="button" ng-click="action('C')" ng-disabled="copyCheck()">COPY</button>
-    <button class="btn btn-primary" ng-if="!confirm" type="button" ng-click="askConfirm()" ng-disabled="deleteCheck()">DELETE</button>
-    <button class="btn btn-danger" ng-if="confirm" type="button" ng-click="action('D')">CONFIRM</button>
-    <button class="btn btn-primary" type="button" ng-click="newItem()">NEW</button>
-</div>
-<div class="rows">
-    <button class="btn btn-danger errore" ng-if="errore.rivenditore">ERRORE - PROVINCIA OCCUPATA</button>
-</div>
+    <div class="col-3 mt-4">
+        <button ng-if="entity.marchi.length === 0" class="btn btn-success btm-md btn-block mb-4" type="button" ng-click="actions.marchi.add(entity.marchi)">AGGIUNGI MARCHI
+        </button>
+        <button ng-if="entity.marchi.length > 0" class="btn btn-danger btm-md btn-block mb-4" type="button" ng-click="actions.marchi.reset(entity.marchi)">RIMUOVI MARCHI
+        </button>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['convenzioni'], 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['convenzioni'], 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

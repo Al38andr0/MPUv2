@@ -28,7 +28,7 @@
             <label>Immagine:</label>
             <div class="dropAreaFileImage inputX3" ng-class="{solidBorder : entity.immagine}">
                 <input type="file" file-read="entity.immagine">
-                <span ng-if="!entity.immagine">DROP FILE HERE</span>
+                <span ng-if="!entity.immagine">DROP FILE HERE<br>Size: 300x300<br>Format: JPG</span>
                 <img ng-if="entity.immagine" ng-src="{{entity.immagine}}">
             </div>
         </fieldset>
@@ -36,39 +36,58 @@
     <div class="col-3">
         <fieldset>
             <label for="marchio">Marchio:</label>
-            <select id="marchio" class="form-control" ng-model="entity.marchio" ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-disabled="entity.id" tabindex="15"></select>
+            <select id="marchio" class="form-control" ng-model="entity.marchio"
+                    ng-options="o.mark_id as o.mark_nome for o in $root.marchi" ng-disabled="entity.id"
+                    tabindex="15"></select>
         </fieldset>
         <fieldset>
             <label for="tabella">Tabella prodotti:</label>
-            <select id="tabella" class="form-control" ng-model="entity.tabella" ng-options="o.tbpr_id as o.tbpr_nome for o in $root.tabelle_prodotti | filter : {tbpr_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio" tabindex="18"></select>
+            <select id="tabella" class="form-control" ng-model="entity.tabella"
+                    ng-options="o.tbpr_id as o.tbpr_nome for o in $root.tabelle_prodotti | filter : {tbpr_mark_id : entity.marchio} : true"
+                    ng-disabled="!entity.marchio" tabindex="18"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
             <label for="linea">Linea:</label>
-            <select id="linea" class="form-control" ng-model="entity.linea" ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio || entity.id" tabindex="16"></select>
+            <select id="linea" class="form-control" ng-model="entity.linea"
+                    ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true"
+                    ng-disabled="!entity.marchio || entity.id" tabindex="16"></select>
         </fieldset>
         <fieldset>
             <label for="finitura_tipo">Finitura singola/multiple:</label>
-            <select id="finitura_tipo" class="form-control" ng-model="entity.finitura_tipo" ng-options="o.id as o.label for o in $root.options.multiple" tabindex="19"></select>
+            <select id="finitura_tipo" class="form-control" ng-model="entity.finitura_tipo"
+                    ng-options="o.id as o.label for o in $root.options.multiple" tabindex="19"></select>
         </fieldset>
     </div>
     <div class="col-3">
         <fieldset>
             <label for="finitura_linea">Linea finitura:</label>
-            <select id="finitura_linea" class="form-control" ng-model="entity.finitura_linea" ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true" ng-disabled="!entity.marchio" tabindex="17"></select>
+            <select id="finitura_linea" class="form-control" ng-model="entity.finitura_linea"
+                    ng-options="o.line_id as o.line_nome for o in $root.linee | filter : {line_mark_id : entity.marchio} : true"
+                    ng-disabled="!entity.marchio" tabindex="17"></select>
         </fieldset>
         <fieldset>
             <label for="finitura_unica">Finitura singola:</label>
-            <select id="finitura_unica" class="form-control" ng-model="entity.finitura_unica" ng-options="o.abb_id as o.abb_cod for o in $root.abbinamenti | filter : {abb_tab : entity.prezzi[0].a} : true" ng-disabled="entity.finitura_tipo === 0 || !entity.prezzi[0].a" tabindex="20"></select>
+            <select id="finitura_unica" class="form-control" ng-model="entity.finitura_unica"
+                    ng-options="o.abb_id as o.abb_cod for o in $root.abbinamenti | filter : {abb_tab : entity.prezzi[0].a} : true"
+                    ng-disabled="entity.finitura_tipo === 0 || !entity.prezzi[0].a" tabindex="20"></select>
         </fieldset>
     </div>
     <div class="col-3 pt-4">
-        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.prodotti, 'create')" ng-disabled="updateCheck()">CREATE</button>
-        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root.prodotti, 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.checkItem(entity, $root.prodotti, 'create')" ng-disabled="updateCheck()">CREATE
+        </button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.checkItem(entity, $root.prodotti, 'update')" ng-disabled="updateCheck()">UPDATE
+        </button>
         <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
-        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
-        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button"
+                ng-click="actions.confirm()">DELETE
+        </button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button"
+                ng-click="actions.erase()">CONFIRM
+        </button>
         <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
     </div>
 </form>
@@ -77,14 +96,15 @@
         <label for="prezzo_{{$index}}">Prezzo:</label>
         <input id="prezzo_{{$index}}" class="form-control" type="number" step="0.01" ng-model="p.z">
     </fieldset>
-    <fieldset class="col-5">
+    <fieldset class="col-4">
         <label for="abbinamento_{{$index}}">Tabella finiture:</label>
         <select id="abbinamento_{{$index}}" class="form-control" ng-model="p.a"
-                ng-options="o.tab_id as o.tab_nome | decoded for o in $root.tabelle_finiture | filter : {tab_line_id : entity.finitura_linea} : true" ng-disabled="!entity.finitura_linea"></select>
+                ng-options="o.tab_id as o.tab_nome | decoded for o in $root.tabelle_finiture | filter : {tab_line_id : entity.finitura_linea} : true"
+                ng-disabled="!entity.finitura_linea"></select>
     </fieldset>
     <div class="col-1">
         <button ng-disabled="$first" class="btn btn-danger btm-md btn-block mt-4" type="button"
-                 ng-click="actions.prezzi.remove(entity.prezzi, $index)">-
+                ng-click="actions.prezzi.remove(entity.prezzi, $index)">-
         </button>
     </div>
     <div class="col-1">
