@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="it">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="googlebot" content="none">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style_dashboard.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="../img/favicon.ico" title="mobiliperufficio.com" />
+    <title>mobiliperufficio.com</title>
+</head>
+
+<body ng-app="dashboardApp" ng-controller="mainCtrl as vm" ng-cloak>
+<div class="background"></div>
+<div ng-include="'include/menu.html'" id="menu"></div>
+<div class="container" ui-view id="view"></div>
+<div class="notification" ng-if="$root.saving">
+    <span>Loading data</span>
+    <i class="icons-loader"></i>
+</div>
+</body>
+
+<!--<script type="text/javascript" src="/lib/angular.min.js"></script>-->
+<script type="text/javascript" src="/lib/angular.js"></script>
+<script type="text/javascript" src="/lib/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/lib/angular-locale_it-it.min.js"></script>
+<script type="text/javascript" src="/lib/ui-bootstrap-tpls-3.0.5.min.js"></script>
+<script type="text/javascript" src="/lib/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="/lib/underscore-min.js"></script>
+<script type="text/javascript" src="js/modules.js"></script>
+<script type="text/javascript" src="js/routes.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
+</html>

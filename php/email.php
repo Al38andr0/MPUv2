@@ -1,5 +1,5 @@
 <?php
-include('../dashboard/php/connessione.php');
+include('../_dashboard/php/connessione.php');
 
 $data = json_decode(file_get_contents("php://input"));
 require '../PHPMailer/PHPMailerAutoload.php';

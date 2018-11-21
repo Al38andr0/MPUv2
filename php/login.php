@@ -1,5 +1,5 @@
 <?php
-include('../dashboard/php/connessione.php');
+include('../_dashboard/php/connessione.php');
 
 $mysqli = new mysqli($db_server, $db_database, $db_pw, $db_name);
 

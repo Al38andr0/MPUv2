@@ -1,0 +1,13 @@
+<ul>
+    <li class="text-capitalize" ng-repeat="l in vm.links">
+        <p>{{l.name}}</p>
+        <ul ng-if="l.sub">
+            <li class="text-capitalize" ng-repeat="sl in l.sub">
+                <a ui-sref="{{sl.link}}" ui-sref-active="active" ng-class="{selected : vm.currentSubLink == sl.link}" >{{sl.name}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<div>
+    <p>&rsaquo;</p>
+</div>

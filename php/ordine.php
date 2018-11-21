@@ -1,5 +1,5 @@
 <?php
-include "../dashboard/php/connessione.php";
+include "../_dashboard/php/connessione.php";
 
 if($_GET['action'] == 'put')
 {

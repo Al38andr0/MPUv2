@@ -1,0 +1,36 @@
+<form class="row mt-3" name="agenti">
+    <div class="col-3">
+        <fieldset>
+            <label for="rivenditore">Rivenditore:</label>
+            <select id="rivenditore" class="form-control" ng-model="entity.rivenditore" ng-options="o.riv_id as o.riv_nome + ' - ' + ((o.riv_conv) ? o.convenzione : o.provincia) for o in $root.rivenditori"></select>
+        </fieldset>
+        <fieldset>
+            <label for="nome">Nome:</label>
+            <input id="nome" class="form-control" type="text" ng-model="entity.nome">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="email">Email:</label>
+            <input id="email" class="form-control" type="email" ng-model="entity.email">
+        </fieldset>
+        <fieldset>
+            <label for="password">Password:</label>
+            <input id="password" class="form-control" type="text" ng-model="entity.password">
+        </fieldset>
+    </div>
+    <div class="col-3">
+        <fieldset>
+            <label for="telefono">Telefono:</label>
+            <input id="telefono" class="form-control" type="text" ng-model="entity.telefono">
+        </fieldset>
+    </div>
+    <div class="col-3 pt-4">
+        <button ng-if="!checked && !entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['agenti'], 'create')" ng-disabled="updateCheck()">CREATE</button>
+        <button ng-if="!checked && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.checkItem(entity, $root['agenti'], 'update')" ng-disabled="updateCheck()">UPDATE</button>
+        <button ng-if="checked" class="btn btn-danger btm-md btn-block" type="button" disabled>EXISTING ITEM</button>
+        <button ng-if="!confirm && entity.id" class="btn btn-primary btm-md btn-block" type="button" ng-click="actions.confirm()">DELETE</button>
+        <button ng-if="confirm && entity.id" class="btn btn-danger btm-md btn-block" type="button" ng-click="actions.erase()">CONFIRM</button>
+        <button class="btn btn-warning btm-md btn-block" type="button" ng-click="actions.reset()">RESET/NEW</button>
+    </div>
+</form>

@@ -1,0 +1,291 @@
+@import "../../css/icons.css";
+@import "../../css/variables";
+@import "../../css/mixins";
+
+@font-face {
+  font-family: 'Pathway Gothic One';
+  src: url('../../fonts/PathwayGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: #ffffff;
+  color: #000;
+  .OS();
+  font-size: 16px;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.background {
+  position: fixed;
+  .coords();
+  opacity: .3;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  width: 110px;
+  height: 50px;
+  right: 0;
+  background: #d9534f;
+  color: #ffffff;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+}
+
+button.btn {
+  transition: none!important;
+}
+
+#menu {
+  position: fixed;
+  .coords();
+  width: 175px;
+  color: #ffffff;
+  display: flex;
+  align-items: start;
+  transform: translateX(-136px);
+  transition: all 150ms ease-out;
+  z-index: 10;
+  &:hover {
+    transform: translateX(0);
+    & > div {
+      opacity: 0;
+     & > p {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  & > div {
+    width: 40px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: darken(@blue, 5%);
+    transition: all 150ms ease-out;
+    & > p {
+      margin: 0;
+      font-size: 2rem;
+      transform-origin: 50%;
+      transition: all 150ms ease-out;
+    }
+  }
+  & > ul {
+    width: 140px;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    background: darken(@blue, 5%);
+    & > li {
+      font-size: 12px;
+      & > p {
+        margin: 0;
+        padding: 5px 10px;
+        text-transform: uppercase;
+      }
+      & > ul {
+        padding: 0;
+        list-style-type: none;
+        & > li {
+          background: @blue;
+          cursor: pointer;
+          & > a {
+            display: block;
+            font-size: 14px;
+            margin: 0;
+            padding: 11px 0 11px 15px;
+            border-bottom: thin solid darken(@blue, 2%);
+            color: white;
+            &:hover {
+              text-decoration: none;
+              color: inherit;
+              background: lighten(@blue, 5%);
+            }
+            &:active, &:visited {
+              text-decoration: none;
+              color: white;
+            }
+            &.active {
+              background: lighten(@blue, 8%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#view {
+   h1 {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: @blue;
+    margin: 0;
+  }
+  & .pseudoInput {
+    display: inline-block;
+    background-color: white;
+    font-size: 26px;
+    vertical-align: middle;
+    padding: 3px 15px;
+    text-align: left;
+    .borderRadius(4px);
+    border: thin solid @grey;
+    margin-right: 4px;
+  }
+  & .dropAreaFileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    border: 1px dashed @grey;
+    background: white;
+    .borderRadius(4px);
+    overflow: hidden;
+    &.solidBorder {
+      border: 1px solid @grey;
+    }
+    & > input {
+      position: absolute;
+      top: -30px;
+      z-index: 2;
+      width: 100%;
+      height: 150%;
+      cursor: pointer;
+    }
+    & span {
+      font-size: 1rem;
+      color: darken(@grey, 25%);
+      pointer-events: none;
+      z-index: 2;
+      text-align: center;
+    }
+    & img {
+      height: 100%;
+    }
+  }
+  & .inputX2 {
+    height: 6.2rem;
+  }
+  & .inputX3 {
+    height: 10.2rem;
+  }
+  & .pseudoLabel {
+    font-size: 0.8rem;
+    margin: .25rem 0 0;
+    color: darken(@grey, 25%);
+  }
+  & fieldset {
+    & > label {
+      font-size: 0.8rem;
+      margin: .25rem 0 0;
+      color: darken(@grey, 25%);
+    }
+    & > input {
+      &.custom-file-input {
+        padding: 0.2rem;
+        opacity: 1;
+      }
+    }
+    &.form-check {
+      padding: 0.5rem;
+      & > input {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0.2rem 0;
+        display: inline-block;
+      }
+      & > label {
+        font-size: 0.9rem;
+        padding-left: 2rem;
+        color: @blue;
+      }
+    }
+  }
+  & .list {
+    .borderRadius(4px);
+    border: thin solid @grey;
+    margin-bottom: 30px;
+    font-size: 0;
+    & > div {
+      padding: 10px 15px;
+      &:hover {
+        background: lighten(@blue, 75%);
+        cursor: pointer;
+      }
+      & > h4 {
+        margin: 0;
+        font-size: 1rem;
+        cursor: pointer;
+        color: @blue;
+        & > span {
+          font-size: 0.8rem;
+          padding: 0 10px;
+          white-space: nowrap;
+        }
+      }
+      & h5 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+      & a {
+        color: @blue;
+        cursor: pointer;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 16px;
+        &:hover {
+          color: darken(@blue, 20%);
+        }
+      }
+      & p {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: darken(@grey, 25%);
+        padding: 0 10px;
+        margin: 0;
+        border-right: thin solid @grey;
+        white-space: nowrap;
+        &.noBorder {
+          padding-left: 0 !important;
+          border-left: none !important;
+        }
+        &.listTitle {
+          width: 55px;
+        }
+        &:first-of-type {
+          padding-left: 0;
+        }
+        &:last-of-type {
+          padding-right: 0;
+          border-right: none;
+        }
+        & span {
+          margin-left: 3px;
+          &::after {
+            content: ",";
+          }
+          &:last-of-type::after {
+            content: " ";
+          }
+        }
+      }
+    }
+  }
+}

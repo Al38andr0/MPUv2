@@ -1,6 +1,6 @@
 <?php
-include "../dashboard/php/connessione.php";
-include "../dashboard/php/funzioni.php";
+include "../_dashboard/php/connessione.php";
+include "../_dashboard/php/funzioni.php";
 
 if(isset($_GET['p'])) {
     $cod = $_GET['p'];
