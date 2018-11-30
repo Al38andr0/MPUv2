@@ -22,8 +22,24 @@ if (!isset($result_array['error'])) {
                     $result_prodotti = mysqli_query($con, $sql_prodotti);
                     $row['prodotti'] = [];
                     while($row_prodotti = $result_prodotti->fetch_assoc()) {
+                        $row_prodotti['abb_array'] = json_decode($row_prodotti['abb_array']);
+                        $row_prodotti['prd_price_array'] = json_decode($row_prodotti['prd_price_array']);
+                        $row_prodotti['abb_cod'] = intval($row_prodotti['abb_cod']);
+                        $row_prodotti['cmpr_qnt'] = intval($row_prodotti['cmpr_qnt']);
+                        $row_prodotti['cmpr_tab'] = intval($row_prodotti['cmpr_tab']);
+                        $row_prodotti['prd_abb'] = intval($row_prodotti['prd_abb']);
+                        $row_prodotti['prd_fin'] = intval($row_prodotti['prd_fin']);
+                        $row_prodotti['prd_id'] = intval($row_prodotti['prd_id']);
+                        $row_prodotti['prd_id'] = intval($row_prodotti['prd_id']);
                         array_push($row['prodotti'], $row_prodotti);
                     }
+                    $row['cmp_settore'] = json_decode($row['cmp_settore']);
+                    $row['cmp_cat_id'] = intval($row['cmp_cat_id']);
+                    $row['cmp_id'] = intval($row['cmp_id']);
+                    $row['cmp_line_id'] = intval($row['cmp_line_id']);
+                    $row['cmp_mark_id'] = intval($row['cmp_mark_id']);
+                    $row['cmp_pos'] = intval($row['cmp_pos']);
+                    $row['cmp_show'] = intval($row['cmp_show']);
                     array_push($result_array, $row);
                 }
                 echo json_encode($result_array);

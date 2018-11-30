@@ -12,7 +12,7 @@
         api = '/_dashboard/api/',
         url = protocol + '//' + host;
 
-    angular.module("mpu", ['ui.router', 'underscore', 'ngMeta', 'ngSanitize'])
+    angular.module("mpu", ['ui.router', 'underscore', 'ngMeta', 'ngSanitize', 'services'])
         .constant('API', api)
         .constant('URL', url)
         .constant('ASSETS', assets)
@@ -20,17 +20,18 @@
             ngMeta.init();
             $rootScope.debugConsole = true;
             $rootScope.loading = true;
+            $rootScope.current = {};
             $transitions.onStart({}, function (event) {
                 if ($rootScope.loading) {
                     let param = event._treeChanges.entering[0].paramValues['loc'],
                         loc = param || 'Roma';
                     let success = function (data) {
-                        $rootScope.current = rivenditoriSrv.mapCurrent(data);
+                        $rootScope.current.rivenditore = rivenditoriSrv.mapCurrent(data);
                         $rootScope.current.location = loc;
                         $rootScope.current.vetrine = {};
                         $rootScope.currentRiv = data;
                         let success = function (data) {
-                            $rootScope.current.marchi = marchiSrv.mapCurrent(data, $rootScope.current.marchi);
+                            $rootScope.current.marchi = marchiSrv.mapCurrent(data, $rootScope.current.rivenditore.marchi);
                             let success = function (data) {
                                 $rootScope.current.categorie = settoriSrv.extractCategorie(data.list, $rootScope.current.marchi);
                                 $rootScope.current.settori = settoriSrv.extractSettori($rootScope.current.categorie);

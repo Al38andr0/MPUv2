@@ -10,7 +10,7 @@
         </fieldset>
         <fieldset>
             <label for="settore">Settore:</label>
-            <select id="settore" class="form-control" ng-model="entity.settore" ng-options="o.set_id as o.set_nome for o in $root.settori" ng-disabled="!entity.marchio || entity.id"></select>
+            <select id="settore" class="form-control" ng-model="entity.settore" ng-options="o.set_id as o.set_nome for o in $root.settori | orderBy : 'set_nome'" ng-disabled="!entity.marchio || entity.id"></select>
         </fieldset>
     </div>
     <div class="col-3">

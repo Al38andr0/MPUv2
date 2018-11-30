@@ -12,20 +12,20 @@
 
         let _create = function (v) {
             let settori = [];
-            _.each(JSON.parse(v['cmp_settore']), function (v) {
+            _.each(v['cmp_settore'], function (v) {
                 settori.push({
                     id: v,
                     nome : settoriSrv.createTitle('settore', settoriSrv.getNameFromId($rootScope.current.settori, v))
                 });
             });
             return {
-                id: parseInt(v['cmp_id']),
+                id: v['cmp_id'],
                 nome: v['cmp_nome'],
                 titolo: v['cmp_title'],
                 note: v['cmp_note'],
-                marchio: parseInt(v['cmp_mark_id']),
-                linea: parseInt(v['cmp_line_id']),
-                posizione: parseInt(v['cmp_pos']),
+                marchio: v['cmp_mark_id'],
+                linea: v['cmp_line_id'],
+                posizione: v['cmp_pos'],
                 settori: settori,
                 prodotti : []
             }
@@ -33,18 +33,18 @@
 
         let _prodotti = function(p) {
             return {
-                id: parseInt(p['prd_id']),
+                id: p['prd_id'],
                 codice: p['prd_cod'],
                 titolo: p['prd_title'],
                 note: p['prd_note'],
                 dimensioni: p['prd_dim'],
                 codiceFinitura: p['abb_cod'],
                 tipologia: p['tab_nome'],
-                prezzo: JSON.parse(p['prd_price_array']),
-                abbinamentiFiniture: JSON.parse(p['abb_array']),
-                abbinamento: parseInt(p['prd_abb']),
-                finitura: parseInt(p['prd_fin']),
-                quantita: parseInt(p['cmpr_qnt'])
+                prezzo: p['prd_price_array'],
+                abbinamentiFiniture: p['abb_array'],
+                abbinamento: p['prd_abb'],
+                finitura: p['prd_fin'],
+                quantita: p['cmpr_qnt']
             }
         };
 

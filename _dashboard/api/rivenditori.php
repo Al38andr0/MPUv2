@@ -29,10 +29,18 @@ if (!isset($result_array['error'])) {
             }
             break;
         case 'getByProv':
-            $sql = "SELECT riv_conv, riv_nome, riv_rif, riv_sede, riv_tel, riv_cell, riv_fax, riv_email, riv_minimo, riv_limite, riv_web, riv_trasporto, riv_trasporto_type, riv_montaggio, riv_montaggio_type, riv_mark, riv_coords, riv_notes, nazioni_nome, nazioni_prefisso, regioni_nome, provincia, sigla  FROM rivenditori JOIN nazioni ON rivenditori.riv_naz = nazioni.nazioni_id JOIN regioni ON rivenditori.riv_reg = regioni.regioni_id  JOIN province ON rivenditori.riv_prov = province.provincia_id WHERE provincia = '" . $provincia . "'";
+            $sql = "SELECT riv_conv, riv_nome, riv_rif, riv_sede, riv_tel, riv_cell, riv_fax, riv_email, riv_minimo, riv_limite, riv_web, riv_trasporto, riv_trasporto_type, riv_montaggio, riv_montaggio_type, riv_mark, riv_notes, nazioni_nome, nazioni_prefisso, regioni_nome, provincia, sigla  FROM rivenditori JOIN nazioni ON rivenditori.riv_naz = nazioni.nazioni_id JOIN regioni ON rivenditori.riv_reg = regioni.regioni_id  JOIN province ON rivenditori.riv_prov = province.provincia_id WHERE provincia = '" . $provincia . "'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
+                    $row['riv_mark'] = json_decode($row['riv_mark']);
+                    $row['riv_conv'] = intval($row['riv_conv']);
+                    $row['riv_minimo'] = intval($row['riv_minimo']);
+                    $row['riv_limite'] = intval($row['riv_limite']);
+                    $row['riv_trasporto'] = intval($row['riv_trasporto']);
+                    $row['riv_trasporto_type'] = intval($row['riv_trasporto_type']);
+                    $row['riv_montaggio'] = intval($row['riv_montaggio']);
+                    $row['riv_montaggio_type'] = intval($row['riv_montaggio_type']);
                     array_push($result_array, $row);
                 }
                 echo json_encode($result_array[0]);

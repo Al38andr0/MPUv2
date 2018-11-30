@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Dashboard:&#10;Vetrine&#10;Vetrine-prodotti&#10;Province&#10;Convenzioni&#10;Rivenditori&#10;Miglioramenti UI" />
+    <list default="true" id="6d4a09d2-a7ab-42a1-83f3-96e25bed1ec6" name="Default" comment="Dashboard conclusa:&#10;Agenti&#10;UI-Router&#10;Miglioramenti UI">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/api/linee.php" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/api/linee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/api/rivenditori.php" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/api/rivenditori.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/api/settori.php" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/api/settori.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/api/vetrine.php" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/api/vetrine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/template/settori_linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/template/settori_linee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_dashboard/views/settori_linee.html" beforeDir="false" afterPath="$PROJECT_DIR$/_dashboard/views/settori_linee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/mainCtrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/controllers/mainCtrl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers/mainCtrl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/modules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/modules.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/modules.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/lineeSrv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/lineeSrv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/lineeSrv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/lineeSrv.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/marchiSrv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/marchiSrv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/marchiSrv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/marchiSrv.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/rivenditoriSrv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/rivenditoriSrv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/rivenditoriSrv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/rivenditoriSrv.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/vetrineSrv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/vetrineSrv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services/vetrineSrv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services/vetrineSrv.min.js" afterDir="false" />
+    </list>
     <ignored path="mpu.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -37,127 +61,128 @@
     </expand>
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="283235535">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="53" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.10" value="4" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="11" />
-          <entry key="project.open.time.8" value="22" />
-          <entry key="project.open.time.9" value="12" />
-          <entry key="project.opened" value="55" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="10" />
-          <entry key="htaccess" value="8" />
-          <entry key="html" value="370" />
-          <entry key="js" value="276" />
-          <entry key="json" value="7" />
-          <entry key="less" value="56" />
-          <entry key="php" value="211" />
-          <entry key="ts" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="10" />
-          <entry key="HTML" value="370" />
-          <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="276" />
-          <entry key="Less" value="56" />
-          <entry key="PHP" value="211" />
-          <entry key="TypeScript" value="2" />
-          <entry key="composer.json" value="4" />
-          <entry key="htaccess" value="8" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="7" />
-          <entry key="dummy" value="24" />
-          <entry key="htaccess" value="13" />
-          <entry key="html" value="18058" />
-          <entry key="js" value="38292" />
-          <entry key="json" value="28" />
-          <entry key="less" value="7389" />
-          <entry key="php" value="5678" />
-          <entry key="txt" value="355" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="7" />
-          <entry key="HTML" value="18059" />
-          <entry key="JavaScript" value="38291" />
-          <entry key="Less" value="7389" />
-          <entry key="PHP" value="5659" />
-          <entry key="PLAIN_TEXT" value="379" />
-          <entry key="SQL" value="19" />
-          <entry key="composer.json" value="28" />
-          <entry key="htaccess" value="13" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.php.rename.constructor" />
-      <usages-collector id="statistics.php.new.test" />
-      <usages-collector id="statistics.php.composer.actions">
-        <counts>
-          <entry key="addDependencyDialog_from_ComposerEditorNotificationPanel.ExtraActions" value="1" />
-          <entry key="diagnose_from_ComposerEditorNotificationPanel.ExtraActions" value="1" />
-          <entry key="install_from_ComposerEditorNotificationPanel" value="3" />
-          <entry key="updateAll_from_ComposerEditorNotificationPanel" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.php.composer.command.options" />
-      <usages-collector id="statistics.js.language.service.starts" />
-      <usages-collector id="statistics.php.new.class" />
-      <usages-collector id="statistics.vcs.git.usages">
-        <counts>
-          <entry key="git.branch.checkout.local" value="2" />
-          <entry key="git.branch.create.new" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="mpu" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_dashboard/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_dashboard/js/controllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10982">
-              <caret line="646" column="45" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_dashboard/js/modules.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="714">
+                  <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_dashboard/api/linee.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_dashboard/api/settori.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="23" column="66" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_dashboard/api/prodotti.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/services/vetrineSrv.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="139">
+                  <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/html/templates/vetrina.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/directives/vetrina.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="22" column="117" lean-forward="true" selection-start-line="22" selection-start-column="117" selection-end-line="22" selection-end-column="117" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/_dashboard/api/vetrine.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="731">
+                  <caret line="40" selection-start-line="40" selection-end-line="40" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/mixin.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/modules.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/_dashboard/php/abbinamenti.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="16" selection-start-line="14" selection-end-line="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/services/lineeSrv.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="54" lean-forward="true" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -169,10 +194,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tabelle_finiture</find>
-      <find>vetrineProdotti</find>
-      <find>prodotti</find>
-      <find>ste</find>
       <find>provincia_</find>
       <find>trasporto</find>
       <find>cnv_</find>
@@ -199,10 +220,12 @@
       <find>portalApp</find>
       <find>/_dashboard</find>
       <find>_dashboard/</find>
+      <find>marchiSrv</find>
+      <find>$row</find>
+      <find>parseInt(</find>
+      <find>]),</find>
     </findStrings>
     <replaceStrings>
-      <replace>fileread</replace>
-      <replace>$data_mark</replace>
       <replace>$data-&gt;mark</replace>
       <replace>$data-&gt;set</replace>
       <replace>settori_linee</replace>
@@ -231,6 +254,8 @@
       <replace>('portalApp')</replace>
       <replace>mpuDashboard</replace>
       <replace>/_dashboard/</replace>
+      <replace>$row_prodotti</replace>
+      <replace>],</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -257,19 +282,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dashboard/php/province.php" />
-        <option value="$PROJECT_DIR$/dashboard/php/convenzioni.php" />
-        <option value="$PROJECT_DIR$/dashboard/views/rivenditori.html" />
-        <option value="$PROJECT_DIR$/dashboard/php/rivenditori.php" />
-        <option value="$PROJECT_DIR$/dashboard/js/mpuDashboard.js" />
-        <option value="$PROJECT_DIR$/dashboard/views/categorie.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/marchi.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/prodotti.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/abbinamenti.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/finiture.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/linee.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/province.html" />
-        <option value="$PROJECT_DIR$/dashboard/views/settori.html" />
         <option value="$PROJECT_DIR$/dashboard/views/settori_linee.html" />
         <option value="$PROJECT_DIR$/dashboard/views/tabelle_finiture.html" />
         <option value="$PROJECT_DIR$/dashboard/views/tabelle_prodotti.html" />
@@ -297,8 +309,6 @@
         <option value="$PROJECT_DIR$/dashboard/js/routes.js" />
         <option value="$PROJECT_DIR$/_dashboard/js/directives.js" />
         <option value="$PROJECT_DIR$/js/controllers/composizioniCtrl.js" />
-        <option value="$PROJECT_DIR$/js/modules.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_dashboard/index.php" />
         <option value="$PROJECT_DIR$/_dashboard/js/routes.js" />
         <option value="$PROJECT_DIR$/_dashboard/css/mpuDashboard.less" />
@@ -308,6 +318,21 @@
         <option value="$PROJECT_DIR$/_dashboard/index.html" />
         <option value="$PROJECT_DIR$/_dashboard/js/controllers.js" />
         <option value="$PROJECT_DIR$/_dashboard/js/modules.js" />
+        <option value="$PROJECT_DIR$/js/services/rivenditoriSrv.js" />
+        <option value="$PROJECT_DIR$/html/templates/header.html" />
+        <option value="$PROJECT_DIR$/_dashboard/api/rivenditori.php" />
+        <option value="$PROJECT_DIR$/js/services/marchiSrv.js" />
+        <option value="$PROJECT_DIR$/_dashboard/views/settori_linee.html" />
+        <option value="$PROJECT_DIR$/_dashboard/template/settori_linee.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/modules.js" />
+        <option value="$PROJECT_DIR$/js/controllers/mainCtrl.js" />
+        <option value="$PROJECT_DIR$/_dashboard/api/linee.php" />
+        <option value="$PROJECT_DIR$/js/services/lineeSrv.js" />
+        <option value="$PROJECT_DIR$/_dashboard/api/settori.php" />
+        <option value="$PROJECT_DIR$/js/services/vetrineSrv.js" />
+        <option value="$PROJECT_DIR$/js/directives/vetrina.js" />
+        <option value="$PROJECT_DIR$/_dashboard/api/vetrine.php" />
       </list>
     </option>
   </component>
@@ -315,17 +340,11 @@
     <exe-path>C:\Users\Alessandro\AppData\Roaming\npm\bower.cmd</exe-path>
     <config-path />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NamedScopeManager">
     <order>
@@ -370,7 +389,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -387,7 +405,24 @@
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
               <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
               <item name="_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
@@ -400,10 +435,17 @@
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mpu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mpuV2" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -460,7 +502,7 @@
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <configuration default="true" type="js.build_tools.gulp">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
@@ -650,7 +692,11 @@
       <workItem from="1542751885971" duration="4900000" />
       <workItem from="1542835316453" duration="6132000" />
       <workItem from="1542841714124" duration="1477000" />
-      <workItem from="1542844085433" duration="661000" />
+      <workItem from="1542844085433" duration="794000" />
+      <workItem from="1543009683687" duration="40000" />
+      <workItem from="1543009849614" duration="70000" />
+      <workItem from="1543009939635" duration="2531000" />
+      <workItem from="1543612542777" duration="3756000" />
     </task>
     <task id="LOCAL-00001" summary="Home page carousel + header">
       <created>1535839387384</created>
@@ -764,14 +810,29 @@
       <option name="project" value="LOCAL" />
       <updated>1542845148610</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Dashboard conclusa:&#10;Agenti&#10;UI-Router&#10;Miglioramenti UI">
+      <created>1542845255617</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1542845255617</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Dashboard conclusa:&#10;Agenti&#10;UI-Router&#10;Miglioramenti UI">
+      <created>1542845282461</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1542845282461</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="620743000" />
+    <option name="totallyTimeSpent" value="627273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-332" width="1096" height="1936" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" x="-640" y="-813" width="199" height="1843" id="Project" order="1" visible="true" weight="0.17580341" />
@@ -828,6 +889,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -836,9 +911,6 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -858,7 +930,8 @@
     <MESSAGE value="Dashboard:&#10;Prodotti II&#10;Miglioramento SQL" />
     <MESSAGE value="Dashboard:&#10;Prodotti III&#10;Miglioramenti SQL&#10;Miglioramenti UI" />
     <MESSAGE value="Dashboard:&#10;Vetrine&#10;Vetrine-prodotti&#10;Province&#10;Convenzioni&#10;Rivenditori&#10;Miglioramenti UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard:&#10;Vetrine&#10;Vetrine-prodotti&#10;Province&#10;Convenzioni&#10;Rivenditori&#10;Miglioramenti UI" />
+    <MESSAGE value="Dashboard conclusa:&#10;Agenti&#10;UI-Router&#10;Miglioramenti UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dashboard conclusa:&#10;Agenti&#10;UI-Router&#10;Miglioramenti UI" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -875,146 +948,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/categorie.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/convenzioni.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="30" column="64" lean-forward="true" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/finiture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/marchi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/settori_linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/tabelle_prodotti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/vetrine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/vetrine_prodotti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/php/rivenditori.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="43" column="15" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/categorie.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="26" selection-start-line="26" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/finiture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="30" selection-start-line="30" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/settori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="54" column="78" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/settori_linee.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="30" selection-start-line="30" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/prodotti.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="30" column="76" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/template/vetrine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/views/rivenditori.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/php/categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_dashboard/template/province.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1118,37 +1051,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
-          <folding>
-            <element signature="n#!!block;n#fileRead#0" />
-            <element signature="n#!!block;n#categorie#0" />
-            <element signature="n#!!block;n#settori#0" />
-            <element signature="n#!!block;n#marchi#0" />
-            <element signature="n#!!block;n#tabelleProdotti#0" />
-            <element signature="n#!!block;n#finiture#0" />
-            <element signature="n#!!block;n#linee#0" />
-            <element signature="n#!!block;n#settoriLinee#0" />
-            <element signature="n#!!block;n#tabelleFiniture#0" />
-            <element signature="n#!!block;n#abbinamenti#0" />
-            <element signature="n#!!block;n#prodotti#0" />
-            <element signature="n#!!block;n#vetrine#0" />
-            <element signature="n#!!block;n#vetrineProdotti#0" />
-            <element signature="n#!!block;n#province#0" />
-            <element signature="n#!!block;n#convenzioni#0" />
-            <element signature="n#!!block;n#rivenditori#0" />
-            <element signature="n#!!block;n#agenti#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_dashboard/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
@@ -1171,31 +1078,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="252" column="1" lean-forward="true" selection-start-line="252" selection-start-column="1" selection-end-line="252" selection-end-column="1" />
-          <folding>
-            <element signature="e#141#2762#0" />
-            <element signature="n#!!block;n#optionsSrv#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_dashboard/css/style_dashboard.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1397">
           <caret line="109" column="38" lean-forward="true" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
-          <folding>
-            <element signature="e#2309#5491#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1213,6 +1099,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/js/modules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1721">
+          <caret line="646" column="45" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_dashboard/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1220,20 +1120,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/views/settori_linee.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10982">
-          <caret line="646" column="45" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
+        <state relative-caret-position="697">
+          <caret line="35" column="162" lean-forward="true" selection-start-line="35" selection-start-column="139" selection-end-line="35" selection-end-column="162" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_dashboard/js/modules.js">
+    <entry file="file://$PROJECT_DIR$/_dashboard/template/settori_linee.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="272">
+          <caret line="12" column="160" selection-start-line="12" selection-start-column="160" selection-end-line="12" selection-end-column="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="24" />
           <folding>
-            <element signature="e#4673#4734#0" />
+            <element signature="n#!!block;n#pagesSrv#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/rivenditoriSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="66" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/marchiSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/rivenditori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/mainCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/php/prodotti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/linee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/marchi.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/lineeSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="54" lean-forward="true" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/settori.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="23" column="66" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/php/abbinamenti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="14" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/prodotti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/vetrineSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/templates/vetrina.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mixin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/directives/vetrina.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="22" column="117" lean-forward="true" selection-start-line="22" selection-start-column="117" selection-end-line="22" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_dashboard/api/vetrine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>

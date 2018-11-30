@@ -12,7 +12,7 @@
 
         let mapCurrent = function(data) {
             return {
-                rivenditore: data['riv_nome'],
+                nome: data['riv_nome'],
                 note: data['riv_note'],
                 telefono: data['riv_tel'],
                 email: data['riv_email'],

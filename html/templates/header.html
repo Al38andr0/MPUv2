@@ -1,25 +1,25 @@
 <div class="row m-0">
-    <div ng-if="$root.current.rivenditore === 'mobiliperufficio.com'" class="logoContainer">
+    <div ng-if="$root.current.rivenditore.nome === 'mobiliperufficio.com'" class="logoContainer">
         <h1>mobiliperufficio.com<sup>®</sup></h1>
         <h6>office furniture and seating made in Italy</h6>
     </div>
-    <div ng-if="$root.current.rivenditore !== 'mobiliperufficio.com'" class="logoContainer">
-        <h1>{{$root.current.rivenditore}}</h1>
-        <a ng-href="//{{$root.current.webSite}}" target="_blank" title="Sito internet di {{$root.current.rivenditore}}">{{$root.current.webSite}}</a>
+    <div ng-if="$root.current.rivenditore.nome !== 'mobiliperufficio.com'" class="logoContainer">
+        <h1>{{$root.current.rivenditore.nome}}</h1>
+        <a ng-href="//{{$root.current.rivenditore.webSite}}" target="_blank" title="Sito internet di {{$root.current.rivenditore.nome}}">{{$root.current.rivenditore.webSite}}</a>
 
     </div>
-    <div ng-if="$root.current.rivenditore === 'mobiliperufficio.com'" class="numberContainer">
+    <div ng-if="$root.current.rivenditore.nome === 'mobiliperufficio.com'" class="numberContainer">
         <div class="numeroVerde">
             <span class="icon-phone"></span>
             <span>NUMERO VERDE GRATUITO</span>
             <span>800.62.90.91</span>
         </div>
     </div>
-    <div ng-if="$root.current.rivenditore !== 'mobiliperufficio.com'" class="numberContainer">
+    <div ng-if="$root.current.rivenditore.nome !== 'mobiliperufficio.com'" class="numberContainer">
         <div class="numeroVerde">
             <span class="icon-phone"></span>
             <span>CONTATTACI AL NUMERO</span>
-            <span>{{$root.current.telefono}}</span>
+            <span>{{$root.current.rivenditore.telefono}}</span>
         </div>
     </div>
 </div>

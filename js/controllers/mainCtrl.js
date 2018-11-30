@@ -4,11 +4,12 @@
     angular.module('mpu')
         .controller('mainCtrl', mainCtrl);
 
-    mainCtrl.$inject = ['$stateParams', '$state', '$transitions', '$rootScope', 'rivenditoriSrv', 'ngMeta', 'settoriSrv'];
+    mainCtrl.$inject = ['$stateParams', '$state', '$transitions', '$rootScope', 'rivenditoriSrv', 'ngMeta', 'settoriSrv', 'optionsSrv'];
 
-    function mainCtrl($stateParams, $state, $transitions, $rootScope, rivenditoriSrv, ngMeta, settoriSrv) {
+    function mainCtrl($stateParams, $state, $transitions, $rootScope, rivenditoriSrv, ngMeta, settoriSrv, optionsSrv) {
         let vm = this;
 
+        vm.options = optionsSrv;
         vm.rivenditori = {
             list : [],
             getAll : function (callback) {

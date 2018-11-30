@@ -18,27 +18,27 @@
 
         let _create = function (v) {
             return {
-                id: parseInt(v['line_id']),
+                id: v['line_id'],
                 nome: v['line_nome'],
                 marchio: {
                     nome: v['mark_nome'],
-                    id: parseInt(v['mark_id']),
-                    sconto: parseInt(v['mark_disc']),
-                    listino: parseInt(v['mark_list'])
+                    id: v['mark_id'],
+                    sconto: v['mark_disc'],
+                    listino: v['mark_list']
                 },
                 settori: [
                     {
-                        id: parseInt(v['stln_set_id']),
-                        prezzo: parseInt(v['stln_price'])
+                        id: v['stln_set_id'],
+                        prezzo: v['stln_price']
                     }
                 ],
-                consegna: parseInt(v['line_time']),
-                sconto: parseInt(v['line_disc']),
-                garanzia: parseInt(v['line_war']),
-                vetrina: (parseInt(v['line_vtr']) === 1),
-                specifiche: (parseInt(v['line_spec_file']) === 1),
-                catalogo: (parseInt(v['line_pdf_file']) === 1),
-                posizione: parseInt(v['line_pos'])
+                consegna: v['line_time'],
+                sconto: v['line_disc'],
+                garanzia: v['line_war'],
+                vetrina: (v['line_vtr'] === 1),
+                specifiche: (v['line_spec_file'] === 1),
+                catalogo: (v['line_pdf_file'] === 1),
+                posizione: v['line_pos']
             }
         };
 
@@ -54,25 +54,25 @@
                                 let stored = _find(marchi, 'id', v['mark_id']);
                                 if (!stored) {
                                     let marchio = {
-                                        id: parseInt(v['mark_id']),
+                                        id: v['mark_id'],
                                         nome: v['mark_nome'],
-                                        categoria: JSON.parse(v['mark_cat_array']),
-                                        sconto: parseInt(v['mark_disc']),
-                                        listino: parseInt(v['mark_list']),
-                                        settori: [parseInt(v['stln_set_id'])],
+                                        categoria: v['mark_cat_array'],
+                                        sconto: v['mark_disc'],
+                                        listino: v['mark_list'],
+                                        settori: [v['stln_set_id']],
                                         linee: [_create(v)]
                                     };
                                     marchi.push(marchio);
                                 } else {
-                                    stored.settori.push(parseInt(v['stln_set_id']));
+                                    stored.settori.push(v['stln_set_id']);
                                     let linea = _find(stored.linee, 'id', v['line_id']);
                                     if (!linea)
                                         stored.linee.push(_create(v));
                                     else
                                         linea.settori.push(
                                             {
-                                                id: parseInt(v['stln_set_id']),
-                                                prezzo: parseInt(v['stln_price'])
+                                                id: v['stln_set_id'],
+                                                prezzo: v['stln_price']
                                             }
                                         );
                                 }

@@ -33,7 +33,7 @@
         </select>
     </div>
     <div class="col-2">
-        <select class="form-control" data-ng-model="$root.settings.query.settori" ng-options="o.set_id as o.set_nome for o in $root.settori" title="">
+        <select class="form-control" data-ng-model="$root.settings.query.settori" ng-options="o.set_id as o.set_nome for o in $root.settori | orderBy : 'set_nome'" title="">
             <option value="">Tutti i settori</option>
         </select>
     </div>

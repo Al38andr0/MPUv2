@@ -17,6 +17,20 @@ if (!isset($result_array['error'])) {
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
+                    $row['mark_cat_array'] = json_decode($row['mark_cat_array']);
+                    $row['line_disc'] = intval($row['line_disc']);
+                    $row['line_id'] = intval($row['line_id']);
+                    $row['line_pdf_file'] = intval($row['line_pdf_file']);
+                    $row['line_pos'] = intval($row['line_pos']);
+                    $row['line_spec_file'] = intval($row['line_spec_file']);
+                    $row['line_time'] = intval($row['line_time']);
+                    $row['line_vtr'] = intval($row['line_vtr']);
+                    $row['line_war'] = intval($row['line_war']);
+                    $row['mark_disc'] = intval($row['mark_disc']);
+                    $row['mark_id'] = intval($row['mark_id']);
+                    $row['mark_list'] = intval($row['mark_list']);
+                    $row['stln_price'] = intval($row['stln_price']);
+                    $row['stln_set_id'] = intval($row['stln_set_id']);
                     array_push($result_array, $row);
                 }
                 echo json_encode($result_array);

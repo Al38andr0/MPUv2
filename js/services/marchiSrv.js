@@ -11,23 +11,23 @@
             url = API + reference + '.php';
 
         let mapCurrent = function(data, current) {
-            let marchi = [];
-            _.each(JSON.parse(current), function (v) {
-                if (v.v === 1) {
-                    let marchio = _.find(data, function (num) {
-                        return num.id === v.i;
-                    });
-                    if(v.s)
-                        marchio.sconto = v.s;
-                    if(v.d) {
-                        _.each(marchio.linee, function (l) {
-                            l.consegna = v.d;
-                        });
-                    }
-                    marchi.push(marchio);
-                }
-            });
-            return marchi;
+            if(current.length > 0) {
+                _.each(data, function (v) {
+                    v.visibile = 1;
+                    _.find(current, function (num) {
+                        if (num.i === v.id) {
+                            v.sconto = num.s || v.sconto;
+                            if(num.d)
+                                v.consegna = num.d;
+                            v.visibile = num.v
+                        }
+                    })
+                });
+                return _.filter(data, function (num) {
+                    return num.visibile;
+                })
+            } else
+                return data;
         };
 
         let getAll = function (success, fail) {
